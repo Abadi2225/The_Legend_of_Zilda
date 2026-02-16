@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint.Interfaces;
 using Sprint.Controllers;
 using Sprint.Sprites;
+using Sprint.Enemies.Gel;
 
 namespace Sprint;
 
@@ -11,6 +12,7 @@ public class Game1 : Game
 {
     private Texture2D credits;
     private Texture2D linkSheet;
+    private Texture2D enemiesSheet;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
@@ -21,10 +23,11 @@ public class Game1 : Game
     private GameState currState;
     private ISprite currSprite;
 
-    //private ISprite staticSprite;
-    //private ISprite animatedSprite;
-    //private ISprite movingSprite;
-    //private ISprite movingAnimatedSprite;
+    private ISprite staticSprite;
+    private ISprite animatedSprite;
+    private ISprite movingSprite;
+    private ISprite movingAnimatedSprite;
+    private ISprite gelSprite;
 
     public Game1()
     {
@@ -54,17 +57,22 @@ public class Game1 : Game
 
         //Left these as examples for how to load sprites with the current parameters
 
-        //staticSprite = new StaticSprite(linkSheet, center, new Rectangle(0, 11, 16, 16));
+        staticSprite = new StaticSprite(linkSheet, center, new Rectangle(0, 11, 16, 16));
 
-        //animatedSprite = new AnimatedSprite(linkSheet, center, new int[] { 0, 17 }, 11, 16, 16, 0.2f);
+        animatedSprite = new AnimatedSprite(linkSheet, center, new int[] { 0, 17 }, 11, 16, 16, 0.2f);
 
-       // movingSprite = new MovingSprite(linkSheet, center, new int[] { 68, 85 }, 11, 16, 16, 0.2f);
+        movingSprite = new MovingSprite(linkSheet, center, new int[] { 68, 85 }, 11, 16, 16, 0.2f);
 
-       // movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, new int[] { 34, 51 }, 11, 16, 16, 0.2f);
+        movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, new int[] { 34, 51 }, 11, 16, 16, 0.2f);
+        
+        //Enemies
+        
+        gelSprite = new Gel(enemiesSheet, center);
 
         SetState(currState);
     }
 
+    //TODO write some functionality to load and unload the enemies as necessary in different positions
     protected override void Update(GameTime gameTime)
     {
         keyboard.Update();
@@ -87,6 +95,8 @@ public class Game1 : Game
         //float creditsScale = 0.3f;
         //float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
         //float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
+
+        spriteBatch.Draw
     
         //spriteBatch.Draw(credits, 
         //new Vector2(creditsX, creditsY), 
