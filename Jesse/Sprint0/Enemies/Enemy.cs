@@ -14,7 +14,6 @@ namespace Sprint.Enemies.Base
         protected int maxHealth;
         protected int damage;
         protected bool isAlive;
-        //What a
         protected float dyingTimer;
         protected const float DYING_DURATION = 0.5f; // For the death animation
         
@@ -32,7 +31,7 @@ namespace Sprint.Enemies.Base
         }
         
         public Texture2D Texture => texture; // cleaner way instead of get
-        public Rectangle Rect => sprite?.Rect ?? Rectangle.Empty; // if sprite exists then get .Rect if not the return Rect.Empty
+        public Rectangle Rect => sprite?.Rect ?? Rectangle.Empty; // if sprite exists then get .Rect if not return Rect.Empty
         
         public int Health 
         { 
