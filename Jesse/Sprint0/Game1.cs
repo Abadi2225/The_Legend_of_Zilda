@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint.Interfaces;
 using Sprint.Controllers;
 using Sprint.Sprites;
+using Sprint.UI;
 
 namespace Sprint;
 
@@ -11,6 +12,7 @@ public class Game1 : Game
 {
     private Texture2D credits;
     private Texture2D linkSheet;
+    private Texture2D titleSheet;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
@@ -26,6 +28,9 @@ public class Game1 : Game
     private ISprite movingSprite;
     private ISprite movingAnimatedSprite;
 
+    private UIManager uiManager;
+    private TitleScreen titleScreen;
+
     public Game1()
     {
         graphics = new GraphicsDeviceManager(this);
@@ -39,6 +44,8 @@ public class Game1 : Game
         keyboard = new KeyboardController(this);
         mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
+        uiManager = new UIManager();
+
         base.Initialize();
     }
 
@@ -50,6 +57,8 @@ public class Game1 : Game
 
         linkSheet = Content.Load<Texture2D>("images/Link");
 
+        titleSheet = Content.Load<Texture2D>("images/Title Screen & Story of Treasures");
+
         Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
         staticSprite = new StaticSprite(linkSheet, center, new Rectangle(0, 11, 16, 16));
@@ -59,6 +68,10 @@ public class Game1 : Game
         movingSprite = new MovingSprite(linkSheet, center, new int[] { 68, 85 }, 11, 16, 16, 0.2f);
 
         movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, new int[] { 34, 51 }, 11, 16, 16, 0.2f);
+
+
+        titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
+        uiManager.AddElement(titleScreen);
 
         SetState(currState);
     }
@@ -72,6 +85,8 @@ public class Game1 : Game
         {
             currSprite.Update(gameTime);
         }
+
+        uiManager.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -100,6 +115,9 @@ public class Game1 : Game
         {
             currSprite.Draw(spriteBatch, currSprite.Position);
         }
+
+        uiManager.Draw(spriteBatch);
+
         spriteBatch.End();
 
         base.Draw(gameTime);

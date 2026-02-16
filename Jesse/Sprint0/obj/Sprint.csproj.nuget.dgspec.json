@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shiel\\OneDrive\\Documents\\OSU\\Spring 2026\\CSE3902\\Sprint\\Sprint.csproj": {}
+    "/Users/etainorris/Sprint0/Jesse/Sprint0/Sprint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shiel\\OneDrive\\Documents\\OSU\\Spring 2026\\CSE3902\\Sprint\\Sprint.csproj": {
+    "/Users/etainorris/Sprint0/Jesse/Sprint0/Sprint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shiel\\OneDrive\\Documents\\OSU\\Spring 2026\\CSE3902\\Sprint\\Sprint.csproj",
+        "projectUniqueName": "/Users/etainorris/Sprint0/Jesse/Sprint0/Sprint.csproj",
         "projectName": "Sprint",
-        "projectPath": "C:\\Users\\shiel\\OneDrive\\Documents\\OSU\\Spring 2026\\CSE3902\\Sprint\\Sprint.csproj",
-        "packagesPath": "C:\\Users\\shiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shiel\\OneDrive\\Documents\\OSU\\Spring 2026\\CSE3902\\Sprint\\obj\\",
+        "projectPath": "/Users/etainorris/Sprint0/Jesse/Sprint0/Sprint.csproj",
+        "packagesPath": "/Users/etainorris/.nuget/packages/",
+        "outputPath": "/Users/etainorris/Sprint0/Jesse/Sprint0/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shiel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/etainorris/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -46,11 +46,11 @@
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
-              "version": "[3.8.*, )"
+              "version": "[3.8.5-preview.1, )"
             },
             "MonoGame.Framework.DesktopGL": {
               "target": "Package",
-              "version": "[3.8.*, )"
+              "version": "[3.8.5-preview.1, )"
             }
           },
           "imports": [
@@ -70,15 +70,11 @@
               "version": "[9.0.12, 9.0.12]"
             },
             {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "name": "Microsoft.NETCore.App.Host.osx-arm64",
               "version": "[9.0.12, 9.0.12]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.12, 9.0.12]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
               "version": "[9.0.12, 9.0.12]"
             }
           ],
@@ -87,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
