@@ -1,3 +1,4 @@
+using System.Data.SqlTypes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
@@ -11,12 +12,12 @@ namespace Sprint.Sprites
         private Rectangle rect;
         private int frameCount;
         private int curFrame;
-        private int[] frameXPositions;
+        private int[] sheetXPositions;
         private float frameTime;
         private float elapsedTime;
         private int frameWidth;
         private int frameHeight;
-        private int frameY;
+        private int sheetY;
 
         public Vector2 Position 
         { 
@@ -33,18 +34,18 @@ namespace Sprint.Sprites
         public Rectangle Rect => rect;
 
         //TODO: Refactor xPositions to incoroporate yPos and be a 2 dimensional array
-        public AnimatedSprite(Texture2D texture, Vector2 position, int[] xPositions, int yPos, int spriteWidth, int spriteHeight, float frameTime)
+        public AnimatedSprite(Texture2D texture, Vector2 position, int[] sheetXPositions, int sheetYPos, int spriteWidth, int spriteHeight, float frameTime)
         {
             this.texture = texture;
             pos = position;
-            this.frameCount = xPositions.Length;
-            frameXPositions = xPositions;
+            this.frameCount = sheetXPositions.Length;
+            sheetXPositions = this.sheetXPositions;
             this.frameTime = frameTime;
             curFrame = 0;
             elapsedTime = 0f;
             frameWidth = spriteWidth;
             frameHeight = spriteHeight;
-            frameY = yPos;
+            sheetY = sheetYPos;
             
             UpdateRect();
         }
@@ -75,8 +76,8 @@ namespace Sprint.Sprites
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             Rectangle sourceRectangle = new Rectangle(
-                frameXPositions[curFrame],
-                frameY,
+                sheetXPositions[curFrame],
+                sheetY,
                 frameWidth,
                 frameHeight
             );

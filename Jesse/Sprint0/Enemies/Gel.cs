@@ -22,13 +22,13 @@ namespace Sprint.Enemies.Gel
         
         public Gel(Texture2D texture, Vector2 position) : base(texture, position, GEL_HEALTH, GEL_DAMAGE)
         {
-            int[] frameXPositions = new int[] { 1, 10 };
-            int frameY = 15;
+            int[] sheetXPositions = new int[] { 1, 10 };
+            int sheetY = 15;
             int spriteWidth = 7;
             int spriteHeight = 8;
             float frameTime = 0.2f;
             
-            sprite = new AnimatedSprite(texture, position, frameXPositions, frameY, 
+            sprite = new AnimatedSprite(texture, position, sheetXPositions, sheetY, 
                                         spriteWidth, spriteHeight, frameTime);
             
             random = new Random();
