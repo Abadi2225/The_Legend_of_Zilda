@@ -28,8 +28,8 @@ namespace Sprint.Enemies
         {
             switch (type)
             {
-                // case EnemyType.Keese:
-                //     return new Keese(enemySpriteSheet, position);
+                 case EnemyType.Keese:
+                     return new Keese(enemySpriteSheet, position);
                     
                 case EnemyType.Stalfos:
                     return new Stalfos(enemySpriteSheet, position);
@@ -37,8 +37,8 @@ namespace Sprint.Enemies
                 case EnemyType.Gel:
                     return new Gel(enemySpriteSheet, position);
                     
-                // case EnemyType.Goriya:
-                //     return new Goriya(enemySpriteSheet, position);
+                 case EnemyType.Goriya:
+                     return new Goriya(enemySpriteSheet, position);
                     
                 // case EnemyType.Zol:
                 //     return new Zol(enemySpriteSheet, position);
