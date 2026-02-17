@@ -9,6 +9,7 @@ using Sprint.Character;
 using Sprint.Enemies;
 using Sprint.Enemies.Concrete;
 using System.Runtime.InteropServices.Marshalling;
+using System.ComponentModel;
 
 namespace Sprint;
 
@@ -83,9 +84,10 @@ public class Game1 : Game
         // Can make push this to be generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
 
-
-        // commented out since this takes up half the screen
+        // Just shows that it exists
         titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
         uiManager.AddElement(titleScreen);
 

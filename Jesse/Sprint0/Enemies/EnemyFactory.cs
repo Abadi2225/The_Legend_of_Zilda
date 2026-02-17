@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Concrete;
 using Sprint.Interfaces;
@@ -22,6 +23,11 @@ namespace Sprint.Enemies
     public class EnemyFactory(Texture2D enemySpriteSheet)
     {
         private readonly Texture2D enemySpriteSheet = enemySpriteSheet;
+
+        public void LoadAllTextures(ContentManager content)
+        {
+            
+        }
 
         // Can change vector2 position to something else (e.g. x/y pos) in the future
         public IEnemy CreateEnemy(EnemyType type, Vector2 position)
