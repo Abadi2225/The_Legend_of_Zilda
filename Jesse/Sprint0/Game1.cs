@@ -5,6 +5,7 @@ using Sprint.Interfaces;
 using Sprint.Controllers;
 using Sprint.Sprites;
 using Sprint.UI;
+using Sprint.Character;
 
 namespace Sprint;
 
@@ -23,13 +24,14 @@ public class Game1 : Game
     private GameState currState;
     private ISprite currSprite;
 
-     private ISprite staticSprite;
+    private ISprite staticSprite;
     private ISprite animatedSprite;
     private ISprite movingSprite;
     private ISprite movingAnimatedSprite;
 
     private UIManager uiManager;
     private TitleScreen titleScreen;
+    private Link link;
 
     public Game1()
     {
@@ -41,8 +43,8 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        keyboard = new KeyboardController(this);
-        mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+        //keyboard = new KeyboardController(this);
+        //mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
         uiManager = new UIManager();
 
@@ -52,8 +54,6 @@ public class Game1 : Game
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
-
-        credits = Content.Load<Texture2D>("images/credits");
 
         linkSheet = Content.Load<Texture2D>("images/Link");
 
@@ -74,6 +74,8 @@ public class Game1 : Game
         uiManager.AddElement(titleScreen);
 
         SetState(currState);
+
+        link = new Link(linkSheet, center);
     }
 
     protected override void Update(GameTime gameTime)
@@ -89,26 +91,23 @@ public class Game1 : Game
         uiManager.Update(gameTime);
 
         base.Update(gameTime);
+        link.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        spriteBatch.Begin();
-
         float creditsScale = 0.3f;
         float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
         float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
-    
-        spriteBatch.Draw(credits, 
-        new Vector2(creditsX, creditsY), 
-        null, 
-        Color.White, 
-        0f, 
-        Vector2.Zero, 
-        creditsScale, 
-        SpriteEffects.None, 
+
+        spriteBatch.Draw(credits,
+        new Vector2(creditsX, creditsY),
+        null,
+        Color.White,
+        0f,
+        Vector2.Zero,
+        creditsScale,
+        SpriteEffects.None,
         0f);
 
         if (currSprite != null)
@@ -118,6 +117,12 @@ public class Game1 : Game
 
         uiManager.Draw(spriteBatch);
 
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        spriteBatch.Begin();
+
+        link.Draw(spriteBatch);
+
         spriteBatch.End();
 
         base.Draw(gameTime);
@@ -126,26 +131,26 @@ public class Game1 : Game
 
     public void SetState(GameState newState)
     {
-        currState = newState;
+        //currState = newState;
 
-        switch (currState)
-            {
-                case GameState.StaticNonAnimated:
-                    currSprite = staticSprite;
-                    break;
+        //switch (currState)
+        //    {
+        //        case GameState.StaticNonAnimated:
+        //            currSprite = staticSprite;
+        //            break;
 
-                case GameState.StaticAnimated:
-                    currSprite = animatedSprite;
-                    break;
+        //        case GameState.StaticAnimated:
+        //            currSprite = animatedSprite;
+        //            break;
 
-                case GameState.MovingNonAnimated:
-                    currSprite = movingSprite;
-                    break;
+        //        case GameState.MovingNonAnimated:
+        //            currSprite = movingSprite;
+        //            break;
 
-                case GameState.MovingAnimated:
-                    currSprite = movingAnimatedSprite;
-                    break;
-            }        
+        //        case GameState.MovingAnimated:
+        //            currSprite = movingAnimatedSprite;
+        //            break;
+        //    }        
     }
 
     public GameState GetCurrentState()
