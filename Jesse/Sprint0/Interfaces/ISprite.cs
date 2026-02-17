@@ -8,5 +8,9 @@ namespace Sprint.Interfaces
         public void Draw(SpriteBatch spriteBatch, Vector2 location);
 
         public int Update(GameTime gameTime);
+
+        public Vector2 Position { get; set; }
+
+        // public Texture2D Texture { get; }
     }
 }

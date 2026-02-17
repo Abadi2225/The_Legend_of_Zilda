@@ -9,7 +9,6 @@ namespace Sprint.Sprites
         private Texture2D texture;
         private Vector2 pos;
         private Rectangle sourceRect;
-        private Rectangle rect;
 
         public Vector2 Position 
         { 
@@ -19,21 +18,11 @@ namespace Sprint.Sprites
 
         public Texture2D Texture => texture;
 
-        public Rectangle Rect => rect;
-
         public StaticSprite(Texture2D texture, Vector2 position, Rectangle source)
         {
             this.texture = texture;
             pos = position;
             sourceRect = source;
-
-            rect = new Rectangle
-            (
-                (int)(position.X - texture.Width / 2),
-                (int)(position.Y - texture.Height / 2),
-                texture.Width,
-                texture.Height
-            );
 
         }
 
