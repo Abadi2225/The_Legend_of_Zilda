@@ -71,8 +71,9 @@ public class Game1 : Game
         movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, new int[] { 34, 51 }, 11, 16, 16, 0.2f);
 
 
-        titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
-        uiManager.AddElement(titleScreen);
+        // commented out since this takes up half the screen
+        // titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
+        // uiManager.AddElement(titleScreen);
 
         SetState(currState);
 
