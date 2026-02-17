@@ -13,7 +13,5 @@ namespace Sprint.Interfaces
 
         public Texture2D Texture {get;}
 
-        Rectangle Rect {get;}
-
     }
 }
