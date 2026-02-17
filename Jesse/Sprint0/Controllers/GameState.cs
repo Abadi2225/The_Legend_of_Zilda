@@ -2,9 +2,9 @@ namespace Sprint.Controllers
 {
      public enum GameState
         {
-            StartScreen,      
-            Running,         
-            Pause,      
-            GameOver          
+            StaticNonAnimated,      
+            StaticAnimated,         
+            MovingNonAnimated,      
+            MovingAnimated          
         }
 }

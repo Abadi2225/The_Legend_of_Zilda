@@ -4,7 +4,8 @@ using Microsoft.Xna.Framework.Input;
 using Sprint.Interfaces;
 using Sprint.Controllers;
 using Sprint.Sprites;
-using Sprint.Enemies.Gel;
+using Sprint.Enemies;
+using Sprint.Enemies.Concrete;
 
 namespace Sprint;
 
@@ -17,7 +18,6 @@ public class Game1 : Game
     private SpriteBatch spriteBatch;
 
     private IController keyboard;
-
     private IController mouse;
 
     private GameState currState;
@@ -27,15 +27,16 @@ public class Game1 : Game
     private ISprite animatedSprite;
     private ISprite movingSprite;
     private ISprite movingAnimatedSprite;
-    private ISprite gelSprite;
+
+    private EnemyManager enemyManager;
+    private EnemyFactory enemyFactory;
 
     public Game1()
     {
         graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        //Switch this to Start Screen after we implement it
-        currState = GameState.Running;
+        currState = GameState.StaticNonAnimated;
     }
 
     protected override void Initialize()
@@ -46,42 +47,39 @@ public class Game1 : Game
         base.Initialize();
     }
 
-
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
 
+        credits = Content.Load<Texture2D>("images/credits");
         linkSheet = Content.Load<Texture2D>("images/Link");
+        enemiesSheet = Content.Load<Texture2D>("images/Enemies");
 
         Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
 
-        //Left these as examples for how to load sprites with the current parameters
-
         staticSprite = new StaticSprite(linkSheet, center, new Rectangle(0, 11, 16, 16));
+        animatedSprite = new AnimatedSprite(linkSheet, center, [0, 17], 11, 16, 16, 0.2f);
+        movingSprite = new MovingSprite(linkSheet, center, [68, 85], 11, 16, 16, 0.2f);
+        movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, [34, 51], 11, 16, 16, 0.2f);
 
-        animatedSprite = new AnimatedSprite(linkSheet, center, new int[] { 0, 17 }, 11, 16, 16, 0.2f);
+        enemyManager = new EnemyManager();
+        enemyFactory = new EnemyFactory(enemiesSheet);
 
-        movingSprite = new MovingSprite(linkSheet, center, new int[] { 68, 85 }, 11, 16, 16, 0.2f);
-
-        movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, new int[] { 34, 51 }, 11, 16, 16, 0.2f);
-        
-        //Enemies
-        
-        gelSprite = new Gel(enemiesSheet, center);
+        // Can make push this to be generated in the enemyFactory if we want to create more enemies
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
 
         SetState(currState);
     }
 
-    //TODO write some functionality to load and unload the enemies as necessary in different positions
     protected override void Update(GameTime gameTime)
     {
         keyboard.Update();
         mouse.Update();
 
-        if (currSprite != null)
-        {
-            currSprite.Update(gameTime);
-        }
+        currSprite?.Update(gameTime);
+
+        enemyManager?.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -92,51 +90,54 @@ public class Game1 : Game
 
         spriteBatch.Begin();
 
-        //float creditsScale = 0.3f;
-        //float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
-        //float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
+        float creditsScale = 0.3f;
+        float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
+        float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
     
-        //spriteBatch.Draw(credits, 
-        //new Vector2(creditsX, creditsY), 
-       // null, 
-        //Color.White, 
-        //0f, 
-       // Vector2.Zero, 
-        //creditsScale, 
-        //SpriteEffects.None, 
-        //0f);
+        spriteBatch.Draw(credits, 
+        new Vector2(creditsX, creditsY), 
+        null, 
+        Color.White, 
+        0f, 
+        Vector2.Zero, 
+        creditsScale, 
+        SpriteEffects.None, 
+        0f);
 
-        if (currSprite != null)
-        {
-            currSprite.Draw(spriteBatch, currSprite.Position);
-        }
+        currSprite?.Draw(spriteBatch, currSprite.Position);
+
+        enemyManager?.Draw(spriteBatch);
+        
         spriteBatch.End();
 
         base.Draw(gameTime);
     }
 
 
-    //Used to be animation state for Sprint0, switched to Start Screen/Pause/Running/GameOver
     public void SetState(GameState newState)
     {
         currState = newState;
 
         switch (currState)
             {
-                case GameState.StartScreen:
-                    //currSprite = staticSprite;
+                case GameState.StaticNonAnimated:
+                    currSprite = staticSprite;
+                    enemyManager?.CycleNext();
                     break;
 
-                case GameState.Running:
-                    //currSprite = animatedSprite;
+                case GameState.StaticAnimated:
+                    currSprite = animatedSprite;
+                    enemyManager?.CycleNext();
                     break;
 
-                case GameState.Pause:
-                    //currSprite = movingSprite;
+                case GameState.MovingNonAnimated:
+                    currSprite = movingSprite;
+                    enemyManager?.CycleNext();
                     break;
 
-                case GameState.GameOver:
-                    //currSprite = movingAnimatedSprite;
+                case GameState.MovingAnimated:
+                    currSprite = movingAnimatedSprite;
+                    enemyManager?.CycleNext();
                     break;
             }        
     }

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
 
-namespace Sprint.Enemies.Goriya
+namespace Sprint.Enemies.Concrete
 {
     public class Goriya : Enemy
     {

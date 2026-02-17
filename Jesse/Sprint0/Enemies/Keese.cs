@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
 
-namespace Sprint.Enemies.Keese
+namespace Sprint.Enemies.Concrete
 {
     public class Keese : Enemy
     {
