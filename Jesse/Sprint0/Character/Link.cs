@@ -10,36 +10,107 @@ namespace Sprint.Character
 	{
 		private Vector2 position;
 		private Texture2D texture;
+
+		private ISprite IdleUp;
+		private ISprite IdleDown;
+		private ISprite IdleLeft;
+		private ISprite IdleRight;
+
 		private ISprite sprite;
+
+		private ISprite WalkUp;
+		private ISprite WalkDown;
+		private ISprite WalkLeft;
+		private ISprite WalkRight;
+
+		private int elapsedTime;
+		private int frameTime;
+		private float speed = 80f;
+		Vector2 move = Vector2.Zero;
+		private Rectangle bounds;
+		
+
+		private enum Directions
+		{
+			Left,
+			Right,
+			Up,
+			Down,
+		}
+
+		private Directions direction = Directions.Down;
 
 		public Link(Texture2D texture, Vector2 position)
 		{
 			this.position = position;
 			this.texture = texture;
 
-			sprite = LinkSprites.IdleDown(texture);
+			IdleDown = LinkSprites.IdleDown(texture);
+			IdleUp = LinkSprites.IdleUp(texture);
+			IdleLeft = LinkSprites.IdleLeft(texture);
+			IdleRight = LinkSprites.IdleRight(texture);
+
+			WalkDown = LinkSprites.WalkingDown(texture);
+			WalkUp = LinkSprites.WalkingUp(texture);
+			WalkLeft = LinkSprites.WalkingLeft(texture);
+			WalkRight = LinkSprites.WalkingRight(texture);
+
+			sprite = IdleDown;
 		}
 
 		public void Update(GameTime gameTime)
 		{
+			move = Vector2.Zero;
+			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 			KeyboardState command = Keyboard.GetState();
 
-			if(command.IsKeyDown(Keys.W))
+			if(command.IsKeyDown(Keys.W) || command.IsKeyDown(Keys.Up))
 			{
-				sprite = LinkSprites.IdleUp(texture);
+				direction = Directions.Up;
+				sprite = WalkUp;
+				move.Y = -1;
+
 			}
-			else if(command.IsKeyDown(Keys.S))
+			else if(command.IsKeyDown(Keys.S) || command.IsKeyDown(Keys.Down))
 			{
-				sprite = LinkSprites.IdleDown(texture);
+
+				direction = Directions.Down;
+				sprite = WalkDown;
+				move.Y = 1;
 			}
-			else if (command.IsKeyDown(Keys.A))
+			else if (command.IsKeyDown(Keys.A) || command.IsKeyDown(Keys.Left))
 			{
-				sprite = LinkSprites.IdleLeft(texture);
+				direction = Directions.Left;
+				sprite = WalkLeft;
+				move.X = -1;
 			}
-			else if (command.IsKeyDown(Keys.D))
+			else if (command.IsKeyDown(Keys.D) || command.IsKeyDown(Keys.Right))
 			{
-				sprite = LinkSprites.IdleRight(texture);
+				direction = Directions.Right;
+				sprite = WalkRight;
+				move.X = 1;
 			}
+
+			if (move == Vector2.Zero)
+			{
+				switch (direction)
+				{
+					case Directions.Up:
+						sprite = IdleUp;
+						break;
+					case Directions.Down:
+						sprite = IdleDown;
+						break;
+					case Directions.Left:
+						sprite = IdleLeft;
+						break;
+					case Directions.Right:
+						sprite = IdleRight;
+						break;
+				}
+			}
+
+			Vector2 newPos = position + move * speed * dt;
 
 			sprite.Update(gameTime);
 		}
