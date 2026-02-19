@@ -25,8 +25,6 @@ namespace Sprint.Enemies.Concrete
         // Moves erratically in random directions, stopping sometimes to rest
         // Boomerang kills them instead of stunning
         // Never drop any items
-        
-        // TODO point to right texture on sheet
         public Keese(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
         {
             int[] sheetXPositions = new int[] { 182, 200 };
