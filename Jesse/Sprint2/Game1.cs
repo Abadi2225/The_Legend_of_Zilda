@@ -4,8 +4,12 @@ using Microsoft.Xna.Framework.Input;
 using Sprint.Interfaces;
 using Sprint.Controllers;
 using Sprint.Sprites;
+using Sprint.UI;
+using Sprint.Character;
 using Sprint.Enemies;
 using Sprint.Enemies.Concrete;
+using System.Runtime.InteropServices.Marshalling;
+using System.ComponentModel;
 
 namespace Sprint;
 
@@ -13,6 +17,7 @@ public class Game1 : Game
 {
     private Texture2D credits;
     private Texture2D linkSheet;
+    private Texture2D titleSheet;
     private Texture2D enemiesSheet;
     private Texture2D BossesSheet;
     private GraphicsDeviceManager graphics;
@@ -22,6 +27,10 @@ public class Game1 : Game
     private IController mouse;
 
     private GameState currState;
+
+    private UIManager uiManager;
+    private TitleScreen titleScreen;
+    private Link link;
 
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
@@ -41,6 +50,8 @@ public class Game1 : Game
         keyboard = new KeyboardController(this);
         mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
+        uiManager = new UIManager();
+
         base.Initialize();
     }
 
@@ -53,8 +64,9 @@ public class Game1 : Game
         enemiesSheet = Content.Load<Texture2D>("images/enemiesSheet");
         BossesSheet = Content.Load<Texture2D>("images/BossesSpriteSheet");
 
-        Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
+        titleSheet = Content.Load<Texture2D>("images/Title Screen & Story of Treasures");
 
+        Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet);
 
@@ -65,7 +77,13 @@ public class Game1 : Game
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
 
+        // Just shows that it exists
+        titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
+        uiManager.AddElement(titleScreen);
+
         SetState(currState);
+
+        link = new Link(linkSheet, center);
     }
 
     protected override void Update(GameTime gameTime)
@@ -86,31 +104,39 @@ public class Game1 : Game
 
         enemyManager?.Update(gameTime);
 
+        uiManager.Update(gameTime);
+
         base.Update(gameTime);
+        link.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-
-        spriteBatch.Begin();
-
         float creditsScale = 0.3f;
         float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
         float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
-    
-        spriteBatch.Draw(credits, 
-        new Vector2(creditsX, creditsY), 
-        null, 
-        Color.White, 
-        0f, 
-        Vector2.Zero, 
-        creditsScale, 
-        SpriteEffects.None, 
+
+        spriteBatch.Begin();
+
+        spriteBatch.Draw(credits,
+        new Vector2(creditsX, creditsY),
+        null,
+        Color.White,
+        0f,
+        Vector2.Zero,
+        creditsScale,
+        SpriteEffects.None,
         0f);
 
+
+        uiManager.Draw(spriteBatch);
+
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        link.Draw(spriteBatch);
+
         enemyManager?.Draw(spriteBatch);
-        
+
         spriteBatch.End();
 
         base.Draw(gameTime);

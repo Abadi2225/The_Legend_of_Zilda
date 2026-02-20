@@ -28,7 +28,7 @@ namespace Sprint.Enemies.Concrete
         public Keese(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
         {
             int[] sheetXPositions = new int[] { 182, 200 };
-            int sheetY = 15;
+            int sheetY = 11;
             int spriteWidth = 16;
             int spriteHeight = 16;
             float frameTime = 0.2f;
@@ -72,8 +72,7 @@ namespace Sprint.Enemies.Concrete
             // Move if not resting
             if (!isResting)
             {
-                Vector2 newPos = sprite.Position + (moveDirection * MOVE_SPEED * dt);
-                sprite.Position = newPos;
+                Position += moveDirection * MOVE_SPEED * dt;
             }
             
             return sprite.Update(gameTime);

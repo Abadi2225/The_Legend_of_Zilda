@@ -9,11 +9,8 @@ namespace Sprint.Interfaces
 
         public int Update(GameTime gameTime);
 
-        public Vector2 Position {get; set;}
+        public Vector2 Position { get; set; }
 
-        public Texture2D Texture {get;}
-
-        Rectangle Rect {get;}
-
+        // public Texture2D Texture { get; }
     }
 }

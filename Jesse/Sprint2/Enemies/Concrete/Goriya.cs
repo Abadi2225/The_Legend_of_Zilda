@@ -24,9 +24,9 @@ namespace Sprint.Enemies.Concrete
         private bool facingLeft;
         
         // Sprite positions for each direction
-        private int[] upFrames = new int[] { 239 };      
-        private int[] downFrames = new int[] { 221 };   
-        private int[] sideFrames = new int[] { 255, 272 };
+        private int[] upFrames = new int[] { 240 };
+        private int[] downFrames = new int[] { 222 };
+        private int[] sideFrames = new int[] { 258, 275 };
         
         // Attacks with boomerangs
         // Drops a heart, one rupee, four bombs, or a clock
@@ -35,7 +35,7 @@ namespace Sprint.Enemies.Concrete
         public Goriya(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
         {
             this.texture = texture;
-            int sheetY = 15;
+            int sheetY = 11;
             int spriteWidth = 16;
             int spriteHeight = 16;
             float frameTime = 0.2f;
@@ -72,7 +72,7 @@ namespace Sprint.Enemies.Concrete
                 else
                 {
                     direction.Normalize();
-                    sprite.Position = currentPos + (direction * MOVE_SPEED * dt);
+                    Position = currentPos + (direction * MOVE_SPEED * dt);
                 }
             }
             else
@@ -95,15 +95,17 @@ namespace Sprint.Enemies.Concrete
             currentDirection = (Direction)random.Next(4);
             
             Vector2 currentPos = sprite.Position;
+
+            //Console.WriteLine($"Current pos: {currentPos}, Moving: {currentDirection}, Distance: {totalDistance}");
             switch (currentDirection)
             {
                 case Direction.Up:
                     targetPosition = new Vector2(currentPos.X, currentPos.Y - totalDistance);
-                    UpdateSpriteDirection(upFrames, false);
+                    UpdateSpriteDirection(upFrames, true);
                     break;
                 case Direction.Down:
                     targetPosition = new Vector2(currentPos.X, currentPos.Y + totalDistance);
-                    UpdateSpriteDirection(downFrames, false);
+                    UpdateSpriteDirection(downFrames, true);
                     break;
                 case Direction.Left:
                     targetPosition = new Vector2(currentPos.X - totalDistance, currentPos.Y);
@@ -120,7 +122,7 @@ namespace Sprint.Enemies.Concrete
         
         private void UpdateSpriteDirection(int[] frames, bool flipHorizontal)
         {
-            int sheetY = 15;
+            int sheetY = 11;
             int spriteWidth = 16;
             int spriteHeight = 16;
             float frameTime = 0.2f;
