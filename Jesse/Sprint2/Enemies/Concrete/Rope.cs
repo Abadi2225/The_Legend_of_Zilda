@@ -1,5 +1,4 @@
 using System;
-using System.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
@@ -50,10 +49,10 @@ namespace Sprint.Enemies.Concrete
             int direction = random.Next(4);
             return direction switch
             {
-                0 => new Vector2(0, -BOUNCE_SPEED),    // Up
-                1 => new Vector2(0, BOUNCE_SPEED),     // Down
-                2 => new Vector2(-BOUNCE_SPEED, 0),    // Left
-                3 => new Vector2(BOUNCE_SPEED, 0),     // Right
+                0 => new Vector2(0, -CHARGE_SPEED),    // Up
+                1 => new Vector2(0, CHARGE_SPEED),     // Down
+                2 => new Vector2(-CHARGE_SPEED, 0),    // Left
+                3 => new Vector2(CHARGE_SPEED, 0),     // Right
                 _ => Vector2.Zero,
             };
 
