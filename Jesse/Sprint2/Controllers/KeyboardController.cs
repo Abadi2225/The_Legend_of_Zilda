@@ -18,15 +18,15 @@ namespace Sprint.Controllers
             keyCommands = new Dictionary<Keys, ICommand>
             {
                 { Keys.D0, new QuitCommand(game) },
-                { Keys.D1, new SetStateCommand(game, GameState.StaticNonAnimated) },
-                { Keys.D2, new SetStateCommand(game, GameState.StaticAnimated) },
-                { Keys.D3, new SetStateCommand(game, GameState.MovingNonAnimated) },
-                { Keys.D4, new SetStateCommand(game, GameState.MovingAnimated) },
+                //{ Keys.D1, new SetStateCommand(game, GameState.StaticNonAnimated) },
+                //{ Keys.D2, new SetStateCommand(game, GameState.StaticAnimated) },
+                //{ Keys.D3, new SetStateCommand(game, GameState.MovingNonAnimated) },
+                //{ Keys.D4, new SetStateCommand(game, GameState.MovingAnimated) },
                 { Keys.NumPad0, new QuitCommand(game)},
-                { Keys.NumPad1, new SetStateCommand(game, GameState.StaticNonAnimated) },
-                { Keys.NumPad2, new SetStateCommand(game, GameState.StaticAnimated) },
-                { Keys.NumPad3, new SetStateCommand(game, GameState.MovingNonAnimated) },
-                { Keys.NumPad4, new SetStateCommand(game, GameState.MovingAnimated) }
+                //{ Keys.NumPad1, new SetStateCommand(game, GameState.StaticNonAnimated) },
+                //{ Keys.NumPad2, new SetStateCommand(game, GameState.StaticAnimated) },
+                //{ Keys.NumPad3, new SetStateCommand(game, GameState.MovingNonAnimated) },
+                //{ Keys.NumPad4, new SetStateCommand(game, GameState.MovingAnimated) }
             };
         }
 

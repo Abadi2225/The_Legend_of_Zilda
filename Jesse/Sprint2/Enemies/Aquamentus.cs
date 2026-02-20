@@ -17,15 +17,10 @@ namespace Sprint.Enemies.Concrete
         private float directionChangeTimer;
         private const float DIRECTION_SWAP_MIN = 0.5f;
         private const float DIRECTION_SWAP_MAX = 2.0f;
-        
-        private readonly Random random;
+        private Random random = new Random();
         private float moveDirectionTimer;
         private bool moveLeft;
-        
-        
-        
-        private int[] sheetXPositions;
-        private int sheetY;
+
         // Faces left, walking back and forth
         // Fires three fireballs to the left in a triangle pattern
         
@@ -57,11 +52,11 @@ namespace Sprint.Enemies.Concrete
                 if (moveLeft)
                 {
                     velocity = new Vector2(-MOVE_SPEED, 0);
-                    sprite.Position += velocity;
+                    Position += velocity;
                 } else
                 {
                     velocity = new Vector2(MOVE_SPEED, 0);
-                    sprite.Position += velocity;
+                    Position += velocity;
                 }
                 directionChangeTimer = GetRandomFloat(DIRECTION_SWAP_MIN, DIRECTION_SWAP_MAX);
                 moveLeft = !moveLeft;

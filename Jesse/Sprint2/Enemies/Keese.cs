@@ -35,7 +35,7 @@ namespace Sprint.Enemies.Concrete
             
             sprite = new AnimatedSprite(texture, position, sheetXPositions, sheetY, 
                                         spriteWidth, spriteHeight, frameTime);
-         random = new Random();
+            random = new Random();
             isResting = true;
             actionTimer = 0f;
             actionDuration = GetRandomFloat(REST_TIME_MIN, REST_TIME_MAX);

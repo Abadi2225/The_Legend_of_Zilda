@@ -19,9 +19,10 @@ namespace Sprint.Enemies
         Dodongo
     }
     
-    public class EnemyFactory(Texture2D enemySpriteSheet)
+    public class EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet)
     {
         private readonly Texture2D enemySpriteSheet = enemySpriteSheet;
+        private readonly Texture2D bossSpriteSheet = bossSpriteSheet;
 
         // Can change vector2 position to something else (e.g. x/y pos) in the future
         public IEnemy CreateEnemy(EnemyType type, Vector2 position)
@@ -52,8 +53,8 @@ namespace Sprint.Enemies
                 // case EnemyType.Rope:
                 //     return new Rope(enemySpriteSheet, position);
                     
-                // case EnemyType.Aquamentus:
-                //     return new Aquamentus(enemySpriteSheet, position);
+                 case EnemyType.Aquamentus:
+                     return new Aquamentus(bossSpriteSheet, position);
                     
                 // case EnemyType.Dodongo:
                 //     return new Dodongo(enemySpriteSheet, position);
