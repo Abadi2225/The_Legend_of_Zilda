@@ -8,7 +8,7 @@ namespace Sprint.Enemies.Concrete
 {
     public class Goriya : Enemy
     {
-        private const int HEALTH = 1;
+        private const int HEALTH = 3;
         private const int DAMAGE = 1;
         private const float STEP_SIZE = 16f;  // One tile/step
         private const float STEP_DELAY = 0.5f;  // Time between steps
@@ -20,13 +20,12 @@ namespace Sprint.Enemies.Concrete
         private Vector2 targetPosition;
         private bool isMovingToTarget;
         private float stepTimer;
-        private Random random;
-        private bool facingLeft;
+        private readonly Random random;
         
         // Sprite positions for each direction
-        private int[] upFrames = new int[] { 240 };
-        private int[] downFrames = new int[] { 222 };
-        private int[] sideFrames = new int[] { 258, 275 };
+        private readonly int[] upFrames = [239];      
+        private readonly int[] downFrames = [222];   
+        private readonly int[] sideFrames = [256, 273];
         
         // Attacks with boomerangs
         // Drops a heart, one rupee, four bombs, or a clock
@@ -36,8 +35,8 @@ namespace Sprint.Enemies.Concrete
         {
             this.texture = texture;
             int sheetY = 11;
-            int spriteWidth = 16;
-            int spriteHeight = 16;
+            int spriteWidth = 15;
+            int spriteHeight = 15;
             float frameTime = 0.2f;
             
             random = new Random();
@@ -59,13 +58,13 @@ namespace Sprint.Enemies.Concrete
             
             if (isMovingToTarget)
             {
-                Vector2 currentPos = sprite.Position;
+                Vector2 currentPos = Position;
                 Vector2 direction = targetPosition - currentPos;
                 float distance = direction.Length();
-                
+
                 if (distance < MOVE_SPEED * dt)
                 {
-                    sprite.Position = targetPosition;
+                    Position = targetPosition;
                     isMovingToTarget = false;
                     stepTimer = STEP_DELAY;
                 }
@@ -123,12 +122,11 @@ namespace Sprint.Enemies.Concrete
         private void UpdateSpriteDirection(int[] frames, bool flipHorizontal)
         {
             int sheetY = 11;
-            int spriteWidth = 16;
-            int spriteHeight = 16;
+            int spriteWidth = 15;
+            int spriteHeight = 15;
             float frameTime = 0.2f;
             
             Vector2 currentPos = sprite.Position;
-            facingLeft = flipHorizontal;
             
             var dirSprite = sprite as DirectionalAnimatedSprite;
             if (dirSprite != null)
