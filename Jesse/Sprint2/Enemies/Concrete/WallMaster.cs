@@ -10,15 +10,21 @@ namespace Sprint.Enemies.Concrete
     {
         private const int WALLMASTER_HEALTH = 2;
         private const int WALLMASTER_DAMAGE = 1;
+        private const float CREEP_SPEED = 25f;
+        private const float RETREAT_SPEED = 40f;
+        private const float HIDDEN_TIME_MIN = 1.5f;
+        private const float HIDDEN_TIME_MAX = 3f;
+        private const float CREEP_TIME_MIN = 2f;
+        private const float CREEP_TIME_MAX = 4f;
+
+        private enum WallMasterState { Hidden, Creeping, Retreating }
         
-        // Bouncing movement
-        private Vector2 velocity;
-        private float bounceTimer;
-        private bool isOnGround;
-        private const float BOUNCE_SPEED = 30f;
-        private const float BOUNCE_INTERVAL = 1f;
-        private const float AIR_TIME = 0.7f;
         private readonly Random random;
+        private WallMasterState currentState;
+        private Vector2 creepDirection;
+        private Vector2 homePosition;
+        private float stateTimer;
+        private float stateDuration;
         
         public WallMaster(Texture2D texture, Vector2 position) : base(texture, position, WALLMASTER_HEALTH, WALLMASTER_DAMAGE)
         {
@@ -32,23 +38,11 @@ namespace Sprint.Enemies.Concrete
                                         spriteWidth, spriteHeight, frameTime);
             
             random = new Random();
-            isOnGround = true;
-            bounceTimer = BOUNCE_INTERVAL;
-            velocity = Vector2.Zero;
-        }
-        
-        private Vector2 GetRandomBounceDirection()
-        {
-            int direction = random.Next(4);
-            return direction switch
-            {
-                0 => new Vector2(0, -BOUNCE_SPEED),// Up
-                1 => new Vector2(0, BOUNCE_SPEED),// Down
-                2 => new Vector2(-BOUNCE_SPEED, 0),// Left
-                3 => new Vector2(BOUNCE_SPEED, 0),// Right
-                _ => Vector2.Zero,
-            };
-
+            homePosition = position;
+            currentState = WallMasterState.Hidden;
+            stateTimer = 0f;
+            stateDuration = GetRandomFloat(HIDDEN_TIME_MIN, HIDDEN_TIME_MAX);
+            ChooseCreepDirection();
         }
         
         public override int Update(GameTime gameTime)
@@ -57,31 +51,104 @@ namespace Sprint.Enemies.Concrete
                 return base.Update(gameTime);
             
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
-            if (isOnGround)
+            stateTimer += deltaTime;
+
+            switch (currentState)
             {
-                bounceTimer -= deltaTime;
-                if (bounceTimer <= 0)
-                {
-                    isOnGround = false;
-                    velocity = GetRandomBounceDirection();
-                    bounceTimer = AIR_TIME;
-                }
+                case WallMasterState.Hidden:
+                    UpdateHidden();
+                    break;
+
+                case WallMasterState.Creeping:
+                    UpdateCreeping(deltaTime);
+                    break;
+
+                case WallMasterState.Retreating:
+                    UpdateRetreating(deltaTime);
+                    break;
+            }
+            
+            return sprite.Update(gameTime);
+        }
+
+        private void UpdateHidden()
+        {
+            if (stateTimer >= stateDuration)
+            {
+                currentState = WallMasterState.Creeping;
+                stateTimer = 0f;
+                stateDuration = GetRandomFloat(CREEP_TIME_MIN, CREEP_TIME_MAX);
+                ChooseCreepDirection();
+            }
+        }
+
+        private void UpdateCreeping(float deltaTime)
+        {
+            // TODO instead of a fixed direction, we can change it to track link
+            Position += creepDirection * CREEP_SPEED * deltaTime;
+
+            if (stateTimer >= stateDuration)
+            {
+                currentState = WallMasterState.Retreating;
+                stateTimer = 0f;
+            }
+        }
+
+        private void UpdateRetreating(float deltaTime)
+        {
+            Vector2 directionToHome = homePosition - Position;
+            float distanceToHome = directionToHome.Length();
+
+            if (distanceToHome < RETREAT_SPEED * deltaTime)
+            {
+                Position = homePosition;
+                currentState = WallMasterState.Hidden;
+                stateTimer = 0f;
+                stateDuration = GetRandomFloat(HIDDEN_TIME_MIN, HIDDEN_TIME_MAX);
             }
             else
             {
-                bounceTimer -= deltaTime;
-                Position += velocity * deltaTime;
-                
-                if (bounceTimer <= 0)
-                {
-                    isOnGround = true;
-                    velocity = Vector2.Zero;
-                    bounceTimer = BOUNCE_INTERVAL;
-                }
+                directionToHome.Normalize();
+                Position += directionToHome * RETREAT_SPEED * deltaTime;
             }
-            
-            return base.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            if (!isAlive || currentState == WallMasterState.Hidden)
+                return;
+
+            sprite?.Draw(spriteBatch, location);
+        }
+
+
+        public override void Reset()
+        {
+            base.Reset();
+            Position = homePosition;
+            currentState = WallMasterState.Hidden;
+            stateTimer = 0f;
+            stateDuration = GetRandomFloat(HIDDEN_TIME_MIN, HIDDEN_TIME_MAX);
+        }
+
+
+        private void ChooseCreepDirection()
+        {
+            // TODO: Replace with direction towards link
+            creepDirection = random.Next(4) switch
+            {
+                0 => new Vector2(0, -1),   // Up
+                1 => new Vector2(0, 1),    // Down
+                2 => new Vector2(-1, 0),   // Left
+                3 => new Vector2(1, 0),    // Right
+                _ => Vector2.UnitX,
+            };
+
+        }
+        
+        private float GetRandomFloat(float min, float max)
+        {
+            return min + (float)random.NextDouble() * (max - min);
         }
     }
 }
