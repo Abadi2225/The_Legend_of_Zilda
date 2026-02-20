@@ -8,7 +8,6 @@ namespace Sprint.Enemies.Concrete
 {
     public class Gel : Enemy
     {
-<<<<<<< HEAD
         private const int GEL_HEALTH = 1;
         private const int GEL_DAMAGE = 1;
         
@@ -17,14 +16,6 @@ namespace Sprint.Enemies.Concrete
         private const float TURN_SPEED = 30f;
         private const float TURN_INTERVAL = 1f;
         private const float MOVE_SPEED = 0.7f;
-=======
-        private const int HEALTH = 1;
-        private const int DAMAGE = 1;
-        private const float BOUNCE_SPEED = 30f;
-        private const float BOUNCE_INTERVAL = 1f;
-        private const float AIR_TIME = 0.7f;
-
->>>>>>> 500ecab1ae7c71915114ee4282d883ab7f0986f1
         private readonly Random random;
         private Vector2 velocity;
         private float bounceTimer;
@@ -45,7 +36,6 @@ namespace Sprint.Enemies.Concrete
             TurnTimer = TURN_INTERVAL;
             velocity = Vector2.Zero;
         }
-<<<<<<< HEAD
         
         private Vector2 GetRandomCardinalDirection()
         {
@@ -55,11 +45,9 @@ namespace Sprint.Enemies.Concrete
                 0 => new Vector2(0, -TURN_SPEED),// Up
                 1 => new Vector2(0, TURN_SPEED),// Down
                 2 => new Vector2(-TURN_SPEED, 0),// Left
-                3 => new Vector2(TURN_SPEED, 0),// Right
-                _ => Vector2.Zero,
-            };
-=======
->>>>>>> 500ecab1ae7c71915114ee4282d883ab7f0986f1
+                3 => new Vector2(TURN_SPEED, 0)// Right
+                };
+            }
 
         public override int Update(GameTime gameTime)
         {
@@ -67,42 +55,17 @@ namespace Sprint.Enemies.Concrete
                 return base.Update(gameTime);
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-<<<<<<< HEAD
             
             
                 TurnTimer -= deltaTime;
                 if (TurnTimer <= 0)
-=======
-
-            if (isOnGround)
-            {
-                bounceTimer -= deltaTime;
-                if (bounceTimer <= 0)
->>>>>>> 500ecab1ae7c71915114ee4282d883ab7f0986f1
                 {
                     velocity = GetRandomCardinalDirection();
                     TurnTimer = MOVE_SPEED;
                 }
-<<<<<<< HEAD
             
             
             
-=======
-            }
-            else
-            {
-                bounceTimer -= deltaTime;
-                Position += velocity * deltaTime;
-
-                if (bounceTimer <= 0)
-                {
-                    isOnGround = true;
-                    velocity = Vector2.Zero;
-                    bounceTimer = BOUNCE_INTERVAL;
-                }
-            }
-
->>>>>>> 500ecab1ae7c71915114ee4282d883ab7f0986f1
             return base.Update(gameTime);
         }
 
