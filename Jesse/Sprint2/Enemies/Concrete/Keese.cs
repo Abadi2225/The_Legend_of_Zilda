@@ -30,11 +30,11 @@ namespace Sprint.Enemies.Concrete
         // Never drop any items
         public Keese(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
         {
-            int[] flyingXPositions = new int[] { 182, 200 };
+            int[] flyingXPositions = new int[] { 183, 200 };
             int[] restingXPositions = new int[] {200};
             int sheetY = 11;
-            int spriteWidth = 16;
-            int spriteHeight = 16;
+            int spriteWidth = 15;
+            int spriteHeight = 15;
             float frameTime = 0.2f;
             
             flyingSprite = new AnimatedSprite(texture, position, flyingXPositions, sheetY, 

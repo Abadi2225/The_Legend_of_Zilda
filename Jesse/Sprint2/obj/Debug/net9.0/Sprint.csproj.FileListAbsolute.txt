@@ -118,3 +118,5 @@ C:\Users\abadi\The_Legend_of_Zilda\Jesse\Sprint2\obj\Debug\net9.0\Sprint.csproj.
 C:\Users\abadi\The_Legend_of_Zilda\Jesse\Sprint2\obj\Debug\net9.0\Sprint.genruntimeconfig.cache
 C:\Users\abadi\The_Legend_of_Zilda\Jesse\Sprint2\obj\Debug\net9.0\ref\Sprint.dll
 >>>>>>> 500ecab1ae7c71915114ee4282d883ab7f0986f1
+C:\Users\abadi\The_Legend_of_Zilda\Jesse\Sprint2\bin\Debug\net9.0\Content\images\Title Screen & Story of Treasures.xnb
+C:\Users\abadi\The_Legend_of_Zilda\Jesse\Sprint2\bin\Debug\net9.0\runtimes\linux-arm64\native\libSDL2-2.0.so.0
