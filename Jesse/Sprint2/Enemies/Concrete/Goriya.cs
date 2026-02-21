@@ -21,7 +21,9 @@ namespace Sprint.Enemies.Concrete
         private Direction currentDirection;
         private Vector2 targetPosition;
         private float stepTimer;
+        private float flipTimer;
         private bool spriteHorizontalFlip;
+        const float FLIP_INTERVAL = 0.075f; //Time between flips for up/down walk
         private readonly Random random;
         
         // Sprite positions for each direction
@@ -47,6 +49,7 @@ namespace Sprint.Enemies.Concrete
             currentDirection = Direction.Down;
             targetPosition = position;
             stepTimer = STEP_DELAY;
+            flipTimer = FLIP_INTERVAL;
             spriteHorizontalFlip = true;
             
             sprite = new DirectionalAnimatedSprite(texture, position, downFrames, sheetY, 
@@ -81,6 +84,17 @@ namespace Sprint.Enemies.Concrete
                 Vector2 direction = targetPosition - Position;
                 direction.Normalize();
                 Position += direction * MOVE_SPEED * deltaTime;
+
+                 if (currentDirection == Direction.Up || currentDirection == Direction.Down)
+                {
+                    flipTimer -= deltaTime;
+                    if (flipTimer <= 0)
+                    {
+                        spriteHorizontalFlip = !spriteHorizontalFlip;
+                        UpdateSprite();
+                        flipTimer = FLIP_INTERVAL;
+                    }
+                }
             }
             else
             {
@@ -112,6 +126,8 @@ namespace Sprint.Enemies.Concrete
                 Direction.Right => Position + new Vector2(distance, 0),
                 _ => Position
             };
+
+            flipTimer = FLIP_INTERVAL;
             
             // Update sprite based on direction
             UpdateSprite();
@@ -123,8 +139,6 @@ namespace Sprint.Enemies.Concrete
             
                 if (currentDirection == Direction.Up || currentDirection == Direction.Down)
                 {
-                    SpriteEffects effect = spriteHorizontalFlip ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-                    spriteHorizontalFlip = !spriteHorizontalFlip;
                     int[] frames = currentDirection == Direction.Up ? upFrames : downFrames;
                     dirSprite?.UpdateFrames(frames, spriteHorizontalFlip);
                 }
