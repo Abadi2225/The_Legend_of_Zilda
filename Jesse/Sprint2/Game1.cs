@@ -19,6 +19,7 @@ public class Game1 : Game
     private Texture2D linkSheet;
     private Texture2D titleSheet;
     private Texture2D enemiesSheet;
+    private Texture2D BossesSheet;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
@@ -26,12 +27,6 @@ public class Game1 : Game
     private IController mouse;
 
     private GameState currState;
-    private ISprite currSprite;
-
-    private ISprite staticSprite;
-    private ISprite animatedSprite;
-    private ISprite movingSprite;
-    private ISprite movingAnimatedSprite;
 
     private UIManager uiManager;
     private TitleScreen titleScreen;
@@ -45,7 +40,7 @@ public class Game1 : Game
         graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        currState = GameState.StaticNonAnimated;
+        currState = GameState.Test;
     }
 
     protected override void Initialize()
@@ -65,27 +60,25 @@ public class Game1 : Game
         credits = Content.Load<Texture2D>("images/credits");
         linkSheet = Content.Load<Texture2D>("images/Link");
         enemiesSheet = Content.Load<Texture2D>("images/enemiesSheet");
+        BossesSheet = Content.Load<Texture2D>("images/BossesSpriteSheet");
 
         titleSheet = Content.Load<Texture2D>("images/Title Screen & Story of Treasures");
 
         Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
-
-        staticSprite = new StaticSprite(linkSheet, center, new Rectangle(0, 11, 16, 16));
-        animatedSprite = new AnimatedSprite(linkSheet, center, [0, 17], 11, 16, 16, 0.2f);
-        movingSprite = new MovingSprite(linkSheet, center,
-                                new int[] { 0, 17 },    // down frames
-                                new int[] { 68, 85 },   // up frames  
-                                11, 16, 16, 0.2f);
-        movingAnimatedSprite = new MovingAnimatedSprite(linkSheet, center, [34, 51], 11, 16, 16, 0.2f);
-
         enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet);
+        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet);
 
-        // Can make push this to be generated in the enemyFactory if we want to create more enemies
+        // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Rope, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Zol, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
 
         // Just shows that it exists
         titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
@@ -101,8 +94,6 @@ public class Game1 : Game
         keyboard.Update();
         mouse.Update();
 
-        currSprite?.Update(gameTime);
-
         enemyManager?.Update(gameTime);
 
         uiManager.Update(gameTime);
@@ -117,7 +108,13 @@ public class Game1 : Game
         float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
         float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
 
-        spriteBatch.Begin();
+        // Changed to remove the brouder from the sprites, might result in pixelation when scalling.
+        spriteBatch.Begin(
+            SpriteSortMode.Deferred,
+            BlendState.AlphaBlend,
+            SamplerState.PointClamp,  // No interpolation
+            null, null
+        );
 
         spriteBatch.Draw(credits,
         new Vector2(creditsX, creditsY),
@@ -129,7 +126,6 @@ public class Game1 : Game
         SpriteEffects.None,
         0f);
 
-        currSprite?.Draw(spriteBatch, currSprite.Position);
 
         uiManager.Draw(spriteBatch);
 
@@ -147,32 +143,33 @@ public class Game1 : Game
 
     public void SetState(GameState newState)
     {
+
         switch (currState)
-        {
-            case GameState.StaticNonAnimated:
-                currSprite = staticSprite;
-                enemyManager?.CycleNext();
-                break;
+            {
+                case GameState.Test:
+                    break;
 
-            case GameState.StaticAnimated:
-                currSprite = animatedSprite;
-                enemyManager?.CycleNext();
-                break;
+                case GameState.Running:
+                    break;
 
-            case GameState.MovingNonAnimated:
-                currSprite = movingSprite;
-                enemyManager?.CycleNext();
-                break;
+                case GameState.StartScreen:
+                    break;
 
-            case GameState.MovingAnimated:
-                currSprite = movingAnimatedSprite;
-                enemyManager?.CycleNext();
-                break;
-        }
+                case GameState.Pause:
+                    break;
+
+                case GameState.Inventory:
+                    break;
+            }        
     }
 
     public GameState GetCurrentState()
     {
         return currState;
+    }
+
+    public EnemyManager GetEnemyManager()
+    {
+        return enemyManager;
     }
 }

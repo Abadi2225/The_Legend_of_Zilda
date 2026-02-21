@@ -20,9 +20,10 @@ namespace Sprint.Enemies
         Dodongo
     }
     
-    public class EnemyFactory(Texture2D enemySpriteSheet)
+    public class EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet)
     {
         private readonly Texture2D enemySpriteSheet = enemySpriteSheet;
+        private readonly Texture2D bossSpriteSheet = bossSpriteSheet;
 
         public void LoadAllTextures(ContentManager content)
         {
@@ -46,26 +47,26 @@ namespace Sprint.Enemies
                  case EnemyType.Goriya:
                      return new Goriya(enemySpriteSheet, position);
                     
-                // case EnemyType.Zol:
-                //     return new Zol(enemySpriteSheet, position);
+                case EnemyType.Zol:
+                    return new Zol(enemySpriteSheet, position);
                     
-                // case EnemyType.WallMaster:
-                //     return new WallMaster(enemySpriteSheet, position);
+                case EnemyType.WallMaster:
+                    return new WallMaster(enemySpriteSheet, position);
                     
-                // case EnemyType.Trap:
-                //     return new Trap(enemySpriteSheet, position);
+                case EnemyType.Trap:
+                    return new Trap(enemySpriteSheet, position);
                     
-                // case EnemyType.Rope:
-                //     return new Rope(enemySpriteSheet, position);
+                case EnemyType.Rope:
+                    return new Rope(enemySpriteSheet, position);
                     
-                // case EnemyType.Aquamentus:
-                //     return new Aquamentus(enemySpriteSheet, position);
+                 case EnemyType.Aquamentus:
+                     return new Aquamentus(bossSpriteSheet, position);
                     
                 // case EnemyType.Dodongo:
                 //     return new Dodongo(enemySpriteSheet, position);
 
                 default:
-                    return new Gel(enemySpriteSheet, position);
+                    return new Goriya(enemySpriteSheet, position);
             }
         }   
     }

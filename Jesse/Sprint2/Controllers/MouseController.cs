@@ -23,11 +23,11 @@ namespace Sprint.Controllers
             
             clickCommands = new Dictionary<string, ICommand>
             {
-                { "TopLeft", new SetStateCommand(game, GameState.StaticNonAnimated) },
-                { "TopRight", new SetStateCommand(game, GameState.StaticAnimated) },
-                { "BottomLeft", new SetStateCommand(game, GameState.MovingNonAnimated) },
-                { "BottomRight", new SetStateCommand(game, GameState.MovingAnimated) },
-                { "RightClick", new QuitCommand(game) }
+                //{ "TopLeft", new SetStateCommand(game, GameState.StaticNonAnimated) },
+                //{ "TopRight", new SetStateCommand(game, GameState.StaticAnimated) },
+                //{ "BottomLeft", new SetStateCommand(game, GameState.MovingNonAnimated) },
+                //{ "BottomRight", new SetStateCommand(game, GameState.MovingAnimated) },
+                //{ "RightClick", new QuitCommand(game) }
             };
         }
 

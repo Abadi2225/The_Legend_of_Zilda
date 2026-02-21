@@ -14,6 +14,7 @@ namespace Sprint.Enemies.Base
         protected int maxHealth;
         protected int damage;
         protected bool isAlive;
+        protected bool isInvincible;
         protected float dyingTimer;
         protected const float DYING_DURATION = 0.5f; // For the death animation
 
@@ -30,23 +31,22 @@ namespace Sprint.Enemies.Base
             }
         }
 
-        public Texture2D Texture => texture; // cleaner way instead of get
-
-        // moved out of interface into this class due to merge conflict
-        // todo fix this
-        public Rectangle Rect = Rectangle.Empty; // if sprite exists then get .Rect if not return Rect.Empty
-
         public int Health
         {
             get => health;
-            set => health = MathHelper.Clamp(value, 0, maxHealth); // ensure health is between 0 and maxHealth
+            set => health = MathHelper.Clamp(value, 0, maxHealth);
         }
+
+        public Texture2D Texture => texture;
+        // moved out of interface into this class due to merge conflict
+        // todo fix this
+        public Rectangle Rect = Rectangle.Empty;
 
         public int MaxHealth => maxHealth;
         public int Damage => damage;
         public bool IsAlive => isAlive;
 
-        protected Enemy(Texture2D texture, Vector2 position, int health, int damage)
+        protected Enemy(Texture2D texture, Vector2 position, int health, int damage,  bool isInvincible = false)
         {
             this.texture = texture;
             this.position = position;
@@ -54,12 +54,13 @@ namespace Sprint.Enemies.Base
             this.health = health;
             this.damage = damage;
             this.isAlive = true;
+            this.isInvincible = isInvincible;
             this.dyingTimer = 0f;
         }
 
         public virtual void TakeDamage(int damageAmount)
         {
-            if (!isAlive)
+            if (!isAlive || isInvincible)
                 return;
 
             health -= damageAmount;
@@ -73,7 +74,7 @@ namespace Sprint.Enemies.Base
 
         public virtual void Die()
         {
-            if (!isAlive)
+            if (!isAlive || isInvincible)
                 return;
 
             isAlive = false;
@@ -89,14 +90,14 @@ namespace Sprint.Enemies.Base
         public virtual int Update(GameTime gameTime)
         {
             if (!isAlive)
-                dyingTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (dyingTimer >= DYING_DURATION)
             {
-                isAlive = false;
-                return 0;
+                dyingTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (dyingTimer >= DYING_DURATION)
+                {
+                    return 0;
+                }
             }
 
-            // Update the sprite
             if (sprite != null)
             {
                 return sprite.Update(gameTime);

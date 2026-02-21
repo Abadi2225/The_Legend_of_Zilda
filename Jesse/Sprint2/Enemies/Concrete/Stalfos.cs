@@ -10,13 +10,11 @@ namespace Sprint.Enemies.Concrete
         private const int STALFOS_HEALTH = 2;
         private const int STALFOS_DAMAGE = 1;
         
-        private const float MOVE_SPEED = 110f;
+        private const float MOVE_SPEED = 50f;
         private Vector2 velocity;
         private float directionChangeTimer;
         private const float DIRECTION_CHANGE_INTERVAL = 2.0f;
         private readonly Random random;
-
-        // Sprite flipping for animation
         private Rectangle sourceRect;
         private bool isFlipped;
         private float flipTimer;
