@@ -34,8 +34,6 @@ public class Game1 : Game
 
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
-    private float testCycleTimer;
-    private const float CYCLE_INTERVAL = 10.0f;
 
     public Game1()
     {
@@ -80,6 +78,7 @@ public class Game1 : Game
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Zol, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
 
         // Just shows that it exists
         titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
