@@ -23,11 +23,18 @@ namespace Sprint.Character
 		private ISprite WalkLeft;
 		private ISprite WalkRight;
 
+		private ISprite AttackUp;
+		private ISprite AttackDown;
+		private ISprite AttackLeft;
+		private ISprite AttackRight;
+
 		private int elapsedTime;
 		private int frameTime;
 		private float speed = 80f;
 		Vector2 move = Vector2.Zero;
 		private Rectangle bounds;
+		private bool isAttacking = false;
+		private KeyboardState prevKeys;
 		
 
 		private enum Directions
@@ -54,6 +61,11 @@ namespace Sprint.Character
 			WalkUp = LinkSprites.WalkingUp(texture);
 			WalkLeft = LinkSprites.WalkingLeft(texture);
 			WalkRight = LinkSprites.WalkingRight(texture);
+
+			AttackDown = LinkSprites.AttackDown(texture, FinishAttack);
+			AttackUp = LinkSprites.AttackUp(texture, FinishAttack);
+			AttackLeft = LinkSprites.AttackLeft(texture, FinishAttack);
+			AttackRight = LinkSprites.AttackRight(texture, FinishAttack);
 
 			sprite = IdleDown;
 		}

@@ -57,5 +57,55 @@ namespace Sprint.Factories
 
 			return new Walking(texture, SpriteEffects.None, frames, 0.15);
 		}
-	}
-}
+
+		public static ISprite AttackDown(Texture2D texture, System.Action onFinished)
+		{
+			/*
+			 * TODO: stil need to replace these rectangle coords with the
+			 * correct coords for Link attack frames. Right now, these are
+			 * default values.
+			 */ 
+			Rectangle[] frames = new Rectangle[]
+			{
+				new Rectangle(1, 45, 16, 16),
+				new Rectangle(18, 45, 16, 16),
+			};
+
+			return new Attacking(texture, SpriteEffects.None, frames, 0.08, 0.20, onFinished);
+		}
+
+		public static ISprite AttackUp(Texture2D texture, System.Action onFinished)
+		{
+			Rectangle[] frames = new Rectangle[]
+			{
+				new Rectangle(69, 45, 16, 16),
+				new Rectangle(86, 45, 16, 16),
+			};
+
+			return new Attacking(texture, SpriteEffects.None, frames, 0.08, 0.20, onFinished);
+		}
+
+		public static ISprite AttackLeft(Texture2D texture, System.Action onFinished)
+		{
+			Rectangle[] frames = new Rectangle[]
+			{
+				new Rectangle(35, 45, 16, 16),
+				new Rectangle(52, 45, 16, 16),
+			};
+
+			return new Attacking(texture, SpriteEffects.FlipHorizontally, frames, 0.08, 0.20, onFinished);
+		}
+
+		public static ISprite AttackRight(Texture2D texture, System.Action onFinished)
+		{
+			Rectangle[] frames = new Rectangle[]
+			{
+				new Rectangle(35, 45, 16, 16),
+				new Rectangle(52, 45, 16, 16),
+			};
+
+			return new Attacking(texture, SpriteEffects.None, frames, 0.08, 0.20, onFinished);
+		}
+
+			}
+		}
