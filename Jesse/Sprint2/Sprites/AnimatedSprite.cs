@@ -81,7 +81,7 @@ namespace Sprint.Sprites
                 frameHeight
             );
 
-            Vector2 drawPos = new Vector2(location.X - frameWidth / 2, location.Y - frameHeight / 2);
+            Vector2 origin = new Vector2(frameWidth / 2, frameHeight / 2);
 
             //white is the default no color mask
             spriteBatch.Draw(

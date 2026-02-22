@@ -39,4 +39,5 @@ internal class Boomerang : AbstractItem
         sprite.Update(time);
         return 0;
     }
+    public ISprite GetSprite() => sprite;
 }

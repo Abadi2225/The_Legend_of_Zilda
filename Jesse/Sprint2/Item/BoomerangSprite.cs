@@ -20,6 +20,7 @@ internal class BoomerangSprite : ISprite
     private float maxDistance = 200f;
     private bool returning = false;
     private bool thrown = false;
+    public bool IsActive => thrown;
 
     public Vector2 Position { get; set; }
 
