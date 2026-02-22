@@ -18,7 +18,8 @@ namespace Sprint.Enemies
         Trap,
         Rope,
         Aquamentus,
-        Dodongo
+        Dodongo,
+        OldMan
     }
 
     public class EnemyFactory
@@ -27,14 +28,16 @@ namespace Sprint.Enemies
         private readonly Texture2D bossSpriteSheet;
         private readonly Texture2D linkSheet;
         private readonly Texture2D dustSheet;
+        private readonly Texture2D NPCSheet;
         private readonly ContentManager contentManager;
 
-        public EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet, Texture2D linkSheet, Texture2D dustSheet, ContentManager contentManager)
+        public EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet, Texture2D linkSheet, Texture2D dustSheet, ContentManager contentManager, Texture2D NPCSheet)
     {
         this.enemySpriteSheet = enemySpriteSheet;
         this.bossSpriteSheet = bossSpriteSheet;
         this.linkSheet = linkSheet;
         this.dustSheet = dustSheet;
+        this.NPCSheet = NPCSheet;
         this.contentManager = contentManager;
     }
         
@@ -56,8 +59,13 @@ namespace Sprint.Enemies
                 EnemyType.Rope       => new Rope(enemySpriteSheet, position),
                 EnemyType.Aquamentus => new Aquamentus(bossSpriteSheet, position),
                 EnemyType.Dodongo    => new Dodongo(bossSpriteSheet, position),
+                EnemyType.OldMan     => new OldMan(NPCSheet, position),
                 _                    => new Goriya(enemySpriteSheet, position, contentManager),
             };
+
+            // OldMan is an NPC — no cloud or dust effects
+            if (type == EnemyType.OldMan)
+                return enemy;
 
             bool skipSpawnCloud = type is EnemyType.Aquamentus or EnemyType.Dodongo or EnemyType.WallMaster or EnemyType.Trap or EnemyType.Gel;
             return WrapWithEffects(enemy, position, skipSpawnCloud);
@@ -65,7 +73,7 @@ namespace Sprint.Enemies
 
         private EnemyEffectWrapper WrapWithEffects(IEnemy enemy, Vector2 position, bool skipSpawnCloud = false)
         {
-            // Cloud: 3 frames from Link.png (skipped for bosses and WallMaster)
+            // Cloud: 3 frames from Link.png (skipped for bosses, WallMaster, and trap)
             var spawnSprite = skipSpawnCloud ? null : new AnimatedSprite(linkSheet, position, [138, 155, 172], 185, 15, 15, 0.5f);
             // Dust: 4 frames from dustSheet
             var deathSprite = new AnimatedSprite(dustSheet, position, [0, 16, 32, 48], 0, 14, 15, 0.3f);

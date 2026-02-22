@@ -17,6 +17,7 @@ class GameplayState : IGameState
     private Texture2D enemiesSheet;
     private Texture2D BossesSheet;
     private Texture2D dustSheet;
+    private Texture2D NPCSheet;
 
     private Link link;
     private GameServices services;
@@ -76,9 +77,10 @@ class GameplayState : IGameState
         enemiesSheet = services.Content.Load<Texture2D>("images/enemiesSheet");
         BossesSheet = services.Content.Load<Texture2D>("images/BossesSpriteSheet");
         dustSheet = services.Content.Load<Texture2D>("images/dustSheet");
+        NPCSheet = services.Content.Load<Texture2D>("images/NPC");
 
         enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, services.Content);
+        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, services.Content, NPCSheet);
 
         // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
@@ -91,6 +93,7 @@ class GameplayState : IGameState
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
+        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.OldMan, center + new Vector2(100, 0)));
     }
 
     public void Update(GameTime gameTime)

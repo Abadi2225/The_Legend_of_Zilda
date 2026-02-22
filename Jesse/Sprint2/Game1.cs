@@ -75,7 +75,6 @@ public class Game1 : Game, IGameActions
 
     protected override void Draw(GameTime gameTime)
     {
-
         // Changed to remove the brouder from the sprites, might result in pixelation when scalling.
         spriteBatch.Begin(
             SpriteSortMode.Deferred,
