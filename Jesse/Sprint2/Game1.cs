@@ -24,9 +24,6 @@ public class Game1 : Game, IGameActions
     private IController keyboard;
     private IController mouse;
 
-    //private EnemyManager enemyManager;
-    //private EnemyFactory enemyFactory;
-
     private IGameState currentState;
     private GameServices services;
 
@@ -65,28 +62,6 @@ public class Game1 : Game, IGameActions
         spriteBatch = new SpriteBatch(GraphicsDevice);
 
         currentState.LoadContent();
-
-        /*
-        credits = Content.Load<Texture2D>("images/credits");
-        enemiesSheet = Content.Load<Texture2D>("images/enemiesSheet");
-        BossesSheet = Content.Load<Texture2D>("images/BossesSpriteSheet");
-
-        enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet);
-
-        // Can make this generated in the enemyFactory if we want to create more enemies
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Rope, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Zol, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
-
-        */
     }
 
     protected override void Update(GameTime gameTime)
@@ -95,10 +70,6 @@ public class Game1 : Game, IGameActions
         
         currentState.Update(gameTime);
         mouse.Update();
-
-        /*
-        enemyManager?.Update(gameTime);
-        */
 
         base.Update(gameTime);
     }
@@ -117,24 +88,6 @@ public class Game1 : Game, IGameActions
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         currentState.Draw(spriteBatch);
-
-        /*
-        float creditsScale = 0.3f;
-        float creditsX = (Window.ClientBounds.Width - credits.Width * creditsScale) / 2;
-        float creditsY = Window.ClientBounds.Height - credits.Height * creditsScale - 10;
-
-        spriteBatch.Draw(credits,
-        new Vector2(creditsX, creditsY),
-        null,
-        Color.White,
-        0f,
-        Vector2.Zero,
-        creditsScale,
-        SpriteEffects.None,
-        0f);
-
-        enemyManager?.Draw(spriteBatch);
-        */
 
         spriteBatch.End();
         base.Draw(gameTime);
