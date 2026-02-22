@@ -20,7 +20,7 @@ internal class Boomerang : AbstractItem
                 0.2f
                 );
 
-        UseAction = (player) =>
+        UseAction = (entity) =>
         {
             if (sprite is BoomerangSprite bsprite)
             {

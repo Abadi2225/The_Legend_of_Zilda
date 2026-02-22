@@ -16,21 +16,10 @@ internal abstract class AbstractItem : ISprite
 
     public ISprite sprite;
 
-    public delegate void SetUseAction(Character.Link player);
+    public delegate void SetUseAction(ISprite entity);
     public SetUseAction UseAction;
 
-    public Vector2 Position
-    {
-        get => DrawPos;
-        set
-        {
-            DrawPos = value;
-            if (sprite != null)
-            {
-                sprite.Position = value;
-            }
-        }
-    }
+    public Vector2 Position { get; set; } // unused
 
     private AbstractItem(string name)
     {
@@ -49,9 +38,9 @@ internal abstract class AbstractItem : ISprite
         UseAction = null;
     }
 
-    public virtual void Use(Character.Link player)
+    public virtual void Use(ISprite entity)
     {
-        UseAction?.Invoke(player);
+        UseAction?.Invoke(entity);
     }
 
     public virtual void Draw(SpriteBatch sb, Vector2 pos)
