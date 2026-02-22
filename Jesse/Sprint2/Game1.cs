@@ -17,20 +17,10 @@ namespace Sprint;
 
 public class Game1 : Game, IGameActions
 {
-<<<<<<< Zelda-UI
     
-=======
-    private Texture2D credits;
-    private Texture2D linkSheet;
-    private Texture2D titleSheet;
-    private Texture2D enemiesSheet;
-    private Texture2D BossesSheet;
-    private Texture2D dustSheet;
->>>>>>> main
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
-    private IController keyboard;
     private IController mouse;
 
     private IGameState currentState;
@@ -70,53 +60,7 @@ public class Game1 : Game, IGameActions
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
 
-<<<<<<< Zelda-UI
         currentState.LoadContent();
-=======
-        credits = Content.Load<Texture2D>("images/credits");
-        linkSheet = Content.Load<Texture2D>("images/Link");
-        enemiesSheet = Content.Load<Texture2D>("images/enemiesSheet");
-        BossesSheet = Content.Load<Texture2D>("images/BossesSpriteSheet");
-        dustSheet = Content.Load<Texture2D>("images/dustSheet");
-
-        titleSheet = Content.Load<Texture2D>("images/Title Screen & Story of Treasures");
-
-        Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
-        enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, Content);
-
-        // Can make this generated in the enemyFactory if we want to create more enemies
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Rope, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Zol, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
-
-        // Just shows that it exists
-        titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
-        uiManager.AddElement(titleScreen);
-
-        SetState(currState);
-
-        link = new Link(linkSheet, center);
-
-        // item test
-        items.CreateItem(new Compass(
-                    new Vector2(50, 50),
-                    Content
-                    ));
-        items.CreateItem(new Boomerang(
-                    new Vector2(70, 50),
-                    new Vector2(5, 0),
-                    Content
-                    ));
-        mapManager = new MapManager(Content, new Vector2(100, 50));
->>>>>>> main
     }
 
     protected override void Update(GameTime gameTime)

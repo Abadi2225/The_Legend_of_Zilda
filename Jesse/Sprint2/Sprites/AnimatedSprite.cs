@@ -86,7 +86,7 @@ namespace Sprint.Sprites
             //white is the default no color mask
             spriteBatch.Draw(
                 texture,                // texture
-                drawPos,                // position
+                location,                // position
                 sourceRectangle,        // sourceRectangle
                 Color.White,            // color
                 0.0f,                   // rotation

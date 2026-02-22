@@ -13,10 +13,10 @@ using Sprint.Enemies;
 
 class GameplayState : IGameState
 {
-    private Texture2D credits;
     private Texture2D linkSheet;
     private Texture2D enemiesSheet;
     private Texture2D BossesSheet;
+    private Texture2D dustSheet;
 
     private Link link;
     private GameServices services;
@@ -75,9 +75,10 @@ class GameplayState : IGameState
 
         enemiesSheet = services.Content.Load<Texture2D>("images/enemiesSheet");
         BossesSheet = services.Content.Load<Texture2D>("images/BossesSpriteSheet");
+        dustSheet = services.Content.Load<Texture2D>("images/dustSheet");
 
         enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet);
+        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, services.Content);
 
         // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
