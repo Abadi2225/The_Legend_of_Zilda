@@ -87,7 +87,7 @@ public class Game1 : Game
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
 
         // Just shows that it exists
-        titleScreen = new TitleScreen(titleSheet, new Rectangle(1, 11, 256, 254));
+        titleScreen = new TitleScreen(titleSheet);
         uiManager.AddElement(titleScreen);
 
         SetState(currState);
