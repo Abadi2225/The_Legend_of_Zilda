@@ -21,12 +21,23 @@ namespace Sprint.Enemies
         Dodongo
     }
 
-    public class EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet, Texture2D linkSheet, Texture2D dustSheet)
+    public class EnemyFactory
     {
-        private readonly Texture2D enemySpriteSheet = enemySpriteSheet;
-        private readonly Texture2D bossSpriteSheet = bossSpriteSheet;
-        private readonly Texture2D linkSheet = linkSheet;
-        private readonly Texture2D dustSheet = dustSheet;
+        private readonly Texture2D enemySpriteSheet;
+        private readonly Texture2D bossSpriteSheet;
+        private readonly Texture2D linkSheet;
+        private readonly Texture2D dustSheet;
+        private readonly ContentManager contentManager;
+
+        public EnemyFactory(Texture2D enemySpriteSheet, Texture2D bossSpriteSheet, Texture2D linkSheet, Texture2D dustSheet, ContentManager contentManager)
+    {
+        this.enemySpriteSheet = enemySpriteSheet;
+        this.bossSpriteSheet = bossSpriteSheet;
+        this.linkSheet = linkSheet;
+        this.dustSheet = dustSheet;
+        this.contentManager = contentManager;
+    }
+        
 
         public void LoadAllTextures(ContentManager content) { }
 
@@ -38,14 +49,14 @@ namespace Sprint.Enemies
                 EnemyType.Keese      => new Keese(enemySpriteSheet, position),
                 EnemyType.Stalfos    => new Stalfos(enemySpriteSheet, position),
                 EnemyType.Gel        => new Gel(enemySpriteSheet, position),
-                EnemyType.Goriya     => new Goriya(enemySpriteSheet, position),
+                EnemyType.Goriya     => new Goriya(enemySpriteSheet, position, contentManager),
                 EnemyType.Zol        => new Zol(enemySpriteSheet, position),
                 EnemyType.WallMaster => new WallMaster(enemySpriteSheet, position),
                 EnemyType.Trap       => new Trap(enemySpriteSheet, position),
                 EnemyType.Rope       => new Rope(enemySpriteSheet, position),
                 EnemyType.Aquamentus => new Aquamentus(bossSpriteSheet, position),
                 EnemyType.Dodongo    => new Dodongo(bossSpriteSheet, position),
-                _                    => new Goriya(enemySpriteSheet, position),
+                _                    => new Goriya(enemySpriteSheet, position, contentManager),
             };
 
             bool skipSpawnCloud = type is EnemyType.Aquamentus or EnemyType.Dodongo or EnemyType.WallMaster or EnemyType.Trap or EnemyType.Gel;

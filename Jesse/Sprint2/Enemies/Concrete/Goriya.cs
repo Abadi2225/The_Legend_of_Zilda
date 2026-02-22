@@ -1,8 +1,10 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
+using Sprint.Item;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -15,6 +17,8 @@ namespace Sprint.Enemies.Concrete
         private const float STEP_SIZE = 16f;  // One tile/step
         private const float STEP_DELAY = 0.5f;  // Time between steps
         private const float MOVE_SPEED = 100f;  // Speed of actual movement
+        private const float THROW_COOLDOWN_MIN = 2.0f;
+        private const float THROW_COOLDOWN_MAX = 4.0f;
         
         private enum Direction { Up, Down, Left, Right }
         
@@ -22,23 +26,28 @@ namespace Sprint.Enemies.Concrete
         private Vector2 targetPosition;
         private float stepTimer;
         private float flipTimer;
+        private float throwTimer;
         private bool spriteHorizontalFlip;
         const float FLIP_INTERVAL = 0.075f; //Time between flips for up/down walk
         private readonly Random random;
+        private Boomerang activeBoomerang;
+        private ContentManager contentManager;
         
         // Sprite positions for each direction
         private readonly int[] upFrames = [239];      
         private readonly int[] downFrames = [222];   
         private readonly int[] sideFrames = [256, 273];
+        private readonly int[] throwFrame = [273];
 
         
         // Attacks with boomerangs
         // Drops a heart, one rupee, four bombs, or a clock
         // Moves slowly in random directions, one step at a time
         
-        public Goriya(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
+        public Goriya(Texture2D texture, Vector2 position, ContentManager content) : base(texture, position, HEALTH, DAMAGE)
         {
             this.texture = texture;
+            this.contentManager = content;
             random = new Random();
             int sheetY = 11;
             int spriteWidth = 15;
@@ -50,6 +59,7 @@ namespace Sprint.Enemies.Concrete
             targetPosition = position;
             stepTimer = STEP_DELAY;
             flipTimer = FLIP_INTERVAL;
+            throwTimer = GetRandomThrowTime();
             spriteHorizontalFlip = true;
             
             sprite = new DirectionalAnimatedSprite(texture, position, downFrames, sheetY, 
@@ -63,6 +73,17 @@ namespace Sprint.Enemies.Concrete
             
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            throwTimer -=dt;
+
+           if (currentState == GoriyaState.Walking)
+            {
+            throwTimer -= dt;
+                if (throwTimer <= 0)
+                {
+                    ThrowBoomerang();
+                }
+            }
+
             switch (currentState)
             {
                 case GoriyaState.Walking:
@@ -70,9 +91,20 @@ namespace Sprint.Enemies.Concrete
                 break;
                 
                 case GoriyaState.Throwing:
+                UpdateThrowing(dt);
                 break;
             }
+
+            activeBoomerang?.Update(gameTime);
             return sprite.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            base.Draw(spriteBatch, location);
+            
+            // Draw the boomerang if active
+            activeBoomerang?.Draw(spriteBatch, Position);
         }
             
             private void UpdateWalking(float deltaTime)
@@ -109,6 +141,56 @@ namespace Sprint.Enemies.Concrete
                 }
             }
         }
+
+         private void UpdateThrowing(float deltaTime)
+        {
+            // Check if boomerang has returned (not thrown anymore)
+            if (activeBoomerang != null)
+            {
+                var boomerangSprite = ((BoomerangSprite)activeBoomerang.GetSprite());
+
+                if (!IsBoomerangActive())
+                {
+                    activeBoomerang = null;
+                    currentState = GoriyaState.Walking;
+                    throwTimer = GetRandomThrowTime();
+                    UpdateSprite();
+                }
+            }
+        }
+
+        private void ThrowBoomerang()
+        {
+            currentState = GoriyaState.Throwing;
+            UpdateSprite(); // Switch to throwing sprite
+            
+            // Calculate throw direction based on current facing direction
+            Vector2 throwVelocity = currentDirection switch
+            {
+                Direction.Up => new Vector2(0, -3),
+                Direction.Down => new Vector2(0, 3),
+                Direction.Left => new Vector2(-3, 0),
+                Direction.Right => new Vector2(3, 0),
+                _ => new Vector2(-3, 0) // Default left
+            };
+            
+            activeBoomerang = new Boomerang(Position, throwVelocity, contentManager);
+            
+            // Trigger the throw
+            if (activeBoomerang.GetSprite() is BoomerangSprite bSprite)
+            {
+                bSprite.Throw();
+            }
+        }
+
+        private bool IsBoomerangActive()
+        {
+            if (activeBoomerang == null)
+                return false;
+            
+            var boomerangSprite = activeBoomerang.GetSprite() as BoomerangSprite;
+            return boomerangSprite?.IsActive ?? false;
+        }
         
         private void ChooseNextStep()
         {
@@ -137,19 +219,37 @@ namespace Sprint.Enemies.Concrete
         {
             var dirSprite = sprite as DirectionalAnimatedSprite;
             
-                if (currentDirection == Direction.Up || currentDirection == Direction.Down)
-                {
-                    int[] frames = currentDirection == Direction.Up ? upFrames : downFrames;
-                    dirSprite?.UpdateFrames(frames, spriteHorizontalFlip);
-                }
-                else if (currentDirection == Direction.Left)
-                {
-                    dirSprite?.UpdateFrames(sideFrames, true);
-                }
-                else // Right
-                {
-                    dirSprite?.UpdateFrames(sideFrames, false);
-                }
+            if (currentState == GoriyaState.Throwing)
+            {
+                int[] frame = currentDirection switch
+        {
+            Direction.Up => upFrames,
+            Direction.Down => downFrames,
+            Direction.Left => throwFrame,
+            Direction.Right => throwFrame,
+            _ => throwFrame
+        };
+        
+        bool flip = currentDirection == Direction.Left;
+        dirSprite?.UpdateFrames(frame, flip);
+            }
+            else if (currentDirection == Direction.Up || currentDirection == Direction.Down)
+            {
+                int[] frames = currentDirection == Direction.Up ? upFrames : downFrames;
+                dirSprite?.UpdateFrames(frames, spriteHorizontalFlip);
+            }
+            else if (currentDirection == Direction.Left)
+            {
+                dirSprite?.UpdateFrames(sideFrames, true);
+            }
+            else // Right
+            {
+                dirSprite?.UpdateFrames(sideFrames, false);
+            }
+        }
+        private float GetRandomThrowTime()
+        {
+            return THROW_COOLDOWN_MIN + (float)random.NextDouble() * (THROW_COOLDOWN_MAX - THROW_COOLDOWN_MIN);
         }
     }
 }

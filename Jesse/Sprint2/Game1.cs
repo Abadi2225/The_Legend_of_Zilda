@@ -74,7 +74,7 @@ public class Game1 : Game
 
         Vector2 center = new Vector2(Window.ClientBounds.Width / 2, Window.ClientBounds.Height / 2);
         enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet);
+        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, Content);
 
         // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
