@@ -7,12 +7,11 @@ using Sprint.Interfaces;
 
 namespace Sprint.Character
 {
-	public class Link
+	public class Link : ILink
 	{
 		private const double DamagedDuration = 0.5;
 		private const double BlinkInterval = 0.10;
 
-		private Vector2 position;
 		private Texture2D texture;
 
 		private ISprite IdleUp;
@@ -44,17 +43,11 @@ namespace Sprint.Character
 		private bool blinkVisible = true;
 		private KeyboardState prevKeys;
 		private Vector2 move = Vector2.Zero;
+		private Vector2 position;
 
-
-		public enum Directions
-		{
-			Left,
-			Right,
-			Up,
-			Down,
-		}
 
 		private Directions direction = Directions.Down;
+		public Directions Facing => direction;
 
 		public Link(Texture2D texture, Vector2 position)
 		{
@@ -79,7 +72,7 @@ namespace Sprint.Character
 			sprite = IdleDown;
 		}
 
-		public void Update(GameTime gameTime)
+		public int Update(GameTime gameTime)
 		{
 			float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -115,6 +108,8 @@ namespace Sprint.Character
 			position += move * speed * dt;
 
 			sprite.Update(gameTime);
+
+			return 0;
 		}
 
 		public void Draw(SpriteBatch spriteBatch)
@@ -226,5 +221,17 @@ namespace Sprint.Character
 
 			SetIdleSprite();
 		}
+
+		public Vector2 Position
+		{
+			get => position;
+			set => position = value;
+		}
+
+		void ISprite.Draw(SpriteBatch spriteBatch, Vector2 location)
+		{
+			Draw(spriteBatch);
+		}
+
 	}
 }
