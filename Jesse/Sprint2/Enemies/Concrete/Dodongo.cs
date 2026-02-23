@@ -108,12 +108,10 @@ namespace Sprint.Enemies.Concrete
         }
          private void UpdateBombEaten(float deltaTime)
         {
-            // Stay stunned, don't move
             bombStunTimer -= deltaTime;
             
             if (bombStunTimer <= 0)
             {
-                // Return to walking state
                 currentState = DodongoState.Walking;
                 UpdateSprite();
             }
@@ -131,12 +129,10 @@ namespace Sprint.Enemies.Concrete
         
         private void ChooseNextStep()
         {
-            // Pick random direction and distance (1-3 steps)
             int numSteps = random.Next(1, 4);
             float distance = STEP_SIZE * numSteps;
             currentDirection = (Direction)random.Next(4);
-            
-            // Calculate new target position
+
             targetPosition = currentDirection switch
             {
                 Direction.Up => Position + new Vector2(0, -distance),
@@ -146,10 +142,8 @@ namespace Sprint.Enemies.Concrete
                 _ => Position
             };
             
-            // Reset flip timer when starting new step
             flipTimer = FLIP_INTERVAL;
             
-            // Update sprite based on direction
             UpdateSprite();
         }
         
