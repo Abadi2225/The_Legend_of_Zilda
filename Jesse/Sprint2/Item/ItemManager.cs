@@ -4,23 +4,59 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
+using Sprint.Character;
 
 namespace Sprint.Item;
 
 public class ItemManager
 {
+    private ItemFactory factory;
     private List<AbstractItem> Inventory { get; }
     public int ActiveItem { get; set; }
     private List<AbstractItem> SpawnedItems = new List<AbstractItem>();
 
-    public ItemManager()
+    public ItemManager(ContentManager cm)
     {
         Inventory = new List<AbstractItem>();
+        factory = new ItemFactory(cm);
     }
 
     public void UseActiveItem(ILink link)
     {
-        // todo implement use logic
+        Vector2 pos = link.Position;
+        Directions facing = link.Facing;
+        if (GetActiveItem() is Boomerang)
+        {
+            float velocity = 5;
+            float maxDistance = 500;
+            SpawnItem(factory.CreateBoomerang(
+                        pos,
+                        DirectionsUtils.CreateVector(facing, velocity),
+                        maxDistance
+                        ).StartMoving());
+        }
+        if (GetActiveItem().Name == "Bow")
+        {
+            float velocity = 5;
+            float maxDistance = 500;
+            SpawnItem(factory.CreateArrow(
+                        pos,
+                        DirectionsUtils.CreateVector(facing, velocity),
+                        rotation: 0f,
+                        scale: 2f,
+                        maxDistance
+                        ).StartMoving());
+        }
+        if (GetActiveItem().Name == "Bomb")
+        {
+            float reach = 30;
+            SpawnItem(factory.CreateStillItem(
+                        ItemFactory.StillType.Bomb,
+                        Vector2.Add(pos, DirectionsUtils.CreateVector(facing, reach)),
+                        rotation: 0f,
+                        scale: 2f
+                        ));
+        }
     }
 
     internal void Add(AbstractItem item)

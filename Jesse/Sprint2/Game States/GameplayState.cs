@@ -24,7 +24,7 @@ class GameplayState : IGameState
     private GameServices services;
     private Dictionary<Keys, ICommand> pressedKeys;
     private MapManager mapManager;
-    private ItemManager items = new ItemManager();
+    private ItemManager items;
     private ItemFactory itemFactory;
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
@@ -45,6 +45,7 @@ class GameplayState : IGameState
             {Keys.U, new CycleItemCommand(items, false)},
             {Keys.Y, new CycleBlockCommand(mapManager, true)},
             {Keys.T, new CycleBlockCommand(mapManager, false)},
+            {Keys.Space, new UseItemCommand(items, link)},
         };
     }
 
@@ -81,6 +82,7 @@ class GameplayState : IGameState
 
         // item test
         itemFactory = new ItemFactory(services.Content);
+        items = new ItemManager(services.Content);
         items.Add(itemFactory.CreateBoomerang(
                     new Vector2(50, 50),
                     new Vector2(5, 0),
