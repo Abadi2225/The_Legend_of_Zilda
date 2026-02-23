@@ -164,37 +164,24 @@ namespace Sprint.Enemies.Concrete
             break;
     }
 }
-
 private void UpdateBombedSprite(DirectionalAnimatedSprite dirSprite, int sheetY, float frameTime)
 {
     switch (currentDirection)
     {
         case Direction.Up:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, bombedUpFrame, sheetY, 16, 16, frameTime, false);
-            else
-                dirSprite.UpdateFrames(bombedUpFrame, false);
+            sprite = new DirectionalAnimatedSprite(texture, Position, bombedUpFrame, sheetY, 16, 16, frameTime, false);
             break;
             
         case Direction.Down:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, bombedDownFrame, sheetY, 16, 16, frameTime, false);
-            else
-                dirSprite.UpdateFrames(bombedDownFrame, false);
+            sprite = new DirectionalAnimatedSprite(texture, Position, bombedDownFrame, sheetY, 16, 16, frameTime, false);
             break;
             
         case Direction.Left:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, bombedSideFrame, sheetY, 32, 16, frameTime, true);
-            else
-                dirSprite.UpdateFrames(bombedSideFrame, true);
+            sprite = new DirectionalAnimatedSprite(texture, Position, bombedSideFrame, sheetY, 32, 16, frameTime, true);
             break;
             
         case Direction.Right:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, bombedSideFrame, sheetY, 32, 16, frameTime, false);
-            else
-                dirSprite.UpdateFrames(bombedSideFrame, false);
+            sprite = new DirectionalAnimatedSprite(texture, Position, bombedSideFrame, sheetY, 32, 16, frameTime, false);
             break;
     }
 }
@@ -204,31 +191,19 @@ private void UpdateWalkingSprite(DirectionalAnimatedSprite dirSprite, int sheetY
     switch (currentDirection)
     {
         case Direction.Up:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, upFrames, sheetY, 16, 16, frameTime, spriteHorizontalFlip);
-            else
-                dirSprite.UpdateFrames(upFrames, spriteHorizontalFlip);
+            sprite = new DirectionalAnimatedSprite(texture, Position, upFrames, sheetY, 16, 16, frameTime, spriteHorizontalFlip);
             break;
             
         case Direction.Down:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, downFrames, sheetY, 16, 16, frameTime, spriteHorizontalFlip);
-            else
-                dirSprite.UpdateFrames(downFrames, spriteHorizontalFlip);
+            sprite = new DirectionalAnimatedSprite(texture, Position, downFrames, sheetY, 16, 16, frameTime, spriteHorizontalFlip);
             break;
             
         case Direction.Left:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, sideFrames, sheetY, 32, 16, frameTime, true);
-            else
-                dirSprite.UpdateFrames(sideFrames, true);
+            sprite = new DirectionalAnimatedSprite(texture, Position, sideFrames, sheetY, 32, 16, frameTime, true);
             break;
             
         case Direction.Right:
-            if (dirSprite == null)
-                sprite = new DirectionalAnimatedSprite(texture, Position, sideFrames, sheetY, 32, 16, frameTime, false);
-            else
-                dirSprite.UpdateFrames(sideFrames, false);
+            sprite = new DirectionalAnimatedSprite(texture, Position, sideFrames, sheetY, 32, 16, frameTime, false);
             break;
     }
 }
