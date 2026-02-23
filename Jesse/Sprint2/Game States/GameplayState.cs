@@ -102,14 +102,23 @@ class GameplayState : IGameState
         items.Update(gameTime);
         enemyManager?.Update(gameTime);
 
-        foreach (var binding in pressedKeys)
+        if (services.KeyInput.IsKeyDown(Keys.W) || services.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Link.Directions.Up);
+        else if (services.KeyInput.IsKeyDown(Keys.S) || services.KeyInput.IsKeyDown(Keys.Down)) link.SetMove(Link.Directions.Down);
+        else if (services.KeyInput.IsKeyDown(Keys.A) || services.KeyInput.IsKeyDown(Keys.Left)) link.SetMove(Link.Directions.Left);
+        else if (services.KeyInput.IsKeyDown(Keys.D) || services.KeyInput.IsKeyDown(Keys.Right)) link.SetMove(Link.Directions.Right);
+        else link.StopMove();
+		if (services.KeyInput.IsKeyDown(Keys.Z) || services.KeyInput.IsKeyDown(Keys.N)) link.StartAttack();
+		if (services.KeyInput.IsKeyDown(Keys.E)) link.StartDamaged();
+		foreach (var binding in pressedKeys)
         {
             if (services.KeyInput.IsKeyPressed(binding.Key))
             {
                 binding.Value.Execute();
             }
         }
-    }
+
+
+	}
 
     public void Draw(SpriteBatch spriteBatch)
     {

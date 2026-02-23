@@ -50,7 +50,15 @@ namespace Sprint.Character
             totalTimer = 0;
             finished = false;
         }
-
+        
+        public void Reset()
+        {
+			//The attack sprite needs to be reset. Otherwise, on the second attack it won’t update because finished is already true
+			currentFrame = 0;
+			timer = 0;
+			totalTimer = 0;
+			finished = false;
+		}
         public int Update(GameTime gameTime)
         {
             if (finished) return currentFrame;
