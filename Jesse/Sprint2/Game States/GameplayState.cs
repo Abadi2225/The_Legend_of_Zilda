@@ -47,6 +47,7 @@ class GameplayState : IGameState
             {Keys.D1, new UseItemCommand(items, link, 0)},
             {Keys.D2, new UseItemCommand(items, link, 1)},
             {Keys.D3, new UseItemCommand(items, link, 2)},
+            {Keys.R, new SetStateCommand(services.GameActions, new StartScreenState(services))}
         };
     }
 
