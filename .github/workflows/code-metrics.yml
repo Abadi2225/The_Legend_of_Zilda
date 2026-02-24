@@ -1,29 +1,48 @@
-
-
 name: .NET Code Metrics
-on: [push]
+on:
+  push:
+    branches: [ "main" ] # Runs on every push to main
+  workflow_dispatch:     # Allows you to run it manually from the Actions tab
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  analysis:
+    runs-on: ubuntu-latest # Required: Container actions must run on Linux
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write    # Required: Allows the bot to push the file to your repo
+    
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetches full history for better analysis
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x' # Or your specific version
+          dotnet-version: '8.0.x' # Update to your project's version if needed
 
-      - name: Run Metrics
-        # Use the specific main branch path for the metrics tool
+      - name: Run Metrics Analysis
         uses: dotnet/samples/github-actions/DotNet.GitHubAction@main
-        id: metrics
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           owner: ${{ github.repository_owner }}
-          name: ${{ github.event.repository.name }} # Changed from 'repository' to 'name'
+          name: ${{ github.event.repository.name }}
           branch: ${{ github.ref_name }}
-          dir: './' # The root where the .md file will be saved
+          dir: './' # Saves the .md file to the root of the repo
+          # REPLACE with your actual folder and .sln name (case-sensitive)
           workspace: './Jesse/Sprint2/Sprint.sln'
+
+      - name: Commit and Push Metrics File
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          # This ensures we don't error if the metrics haven't changed
+          git add CODE_METRICS.md
+          if git diff --staged --quiet; then
+            echo "No changes to code metrics detected."
+          else
+            git commit -m "docs: automated update of code metrics"
+            git push
+          fi
+
