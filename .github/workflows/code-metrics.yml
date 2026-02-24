@@ -1,21 +1,27 @@
 name: .NET Code Metrics
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch: # Allows you to run it manually
+on: [push]
 
 jobs:
-  analysis:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: windows-latest
     permissions:
-      contents: write # Allows the action to create the report file
+      contents: write
     steps:
       - uses: actions/checkout@v4
       
-      - name: .NET Code Metrics
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+
+      - name: Restore dependencies
+        # Replace 'YourSubfolder' with your actual folder name
+        run: dotnet restore ./Jesse/Sprint2/Sprint.sln
+
+      - name: Run Metrics
         uses: dotnet/code-analysis@v1
         id: metrics
         with:
+          # REQUIRED: Path to your solution file from the repo root
+          workspace: './Jesse/Sprint2/Sprint.sln' 
           owner: ${{ github.repository_owner }}
           repository: ${{ github.event.repository.name }}
           branch: ${{ github.ref_name }}
