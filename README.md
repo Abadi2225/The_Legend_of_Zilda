@@ -92,7 +92,8 @@ Game flow is managed through `IGameState` implementations (`StartScreenState`, `
 ## Project Structure
 
 ```
-Sprint2/
+CODE_METRICS            # Shows the code matrics for all the project
+Jesse/Sprint2/
 ├── Character/          # Link player character with movement/attack states
 ├── Commands/           # Command actions
 ├── Block/              # Tile management
