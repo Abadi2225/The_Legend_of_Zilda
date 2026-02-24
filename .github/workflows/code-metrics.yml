@@ -14,10 +14,8 @@ jobs:
       
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
-
-      - name: Restore dependencies
-        # Replace 'YourSubfolder' with your actual folder name
-        run: dotnet restore ./Jesse/Sprint2/Sprint.sln
+        with:
+          dotnet-version: '8.0.x' # Or your specific version
 
       - name: Run Metrics
         # Use the specific main branch path for the metrics tool
