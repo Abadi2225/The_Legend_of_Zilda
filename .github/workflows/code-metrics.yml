@@ -1,3 +1,5 @@
+
+
 name: .NET Code Metrics
 on: [push]
 
@@ -17,7 +19,8 @@ jobs:
         run: dotnet restore ./Jesse/Sprint2/Sprint.sln
 
       - name: Run Metrics
-        uses: dotnet/code-analysis@v1
+        # Use the specific main branch path for the metrics tool
+        uses: dotnet/samples/github-actions/DotNet.GitHubAction@main
         id: metrics
         with:
           # REQUIRED: Path to your solution file from the repo root
