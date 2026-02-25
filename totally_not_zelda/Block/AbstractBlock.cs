@@ -7,21 +7,21 @@ namespace Sprint.Block;
 
 internal abstract class AbstractBlock : ISprite
 {
-    protected Texture2D texture;
-    public ISprite Sprite { get; set; }
+    protected readonly Texture2D texture;
+    public ISprite Sprite { get; protected init; }
     public Vector2 Position { get; set; }
-    public bool Walkable { get; set; }
+    public bool Walkable { get; init; }
 
-    public AbstractBlock(ContentManager content, string resourceName, Vector2 pos, bool walkable)
+    protected AbstractBlock(ContentManager content, string resourceName, Vector2 pos, bool walkable)
     {
         texture = content.Load<Texture2D>(resourceName);
         Position = pos;
         Walkable = walkable;
     }
 
-    public virtual void Draw(SpriteBatch sb, Vector2 pos)
+    public virtual void Draw(SpriteBatch sb, Vector2 location)
     {
-        Sprite?.Draw(sb, Position);
+        Sprite?.Draw(sb, location);
     }
 
     public virtual int Update(GameTime time)

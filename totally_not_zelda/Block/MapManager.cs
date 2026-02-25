@@ -9,8 +9,17 @@ namespace Sprint.Block;
 
 public class MapManager
 {
+    private const int SHEET_COLUMNS = 4;
+    private const int TILE_SIZE = 16;
+    private const int TILE_SPACING = 1;
+    private Vector2 pos;
+    private readonly ContentManager contentManager;
+    private Block[] map;
+    internal IReadOnlyList<Block> Map => map;
 
-    enum BlockType
+    // todo delete this
+    private BlockType currentBlock = BlockType.Blank;
+    private enum BlockType
     {
         Blank,
         Square,
@@ -24,37 +33,29 @@ public class MapManager
         Ladder
     }
 
-    private Vector2 pos = new(100, 50);
-    private readonly ContentManager contentManager;
-
-    internal Block[] Map;
-
-    // todo delete this
-    private BlockType currentBlock = BlockType.Blank;
-
     public MapManager(ContentManager contentManager, Vector2 pos)
     {
         this.contentManager = contentManager;
         this.pos = pos;
 
-        this.Map = [CreateBlock(currentBlock, pos)];
+        this.map = [CreateBlock(currentBlock, pos)];
     }
 
     public void DrawMap(SpriteBatch sb)
     {
-        for (int i = 0; i < Map.GetLength(0); i++)
+        foreach (Block block in map)
         {
-            Map[i].Draw(sb, Vector2.Zero);
+            block.Draw(sb, block.Position);
         }
     }
 
-    private Block CreateBlock(BlockType type, Vector2 pos, int width = 32)
+    private Block CreateBlock(BlockType type, Vector2 pos, int width = Block.DEFAULT_TILE_WIDTH)
     {
         Rectangle textureMask = new(
-                        (int)type % 4 * (16 + 1),
-                        (int)type / 4 * (16 + 1),
-                        16,
-                        16
+                        (int)type % SHEET_COLUMNS * (TILE_SIZE + TILE_SPACING),
+                        (int)type / SHEET_COLUMNS * (TILE_SIZE + TILE_SPACING),
+                        TILE_SIZE,
+                        TILE_SIZE
                         );
         return new Block(contentManager, pos, textureMask, width);
     }
@@ -65,7 +66,7 @@ public class MapManager
         if ((int)currentBlock < 9)
         {
             currentBlock = (BlockType)((int)currentBlock + 1);
-            this.Map[0] = CreateBlock(currentBlock, pos);
+            this.map[0] = CreateBlock(currentBlock, pos);
         }
     }
 
@@ -74,7 +75,7 @@ public class MapManager
         if ((int)currentBlock > 0)
         {
             currentBlock = (BlockType)((int)currentBlock - 1);
-            this.Map[0] = CreateBlock(currentBlock, pos);
+            this.map[0] = CreateBlock(currentBlock, pos);
         }
     }
 }

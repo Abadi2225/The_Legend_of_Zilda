@@ -97,8 +97,8 @@ public class Game1 : Game, IGameActions
         currentState.Enter();
     }
 
-    public static void Quit()
+    public void Quit()
     {
-        Instance.Exit();
+        Exit();
     }
 }

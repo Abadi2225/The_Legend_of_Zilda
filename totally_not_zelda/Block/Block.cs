@@ -6,9 +6,11 @@ namespace Sprint.Block;
 
 internal class Block : AbstractBlock
 {
-    private const string ResourceName = "blocks/tiles";
+    private const string RESOURCE_NAME = "blocks/tiles";
+    internal const int DEFAULT_TILE_WIDTH = 32;
 
-    public Block(ContentManager content, Vector2 pos, Rectangle textureMask, int width = 32) : base(content, ResourceName, pos, false)
+    public Block(ContentManager content, Vector2 pos, Rectangle textureMask, int width = DEFAULT_TILE_WIDTH)
+     : base(content, RESOURCE_NAME, pos, false)
     {
         Sprite = new TileSprite(
                 texture,

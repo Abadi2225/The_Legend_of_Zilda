@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
 using Sprint.Character;
+using Sprint;
 using Sprint.Sprites;
 using Sprint.Commands;
 using System;
@@ -32,6 +33,8 @@ class GameplayState : IGameState
     {
         this.services = services;
     }
+
+    public void Exit() { }
 
     public void Enter()
     {

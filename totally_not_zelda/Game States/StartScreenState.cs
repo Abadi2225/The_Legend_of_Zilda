@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
 using Sprint.UI;
+using Sprint;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Sprint.Commands;
@@ -24,6 +25,8 @@ class StartScreenState : IGameState
         // UIManager should be initialized before loading content, since LoadContent adds elements to it
         uiManager = new UIManager();
     }
+
+    public void Exit() { }
 
     public void Enter()
     {
