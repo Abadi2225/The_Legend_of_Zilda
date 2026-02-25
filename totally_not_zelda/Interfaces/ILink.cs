@@ -1,9 +1,11 @@
-﻿using Sprint.Character;
+﻿using Microsoft.Xna.Framework;
+using Sprint.Character;
 
 namespace Sprint.Interfaces;
 
-public interface ILink : IPositionedSprite
+public interface ILink
 {
-	Directions Facing{ get; }
+	Vector2 Position { get; }
+	Directions Facing { get; }
 	void StartAttack();
 }

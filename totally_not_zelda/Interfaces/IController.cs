@@ -4,8 +4,8 @@ namespace Sprint.Interfaces;
 
 public interface IController
     {
-        void Update();
-        bool IsKeyDown(Keys key);
-        bool IsKeyPressed(Keys key);
-        bool IsKeyReleased(Keys key);
+        public void Update();
+        public bool IsKeyDown(Keys key);
+        public bool IsKeyPressed(Keys key);
+        public bool IsKeyReleased(Keys key);
     }

@@ -19,7 +19,7 @@ public class Game1 : Game, IGameActions
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
-    private IController mouse;
+    // private IController mouse;
 
     private IGameState currentState;
     private GameServices services;
@@ -50,7 +50,7 @@ public class Game1 : Game, IGameActions
 
     protected override void Initialize()
     {
-        mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, services);
+        // mouse = new MouseController(this, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight, services);
 
         base.Initialize();
     }
@@ -67,7 +67,7 @@ public class Game1 : Game, IGameActions
         services.KeyInput.Update();
 
         currentState.Update(gameTime);
-        mouse.Update();
+        // mouse.Update();
 
         base.Update(gameTime);
     }

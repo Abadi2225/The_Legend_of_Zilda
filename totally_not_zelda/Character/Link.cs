@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Sprint.Block;
 using Sprint.Factories;
 using Sprint.Interfaces;
 
@@ -11,8 +9,6 @@ namespace Sprint.Character
     {
         private const double DamagedDuration = 0.5;
         private const double BlinkInterval = 0.10;
-
-        private Texture2D texture;
 
         private ISprite IdleUp;
         private ISprite IdleDown;
@@ -31,17 +27,12 @@ namespace Sprint.Character
         private ISprite AttackLeft;
         private ISprite AttackRight;
 
-        private int elapsedTime;
-        private int frameTime;
         private double damagedTimer;
         private float speed = 80f;
 
-        private Rectangle bounds;
         private bool isAttacking = false;
         private bool isDamaged = false;
         private bool isVisible = false;
-        private bool blinkVisible = true;
-        private KeyboardState prevKeys;
         private Vector2 move = Vector2.Zero;
         private Vector2 position;
 
@@ -52,7 +43,6 @@ namespace Sprint.Character
         public Link(Texture2D texture, Vector2 position)
         {
             this.position = position;
-            this.texture = texture;
 
             IdleDown = LinkSprites.IdleDown(texture);
             IdleUp = LinkSprites.IdleUp(texture);
@@ -224,11 +214,6 @@ namespace Sprint.Character
         {
             get => position;
             set => position = value;
-        }
-
-        void ISprite.Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            Draw(spriteBatch);
         }
 
     }

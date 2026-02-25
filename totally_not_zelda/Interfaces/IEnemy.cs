@@ -8,7 +8,7 @@ public interface IEnemy : IPositionedSprite
 
         bool IsAlive { get; }
 
-        void TakeDamage(int damageAmount);
-        void Die();
-        void Reset();
+        public void TakeDamage(int damageAmount);
+        public void Die();
+        public void Reset();
     }
