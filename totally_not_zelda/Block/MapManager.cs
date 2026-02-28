@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Sprint.Interfaces;
 
 namespace Sprint.Block;
 
@@ -12,7 +13,7 @@ public class MapManager
     private readonly Texture2D tileSheet;
     private readonly Vector2 pos;
     private readonly Block[] map;
-    internal IReadOnlyList<Block> Map => map;
+    public IReadOnlyList<IBlock> Map => map;
 
     // todo delete this
     private BlockType currentBlock = BlockType.Blank;
