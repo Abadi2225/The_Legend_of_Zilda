@@ -23,15 +23,15 @@ internal class TileSprite : IPositionedSprite
     public void Draw(SpriteBatch sb, Vector2 _)
     {
         sb.Draw(
-                texture,
-                Position,
-                textureMask,
-                Color.White,
-                0f,
-                Vector2.Zero,
-                (float)width / textureMask.Width,
-                SpriteEffects.None,
-                0f
+                texture,                            // texture
+                Position,                           // position
+                textureMask,                        // sourceRectangle
+                Color.White,                        // color
+                0f,                                 // rotation
+                Vector2.Zero,                       // origin
+                (float)width / textureMask.Width,   // scale
+                SpriteEffects.None,                 // effects
+                0f                                  // layerDepth
                );
     }
 

@@ -12,6 +12,7 @@ using Sprint.Block;
 using Microsoft.Xna.Framework.Input;
 using Sprint.Item;
 using Sprint.Enemies;
+using Sprint.Levels;
 
 class GameplayState : IGameState
 {
@@ -25,10 +26,11 @@ class GameplayState : IGameState
     private Link link;
     private GameServices services;
     private Dictionary<Keys, ICommand> pressedKeys;
-    private MapManager mapManager;
+    private BlockFactory blockFactory;
     private ItemManager items;
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
+    private LevelLoader levelLoader;
 
     public GameplayState(GameServices services)
     {
@@ -46,8 +48,6 @@ class GameplayState : IGameState
             {Keys.P, new CycleEnemyCommand(enemyManager, false)},
             {Keys.I, new CycleItemCommand(items, true)},
             {Keys.U, new CycleItemCommand(items, false)},
-            {Keys.Y, new CycleBlockCommand(mapManager, true)},
-            {Keys.T, new CycleBlockCommand(mapManager, false)},
             {Keys.D1, new UseItemCommand(items, link, 0)},
             {Keys.D2, new UseItemCommand(items, link, 1)},
             {Keys.D3, new UseItemCommand(items, link, 2)},
@@ -68,7 +68,9 @@ class GameplayState : IGameState
 
         link = new Link(linkSheet, center);
 
-        mapManager = new MapManager(tileSheet, new Vector2(100, 50));
+        levelLoader = new LevelLoader();
+        blockFactory = new BlockFactory(tileSheet, new Vector2(0, 0), services);
+        blockFactory.Build(levelLoader.Load("test_room"));
 
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, services.Content, NPCSheet);
@@ -140,10 +142,9 @@ class GameplayState : IGameState
 
     public void Draw(SpriteBatch spriteBatch)
     {
+        blockFactory.DrawMap(spriteBatch);
         link.Draw(spriteBatch);
-        mapManager.DrawMap(spriteBatch);
         enemyManager?.Draw(spriteBatch);
         items.Draw(spriteBatch);
-        mapManager.DrawMap(spriteBatch);
     }
 }

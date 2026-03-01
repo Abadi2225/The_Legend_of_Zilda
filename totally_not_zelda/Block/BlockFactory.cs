@@ -2,21 +2,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Sprint.Interfaces;
+using Sprint.Levels;
 
 namespace Sprint.Block;
 
-public class MapManager
+public class BlockFactory
 {
     private const int SHEET_COLUMNS = 4;
     private const int TILE_SIZE = 16;
     private const int TILE_SPACING = 1;
     private readonly Texture2D tileSheet;
     private readonly Vector2 pos;
-    private readonly Block[] map;
+    private Block[] map;
     public IReadOnlyList<IBlock> Map => map;
-
-    // todo delete this
-    private BlockType currentBlock = BlockType.Blank;
+    private GameServices services;
     private enum BlockType
     {
         Blank,
@@ -31,12 +30,11 @@ public class MapManager
         Ladder
     }
 
-    public MapManager(Texture2D tileSheet, Vector2 pos)
+    public BlockFactory(Texture2D tileSheet, Vector2 pos, GameServices services)
     {
         this.tileSheet = tileSheet;
         this.pos = pos;
-
-        this.map = [CreateBlock(currentBlock, pos)];
+        this.services = services;
     }
 
     public void DrawMap(SpriteBatch sb)
@@ -44,25 +42,6 @@ public class MapManager
         foreach (Block block in map)
         {
             block.Draw(sb, block.Position);
-        }
-    }
-
-    // todo remove these
-    public void CycleNext()
-    {
-        if ((int)currentBlock < 9)
-        {
-            currentBlock = (BlockType)((int)currentBlock + 1);
-            map[0] = CreateBlock(currentBlock, pos);
-        }
-    }
-
-    public void CyclePrevious()
-    {
-        if ((int)currentBlock > 0)
-        {
-            currentBlock = (BlockType)((int)currentBlock - 1);
-            map[0] = CreateBlock(currentBlock, pos);
         }
     }
 
@@ -75,5 +54,22 @@ public class MapManager
                         TILE_SIZE
                         );
         return new Block(tileSheet, pos, textureMask, width);
+    }
+
+    public void Build(LevelData data)
+    {
+        map = new Block[data.height * data.width];
+        
+        for (int i = 0; i < data.height * data.width; i++)
+        {
+            int id = data.layers[0].data[i];
+            if (id == 0) continue;
+
+            int x = i % data.width;
+            int y = i / data.width;
+
+            Block block = CreateBlock((BlockType)(id-1), new Vector2(x * TILE_SIZE * services.ScaleFactor, y * TILE_SIZE * services.ScaleFactor));
+            map[i] = block;
+        }
     }
 }
