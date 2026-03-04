@@ -12,6 +12,7 @@ using Sprint.Block;
 using Microsoft.Xna.Framework.Input;
 using Sprint.Item;
 using Sprint.Enemies;
+using Sprint.Levels;
 
 class GameplayState : IGameState
 {
@@ -23,16 +24,15 @@ class GameplayState : IGameState
     private Texture2D tileSheet;
 
     private Link link;
-    private GameServices services;
     private Dictionary<Keys, ICommand> pressedKeys;
-    private MapManager mapManager;
     private ItemManager items;
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
+    private LevelLoader levelLoader;
+    private Level currentLevel;
 
-    public GameplayState(GameServices services)
+    public GameplayState()
     {
-        this.services = services;
     }
 
     public void Exit() { }
@@ -41,37 +41,38 @@ class GameplayState : IGameState
     {
         pressedKeys = new Dictionary<Keys, ICommand>
         {
-            {Keys.Q, new QuitCommand(services.GameActions)},
+            {Keys.Q, new QuitCommand()},
             {Keys.O, new CycleEnemyCommand(enemyManager, true)},
             {Keys.P, new CycleEnemyCommand(enemyManager, false)},
             {Keys.I, new CycleItemCommand(items, true)},
             {Keys.U, new CycleItemCommand(items, false)},
-            {Keys.Y, new CycleBlockCommand(mapManager, true)},
-            {Keys.T, new CycleBlockCommand(mapManager, false)},
             {Keys.D1, new UseItemCommand(items, link, 0)},
             {Keys.D2, new UseItemCommand(items, link, 1)},
             {Keys.D3, new UseItemCommand(items, link, 2)},
-            {Keys.R, new SetStateCommand(services.GameActions, new StartScreenState(services))}
+            {Keys.R, new SetStateCommand(new StartScreenState())}
         };
+
+        currentLevel = LevelBuilder.Build(levelLoader.Load("test_room"));
     }
 
     public void LoadContent()
     {
-        linkSheet = services.Content.Load<Texture2D>("images/Link");
-        enemiesSheet = services.Content.Load<Texture2D>("images/enemiesSheet");
-        BossesSheet = services.Content.Load<Texture2D>("images/BossesSpriteSheet");
-        dustSheet = services.Content.Load<Texture2D>("images/dustSheet");
-        NPCSheet = services.Content.Load<Texture2D>("images/NPC");
-        tileSheet = services.Content.Load<Texture2D>("blocks/tiles");
+        linkSheet = GameServices.Content.Load<Texture2D>("images/Link");
+        enemiesSheet = GameServices.Content.Load<Texture2D>("images/enemiesSheet");
+        BossesSheet = GameServices.Content.Load<Texture2D>("images/BossesSpriteSheet");
+        dustSheet = GameServices.Content.Load<Texture2D>("images/dustSheet");
+        NPCSheet = GameServices.Content.Load<Texture2D>("images/NPC");
+        tileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
+        GameServices.TileSheet = tileSheet;
 
-        Vector2 center = new Vector2(services.GameWidth / 2, services.GameHeight / 2);
+        Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
         link = new Link(linkSheet, center);
 
-        mapManager = new MapManager(tileSheet, new Vector2(100, 50));
+        levelLoader = new LevelLoader();
 
         enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, services.Content, NPCSheet);
+        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
 
         // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
@@ -116,20 +117,21 @@ class GameplayState : IGameState
 
     public void Update(GameTime gameTime)
     {
+        currentLevel.Update(gameTime);
         link.Update(gameTime);
         items.Update(gameTime);
         enemyManager?.Update(gameTime);
 
-        if (services.KeyInput.IsKeyDown(Keys.W) || services.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Directions.Up);
-        else if (services.KeyInput.IsKeyDown(Keys.S) || services.KeyInput.IsKeyDown(Keys.Down)) link.SetMove(Directions.Down);
-        else if (services.KeyInput.IsKeyDown(Keys.A) || services.KeyInput.IsKeyDown(Keys.Left)) link.SetMove(Directions.Left);
-        else if (services.KeyInput.IsKeyDown(Keys.D) || services.KeyInput.IsKeyDown(Keys.Right)) link.SetMove(Directions.Right);
+        if (GameServices.KeyInput.IsKeyDown(Keys.W) || GameServices.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Directions.Up);
+        else if (GameServices.KeyInput.IsKeyDown(Keys.S) || GameServices.KeyInput.IsKeyDown(Keys.Down)) link.SetMove(Directions.Down);
+        else if (GameServices.KeyInput.IsKeyDown(Keys.A) || GameServices.KeyInput.IsKeyDown(Keys.Left)) link.SetMove(Directions.Left);
+        else if (GameServices.KeyInput.IsKeyDown(Keys.D) || GameServices.KeyInput.IsKeyDown(Keys.Right)) link.SetMove(Directions.Right);
         else link.StopMove();
-        if (services.KeyInput.IsKeyDown(Keys.Z) || services.KeyInput.IsKeyDown(Keys.N)) link.StartAttack();
-        if (services.KeyInput.IsKeyDown(Keys.E)) link.StartDamaged();
+        if (GameServices.KeyInput.IsKeyDown(Keys.Z) || GameServices.KeyInput.IsKeyDown(Keys.N)) link.StartAttack();
+        if (GameServices.KeyInput.IsKeyDown(Keys.E)) link.StartDamaged();
         foreach (var binding in pressedKeys)
         {
-            if (services.KeyInput.IsKeyPressed(binding.Key))
+            if (GameServices.KeyInput.IsKeyPressed(binding.Key))
             {
                 binding.Value.Execute();
             }
@@ -140,10 +142,9 @@ class GameplayState : IGameState
 
     public void Draw(SpriteBatch spriteBatch)
     {
+        currentLevel.Draw(spriteBatch);
         link.Draw(spriteBatch);
-        mapManager.DrawMap(spriteBatch);
         enemyManager?.Draw(spriteBatch);
         items.Draw(spriteBatch);
-        mapManager.DrawMap(spriteBatch);
     }
 }
