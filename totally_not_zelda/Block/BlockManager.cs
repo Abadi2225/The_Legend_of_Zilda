@@ -7,8 +7,8 @@ namespace Sprint.Block;
 public class BlockManager
 {
     private readonly List<Block> blocks = [];
-
-    public void Add(Block block)
+	public List<Block> blocksList => blocks;
+	public void Add(Block block)
     {
         blocks.Add(block);
     }

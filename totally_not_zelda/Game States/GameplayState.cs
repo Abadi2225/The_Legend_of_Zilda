@@ -1,18 +1,20 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint.Interfaces;
-using Sprint.Character;
+using Microsoft.Xna.Framework.Input;
 using Sprint;
-using Sprint.Sprites;
+using Sprint.Block;
+using Sprint.Character;
+using Sprint.Collision;
 using Sprint.Commands;
+using Sprint.Enemies;
+using Sprint.Interfaces;
+using Sprint.Item;
+using Sprint.Levels;
+using Sprint.Sprites;
 using System;
 using System.Collections.Generic;
-using Sprint.Block;
-using Microsoft.Xna.Framework.Input;
-using Sprint.Item;
-using Sprint.Enemies;
-using Sprint.Levels;
+using Sprint.Collision;
 
 class GameplayState : IGameState
 {
@@ -30,8 +32,9 @@ class GameplayState : IGameState
     private EnemyFactory enemyFactory;
     private LevelLoader levelLoader;
     private Level currentLevel;
+	private CollisionManager collisionManager;
 
-    public GameplayState()
+	public GameplayState()
     {
     }
 
@@ -65,7 +68,7 @@ class GameplayState : IGameState
         tileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
         GameServices.TileSheet = tileSheet;
 
-        Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
+		Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
         link = new Link(linkSheet, center);
 
@@ -73,9 +76,10 @@ class GameplayState : IGameState
 
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
+		collisionManager = new CollisionManager();
 
-        // Can make this generated in the enemyFactory if we want to create more enemies
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
+		// Can make this generated in the enemyFactory if we want to create more enemies
+		enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
@@ -122,7 +126,9 @@ class GameplayState : IGameState
         items.Update(gameTime);
         enemyManager?.Update(gameTime);
 
-        if (GameServices.KeyInput.IsKeyDown(Keys.W) || GameServices.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Directions.Up);
+		collisionManager.allCollisions(link, currentLevel.Blocks, enemyManager);
+
+		if (GameServices.KeyInput.IsKeyDown(Keys.W) || GameServices.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Directions.Up);
         else if (GameServices.KeyInput.IsKeyDown(Keys.S) || GameServices.KeyInput.IsKeyDown(Keys.Down)) link.SetMove(Directions.Down);
         else if (GameServices.KeyInput.IsKeyDown(Keys.A) || GameServices.KeyInput.IsKeyDown(Keys.Left)) link.SetMove(Directions.Left);
         else if (GameServices.KeyInput.IsKeyDown(Keys.D) || GameServices.KeyInput.IsKeyDown(Keys.Right)) link.SetMove(Directions.Right);
@@ -138,7 +144,7 @@ class GameplayState : IGameState
         }
 
 
-    }
+	}
 
     public void Draw(SpriteBatch spriteBatch)
     {
