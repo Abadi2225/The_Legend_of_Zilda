@@ -32,6 +32,7 @@ namespace Sprint.Enemies.Concrete
             random = new Random();
             turnTimer = TURN_INTERVAL;
             velocity = Vector2.Zero;
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
         
 

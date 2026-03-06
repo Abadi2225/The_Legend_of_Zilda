@@ -42,6 +42,7 @@ namespace Sprint.Enemies.Concrete
             directionChangeDuration = GetRandomFloat(DIRECTION_CHANGE_MIN, DIRECTION_CHANGE_MAX);
             directionChangeTimer = directionChangeDuration;
             ChooseRandomCardinalDirection();
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
 
         public override void Update(GameTime gameTime)

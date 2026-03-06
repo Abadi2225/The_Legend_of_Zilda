@@ -46,6 +46,7 @@ namespace Sprint.Enemies.Concrete
             idleDuration = GetRandomFloat(IDLE_TIME_MIN, IDLE_TIME_MAX);
             chargeDirection = Vector2.Zero;
             chargeTarget = position;
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
 
         public override void Update(GameTime gameTime)

@@ -43,6 +43,7 @@ namespace Sprint.Enemies.Concrete
             stateTimer = 0f;
             stateDuration = GetRandomFloat(HIDDEN_TIME_MIN, HIDDEN_TIME_MAX);
             ChooseCreepDirection();
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
         
         public override void Update(GameTime gameTime)

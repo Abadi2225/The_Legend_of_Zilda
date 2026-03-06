@@ -34,6 +34,7 @@ namespace Sprint.Enemies.Concrete
             directionChangeTimer = DIRECTION_CHANGE_INTERVAL;
             isFlipped = false;
             flipTimer = FLIP_INTERVAL;
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
         
         private Vector2 GetRandomCardinalDirection()

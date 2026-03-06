@@ -42,6 +42,7 @@ namespace Sprint.Enemies.Concrete
 
             sprite = new AnimatedSprite(texture, position, sheetXPositions, sheetY, spriteWidth, spriteHeight, frameTime);
             projectileFactory = new EnemyProjectileFactory(texture);
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
 
         public override void Update(GameTime gameTime)

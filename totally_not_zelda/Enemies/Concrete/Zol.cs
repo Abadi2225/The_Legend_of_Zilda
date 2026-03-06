@@ -34,6 +34,7 @@ namespace Sprint.Enemies.Concrete
             isOnGround = true;
             bounceTimer = BOUNCE_INTERVAL;
             velocity = Vector2.Zero;
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
 
         public override void Update(GameTime gameTime)

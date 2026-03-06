@@ -19,6 +19,7 @@ namespace Sprint.Enemies.Concrete
             float frameTime  = 0.5f;
 
             sprite = new AnimatedSprite(texture, position, frameXPositions, sheetY, spriteWidth, spriteHeight, frameTime);
+            Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
         }
 
         public override void TakeDamage(int damageAmount) { }

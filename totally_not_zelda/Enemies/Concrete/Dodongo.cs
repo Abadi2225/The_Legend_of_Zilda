@@ -52,6 +52,7 @@ namespace Sprint.Enemies.Concrete
             spriteHorizontalFlip = false;
             
             sprite = new DirectionalAnimatedSprite(texture, position, downFrames, 58, 16, 16, 0.2f, false);
+            Rect = new Rectangle((int)position.X, (int)position.Y, 16, 16);
         }
         
         public override void Update(GameTime gameTime)
