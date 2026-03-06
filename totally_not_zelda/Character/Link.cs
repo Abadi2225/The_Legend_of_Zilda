@@ -27,12 +27,18 @@ public class Link : ILink
     private readonly Attacking AttackLeft;
     private readonly Attacking AttackRight;
 
+    private readonly Attacking UseItemUp;
+    private readonly Attacking UseItemDown;
+    private readonly Attacking UseItemLeft;
+    private readonly Attacking UseItemRight;
+
     private ISprite sprite;
     private Vector2 position;
     private Vector2 move = Vector2.Zero;
     private Directions direction = Directions.Down;
     private double damagedTimer;
     private bool isAttacking = false;
+    private bool isUsingItem = false;
     private bool isDamaged = false;
     private bool isVisible = false;
 
@@ -67,6 +73,11 @@ public class Link : ILink
         AttackLeft  = LinkSprites.AttackLeft(texture, FinishAttack);
         AttackRight = LinkSprites.AttackRight(texture, FinishAttack);
 
+        UseItemDown  = LinkSprites.UseItemDown(texture, FinishUseItem);
+        UseItemUp    = LinkSprites.UseItemUp(texture, FinishUseItem);
+        UseItemLeft  = LinkSprites.UseItemLeft(texture, FinishUseItem);
+        UseItemRight = LinkSprites.UseItemRight(texture, FinishUseItem);
+
         sprite = IdleDown;
         Position = position;
     }
@@ -75,7 +86,7 @@ public class Link : ILink
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        if (!isAttacking && !isDamaged && move == Vector2.Zero)
+        if (!isAttacking && !isUsingItem && !isDamaged && move == Vector2.Zero)
         {
             SetIdleSprite();
         }
@@ -111,9 +122,25 @@ public class Link : ILink
         sprite.Draw(spriteBatch, position);
     }
 
+    public void StartUseItem()
+    {
+        if (isUsingItem) return;
+
+        isUsingItem = true;
+        move = Vector2.Zero;
+
+        switch (direction)
+        {
+            case Directions.Up:    UseItemUp.Reset();    sprite = UseItemUp;    break;
+            case Directions.Down:  UseItemDown.Reset();  sprite = UseItemDown;  break;
+            case Directions.Left:  UseItemLeft.Reset();  sprite = UseItemLeft;  break;
+            case Directions.Right: UseItemRight.Reset(); sprite = UseItemRight; break;
+        }
+    }
+
     public void SetMove(Directions dir)
     {
-        if (isAttacking) return;
+        if (isAttacking || isUsingItem) return;
 
         move = Vector2.Zero;
         direction = dir;
@@ -155,12 +182,19 @@ public class Link : ILink
         isVisible = true;
         move = Vector2.Zero;
         isAttacking = false;
+        isUsingItem = false;
         SetIdleSprite();
     }
 
     private void FinishAttack()
     {
         isAttacking = false;
+        SetIdleSprite();
+    }
+
+    private void FinishUseItem()
+    {
+        isUsingItem = false;
         SetIdleSprite();
     }
 

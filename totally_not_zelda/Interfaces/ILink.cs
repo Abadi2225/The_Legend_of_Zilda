@@ -9,4 +9,5 @@ public interface ILink
     Rectangle Rect { get; }
     Directions Facing { get; }
     void StartAttack();
+    void StartUseItem();
 }

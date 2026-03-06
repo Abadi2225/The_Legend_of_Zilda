@@ -36,6 +36,30 @@ internal static class LinkSprites
         return new Walking(texture, SpriteEffects.None, frames, 0.15);
     }
 
+    public static Attacking UseItemDown(Texture2D texture, System.Action onFinished)
+    {
+        Rectangle[] frames = [new Rectangle(107, 11, 15, 15)];
+        return new Attacking(texture, SpriteEffects.None, frames, 0.4, 0.4, onFinished);
+    }
+
+    public static Attacking UseItemUp(Texture2D texture, System.Action onFinished)
+    {
+        Rectangle[] frames = [new Rectangle(141, 11, 15, 15)];
+        return new Attacking(texture, SpriteEffects.None, frames, 0.4, 0.4, onFinished, anchorBottom: true);
+    }
+
+    public static Attacking UseItemLeft(Texture2D texture, System.Action onFinished)
+    {
+        Rectangle[] frames = [new Rectangle(124, 11, 15, 15)];
+        return new Attacking(texture, SpriteEffects.FlipHorizontally, frames, 0.4, 0.4, onFinished);
+    }
+
+    public static Attacking UseItemRight(Texture2D texture, System.Action onFinished)
+    {
+        Rectangle[] frames = [new Rectangle(124, 11, 15, 15)];
+        return new Attacking(texture, SpriteEffects.None, frames, 0.4, 0.4, onFinished);
+    }
+
     public static Attacking AttackDown(Texture2D texture, System.Action onFinished)
     {
         Rectangle[] frames =
