@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint.Factories;
 using Sprint.Interfaces;
 
 namespace Sprint.Character;
@@ -27,10 +26,10 @@ public class Link : ILink
     private readonly Attacking AttackLeft;
     private readonly Attacking AttackRight;
 
-    private readonly Attacking UseItemUp;
-    private readonly Attacking UseItemDown;
-    private readonly Attacking UseItemLeft;
-    private readonly Attacking UseItemRight;
+    private readonly UseItem UseItemUp;
+    private readonly UseItem UseItemDown;
+    private readonly UseItem UseItemLeft;
+    private readonly UseItem UseItemRight;
 
     private ISprite sprite;
     private Vector2 position;
@@ -58,25 +57,25 @@ public class Link : ILink
 
     public Link(Texture2D texture, Vector2 position)
     {
-        IdleDown  = LinkSprites.IdleDown(texture);
-        IdleUp    = LinkSprites.IdleUp(texture);
-        IdleLeft  = LinkSprites.IdleLeft(texture);
-        IdleRight = LinkSprites.IdleRight(texture);
+        IdleDown  = LinkFactory.IdleDown(texture);
+        IdleUp    = LinkFactory.IdleUp(texture);
+        IdleLeft  = LinkFactory.IdleLeft(texture);
+        IdleRight = LinkFactory.IdleRight(texture);
 
-        WalkDown  = LinkSprites.WalkingDown(texture);
-        WalkUp    = LinkSprites.WalkingUp(texture);
-        WalkLeft  = LinkSprites.WalkingLeft(texture);
-        WalkRight = LinkSprites.WalkingRight(texture);
+        WalkDown  = LinkFactory.WalkingDown(texture);
+        WalkUp    = LinkFactory.WalkingUp(texture);
+        WalkLeft  = LinkFactory.WalkingLeft(texture);
+        WalkRight = LinkFactory.WalkingRight(texture);
 
-        AttackDown  = LinkSprites.AttackDown(texture, FinishAttack);
-        AttackUp    = LinkSprites.AttackUp(texture, FinishAttack);
-        AttackLeft  = LinkSprites.AttackLeft(texture, FinishAttack);
-        AttackRight = LinkSprites.AttackRight(texture, FinishAttack);
+        AttackDown  = LinkFactory.AttackDown(texture, FinishAttack);
+        AttackUp    = LinkFactory.AttackUp(texture, FinishAttack);
+        AttackLeft  = LinkFactory.AttackLeft(texture, FinishAttack);
+        AttackRight = LinkFactory.AttackRight(texture, FinishAttack);
 
-        UseItemDown  = LinkSprites.UseItemDown(texture, FinishUseItem);
-        UseItemUp    = LinkSprites.UseItemUp(texture, FinishUseItem);
-        UseItemLeft  = LinkSprites.UseItemLeft(texture, FinishUseItem);
-        UseItemRight = LinkSprites.UseItemRight(texture, FinishUseItem);
+        UseItemDown  = LinkFactory.UseItemDown(texture, FinishUseItem);
+        UseItemUp    = LinkFactory.UseItemUp(texture, FinishUseItem);
+        UseItemLeft  = LinkFactory.UseItemLeft(texture, FinishUseItem);
+        UseItemRight = LinkFactory.UseItemRight(texture, FinishUseItem);
 
         sprite = IdleDown;
         Position = position;
