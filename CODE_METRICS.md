@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 16 namespaces.
 - 88 named types.
-- 4,429 total lines of source code.
-- Approximately 1,249 lines of executable code.
+- 4,465 total lines of source code.
+- Approximately 1,263 lines of executable code.
 - The highest cyclomatic complexity is 19 :exploding_head:.
 
 <details>
@@ -28,9 +28,9 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 7 named types.
 
 - 7 named types.
-- 272 total lines of source code.
-- Approximately 87 lines of executable code.
-- The highest cyclomatic complexity is 15 :exploding_head:.
+- 308 total lines of source code.
+- Approximately 101 lines of executable code.
+- The highest cyclomatic complexity is 17 :exploding_head:.
 
 <details>
 <summary>
@@ -62,9 +62,9 @@ The `<global namespace>` namespace contains 7 named types.
 <br>
 
 - The `GameplayState` contains 20 members.
-- 140 total lines of source code.
-- Approximately 52 lines of executable code.
-- The highest cyclomatic complexity is 15 :exploding_head:.
+- 149 total lines of source code.
+- Approximately 57 lines of executable code.
+- The highest cyclomatic complexity is 17 :exploding_head:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -72,22 +72,22 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L17' title='Texture2D GameplayState.BossesSheet'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L29' title='CollisionManager GameplayState.collisionManager'>29</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L28' title='Level GameplayState.currentLevel'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L145' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>145</a> | 75 | 2 :heavy_check_mark: | 0 | 6 | 7 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L154' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>154</a> | 75 | 2 :heavy_check_mark: | 0 | 6 | 7 / 4 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L18' title='Texture2D GameplayState.dustSheet'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L16' title='Texture2D GameplayState.enemiesSheet'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L26' title='EnemyFactory GameplayState.enemyFactory'>26</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L25' title='EnemyManager GameplayState.enemyManager'>25</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L37' title='void GameplayState.Enter()'>37</a> | 77 | 1 :heavy_check_mark: | 0 | 19 | 17 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L37' title='void GameplayState.Enter()'>37</a> | 77 | 1 :heavy_check_mark: | 0 | 19 | 18 / 2 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L35' title='void GameplayState.Exit()'>35</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L24' title='ItemManager GameplayState.items'>24</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L27' title='LevelLoader GameplayState.levelLoader'>27</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L22' title='Link GameplayState.link'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L15' title='Texture2D GameplayState.linkSheet'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L55' title='void GameplayState.LoadContent()'>55</a> | 45 | 2 :heavy_check_mark: | 0 | 21 | 62 / 32 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L56' title='void GameplayState.LoadContent()'>56</a> | 45 | 2 :heavy_check_mark: | 0 | 21 | 62 / 32 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L19' title='Texture2D GameplayState.NPCSheet'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L23' title='Dictionary<Keys, ICommand> GameplayState.pressedKeys'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L20' title='Texture2D GameplayState.tileSheet'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L118' title='void GameplayState.Update(GameTime gameTime)'>118</a> | 56 | 15 :exploding_head: | 0 | 14 | 26 / 14 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L119' title='void GameplayState.Update(GameTime gameTime)'>119</a> | 51 | 17 :exploding_head: | 0 | 18 | 34 / 19 |
 
 <a href="#GameplayState-class-diagram">:link: to `GameplayState` class diagram</a>
 
@@ -182,14 +182,19 @@ The `<global namespace>` namespace contains 7 named types.
 </summary>
 <br>
 
-- The `LevelLoader` contains 1 members.
-- 14 total lines of source code.
-- Approximately 4 lines of executable code.
-- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+- The `LevelLoader` contains 6 members.
+- 41 total lines of source code.
+- Approximately 13 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L8' title='LevelData LevelLoader.Load(string levelName)'>8</a> | 77 | 1 :heavy_check_mark: | 0 | 2 | 11 / 4 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L14' title='int LevelLoader.currentLevel'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L15' title='LevelData LevelLoader.CycleNext()'>15</a> | 78 | 2 :heavy_check_mark: | 0 | 3 | 8 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L23' title='LevelData LevelLoader.CyclePrevious()'>23</a> | 80 | 2 :heavy_check_mark: | 0 | 3 | 8 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L31' title='LevelData LevelLoader.GetCurrentLevel()'>31</a> | 95 | 1 :heavy_check_mark: | 0 | 3 | 4 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L10' title='List<string> LevelLoader.levels'>10</a> | 91 | 0 :heavy_check_mark: | 0 | 2 | 3 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L36' title='LevelData LevelLoader.Load(string levelName)'>36</a> | 77 | 1 :heavy_check_mark: | 0 | 2 | 11 / 4 |
 
 <a href="#LevelLoader-class-diagram">:link: to `LevelLoader` class diagram</a>
 
@@ -3145,6 +3150,11 @@ class LevelBuilder{
 ```mermaid
 classDiagram
 class LevelLoader{
+    -List<string> levels
+    -int currentLevel
+    +CycleNext() LevelData
+    +CyclePrevious() LevelData
+    +GetCurrentLevel() LevelData
     +Load(string levelName) LevelData
 }
 
