@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 16 namespaces.
 - 87 named types.
-- 4,339 total lines of source code.
-- Approximately 1,232 lines of executable code.
+- 4,357 total lines of source code.
+- Approximately 1,230 lines of executable code.
 - The highest cyclomatic complexity is 19 :exploding_head:.
 
 <details>
@@ -1006,7 +1006,7 @@ The `Sprint.Commands` namespace contains 5 named types.
 The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 - 18 named types.
-- 1,411 total lines of source code.
+- 1,416 total lines of source code.
 - Approximately 460 lines of executable code.
 - The highest cyclomatic complexity is 10 :radioactive:.
 
@@ -1025,7 +1025,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Aquamentus.cs#L33' title='Aquamentus.Aquamentus(Texture2D texture, Vector2 position)'>33</a> | 61 | 1 :heavy_check_mark: | 0 | 8 | 17 / 10 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Aquamentus.cs#L33' title='Aquamentus.Aquamentus(Texture2D texture, Vector2 position)'>33</a> | 60 | 1 :heavy_check_mark: | 0 | 9 | 17 / 10 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Aquamentus.cs#L26' title='List<AquamentusFireball> Aquamentus.activeFireballs'>26</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Aquamentus.cs#L15' title='int Aquamentus.DAMAGE'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Aquamentus.cs#L20' title='float Aquamentus.DIRECTION_SWAP_MAX'>20</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
@@ -1151,7 +1151,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L42' title='Dodongo.Dodongo(Texture2D texture, Vector2 position)'>42</a> | 61 | 1 :heavy_check_mark: | 0 | 10 | 17 / 10 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L42' title='Dodongo.Dodongo(Texture2D texture, Vector2 position)'>42</a> | 60 | 1 :heavy_check_mark: | 0 | 11 | 17 / 10 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L19' title='float Dodongo.BOMB_STUN_DURATION'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L36' title='int[] Dodongo.bombedDownFrame'>36</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L37' title='int[] Dodongo.bombedSideFrame'>37</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
@@ -1228,18 +1228,18 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L21' title='Gel.Gel(Texture2D texture, Vector2 position)'>21</a> | 61 | 1 :heavy_check_mark: | 0 | 8 | 16 / 10 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L12' title='int Gel.DAMAGE'>12</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L65' title='Vector2 Gel.GetRandomTurnDirection()'>65</a> | 87 | 1 :heavy_check_mark: | 0 | 3 | 11 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L11' title='int Gel.HEALTH'>11</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L18' title='float Gel.MOVE_SPEED'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L19' title='Random Gel.random'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L58' title='void Gel.Reset()'>58</a> | 81 | 1 :heavy_check_mark: | 0 | 3 | 6 / 3 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L17' title='float Gel.TURN_INTERVAL'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L16' title='float Gel.TURN_SPEED'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L15' title='float Gel.turnTimer'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L39' title='void Gel.Update(GameTime gameTime)'>39</a> | 65 | 3 :heavy_check_mark: | 0 | 4 | 18 / 8 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L14' title='Vector2 Gel.velocity'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L22' title='Gel.Gel(Texture2D texture, Vector2 position)'>22</a> | 61 | 1 :heavy_check_mark: | 0 | 9 | 16 / 10 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L13' title='int Gel.DAMAGE'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L66' title='Vector2 Gel.GetRandomTurnDirection()'>66</a> | 87 | 1 :heavy_check_mark: | 0 | 3 | 11 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L12' title='int Gel.HEALTH'>12</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L19' title='float Gel.MOVE_SPEED'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L20' title='Random Gel.random'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L59' title='void Gel.Reset()'>59</a> | 81 | 1 :heavy_check_mark: | 0 | 3 | 6 / 3 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L18' title='float Gel.TURN_INTERVAL'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L17' title='float Gel.TURN_SPEED'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L16' title='float Gel.turnTimer'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L40' title='void Gel.Update(GameTime gameTime)'>40</a> | 65 | 3 :heavy_check_mark: | 0 | 4 | 18 / 8 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Gel.cs#L15' title='Vector2 Gel.velocity'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#Gel-class-diagram">:link: to `Gel` class diagram</a>
 
@@ -1262,7 +1262,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L47' title='Goriya.Goriya(Texture2D texture, Vector2 position, ContentManager content)'>47</a> | 55 | 1 :heavy_check_mark: | 0 | 11 | 26 / 16 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L47' title='Goriya.Goriya(Texture2D texture, Vector2 position, ContentManager content)'>47</a> | 55 | 1 :heavy_check_mark: | 0 | 12 | 26 / 16 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L33' title='Boomerang Goriya.activeBoomerang'>33</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L196' title='void Goriya.ChooseNextStep()'>196</a> | 66 | 1 :heavy_check_mark: | 0 | 4 | 22 / 6 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L34' title='ContentManager Goriya.contentManager'>34</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -1340,7 +1340,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Keese.cs#L31' title='Keese.Keese(Texture2D texture, Vector2 position)'>31</a> | 56 | 1 :heavy_check_mark: | 0 | 8 | 27 / 15 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Keese.cs#L31' title='Keese.Keese(Texture2D texture, Vector2 position)'>31</a> | 56 | 1 :heavy_check_mark: | 0 | 9 | 27 / 15 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Keese.cs#L22' title='float Keese.actionDuration'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Keese.cs#L21' title='float Keese.actionTimer'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Keese.cs#L101' title='void Keese.ChooseRandomDirection()'>101</a> | 78 | 1 :heavy_check_mark: | 0 | 3 | 7 / 3 |
@@ -1380,7 +1380,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/OldMan.cs#L13' title='OldMan.OldMan(Texture2D texture, Vector2 position)'>13</a> | 72 | 1 :heavy_check_mark: | 0 | 7 | 8 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/OldMan.cs#L13' title='OldMan.OldMan(Texture2D texture, Vector2 position)'>13</a> | 71 | 1 :heavy_check_mark: | 0 | 8 | 8 / 4 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/OldMan.cs#L11' title='int OldMan.DAMAGE'>11</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/OldMan.cs#L23' title='void OldMan.Die()'>23</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/OldMan.cs#L10' title='int OldMan.HEALTH'>10</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
@@ -1407,7 +1407,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Rope.cs#L29' title='Rope.Rope(Texture2D texture, Vector2 position)'>29</a> | 59 | 1 :heavy_check_mark: | 0 | 8 | 18 / 12 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Rope.cs#L29' title='Rope.Rope(Texture2D texture, Vector2 position)'>29</a> | 58 | 1 :heavy_check_mark: | 0 | 9 | 18 / 12 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Rope.cs#L17' title='float Rope.CHARGE_DURATION'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Rope.cs#L14' title='float Rope.CHARGE_SPEED'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Rope.cs#L22' title='float Rope.chargeTimer'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
@@ -1443,16 +1443,16 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 <br>
 
 - The `Stalfos` contains 15 members.
-- 100 total lines of source code.
+- 105 total lines of source code.
 - Approximately 31 lines of executable code.
 - The highest cyclomatic complexity is 4 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L23' title='Stalfos.Stalfos(Texture2D texture, Vector2 position)'>23</a> | 60 | 1 :heavy_check_mark: | 0 | 6 | 16 / 11 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L23' title='Stalfos.Stalfos(Texture2D texture, Vector2 position)'>23</a> | 60 | 1 :heavy_check_mark: | 0 | 7 | 16 / 11 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L16' title='float Stalfos.DIRECTION_CHANGE_INTERVAL'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L15' title='float Stalfos.directionChangeTimer'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L83' title='void Stalfos.Draw(SpriteBatch spriteBatch, Vector2 location)'>83</a> | 72 | 3 :heavy_check_mark: | 0 | 7 | 25 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L83' title='void Stalfos.Draw(SpriteBatch spriteBatch, Vector2 location)'>83</a> | 73 | 3 :heavy_check_mark: | 0 | 7 | 30 / 4 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L21' title='float Stalfos.FLIP_INTERVAL'>21</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L20' title='float Stalfos.flipTimer'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Stalfos.cs#L40' title='Vector2 Stalfos.GetRandomCardinalDirection()'>40</a> | 80 | 1 :heavy_check_mark: | 0 | 3 | 14 / 2 |
@@ -1486,7 +1486,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Trap.cs#L31' title='Trap.Trap(Texture2D texture, Vector2 position)'>31</a> | 57 | 1 :heavy_check_mark: | 0 | 9 | 20 / 14 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Trap.cs#L31' title='Trap.Trap(Texture2D texture, Vector2 position)'>31</a> | 57 | 1 :heavy_check_mark: | 0 | 10 | 20 / 14 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Trap.cs#L15' title='float Trap.CHARGE_DISTANCE'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Trap.cs#L13' title='float Trap.CHARGE_SPEED'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Trap.cs#L24' title='Vector2 Trap.chargeDirection'>24</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -1558,7 +1558,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/WallMaster.cs#L29' title='WallMaster.WallMaster(Texture2D texture, Vector2 position)'>29</a> | 58 | 1 :heavy_check_mark: | 0 | 9 | 19 / 13 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/WallMaster.cs#L29' title='WallMaster.WallMaster(Texture2D texture, Vector2 position)'>29</a> | 58 | 1 :heavy_check_mark: | 0 | 10 | 19 / 13 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/WallMaster.cs#L135' title='void WallMaster.ChooseCreepDirection()'>135</a> | 88 | 1 :heavy_check_mark: | 0 | 3 | 13 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/WallMaster.cs#L13' title='float WallMaster.CREEP_SPEED'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/WallMaster.cs#L18' title='float WallMaster.CREEP_TIME_MAX'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
@@ -1628,7 +1628,7 @@ The `Sprint.Enemies.Concrete` namespace contains 18 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Zol.cs#L22' title='Zol.Zol(Texture2D texture, Vector2 position)'>22</a> | 60 | 1 :heavy_check_mark: | 0 | 8 | 17 / 11 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Zol.cs#L22' title='Zol.Zol(Texture2D texture, Vector2 position)'>22</a> | 60 | 1 :heavy_check_mark: | 0 | 9 | 17 / 11 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Zol.cs#L15' title='float Zol.AIR_TIME'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Zol.cs#L14' title='float Zol.BOUNCE_INTERVAL'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Zol.cs#L13' title='float Zol.BOUNCE_SPEED'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
@@ -2704,8 +2704,8 @@ The `Sprint` namespace contains 1 named types.
 The `Sprint.Sprites` namespace contains 6 named types.
 
 - 6 named types.
-- 550 total lines of source code.
-- Approximately 168 lines of executable code.
+- 563 total lines of source code.
+- Approximately 166 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 <details>
@@ -2717,15 +2717,15 @@ The `Sprint.Sprites` namespace contains 6 named types.
 <br>
 
 - The `AnimatedSprite` contains 18 members.
-- 90 total lines of source code.
-- Approximately 26 lines of executable code.
+- 96 total lines of source code.
+- Approximately 25 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L36' title='AnimatedSprite.AnimatedSprite(Texture2D texture, Vector2 position, int[] sheetXPositions, int sheetYPos, int spriteWidth, int spriteHeight, float frameTime)'>36</a> | 61 | 1 :heavy_check_mark: | 0 | 3 | 15 / 11 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L14' title='int AnimatedSprite.curFrame'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L73' title='void AnimatedSprite.Draw(SpriteBatch spriteBatch, Vector2 location)'>73</a> | 75 | 1 :heavy_check_mark: | 0 | 6 | 24 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L79' title='void AnimatedSprite.Draw(SpriteBatch spriteBatch, Vector2 location)'>79</a> | 80 | 1 :heavy_check_mark: | 0 | 6 | 24 / 2 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L17' title='float AnimatedSprite.elapsedTime'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L13' title='int AnimatedSprite.frameCount'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L19' title='int AnimatedSprite.frameHeight'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
@@ -2739,8 +2739,8 @@ The `Sprint.Sprites` namespace contains 6 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L20' title='int AnimatedSprite.sheetY'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L10' title='Texture2D AnimatedSprite.texture'>10</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L32' title='Texture2D AnimatedSprite.Texture'>32</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L62' title='void AnimatedSprite.Update(GameTime gameTime)'>62</a> | 73 | 2 :heavy_check_mark: | 0 | 2 | 10 / 4 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L52' title='void AnimatedSprite.UpdateRect()'>52</a> | 87 | 1 :heavy_check_mark: | 0 | 3 | 9 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L68' title='void AnimatedSprite.Update(GameTime gameTime)'>68</a> | 73 | 2 :heavy_check_mark: | 0 | 2 | 10 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/AnimatedSprite.cs#L52' title='void AnimatedSprite.UpdateRect()'>52</a> | 88 | 1 :heavy_check_mark: | 0 | 4 | 15 / 1 |
 
 <a href="#AnimatedSprite-class-diagram">:link: to `AnimatedSprite` class diagram</a>
 
@@ -2757,15 +2757,15 @@ The `Sprint.Sprites` namespace contains 6 named types.
 <br>
 
 - The `DirectionalAnimatedSprite` contains 20 members.
-- 102 total lines of source code.
-- Approximately 34 lines of executable code.
+- 109 total lines of source code.
+- Approximately 33 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L36' title='DirectionalAnimatedSprite.DirectionalAnimatedSprite(Texture2D texture, Vector2 position, int[] xPositions, int yPos, int spriteWidth, int spriteHeight, float frameTime, bool flipHorizontal = false)'>36</a> | 59 | 1 :heavy_check_mark: | 0 | 3 | 17 / 13 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L13' title='int DirectionalAnimatedSprite.curFrame'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L84' title='void DirectionalAnimatedSprite.Draw(SpriteBatch spriteBatch, Vector2 location)'>84</a> | 71 | 2 :heavy_check_mark: | 0 | 7 | 24 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L91' title='void DirectionalAnimatedSprite.Draw(SpriteBatch spriteBatch, Vector2 location)'>91</a> | 75 | 2 :heavy_check_mark: | 0 | 7 | 24 / 3 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L16' title='float DirectionalAnimatedSprite.elapsedTime'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L20' title='bool DirectionalAnimatedSprite.flipHorizontal'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L12' title='int DirectionalAnimatedSprite.frameCount'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
@@ -2780,9 +2780,9 @@ The `Sprint.Sprites` namespace contains 6 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L19' title='int DirectionalAnimatedSprite.sheetY'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L9' title='Texture2D DirectionalAnimatedSprite.texture'>9</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L32' title='Texture2D DirectionalAnimatedSprite.Texture'>32</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L73' title='void DirectionalAnimatedSprite.Update(GameTime gameTime)'>73</a> | 73 | 2 :heavy_check_mark: | 0 | 2 | 10 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L80' title='void DirectionalAnimatedSprite.Update(GameTime gameTime)'>80</a> | 73 | 2 :heavy_check_mark: | 0 | 2 | 10 / 4 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L54' title='void DirectionalAnimatedSprite.UpdateFrames(int[] xPositions, bool flipHorizontal)'>54</a> | 72 | 1 :heavy_check_mark: | 0 | 1 | 8 / 5 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L63' title='void DirectionalAnimatedSprite.UpdateRect()'>63</a> | 87 | 1 :heavy_check_mark: | 0 | 3 | 9 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/DirectionalAnimatedSprite.cs#L63' title='void DirectionalAnimatedSprite.UpdateRect()'>63</a> | 88 | 1 :heavy_check_mark: | 0 | 4 | 16 / 1 |
 
 <a href="#DirectionalAnimatedSprite-class-diagram">:link: to `DirectionalAnimatedSprite` class diagram</a>
 
