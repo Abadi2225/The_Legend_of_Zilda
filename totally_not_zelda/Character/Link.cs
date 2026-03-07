@@ -10,6 +10,7 @@ public class Link : ILink
     private const int BODY_SIZE = 32;
     private const double DAMAGED_DURATION = 0.5;
     private const double BLINK_INTERVAL = 0.10;
+    private const int MAX_HEALTH = 6;
 
     private readonly ISprite IdleUp;
     private readonly ISprite IdleDown;
@@ -36,12 +37,15 @@ public class Link : ILink
     private Vector2 move = Vector2.Zero;
     private Directions direction = Directions.Down;
     private double damagedTimer;
+    private int health;
     private bool isAttacking = false;
     private bool isUsingItem = false;
     private bool isDamaged = false;
     private bool isVisible = false;
 
     public Directions Facing => direction;
+    public int Health => health;
+    public int MaxHealth => MAX_HEALTH;
 
     public Rectangle Rect { get; private set; }
 
@@ -79,6 +83,7 @@ public class Link : ILink
 
         sprite = IdleDown;
         Position = position;
+        health = MAX_HEALTH;
     }
 
     public void Update(GameTime gameTime)
@@ -172,6 +177,14 @@ public class Link : ILink
             case Directions.Left:  AttackLeft.Reset();  sprite = AttackLeft;  break;
             case Directions.Right: AttackRight.Reset(); sprite = AttackRight; break;
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (isDamaged) return;
+
+        health = MathHelper.Clamp(health - amount, 0, MAX_HEALTH);
+        StartDamaged();
     }
 
     public void StartDamaged()
