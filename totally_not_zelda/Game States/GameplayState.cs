@@ -1,20 +1,14 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint;
-using Sprint.Block;
 using Sprint.Character;
 using Sprint.Collision;
 using Sprint.Commands;
-using Sprint.Enemies;
 using Sprint.Interfaces;
+using Sprint.Enemies;
 using Sprint.Item;
-using Sprint.Levels;
-using Sprint.Sprites;
 using System;
 using System.Collections.Generic;
-using Sprint.Collision;
 
 class GameplayState : IGameState
 {
@@ -77,6 +71,7 @@ class GameplayState : IGameState
 		enemyManager = new EnemyManager();
 		enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
 		collisionManager = new CollisionManager();
+		collisionManager.Add(new LinkEnemyCollision(link, enemyManager));
 
 		// Can make this generated in the enemyFactory if we want to create more enemies
 		enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
@@ -126,7 +121,7 @@ class GameplayState : IGameState
 		items.Update(gameTime);
 		enemyManager?.Update(gameTime);
 
-		collisionManager.allCollisions(link, currentLevel.Blocks, enemyManager);
+		collisionManager.HandleAll();
 
 		if (GameServices.KeyInput.IsKeyDown(Keys.W) || GameServices.KeyInput.IsKeyDown(Keys.Up)) link.SetMove(Directions.Up);
 		else if (GameServices.KeyInput.IsKeyDown(Keys.S) || GameServices.KeyInput.IsKeyDown(Keys.Down)) link.SetMove(Directions.Down);
