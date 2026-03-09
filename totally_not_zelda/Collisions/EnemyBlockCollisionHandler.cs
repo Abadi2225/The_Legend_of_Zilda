@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using Sprint.Enemies;
 using Sprint.Interfaces;
 using Sprint.Block;
 using System.Collections.Generic;
