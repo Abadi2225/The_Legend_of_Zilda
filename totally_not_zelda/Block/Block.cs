@@ -18,6 +18,7 @@ public class Block
 		sprite = new StaticSprite(texture, pos, sourceRect);
 		this.walkAble = walkable;
 		position = pos;
+		Rect = new Rectangle((int)pos.X, (int)pos.Y, tileWidth, tileWidth);
 	}
 
 	public void Draw(SpriteBatch spriteBatch)
