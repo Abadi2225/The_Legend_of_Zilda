@@ -9,6 +9,8 @@ using Sprint.Enemies;
 using Sprint.Item;
 using System;
 using System.Collections.Generic;
+using Sprint.Collisions;
+using Sprint.Levels;
 
 class GameplayState : IGameState
 {
@@ -49,8 +51,6 @@ class GameplayState : IGameState
             {Keys.R, new SetStateCommand(new StartScreenState())}
         };
 
-        // currentLevel = LevelBuilder.Build(levelLoader.Load("test_room"));
-        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel());
     }
 
     public void LoadContent()
@@ -68,12 +68,16 @@ class GameplayState : IGameState
         link = new Link(linkSheet, center);
 
         levelLoader = new LevelLoader();
+        // currentLevel = LevelBuilder.Build(levelLoader.Load("test_room"));
+        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel());
 
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
         collisionManager = new CollisionManager();
         collisionManager.Add(new LinkEnemyCollision(link, enemyManager));
         collisionManager.Add(new SwordEnemyCollision(link, enemyManager));
+        collisionManager.Add(new EnemyBlockCollisionHandler(enemyManager.enemyList, currentLevel.Blocks));
+        
 
         // Can make this generated in the enemyFactory if we want to create more enemies
         enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
