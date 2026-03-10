@@ -23,15 +23,14 @@ internal class SwordEnemyCollision : ICollisionHandler
         if (link.SwordRect == Rectangle.Empty)
             return;
 
-        var enemy = enemyManager.GetCurrentEnemy();
-
-        if (enemy is null || !enemy.IsAlive)
-            return;
-
-        if (!link.SwordRect.Intersects(enemy.Rect))
-            return;
-
-        enemy.TakeDamage(SWORD_DAMAGE);
-        link.RegisterSwordHit();
+        foreach (var enemy in enemyManager.enemyList)
+    {
+        if (!enemy.IsAlive) continue;
+        if (link.SwordRect.Intersects(enemy.Rect))
+        {
+            enemy.TakeDamage(SWORD_DAMAGE);
+            link.RegisterSwordHit();
+        }
+    }
     }
 }

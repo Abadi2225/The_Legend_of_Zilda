@@ -69,7 +69,7 @@ class GameplayState : IGameState
 
         levelLoader = new LevelLoader();
         // currentLevel = LevelBuilder.Build(levelLoader.Load("test_room"));
-        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel());
+        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
 
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
@@ -79,18 +79,10 @@ class GameplayState : IGameState
         collisionManager.Add(new EnemyBlockCollisionHandler(enemyManager.enemyList, currentLevel.Blocks));
         
 
-        // Can make this generated in the enemyFactory if we want to create more enemies
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Gel, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Stalfos, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Keese, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Aquamentus, center + new Vector2(-100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Goriya, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Rope, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Zol, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.WallMaster, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Trap, center + new Vector2(100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.Dodongo, center + new Vector2(-100, 0)));
-        enemyManager.AddEnemy(enemyFactory.CreateEnemy(EnemyType.OldMan, center + new Vector2(100, 0)));
+        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
+collisionManager.Add(new EnemyBlockCollisionHandler(
+    currentLevel.Enemies.enemyList, 
+    currentLevel.Blocks));
 
         // item test
         items = new ItemManager();
@@ -142,16 +134,24 @@ class GameplayState : IGameState
             {
                 binding.Value.Execute();
             }
-        }
+        } 
 
         MouseState mouse = Mouse.GetState();
         if (mouse.RightButton == ButtonState.Pressed)
         {
-            currentLevel = LevelBuilder.Build(levelLoader.CycleNext());
+            currentLevel = LevelBuilder.Build(levelLoader.CycleNext(), enemyFactory);
+            collisionManager = new CollisionManager();
+            collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+            collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
+            collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
         }
         if (mouse.LeftButton == ButtonState.Pressed)
         {
-            currentLevel = LevelBuilder.Build(levelLoader.CyclePrevious());
+            currentLevel = LevelBuilder.Build(levelLoader.CyclePrevious(), enemyFactory);
+            collisionManager = new CollisionManager();
+            collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+            collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
+            collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
         }
     }
 
@@ -159,7 +159,6 @@ class GameplayState : IGameState
     {
         currentLevel.Draw(spriteBatch);
         link.Draw(spriteBatch);
-        enemyManager?.Draw(spriteBatch);
         items.Draw(spriteBatch);
     }
 }
