@@ -65,6 +65,11 @@ namespace Sprint.Sprites
 			);
 		}
         
+        public void SetFrame(int frame)
+        {
+            curFrame = frame % frameCount;
+        }
+
         public void Update(GameTime gameTime)
         {
             elapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
