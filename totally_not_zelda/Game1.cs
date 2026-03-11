@@ -69,7 +69,7 @@ public class Game1 : Game, IGameActions
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
+        GraphicsDevice.Clear(Color.SkyBlue);
         
         spriteBatch.Begin(
             SpriteSortMode.Deferred,

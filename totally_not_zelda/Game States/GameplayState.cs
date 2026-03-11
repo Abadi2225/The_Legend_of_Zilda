@@ -24,6 +24,7 @@ class GameplayState : IGameState
     private Texture2D NPCSheet;
     private Texture2D tileSheet;
     private Texture2D dungeonBackground;
+    private Texture2D hudElements;
 
     private Link link;
     private Dictionary<Keys, ICommand> pressedKeys;
@@ -67,6 +68,7 @@ class GameplayState : IGameState
         NPCSheet = GameServices.Content.Load<Texture2D>("images/NPC");
         tileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
         dungeonBackground = GameServices.Content.Load<Texture2D>("images/ZeldaDungeonWalls");
+        hudElements = GameServices.Content.Load<Texture2D>("images/ZeldaUIElements");
         GameServices.TileSheet = tileSheet;
 
         Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
@@ -117,8 +119,10 @@ class GameplayState : IGameState
                         2
                         ));
         }
+
         uiManager = new UIManager();
         uiManager.AddElement(new DungeonWalls(dungeonBackground));
+        uiManager.AddElement(new HUDBar(hudElements));
     }
 
     public void Update(GameTime gameTime)
