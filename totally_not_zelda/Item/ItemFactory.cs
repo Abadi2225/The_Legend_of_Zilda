@@ -61,7 +61,7 @@ internal class ItemFactory
                 );
     }
 
-    public static StillItem CreateStillItem(StillType type, Vector2 pos, float rotation, float scale = 1)
+    public static StillItem CreateStillItem(StillType type, Vector2 pos, float rotation = 0, float scale = 1)
     {
         Rectangle mask = new Rectangle(0, 0, 0, 0);
         switch (type)
