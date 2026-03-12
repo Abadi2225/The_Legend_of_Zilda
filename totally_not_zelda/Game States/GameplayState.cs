@@ -33,6 +33,9 @@ class GameplayState : IGameState
     private Level currentLevel;
     private UIManager uiManager;
     private CollisionManager collisionManager;
+    // todo delete this
+    private bool lmbReleased = true;
+    private bool rmbReleased = true;
 
     public GameplayState()
     {
@@ -85,12 +88,12 @@ class GameplayState : IGameState
         collisionManager.Add(new LinkEnemyCollision(link, enemyManager));
         collisionManager.Add(new SwordEnemyCollision(link, enemyManager));
         collisionManager.Add(new EnemyBlockCollisionHandler(enemyManager.enemyList, currentLevel.Blocks));
-        
+
 
         currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
-collisionManager.Add(new EnemyBlockCollisionHandler(
-    currentLevel.Enemies.enemyList, 
-    currentLevel.Blocks));
+        collisionManager.Add(new EnemyBlockCollisionHandler(
+            currentLevel.Enemies.enemyList,
+            currentLevel.Blocks));
 
         // item test
         items = new ItemManager();
@@ -147,24 +150,34 @@ collisionManager.Add(new EnemyBlockCollisionHandler(
             {
                 binding.Value.Execute();
             }
-        } 
+        }
 
         MouseState mouse = Mouse.GetState();
-        if (mouse.RightButton == ButtonState.Pressed)
+        if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
         {
+            rmbReleased = false;
             currentLevel = LevelBuilder.Build(levelLoader.CycleNext(), enemyFactory);
             collisionManager = new CollisionManager();
             collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
         }
-        if (mouse.LeftButton == ButtonState.Pressed)
+        if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
         {
+            lmbReleased = false;
             currentLevel = LevelBuilder.Build(levelLoader.CyclePrevious(), enemyFactory);
             collisionManager = new CollisionManager();
             collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
+        }
+        if (mouse.RightButton == ButtonState.Released)
+        {
+            rmbReleased = true;
+        }
+        if (mouse.LeftButton == ButtonState.Released)
+        {
+            lmbReleased = true;
         }
     }
 
