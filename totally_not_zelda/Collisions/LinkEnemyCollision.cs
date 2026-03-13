@@ -19,7 +19,7 @@ internal class LinkEnemyCollision : ICollisionHandler
     {   //Check collision between Link and each enemy.
         foreach (var enemy in enemyManager.enemyList)
         {
-            if (!enemy.IsAlive) return;
+            if (!enemy.IsAlive) continue;
             if (link.Rect.Intersects(enemy.Rect))
                 link.TakeDamage(enemy.Damage);
         }

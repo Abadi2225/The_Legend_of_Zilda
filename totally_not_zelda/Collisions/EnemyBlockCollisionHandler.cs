@@ -23,7 +23,7 @@ namespace Sprint.Collisions
                 if (!enemy.IsAlive) continue;
                 foreach (var block in blockManager.blocksList)
                 {
-                    if (!block.walkAble) continue;
+                    if (block.walkAble) continue;
                     if (enemy.Rect.Intersects(block.Rect))
                         ResolveCollision(enemy, block);
                 }
