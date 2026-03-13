@@ -8,13 +8,13 @@ namespace Sprint.Collision;
 internal class LinkItemCollision : ICollisionHandler
 {
     private readonly ILink link;
-    private readonly ItemManager itemManager;
+    private readonly Inventory inventory;
     private readonly List<AbstractItem> worldItems;
 
-    internal LinkItemCollision(ILink link, ItemManager itemManager, List<AbstractItem> worldItems)
+    internal LinkItemCollision(ILink link, Inventory inventory, List<AbstractItem> worldItems)
     {
         this.link = link;
-        this.itemManager = itemManager;
+        this.inventory = inventory;
         this.worldItems = worldItems;
     }
 
@@ -48,7 +48,7 @@ internal class LinkItemCollision : ICollisionHandler
         }
 
         // All other items go into the inventory
-        itemManager.Add(item);
+        inventory.Add(item);
 
         // Special items also trigger the pickup animation
         if (item is Boomerang

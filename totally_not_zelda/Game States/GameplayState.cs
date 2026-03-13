@@ -26,6 +26,7 @@ class GameplayState : IGameState
     private Link link;
     private Dictionary<Keys, ICommand> pressedKeys;
     private ItemManager items;
+    private Inventory inventory;
     private EnemyManager enemyManager;
     private EnemyFactory enemyFactory;
     private LevelLoader levelLoader;
@@ -49,11 +50,11 @@ class GameplayState : IGameState
             {Keys.Q, new QuitCommand()},
             {Keys.O, new CycleEnemyCommand(enemyManager, true)},
             {Keys.P, new CycleEnemyCommand(enemyManager, false)},
-            {Keys.I, new CycleItemCommand(items, true)},
-            {Keys.U, new CycleItemCommand(items, false)},
-            {Keys.D1, new UseItemCommand(items, link, 0)},
-            {Keys.D2, new UseItemCommand(items, link, 1)},
-            {Keys.D3, new UseItemCommand(items, link, 2)},
+            {Keys.I, new CycleItemCommand(inventory, true)},
+            {Keys.U, new CycleItemCommand(inventory, false)},
+            {Keys.D1, new UseItemCommand(items, inventory, link, 0)},
+            {Keys.D2, new UseItemCommand(items, inventory, link, 1)},
+            {Keys.D3, new UseItemCommand(items, inventory, link, 2)},
             {Keys.R, new SetStateCommand(new StartScreenState())}
         };
 
@@ -84,6 +85,7 @@ class GameplayState : IGameState
         currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
 
         items = new ItemManager();
+        inventory = new Inventory();
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
         collisionManager = new CollisionManager();
@@ -95,12 +97,12 @@ class GameplayState : IGameState
         collisionManager.Add(new EnemyBlockCollisionHandler(
             currentLevel.Enemies.enemyList,
             currentLevel.Blocks));
-        collisionManager.Add(new LinkItemCollision(link, items, currentLevel.WorldItems));
+        collisionManager.Add(new LinkItemCollision(link, inventory, currentLevel.WorldItems));
 
         // inventory items — D1=Boomerang, D2=Bow, D3=Bomb
-        items.Add(ItemFactory.CreateBoomerang(Vector2.Zero, Vector2.Zero, maxDistance: 160f));
-        items.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bow,  Vector2.Zero, 2));
-        items.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bomb, Vector2.Zero, 2));
+        inventory.Add(ItemFactory.CreateBoomerang(Vector2.Zero, Vector2.Zero, maxDistance: 160f));
+        inventory.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bow,  Vector2.Zero, 2));
+        inventory.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bomb, Vector2.Zero, 2));
 
         // world item test — walk over these to pick them up
         currentLevel.WorldItems.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Heart,      new Vector2(200, 200), 2));
@@ -119,6 +121,7 @@ class GameplayState : IGameState
         uiManager.Update(gameTime);
         currentLevel.Update(gameTime);
         link.Update(gameTime);
+        inventory.Update(gameTime);
         items.Update(gameTime);
         enemyManager?.Update(gameTime);
 
@@ -173,6 +176,7 @@ class GameplayState : IGameState
         uiManager.Draw(spriteBatch);
         currentLevel.Draw(spriteBatch);
         link.Draw(spriteBatch);
+        inventory.Draw(spriteBatch);
         items.Draw(spriteBatch);
     }
 }

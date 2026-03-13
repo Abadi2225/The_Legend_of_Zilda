@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
 using Sprint.Character;
@@ -10,25 +9,17 @@ namespace Sprint.Item;
 
 public class ItemManager
 {
-    private List<IItem> Inventory { get; }
-    public int ActiveItem { get; set; }
-    private List<AbstractItem> spawnedItems = new List<AbstractItem>();
+    private List<AbstractItem> spawnedItems = new();
 
-    public ItemManager()
+    public void UseItem(ILink link, Inventory inventory, int slot)
     {
-        Inventory = new List<IItem>();
-    }
+        if (slot < 0 || slot >= inventory.Count) return;
 
-    public void UseItem(ILink link, int slot)
-    {
-        if (slot < 0 || slot >= Inventory.Count)
-        {
-            return;
-        }
         link.StartUseItem();
         Vector2 pos = link.Position;
         Directions facing = link.Facing;
-        IItem used = Inventory[slot];
+        IItem used = inventory.Get(slot);
+
         if (used is Boomerang)
         {
             float velocity = 5;
@@ -45,11 +36,11 @@ public class ItemManager
             float maxDistance = 160;
             float arrowRotation = facing switch
             {
-                Directions.Up => 0f,
-                Directions.Down => MathF.PI,
+                Directions.Up    => 0f,
+                Directions.Down  => MathF.PI,
                 Directions.Right => MathF.PI / 2f,
-                Directions.Left => -MathF.PI / 2f,
-                _ => 0f
+                Directions.Left  => -MathF.PI / 2f,
+                _                => 0f
             };
             SpawnItem(ItemFactory.CreateArrow(
                         pos,
@@ -71,56 +62,18 @@ public class ItemManager
         }
     }
 
-    internal void Add(IItem item)
-    {
-        Inventory.Add(item);
-    }
+    internal void SpawnItem(AbstractItem item) => spawnedItems.Add(item);
 
-    internal void SpawnItem(AbstractItem item)
+    public void Update(GameTime time)
     {
-        spawnedItems.Add(item);
+        foreach (AbstractItem item in spawnedItems)
+            item.Update(time);
+        spawnedItems.RemoveAll(item => item.IsFinished);
     }
 
     public void Draw(SpriteBatch sb)
     {
-        if (Inventory.Count > 0)
-            Inventory[ActiveItem].Draw(sb, Vector2.Zero);
         foreach (AbstractItem item in spawnedItems)
-        {
             item.Draw(sb, Vector2.Zero);
-        }
-    }
-
-    public void Update(GameTime time)
-    {
-        foreach (IItem item in Inventory)
-        {
-            item.Update(time);
-        }
-        foreach (AbstractItem item in spawnedItems)
-        {
-            item.Update(time);
-        }
-        spawnedItems.RemoveAll(item => item.IsFinished);
-    }
-
-    internal IItem GetActiveItem()
-    {
-        return Inventory[ActiveItem];
-    }
-
-    public void CycleNext()
-    {
-        if (ActiveItem < Inventory.Count - 1)
-        {
-            ActiveItem++;
-        }
-    }
-    public void CyclePrevious()
-    {
-        if (ActiveItem > 0)
-        {
-            ActiveItem--;
-        }
     }
 }
