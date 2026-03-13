@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 18 namespaces.
 - 101 named types.
-- 5,264 total lines of source code.
-- Approximately 1,601 lines of executable code.
+- 5,277 total lines of source code.
+- Approximately 1,615 lines of executable code.
 - The highest cyclomatic complexity is 20 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 7 named types.
 
 - 7 named types.
-- 391 total lines of source code.
-- Approximately 169 lines of executable code.
+- 406 total lines of source code.
+- Approximately 184 lines of executable code.
 - The highest cyclomatic complexity is 20 :exploding_head:.
 
 <details>
@@ -62,8 +62,8 @@ The `<global namespace>` namespace contains 7 named types.
 <br>
 
 - The `GameplayState` contains 27 members.
-- 188 total lines of source code.
-- Approximately 101 lines of executable code.
+- 203 total lines of source code.
+- Approximately 116 lines of executable code.
 - The highest cyclomatic complexity is 20 :exploding_head:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -72,7 +72,7 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L19' title='Texture2D GameplayState.BossesSheet'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L35' title='CollisionManager GameplayState.collisionManager'>35</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L33' title='Level GameplayState.currentLevel'>33</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L192' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>192</a> | 68 | 1 :heavy_check_mark: | 0 | 7 | 10 / 7 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L207' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>207</a> | 68 | 1 :heavy_check_mark: | 0 | 7 | 10 / 7 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L23' title='Texture2D GameplayState.dungeonBackground'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L39' title='DungeonWalls GameplayState.dungeonWalls'>39</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L20' title='Texture2D GameplayState.dustSheet'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -88,13 +88,13 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L26' title='Link GameplayState.link'>26</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L17' title='Texture2D GameplayState.linkSheet'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L37' title='bool GameplayState.lmbReleased'>37</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L64' title='void GameplayState.LoadContent()'>64</a> | 40 | 1 :heavy_check_mark: | 0 | 40 | 60 / 45 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L64' title='void GameplayState.LoadContent()'>64</a> | 36 | 1 :heavy_check_mark: | 0 | 42 | 75 / 60 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L21' title='Texture2D GameplayState.NPCSheet'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L27' title='Dictionary<Keys, ICommand> GameplayState.pressedKeys'>27</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L38' title='bool GameplayState.rmbReleased'>38</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L22' title='Texture2D GameplayState.tileSheet'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L34' title='UIManager GameplayState.uiManager'>34</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L125' title='void GameplayState.Update(GameTime gameTime)'>125</a> | 38 | 20 :exploding_head: | 0 | 36 | 66 / 46 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L140' title='void GameplayState.Update(GameTime gameTime)'>140</a> | 38 | 20 :exploding_head: | 0 | 36 | 66 / 46 |
 
 <a href="#GameplayState-class-diagram">:link: to `GameplayState` class diagram</a>
 
@@ -678,7 +678,7 @@ The `Sprint.Character` namespace contains 10 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L35' title='UseItem Link.PickUpItem'>35</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L178' title='void Link.PlayPickupAnimation()'>178</a> | 71 | 4 :heavy_check_mark: | 0 | 4 | 11 / 5 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L38' title='Vector2 Link.position'>38</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L77' title='Vector2 Link.Position'>77</a> | 91 | 2 :heavy_check_mark: | 0 | 3 | 9 / 3 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L77' title='Vector2 Link.Position'>77</a> | 90 | 2 :heavy_check_mark: | 0 | 3 | 9 / 3 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L54' title='Rectangle Link.Rect'>54</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L75' title='void Link.RegisterSwordHit()'>75</a> | 96 | 1 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/Link.cs#L43' title='int Link.rubies'>43</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
@@ -2987,8 +2987,8 @@ The `Sprint` namespace contains 1 named types.
 The `Sprint.Sprites` namespace contains 8 named types.
 
 - 8 named types.
-- 713 total lines of source code.
-- Approximately 217 lines of executable code.
+- 711 total lines of source code.
+- Approximately 216 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 <details>
@@ -3210,15 +3210,15 @@ The `Sprint.Sprites` namespace contains 8 named types.
 <br>
 
 - The `ProjectileSprite` contains 15 members.
-- 63 total lines of source code.
-- Approximately 19 lines of executable code.
+- 61 total lines of source code.
+- Approximately 18 lines of executable code.
 - The highest cyclomatic complexity is 3 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L24' title='ProjectileSprite.ProjectileSprite(Texture2D texture, Rectangle sourceRect, Vector2 pos, Vector2 vel, float maxDistance, float rotation, Vector2 origin, float scale)'>24</a> | 65 | 1 :heavy_check_mark: | 0 | 3 | 11 / 8 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L19' title='float ProjectileSprite.distanceTraveled'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L54' title='void ProjectileSprite.Draw(SpriteBatch sb, Vector2 unused)'>54</a> | 81 | 2 :heavy_check_mark: | 0 | 5 | 16 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L54' title='void ProjectileSprite.Draw(SpriteBatch sb, Vector2 unused)'>54</a> | 88 | 1 :heavy_check_mark: | 0 | 5 | 14 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L20' title='bool ProjectileSprite.isMoving'>20</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L14' title='float ProjectileSprite.maxDistance'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sprites/ProjectileSprite.cs#L16' title='Vector2 ProjectileSprite.origin'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
