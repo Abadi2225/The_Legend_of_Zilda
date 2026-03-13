@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Sprint.UI;
 
-class DungeonWalls : IUIElement
+public class DungeonWalls : IUIElement
 {
     private Texture2D texture;
     private float scale;
@@ -27,9 +27,9 @@ class DungeonWalls : IUIElement
     private const int RIGHT_DOOR_BOTTOM = 104;
 
     private const int CENTER_TOP = 31;
-    private const int CENTER_BOTTOM = 144;
-    private const int CENTER_LEFT = 31;
-    private const int CENTER_RIGHT = 224;
+	private const int CENTER_BOTTOM = 144;
+	private const int CENTER_LEFT = 31;
+	private const int CENTER_RIGHT = 224;
 
     private const int SHEET_WIDTH = 256;
     private const int SHEET_HEIGHT = 176;
@@ -72,7 +72,15 @@ class DungeonWalls : IUIElement
         DrawSection(spriteBatch, BOTTOM_DOOR_RIGHT, BOTTOM_DOOR_TOP, SHEET_WIDTH - BOTTOM_DOOR_RIGHT, SHEET_HEIGHT - BOTTOM_DOOR_TOP);
     }
 
-    private void DrawSection(SpriteBatch spriteBatch, int srcX, int srcY, int srcW, int srcH)
+	public Rectangle InnerBounds =>
+    new Rectangle(
+        (int)(CENTER_LEFT * scale),
+        (int)((CENTER_TOP * scale) + hudHeight),
+        (int)((CENTER_RIGHT - CENTER_LEFT) * scale),
+        (int)((CENTER_BOTTOM - CENTER_TOP) * scale)
+	);
+
+	private void DrawSection(SpriteBatch spriteBatch, int srcX, int srcY, int srcW, int srcH)
     {
         Rectangle source = new Rectangle(srcX, srcY, srcW, srcH);
         Vector2 dest = new Vector2(srcX * scale, (srcY * scale) + hudHeight);

@@ -84,14 +84,14 @@ class GameplayState : IGameState
         currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
 
         collisionManager = new CollisionManager();
-        collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+		collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
         collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
         collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
         collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
 
 
-        // item test
-        items = new ItemManager();
+		// item test
+		items = new ItemManager();
         items.Add(ItemFactory.CreateBoomerang(          // slot 0 - D1
                     new Vector2(50, 50),
                     new Vector2(5, 0),
@@ -122,7 +122,9 @@ class GameplayState : IGameState
         uiManager.AddElement(new HUDBar(hudElements));
         dungeonWalls = uiManager.GetElement<DungeonWalls>();
         uiManager.RemoveElement(dungeonWalls); // drawn manually
-    }
+		collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
+		collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
+	}
 
     public void Update(GameTime gameTime)
     {
@@ -154,10 +156,12 @@ class GameplayState : IGameState
             rmbReleased = false;
             currentLevel = LevelBuilder.Build(levelLoader.CycleNext(), enemyFactory);
             collisionManager = new CollisionManager();
-            collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+			collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
+			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
+			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
 
 		}
         if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
@@ -165,10 +169,12 @@ class GameplayState : IGameState
             lmbReleased = false;
             currentLevel = LevelBuilder.Build(levelLoader.CyclePrevious(), enemyFactory);
             collisionManager = new CollisionManager();
-            collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+			collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
+			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
+			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
 		}
         if (mouse.RightButton == ButtonState.Released)
         {
