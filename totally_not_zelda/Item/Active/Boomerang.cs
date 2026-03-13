@@ -5,7 +5,7 @@ using Sprint.Sprites;
 
 namespace Sprint.Item;
 
-internal class Boomerang : AbstractItem
+public class Boomerang : AbstractItem
 {
     private const int HITBOX_SIZE = 14;
 

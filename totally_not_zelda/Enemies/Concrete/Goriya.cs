@@ -31,6 +31,7 @@ namespace Sprint.Enemies.Concrete
         const float FLIP_INTERVAL = 0.075f; //Time between flips for up/down walk
         private readonly Random random;
         private Boomerang activeBoomerang;
+        public Boomerang ActiveBoomerang => activeBoomerang;
         private readonly ContentManager contentManager;
 
         // Sprite positions for each direction
