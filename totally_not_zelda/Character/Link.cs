@@ -32,6 +32,7 @@ public class Link : ILink
     private readonly UseItem UseItemDown;
     private readonly UseItem UseItemLeft;
     private readonly UseItem UseItemRight;
+    private readonly UseItem PickUpItem;
 
     private ISprite sprite;
     private Vector2 position;
@@ -172,8 +173,6 @@ public class Link : ILink
         }
     }
 
-    // TODO: Add item collision. When Link collides with a "special" item,
-    // call PlayPickupAnimation() before adding the item to inventory.
     public void PlayPickupAnimation()
     {
         if (isUsingItem || isAttacking || isDamaged)
@@ -182,28 +181,8 @@ public class Link : ILink
         isUsingItem = true;
         move = Vector2.Zero;
 
-        switch (direction)
-        {
-            case Directions.Up:
-                UseItemUp.Reset();
-                sprite = UseItemUp;
-                break;
-
-            case Directions.Down:
-                UseItemDown.Reset();
-                sprite = UseItemDown;
-                break;
-
-            case Directions.Left:
-                UseItemLeft.Reset();
-                sprite = UseItemLeft;
-                break;
-
-            case Directions.Right:
-                UseItemRight.Reset();
-                sprite = UseItemRight;
-                break;
-        }
+        PickUpItem.Reset();
+        sprite = PickUpItem;
     }
 
     public void SetMove(Directions dir)
