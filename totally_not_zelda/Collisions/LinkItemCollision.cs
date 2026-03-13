@@ -28,8 +28,8 @@ internal class LinkItemCollision : ICollisionHandler
 
             if (linkRect.Intersects(item.Rect))
             {
-                HandlePickup(item);
                 worldItems.RemoveAt(i);
+                HandlePickup(item);
             }
         }
     }
