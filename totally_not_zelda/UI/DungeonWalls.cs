@@ -13,12 +13,12 @@ class DungeonWalls : IUIElement
     public DungeonWalls(Texture2D backgroundTexture)
     {
         sourceRect = new Rectangle(0, 0, 256, 176);
-        background = new StaticSprite(backgroundTexture, new Vector2(0, (224-176)*GameServices.ScaleFactor), sourceRect);
+        background = new StaticSprite(backgroundTexture, new Vector2(0, 0), sourceRect);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        background.Draw(spriteBatch, new Vector2(sourceRect.Width / 2, (224-176)*GameServices.ScaleFactor+sourceRect.Height / 2));
+        background.Draw(spriteBatch, new Vector2(sourceRect.Width / 2, (48 * GameServices.ScaleFactor) + sourceRect.Height / 2));
     }
 
     public void Update(GameTime gameTime)

@@ -22,7 +22,7 @@ class HUDBar : IUIElement
 
     public HUDBar(Texture2D backgroundTexture)
     {
-        sourceRect = new Rectangle(258, 11, 256, 56);
+        sourceRect = new Rectangle(258, 19, 256, 48);
         background = new StaticSprite(backgroundTexture, new Vector2(0, 0), sourceRect);
     }
 
