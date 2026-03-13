@@ -9,22 +9,22 @@ class DungeonWalls : IUIElement
     private Texture2D texture;
     private float scale;
 
-    // Door and center cutout coordinates (in source pixel space)
-    private const int TOP_DOOR_LEFT = 122;
-    private const int TOP_DOOR_RIGHT = 143;
+    // Door and center cutout coordinates
+    private const int TOP_DOOR_LEFT = 112;
+    private const int TOP_DOOR_RIGHT = 144;
     private const int TOP_DOOR_BOTTOM = 31;
 
     private const int LEFT_DOOR_TOP = 72;
-    private const int LEFT_DOOR_BOTTOM = 103;
+    private const int LEFT_DOOR_BOTTOM = 104;
     private const int LEFT_DOOR_RIGHT = 31;
 
-    private const int BOTTOM_DOOR_LEFT = 122;
-    private const int BOTTOM_DOOR_RIGHT = 143;
+    private const int BOTTOM_DOOR_LEFT = 112;
+    private const int BOTTOM_DOOR_RIGHT = 144;
     private const int BOTTOM_DOOR_TOP = 144;
 
     private const int RIGHT_DOOR_LEFT = 224;
     private const int RIGHT_DOOR_TOP = 72;
-    private const int RIGHT_DOOR_BOTTOM = 103;
+    private const int RIGHT_DOOR_BOTTOM = 104;
 
     private const int CENTER_TOP = 31;
     private const int CENTER_BOTTOM = 144;
