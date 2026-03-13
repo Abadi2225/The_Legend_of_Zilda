@@ -25,7 +25,6 @@ A 2D action-adventure game inspired by *The Legend of Zelda*, built in C# using 
 | `1` | Use item in slot 1 (Boomerang) |
 | `2` | Use item in slot 2 (Bow / Arrow) |
 | `3` | Use item in slot 3 (Bomb) |
-| `I` / `U` | Cycle to next / previous item in inventory |
 
 ### Navigation
 | Key(s) | Action |
@@ -36,8 +35,6 @@ A 2D action-adventure game inspired by *The Legend of Zelda*, built in C# using 
 ### Demo Controls
 | Key(s) | Action |
 |--------|--------|
-| `P` / `O` | Cycle to next / previous enemy |
-| `Y` / `T` | Cycle to next / previous block type |
 | `E` | Trigger damage animation on Link |
 | `Enter` | Start game from title screen |
 | `Q` | Quit game |
@@ -48,7 +45,7 @@ A 2D action-adventure game inspired by *The Legend of Zelda*, built in C# using 
 ## Sprint 3 — New Features
 
 ### Inventory System
-Link now has an inventory that holds up to three usable items. Items can be cycled with `I` / `U` and used with `1`, `2`, `3`.
+Link now has an inventory that holds up to three usable items. Items can be used with `1`, `2`, `3`.
 
 ### Item Pickups
 Collectible items are placed in the world. Walking over them triggers a pickup animation and applies their effect immediately:
@@ -69,7 +66,7 @@ Throwable/usable items now deal damage to enemies:
 Enemy-fired projectiles now hurt Link:
 | Source | Projectile | Damage |
 |--------|-----------|--------|
-| **Aquamentus** | Fireball (triangle burst, 3 shots) | 1 |
+| **Aquamentus** | Fireball (3 shots) | 1 |
 | **Goriya** | Boomerang | 1 |
 
 ### Collision System
@@ -99,7 +96,7 @@ Six collision handlers now run every frame:
 
 ## Known Bugs
 
-*(To be filled in.)*
+*TODO*
 
 ---
 
