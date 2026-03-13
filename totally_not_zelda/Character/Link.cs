@@ -112,6 +112,8 @@ public class Link : ILink
         UseItemLeft  = LinkFactory.UseItemLeft(texture, FinishUseItem);
         UseItemRight = LinkFactory.UseItemRight(texture, FinishUseItem);
 
+        PickUpItem = LinkFactory.PickUpItem(texture, FinishUseItem);
+
         sprite = IdleDown;
         Position = position;
         health = MAX_HEALTH;
