@@ -124,6 +124,7 @@ class GameplayState : IGameState
         uiManager.RemoveElement(dungeonWalls); // drawn manually
 		collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
 		collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
+        collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
 	}
 
     public void Update(GameTime gameTime)
@@ -162,6 +163,7 @@ class GameplayState : IGameState
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
 			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
 			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
+			collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
 
 		}
         if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
@@ -175,6 +177,7 @@ class GameplayState : IGameState
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
 			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
 			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
+			collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
 		}
         if (mouse.RightButton == ButtonState.Released)
         {
