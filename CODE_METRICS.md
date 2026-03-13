@@ -12,9 +12,9 @@ This file is dynamically maintained by a bot, *please do not* edit this by hand.
 The *Sprint.csproj* project file contains:
 
 - 18 namespaces.
-- 97 named types.
-- 4,987 total lines of source code.
-- Approximately 1,455 lines of executable code.
+- 98 named types.
+- 5,033 total lines of source code.
+- Approximately 1,463 lines of executable code.
 - The highest cyclomatic complexity is 20 :exploding_head:.
 
 <details>
@@ -3192,17 +3192,17 @@ The `Sprint.Sprites` namespace contains 6 named types.
 <details>
 <summary>
   <strong id="sprint-ui">
-    Sprint.UI :heavy_check_mark:
+    Sprint.UI :x:
   </strong>
 </summary>
 <br>
 
-The `Sprint.UI` namespace contains 5 named types.
+The `Sprint.UI` namespace contains 6 named types.
 
-- 5 named types.
-- 183 total lines of source code.
-- Approximately 33 lines of executable code.
-- The highest cyclomatic complexity is 2 :heavy_check_mark:.
+- 6 named types.
+- 229 total lines of source code.
+- Approximately 41 lines of executable code.
+- The highest cyclomatic complexity is 13 :x:.
 
 <details>
 <summary>
@@ -3260,21 +3260,51 @@ The `Sprint.UI` namespace contains 5 named types.
 </summary>
 <br>
 
-- The `HUDBar` contains 6 members.
-- 28 total lines of source code.
-- Approximately 5 lines of executable code.
+- The `HUDBar` contains 7 members.
+- 32 total lines of source code.
+- Approximately 7 lines of executable code.
 - The highest cyclomatic complexity is 1 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L21' title='HUDBar.HUDBar(Texture2D backgroundTexture)'>21</a> | 81 | 1 :heavy_check_mark: | 0 | 4 | 5 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L23' title='HUDBar.HUDBar(Texture2D backgroundTexture)'>23</a> | 75 | 1 :heavy_check_mark: | 0 | 7 | 6 / 3 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L16' title='StaticSprite HUDBar.background'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L27' title='void HUDBar.Draw(SpriteBatch spriteBatch)'>27</a> | 81 | 1 :heavy_check_mark: | 0 | 6 | 6 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L30' title='void HUDBar.Draw(SpriteBatch spriteBatch)'>30</a> | 76 | 1 :heavy_check_mark: | 0 | 7 | 7 / 3 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L19' title='HeartDisplay HUDBar.hearts'>19</a> | 86 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L21' title='NumberDisplay HUDBar.rupeeCount'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L17' title='Rectangle HUDBar.sourceRect'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L34' title='void HUDBar.Update(GameTime gameTime)'>34</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 3 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/HUDBar.cs#L38' title='void HUDBar.Update(GameTime gameTime)'>38</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 3 / 0 |
 
 <a href="#HUDBar-class-diagram">:link: to `HUDBar` class diagram</a>
+
+<a href="#sprint-ui">:top: back to Sprint.UI</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="numberdisplay">
+    NumberDisplay :x:
+  </strong>
+</summary>
+<br>
+
+- The `NumberDisplay` contains 7 members.
+- 39 total lines of source code.
+- Approximately 6 lines of executable code.
+- The highest cyclomatic complexity is 13 :x:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L19' title='NumberDisplay.NumberDisplay(Texture2D backgroundTexture, Vector2 pos, int id)'>19</a> | 66 | 13 :x: | 0 | 4 | 21 / 4 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L13' title='StaticSprite NumberDisplay.background'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L17' title='int NumberDisplay.baseX'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L41' title='void NumberDisplay.Draw(SpriteBatch spriteBatch)'>41</a> | 88 | 1 :heavy_check_mark: | 0 | 5 | 4 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L15' title='Vector2 NumberDisplay.pos'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L14' title='Rectangle NumberDisplay.sourceRect'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../UI/Hud/NumberDisplay.cs#L46' title='void NumberDisplay.Update(GameTime gameTime)'>46</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 3 / 0 |
+
+<a href="#NumberDisplay-class-diagram">:link: to `NumberDisplay` class diagram</a>
 
 <a href="#sprint-ui">:top: back to Sprint.UI</a>
 
@@ -5320,7 +5350,27 @@ class HUDBar{
     -StaticSprite background
     -Rectangle sourceRect
     -HeartDisplay hearts
+    -NumberDisplay rupeeCount
     +.ctor(Texture2D backgroundTexture) HUDBar
+    +Draw(SpriteBatch spriteBatch) void
+    +Update(GameTime gameTime) void
+}
+
+```
+
+<div id="NumberDisplay-class-diagram"></div>
+
+##### `NumberDisplay` class diagram
+
+```mermaid
+classDiagram
+IUIElement <|-- NumberDisplay : implements
+class NumberDisplay{
+    -StaticSprite background
+    -Rectangle sourceRect
+    -Vector2 pos
+    -int baseX
+    +.ctor(Texture2D backgroundTexture, Vector2 pos, int id) NumberDisplay
     +Draw(SpriteBatch spriteBatch) void
     +Update(GameTime gameTime) void
 }
