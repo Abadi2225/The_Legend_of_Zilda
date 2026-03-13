@@ -51,11 +51,11 @@ class GameplayState : IGameState
             {Keys.Q, new QuitCommand()},
         //    {Keys.O, new CycleEnemyCommand(enemyManager, true)},
         //    {Keys.P, new CycleEnemyCommand(enemyManager, false)}, //commented out since cycling enemies is obsolete
-            {Keys.I, new CycleItemCommand(items, true)},
-            {Keys.U, new CycleItemCommand(items, false)},
-            {Keys.D1, new UseItemCommand(items, link, 0)},
-            {Keys.D2, new UseItemCommand(items, link, 1)},
-            {Keys.D3, new UseItemCommand(items, link, 2)},
+            {Keys.I, new CycleItemCommand(inventory, true)},
+            {Keys.U, new CycleItemCommand(inventory, false)},
+            {Keys.D1, new UseItemCommand(items, inventory, link, 0)},
+            {Keys.D2, new UseItemCommand(items, inventory, link, 1)},
+            {Keys.D3, new UseItemCommand(items, inventory, link, 2)},
             {Keys.R, new SetStateCommand(new StartScreenState())}
         };
 
@@ -157,7 +157,6 @@ class GameplayState : IGameState
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
             collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
             collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
-        }
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
 			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
 			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
@@ -173,7 +172,6 @@ class GameplayState : IGameState
             collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
             collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
             collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
-        }
 			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
 			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
 			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
