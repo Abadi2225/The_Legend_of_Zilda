@@ -9,4 +9,7 @@ public class LevelData
     public int height { get; set; }
 
     public List<LayerData> layers { get; set; }
+
+    // Door connections: key = "north"/"south"/"east"/"west", value = room name
+    public Dictionary<string, string> doors { get; set; }
 }

@@ -80,6 +80,12 @@ public class DungeonWalls : IUIElement
         (int)((CENTER_BOTTOM - CENTER_TOP) * scale)
 	);
 
+    // Door opening ranges in screen coordinates
+    public int TopDoorLeft    => (int)(TOP_DOOR_LEFT * scale);
+    public int TopDoorRight   => (int)(TOP_DOOR_RIGHT * scale);
+    public int SideDoorTop    => (int)(LEFT_DOOR_TOP * scale) + (int)hudHeight;
+    public int SideDoorBottom => (int)(LEFT_DOOR_BOTTOM * scale) + (int)hudHeight;
+
 	private void DrawSection(SpriteBatch spriteBatch, int srcX, int srcY, int srcW, int srcH)
     {
         Rectangle source = new Rectangle(srcX, srcY, srcW, srcH);

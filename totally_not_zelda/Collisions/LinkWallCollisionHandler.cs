@@ -1,50 +1,65 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Sprint.Interfaces;
-using Sprint.Block;
-using System.Collections.Generic;
 using Sprint.UI;
-using Sprint.Character;
+using System;
 
 namespace Sprint.Collisions
 {
 	public class LinkWallCollisionHandler : ICollisionHandler
 	{
-
 		private readonly ILink link;
 		private readonly DungeonWalls dungeonWalls;
+		private readonly Action<string> onDoorExit;
 
-		public LinkWallCollisionHandler(ILink link, DungeonWalls dungeonWalls)
+		public LinkWallCollisionHandler(ILink link, DungeonWalls dungeonWalls, Action<string> onDoorExit = null)
 		{
 			this.link = link;
 			this.dungeonWalls = dungeonWalls;
+			this.onDoorExit = onDoorExit;
 		}
 
 		public void Handle()
 		{
-			ResolveCollision(link, dungeonWalls);
+			ResolveCollision(link, dungeonWalls, onDoorExit);
 		}
-		private static void ResolveCollision(ILink link, DungeonWalls dungeonWalls)
+
+		private static void ResolveCollision(ILink link, DungeonWalls dungeonWalls, Action<string> onDoorExit)
 		{
+			int spriteSize = link.Rect.Width; // 48 — full sprite width (unchanged by lower-half rect)
+			int centerX = (int)link.Position.X + spriteSize / 2;
+			int centerY = (int)link.Position.Y + spriteSize / 2;
+
+			bool inTopDoorX  = centerX >= dungeonWalls.TopDoorLeft  && centerX <= dungeonWalls.TopDoorRight;
+			bool inSideDoorY = centerY >= dungeonWalls.SideDoorTop   && centerY <= dungeonWalls.SideDoorBottom;
+
+			bool doorExited = false;
 
 			if (link.Position.X < dungeonWalls.InnerBounds.Left)
 			{
-				int pushX = (int)dungeonWalls.InnerBounds.Left - (int)link.Position.X;
-				link.Position += new Vector2(pushX, 0);
+				if (inSideDoorY && onDoorExit != null) 
+				{ 
+					onDoorExit("west"); 
+					doorExited = true; 
+				}
+				else { link.Position += new Vector2(dungeonWalls.InnerBounds.Left - (int)link.Position.X, 0); }
 			}
-			if(link.Position.X > dungeonWalls.InnerBounds.Right - link.Rect.Width)
+
+			if (!doorExited && link.Position.X > dungeonWalls.InnerBounds.Right - spriteSize)
 			{
-				int pushX = (int)dungeonWalls.InnerBounds.Right - link.Rect.Width - (int)link.Position.X;
-				link.Position += new Vector2(pushX, 0);
+				if (inSideDoorY && onDoorExit != null) { onDoorExit("east"); doorExited = true; }
+				else { link.Position += new Vector2(dungeonWalls.InnerBounds.Right - spriteSize - (int)link.Position.X, 0); }
 			}
-			if(link.Position.Y < dungeonWalls.InnerBounds.Top)
+
+			if (!doorExited && link.Position.Y < dungeonWalls.InnerBounds.Top)
 			{
-				int pushY = (int)dungeonWalls.InnerBounds.Top - (int)link.Position.Y;
-				link.Position += new Vector2(0, pushY);
+				if (inTopDoorX && onDoorExit != null) { onDoorExit("north"); doorExited = true; }
+				else { link.Position += new Vector2(0, dungeonWalls.InnerBounds.Top - (int)link.Position.Y); }
 			}
-			if(link.Position.Y > dungeonWalls.InnerBounds.Bottom - link.Rect.Height)
+
+			if (!doorExited && link.Position.Y > dungeonWalls.InnerBounds.Bottom - spriteSize)
 			{
-				int pushY = (int)dungeonWalls.InnerBounds.Bottom - link.Rect.Height - (int)link.Position.Y;
-				link.Position += new Vector2(0, pushY);
+				if (inTopDoorX && onDoorExit != null) { onDoorExit("south"); doorExited = true; }
+				else { link.Position += new Vector2(0, dungeonWalls.InnerBounds.Bottom - spriteSize - (int)link.Position.Y); }
 			}
 		}
 	}

@@ -2,7 +2,6 @@ using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
 using Sprint.Levels;
-using Microsoft.Xna.Framework;
 
 public class LevelLoader
 {
@@ -48,7 +47,6 @@ public class LevelLoader
     public LevelData Load(string levelName)
     {
         string path = $"Content/rooms/{levelName}.json";
-
         string json = File.ReadAllText(path);
 
         LevelData data =

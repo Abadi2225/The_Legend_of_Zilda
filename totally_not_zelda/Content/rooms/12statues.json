@@ -34,5 +34,6 @@
  "tilewidth":16,
  "type":"map",
  "version":"1.10",
- "width":12
+ "width":12,
+  "doors": { "west": "template", "east": "12blocks", "north": "6blocks" }
 }

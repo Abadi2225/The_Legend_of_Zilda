@@ -31,6 +31,7 @@ class GameplayState : IGameState
     private EnemyFactory enemyFactory;
     private LevelLoader levelLoader;
     private Level currentLevel;
+    private LevelData currentLevelData;
     private UIManager uiManager;
     private CollisionManager collisionManager;
     // todo delete this
@@ -49,10 +50,10 @@ class GameplayState : IGameState
         pressedKeys = new Dictionary<Keys, ICommand>
         {
             {Keys.Q, new QuitCommand()},
-        //    {Keys.O, new CycleEnemyCommand(enemyManager, true)},
-        //    {Keys.P, new CycleEnemyCommand(enemyManager, false)}, //commented out since cycling enemies is obsolete
-            {Keys.I, new CycleItemCommand(inventory, true)},
-            {Keys.U, new CycleItemCommand(inventory, false)},
+            // {Keys.O, new CycleEnemyCommand(enemyManager, true)},
+            // {Keys.P, new CycleEnemyCommand(enemyManager, false)}, //commented out since cycling enemies is obsolete
+            // {Keys.I, new CycleItemCommand(inventory, true)},
+            // {Keys.U, new CycleItemCommand(inventory, false)},
             {Keys.D1, new UseItemCommand(items, inventory, link, 0)},
             {Keys.D2, new UseItemCommand(items, inventory, link, 1)},
             {Keys.D3, new UseItemCommand(items, inventory, link, 2)},
@@ -84,21 +85,13 @@ class GameplayState : IGameState
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
 
         levelLoader = new LevelLoader();
-        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory);
+        currentLevelData = levelLoader.GetCurrentLevel();
+        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
 
         items = new ItemManager();
         inventory = new Inventory();
         enemyManager = new EnemyManager();
         enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
-        collisionManager = new CollisionManager();
-		collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
-        collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
-        collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
-        collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
-
-        collisionManager.Add(new LinkItemCollision(link, inventory, currentLevel.WorldItems));
-        collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
-        collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
 
         // inventory items — D1=Boomerang, D2=Bow, D3=Bomb
         inventory.Add(ItemFactory.CreateBoomerang(Vector2.Zero, Vector2.Zero, maxDistance: 160f));
@@ -132,10 +125,60 @@ class GameplayState : IGameState
         uiManager.AddElement(new HUDBar(hudElements));
         dungeonWalls = uiManager.GetElement<DungeonWalls>();
         uiManager.RemoveElement(dungeonWalls); // drawn manually
-		collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
-		collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
-        collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
+
+        RebuildCollisionManager();
 	}
+
+    private void RebuildCollisionManager()
+    {
+        collisionManager = new CollisionManager();
+        collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
+        collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
+        collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
+        collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
+        collisionManager.Add(new LinkItemCollision(link, inventory, currentLevel.WorldItems));
+        collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
+        collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
+        collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls, HandleDoorExit));
+        collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
+        collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
+    }
+
+    private void HandleDoorExit(string exitDirection)
+    {
+        if (currentLevelData.doors == null || !currentLevelData.doors.TryGetValue(exitDirection, out string targetRoom))
+        {
+            // No connection — push Link back inside
+            int s = link.Rect.Width;
+            link.Position = exitDirection switch
+            {
+                "west"  => new Vector2(dungeonWalls.InnerBounds.Left, link.Position.Y),
+                "east"  => new Vector2(dungeonWalls.InnerBounds.Right - s, link.Position.Y),
+                "north" => new Vector2(link.Position.X, dungeonWalls.InnerBounds.Top),
+                "south" => new Vector2(link.Position.X, dungeonWalls.InnerBounds.Bottom - s),
+                _       => link.Position
+            };
+            return;
+        }
+
+        currentLevelData = levelLoader.Load(targetRoom);
+        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+
+        // Place Link at the entry door opposite to where he exited
+        int spriteSize = link.Rect.Width;
+        int doorCenterX = (dungeonWalls.TopDoorLeft + dungeonWalls.TopDoorRight) / 2;
+        int doorCenterY = (dungeonWalls.SideDoorTop + dungeonWalls.SideDoorBottom) / 2;
+        link.Position = exitDirection switch
+        {
+            "east"  => new Vector2(dungeonWalls.InnerBounds.Left, doorCenterY - spriteSize / 2),
+            "west"  => new Vector2(dungeonWalls.InnerBounds.Right - spriteSize, doorCenterY - spriteSize / 2),
+            "south" => new Vector2(doorCenterX - spriteSize / 2, dungeonWalls.InnerBounds.Top),
+            "north" => new Vector2(doorCenterX - spriteSize / 2, dungeonWalls.InnerBounds.Bottom - spriteSize),
+            _       => link.Position
+        };
+
+        RebuildCollisionManager();
+    }
 
     public void Update(GameTime gameTime)
     {
@@ -166,34 +209,17 @@ class GameplayState : IGameState
         if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
         {
             rmbReleased = false;
-            currentLevel = LevelBuilder.Build(levelLoader.CycleNext(), enemyFactory);
-            collisionManager = new CollisionManager();
-			collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
-            collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
-            collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
-            collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
-            collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
-			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
-			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
-			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
-			collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
-
-		}
+            currentLevelData = levelLoader.CycleNext();
+            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+            RebuildCollisionManager();
+        }
         if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
         {
             lmbReleased = false;
-            currentLevel = LevelBuilder.Build(levelLoader.CyclePrevious(), enemyFactory);
-            collisionManager = new CollisionManager();
-			collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
-            collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
-            collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
-            collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
-            collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
-			collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
-			collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls));
-			collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
-			collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
-		}
+            currentLevelData = levelLoader.CyclePrevious();
+            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+            RebuildCollisionManager();
+        }
         if (mouse.RightButton == ButtonState.Released)
         {
             rmbReleased = true;
