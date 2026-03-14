@@ -96,7 +96,10 @@ Six collision handlers now run every frame:
 
 ## Known Bugs
 
-*TODO*
+- Link does not die
+- collision does exist but it's not 100% accurate
+- In the second room (with 12 statues) if you go right from there you can't get back as you get stuck in the door because of Link's size
+- All items disappear from the first map when right or left clicking the mouse
 
 ---
 
