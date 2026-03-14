@@ -8,10 +8,20 @@ public class LevelLoader
 {
     // todo remove this
     private List<string> levels = new List<string>{
-        "test_room",
-        "room2",
-        "roomwithwater",
-        "roomwithvoid"
+        "template",
+        "12statues",
+        "12blocks",
+        "6blocks",
+        "4blockssmall",
+        "4blocksbig",
+        "1block",
+        "dice5",
+        "wave",
+        "dumbbell",
+        "blockedstairs",
+        "waffle",
+        "boss",
+        "pacman"
     };
     private int currentLevel = 0;
     public LevelData CycleNext()
