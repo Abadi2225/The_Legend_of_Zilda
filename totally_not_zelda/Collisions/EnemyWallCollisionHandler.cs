@@ -24,6 +24,7 @@ namespace Sprint.Collisions
 		{
 			foreach (var enemy in enemies)
 			{
+				if (!enemy.HasCollision) continue;
 				ResolveCollision(enemy, dungeonWalls);
 			}
 		}

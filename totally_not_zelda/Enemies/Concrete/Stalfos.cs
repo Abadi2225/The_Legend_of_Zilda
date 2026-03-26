@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
+using System.Collections.Generic;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -18,13 +19,18 @@ namespace Sprint.Enemies.Concrete
         private bool isFlipped;
         private float flipTimer;
         private const float FLIP_INTERVAL = 0.15f;
+        private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
         
-        public Stalfos(Texture2D texture, Vector2 position) : base(texture, position, STALFOS_HEALTH, STALFOS_DAMAGE)
+        public Stalfos(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) 
+    : base(texture, position, STALFOS_HEALTH, STALFOS_DAMAGE)
         {
             int frameX = 1;
             int frameY = 59;
             int spriteWidth = 16;
             int spriteHeight = 16;
+            this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
             
             sourceRect = new Rectangle(frameX, frameY, spriteWidth, spriteHeight);
             
@@ -50,12 +56,11 @@ namespace Sprint.Enemies.Concrete
 
         }
         
-        public override void Update(GameTime gameTime)
+       public override void Update(GameTime gameTime)
         {
             if (!isAlive) return;
-            
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+
             directionChangeTimer -= deltaTime;
             if (directionChangeTimer <= 0)
             {
@@ -69,10 +74,16 @@ namespace Sprint.Enemies.Concrete
                 isFlipped = !isFlipped;
                 flipTimer = FLIP_INTERVAL;
             }
-            
-            // Update position
-            Position += velocity * deltaTime;
-            
+
+            Vector2 candidatePos = Position + velocity * deltaTime;
+            if (!WouldIntersectBlock(candidatePos, solidBlocks) && !WouldIntersectWall(candidatePos, innerBounds))
+                Position = candidatePos;
+            else
+            {
+                velocity = GetRandomCardinalDirection(); // bounce to new direction
+                directionChangeTimer = DIRECTION_CHANGE_INTERVAL;
+            }
+
             base.Update(gameTime);
         }
 

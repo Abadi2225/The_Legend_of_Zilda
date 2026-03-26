@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
 using Sprint;
+using System.Collections.Generic;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -17,14 +18,19 @@ namespace Sprint.Enemies.Concrete
         private const float TURN_SPEED = 30f;
         private const float TURN_INTERVAL = 1f;
         private const float MOVE_SPEED = 0.7f;
+        private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
 
-        public Gel(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
+
+        public Gel(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, HEALTH, DAMAGE)
         {
             int[] frameXPositions = [1, 10];
             int frameY = 15;
             int spriteWidth = 8;
             int spriteHeight = 9;
             float frameTime = 0.2f;
+            this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
 
             sprite = new AnimatedSprite(texture, position, frameXPositions, frameY,
                                         spriteWidth, spriteHeight, frameTime);
@@ -49,7 +55,13 @@ namespace Sprint.Enemies.Concrete
                     turnTimer = TURN_INTERVAL;
                 }
             
-            Position += velocity * deltaTime;
+            Vector2 candidatePosition =Position + velocity * deltaTime;
+            if (!WouldIntersectBlock(candidatePosition, solidBlocks) && !WouldIntersectWall(candidatePosition, innerBounds))
+                Position = candidatePosition;
+            else
+            {
+                velocity = GetRandomTurnDirection();
+            }
 
             base.Update(gameTime);
         }

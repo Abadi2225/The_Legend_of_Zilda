@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
+using System.Collections.Generic;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -13,24 +14,28 @@ namespace Sprint.Enemies.Concrete
         private const float BOUNCE_SPEED = 40f;
         private const float BOUNCE_INTERVAL = 1f;
         private const float AIR_TIME = 1f;
-        
         private Vector2 velocity;
-        private float bounceTimer;
-        private bool isOnGround;
-        
-        public Zol(Texture2D texture, Vector2 position) : base(texture, position, ZOL_HEALTH, ZOL_DAMAGE)
+        private float turnTimer;
+        private const float TURN_SPEED = 30f;
+        private const float TURN_INTERVAL = 1f;
+        private const float MOVE_SPEED = 0.7f;
+        private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
+
+        public Zol(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, ZOL_HEALTH, ZOL_DAMAGE)
         {
             int[] frameXPositions = [77, 94];
             int frameY = 11;
             int spriteWidth = 16;
             int spriteHeight = 16;
             float frameTime = 0.2f;
-            
+            this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
+
             sprite = new AnimatedSprite(texture, position, frameXPositions, frameY, 
                                         spriteWidth, spriteHeight, frameTime);
             
-            isOnGround = true;
-            bounceTimer = BOUNCE_INTERVAL;
+            turnTimer = TURN_INTERVAL;
             velocity = Vector2.Zero;
             Rect = new Rectangle((int)position.X, (int)position.Y, spriteWidth * (int)GameServices.ScaleFactor, spriteHeight * (int)GameServices.ScaleFactor);
         }
@@ -38,44 +43,36 @@ namespace Sprint.Enemies.Concrete
         public override void Update(GameTime gameTime)
         {
             if (!isAlive) return;
-            
+
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
             
-            if (isOnGround)
-            {
-                bounceTimer -= deltaTime;
-                if (bounceTimer <= 0)
+            
+                turnTimer -= deltaTime;
+                if (turnTimer <= 0)
                 {
-                    isOnGround = false;
-                    velocity = GetRandomBounceDirection();
-                    bounceTimer = AIR_TIME;
+                    velocity = GetRandomTurnDirection();
+                    turnTimer = TURN_INTERVAL;
                 }
-            }
+            
+            Vector2 candidatePosition =Position + velocity * deltaTime;
+            if (!WouldIntersectBlock(candidatePosition, solidBlocks) && !WouldIntersectWall(candidatePosition, innerBounds))
+                Position = candidatePosition;
             else
             {
-                bounceTimer -= deltaTime;
-                Position += velocity * deltaTime;
-                
-                if (bounceTimer <= 0)
-                {
-                    isOnGround = true;
-                    velocity = Vector2.Zero;
-                    bounceTimer = BOUNCE_INTERVAL;
-                }
+                velocity = GetRandomTurnDirection();
             }
-            
+
             base.Update(gameTime);
         }
 
         public override void Reset()
         {
             base.Reset();
-            isOnGround = true;
-            bounceTimer = BOUNCE_INTERVAL;
+            turnTimer = TURN_INTERVAL;
             velocity = Vector2.Zero;
         }
 
-        private Vector2 GetRandomBounceDirection()
+        private Vector2 GetRandomTurnDirection()
         {
             return random.Next(4) switch
             {

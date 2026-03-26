@@ -22,6 +22,7 @@ namespace Sprint.Enemies.Concrete
         private const float THROW_COOLDOWN_MIN = 2.0f;
         private const float THROW_COOLDOWN_MAX = 4.0f;
         private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
 
         private enum Direction { Up, Down, Left, Right }
 
@@ -48,11 +49,12 @@ namespace Sprint.Enemies.Concrete
         // Drops a heart, one rupee, four bombs, or a clock
         // Moves slowly in random directions, one step at a time
 
-        public Goriya(Texture2D texture, Vector2 position, ContentManager content, List<Sprint.Block.Block> solidBlocks) : base(texture, position, HEALTH, DAMAGE)
+        public Goriya(Texture2D texture, Vector2 position, ContentManager content, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, HEALTH, DAMAGE)
         {
             this.texture = texture;
             this.contentManager = content;
             this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
             int sheetY = 11;
             int spriteWidth = 16;
             int spriteHeight = 16;
@@ -199,7 +201,7 @@ namespace Sprint.Enemies.Concrete
 
         private void ChooseNextStep()
         {
-            Vector2 candidate = ChooseValidStep(solidBlocks, STEP_SIZE);
+            Vector2 candidate = ChooseValidStep(solidBlocks, innerBounds, STEP_SIZE);
             
             if (candidate != Position)
             {

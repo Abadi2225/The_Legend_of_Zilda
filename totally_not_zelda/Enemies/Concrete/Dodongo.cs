@@ -36,15 +36,17 @@ namespace Sprint.Enemies.Concrete
         private readonly int[] bombedDownFrame = [18];
         private readonly int[] bombedSideFrame = [135];
         private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
     protected override bool FlipsOnVertical => true;
 
         
         // Walks randomly in all four directions, eats bombs to take damage
         
-        public Dodongo(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks) : base(texture, position, HEALTH, DAMAGE)
+        public Dodongo(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, HEALTH, DAMAGE)
         {
             this.texture = texture;
             this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
             
             currentState = DodongoState.Walking;
             currentDirection = Direction.Down;
@@ -132,7 +134,7 @@ namespace Sprint.Enemies.Concrete
         
         private void ChooseNextStep()
         {
-            Vector2 candidate = ChooseValidStep(solidBlocks, STEP_SIZE, minSteps: 1, maxSteps: 3);
+            Vector2 candidate = ChooseValidStep(solidBlocks, innerBounds, STEP_SIZE, minSteps: 1, maxSteps: 3);
 
             if (candidate != Position)
             {

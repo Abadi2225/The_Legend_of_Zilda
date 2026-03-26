@@ -20,6 +20,8 @@ namespace Sprint.Enemies.Concrete
         private const float DIRECTION_SWAP_MAX = 2.0f;
         private float moveDirectionTimer;
         private bool moveLeft;
+        private Rectangle innerBounds;
+        private List<Sprint.Block.Block> solidBlocks;
 
         private EnemyProjectileFactory projectileFactory;
         private List<AquamentusFireball> activeFireballs = new();
@@ -30,7 +32,7 @@ namespace Sprint.Enemies.Concrete
         // Faces left, walking back and forth
         // Fires three fireballs to the left in a triangle pattern
 
-        public Aquamentus(Texture2D texture, Vector2 position) : base(texture, position, HEALTH, DAMAGE)
+        public Aquamentus(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, HEALTH, DAMAGE)
         {
             int[]sheetXPositions = [1, 26, 51, 76];
             int sheetY = 11;

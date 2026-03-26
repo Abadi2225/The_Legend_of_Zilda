@@ -23,6 +23,21 @@ namespace Sprint.Enemies.Base
         protected const float DYING_DURATION = 0.5f; // For the death animation
         protected readonly Random random = new Random();
         protected virtual bool FlipsOnVertical => false;
+        public virtual bool HasCollision => true;
+        protected bool WouldIntersectBlock(Vector2 candidatePos, List<Sprint.Block.Block> solidBlocks)
+        {
+            Rectangle candidateRect = new Rectangle((int)candidatePos.X, (int)candidatePos.Y, Rect.Width, Rect.Height);
+            return solidBlocks.Any(b => !b.walkAble && b.Rect.Intersects(candidateRect));
+        }
+
+        protected bool WouldIntersectWall(Vector2 candidatePos, Rectangle innerBounds)
+        {
+            Rectangle candidateRect = new Rectangle((int)candidatePos.X, (int)candidatePos.Y, Rect.Width, Rect.Height);
+            return candidateRect.Left < innerBounds.Left ||
+                candidateRect.Right > innerBounds.Right ||
+                candidateRect.Top < innerBounds.Top ||
+                candidateRect.Bottom > innerBounds.Bottom;
+        }
 
         public Vector2 Position
         {
@@ -110,7 +125,8 @@ namespace Sprint.Enemies.Base
 
             sprite?.Draw(spriteBatch, location);
         }
-        protected Vector2 ChooseValidStep(List<Sprint.Block.Block> solidBlocks, float stepSize, int minSteps = 1, int maxSteps = 2, int maxAttempts = 4)
+
+        protected Vector2 ChooseValidStep(List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds, float stepSize, int minSteps = 1, int maxSteps = 2, int maxAttempts = 4)
         {
             for (int attempt = 0; attempt < maxAttempts; attempt++)
             {
@@ -127,15 +143,9 @@ namespace Sprint.Enemies.Base
                     _ => Position
                 };
 
-                Rectangle candidateRect = new Rectangle(
-                    (int)candidate.X, (int)candidate.Y, Rect.Width, Rect.Height);
-
-                bool blocked = solidBlocks.Any(b => !b.walkAble && b.Rect.Intersects(candidateRect));
-
-                if (!blocked)
+                if (!WouldIntersectBlock(candidate, solidBlocks) && !WouldIntersectWall(candidate, innerBounds))
                     return candidate;
             }
-
             return Position;
         }
     }

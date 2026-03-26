@@ -21,6 +21,8 @@ namespace Sprint.Collisions
             foreach (var enemy in enemies)
             {
                 if (!enemy.IsAlive) continue;
+                if (!enemy.HasCollision) continue;
+
                 foreach (var block in blockManager.blocksList)
                 {
                     if (block.walkAble) continue;

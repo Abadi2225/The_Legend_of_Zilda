@@ -47,22 +47,22 @@ namespace Sprint.Enemies
         public void LoadAllTextures(ContentManager content) { }
 
         // Can change vector2 position to something else (e.g. x/y pos) in the future
-        public IEnemy CreateEnemy(EnemyType type, Vector2 position, List<Sprint.Block.Block> solidBlocks = null)
+        public IEnemy CreateEnemy(EnemyType type, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds)
         {
             IEnemy enemy = type switch
             {
-                EnemyType.Keese      => new Keese(enemySpriteSheet, position),
-                EnemyType.Stalfos    => new Stalfos(enemySpriteSheet, position),
-                EnemyType.Gel        => new Gel(enemySpriteSheet, position),
-                EnemyType.Goriya     => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks ?? []),
-                EnemyType.Zol        => new Zol(enemySpriteSheet, position),
-                EnemyType.WallMaster => new WallMaster(enemySpriteSheet, position),
-                EnemyType.Trap       => new Trap(enemySpriteSheet, position),
-                EnemyType.Rope       => new Rope(enemySpriteSheet, position),
-                EnemyType.Aquamentus => new Aquamentus(bossSpriteSheet, position),
-                EnemyType.Dodongo    => new Dodongo(bossSpriteSheet, position, solidBlocks ?? []),
-                EnemyType.OldMan     => new OldMan(NPCSheet, position),
-                _                    => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks ?? []),
+        EnemyType.Goriya     => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks, innerBounds),
+        EnemyType.Dodongo    => new Dodongo(bossSpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Stalfos    => new Stalfos(enemySpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Rope       => new Rope(enemySpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Gel        => new Gel(enemySpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Zol        => new Zol(enemySpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Aquamentus => new Aquamentus(bossSpriteSheet, position, solidBlocks, innerBounds),
+        EnemyType.Keese      => new Keese(enemySpriteSheet, position),
+        EnemyType.WallMaster => new WallMaster(enemySpriteSheet, position),
+        EnemyType.Trap       => new Trap(enemySpriteSheet, position),
+        EnemyType.OldMan     => new OldMan(NPCSheet, position),
+        _                    => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks, innerBounds),
             };
 
             // OldMan is an NPC — no cloud or dust effects

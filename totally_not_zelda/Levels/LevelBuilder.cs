@@ -4,11 +4,12 @@ using Sprint.Levels;
 using Microsoft.Xna.Framework;
 using Sprint.Enemies;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 public class LevelBuilder
 {
     private const int TILE_SIZE = 16;
-    public static Level Build(LevelData data, EnemyFactory enemyFactory)
+    public static Level Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds)
     {
         BlockManager blockManager = new BlockManager();
         float hudHeight = 48 * GameServices.ScaleFactor;
@@ -46,7 +47,7 @@ public class LevelBuilder
                     x * TILE_SIZE * GameServices.ScaleFactor + wallBorderX,
                     y * TILE_SIZE * GameServices.ScaleFactor + wallBorderY + hudHeight);
 
-                enemyManager.AddEnemy(enemyFactory.CreateEnemy((EnemyType)(id - 1), pos, solidBlocks));
+                enemyManager.AddEnemy(enemyFactory.CreateEnemy((EnemyType)(id - 1), pos, solidBlocks, innerBounds));
             }
         }
 

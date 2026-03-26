@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
+using System.Collections.Generic;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -22,15 +23,20 @@ namespace Sprint.Enemies.Concrete
         private float directionChangeTimer;
         private float directionChangeDuration;
         private bool facingLeft;
+        private List<Sprint.Block.Block> solidBlocks;
+        private Rectangle innerBounds;
 
         readonly int[] frameXPositions = [127, 144];
 
-        public Rope(Texture2D texture, Vector2 position) : base(texture, position, ROPE_HEALTH, ROPE_DAMAGE)
+        public Rope(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) 
+    : base(texture, position, ROPE_HEALTH, ROPE_DAMAGE)
         {
             int frameY = 59;
             int spriteWidth = 15;
             int spriteHeight = 15;
             float frameTime = 0.3f;
+            this.solidBlocks = solidBlocks;
+            this.innerBounds = innerBounds;
             
             sprite = new DirectionalAnimatedSprite(texture, position, frameXPositions, frameY, 
                                         spriteWidth, spriteHeight, frameTime, false);
@@ -76,7 +82,17 @@ namespace Sprint.Enemies.Concrete
             }
 
             float currentSpeed = isCharging ? CHARGE_SPEED : PATROL_SPEED;
-            Position += moveDirection * currentSpeed * deltaTime;
+            Vector2 candidatePosition = Position + moveDirection * currentSpeed * deltaTime;
+            if (!WouldIntersectBlock(candidatePosition, solidBlocks) && !WouldIntersectWall(candidatePosition, innerBounds))
+                Position = candidatePosition;
+            else
+            {
+                // If we hit a wall or block, stop charging and pick a new direction
+                isCharging = false;
+                directionChangeDuration = GetRandomFloat(DIRECTION_CHANGE_MIN, DIRECTION_CHANGE_MAX);
+                directionChangeTimer = directionChangeDuration;
+                ChooseRandomCardinalDirection();
+            }
 
             UpdateSpriteFlip();
             

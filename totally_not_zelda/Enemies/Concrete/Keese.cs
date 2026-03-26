@@ -22,6 +22,7 @@ namespace Sprint.Enemies.Concrete
         private bool isResting;
         private readonly IPositionedSprite flyingSprite;
         private readonly IPositionedSprite restingSprite;
+        public override bool HasCollision => false;
         
         // Rests against walls first before taking flight
         // Moves erratically in random directions, stopping sometimes to rest

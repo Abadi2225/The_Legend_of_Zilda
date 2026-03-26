@@ -86,7 +86,14 @@ class GameplayState : IGameState
 
         levelLoader = new LevelLoader();
         currentLevelData = levelLoader.GetCurrentLevel();
-        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+
+        uiManager = new UIManager();
+        uiManager.AddElement(new DungeonWalls(dungeonBackground));
+        uiManager.AddElement(new HUDBar(hudElements));
+        dungeonWalls = uiManager.GetElement<DungeonWalls>();
+        uiManager.RemoveElement(dungeonWalls); // drawn manually
+        
+        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory, dungeonWalls.InnerBounds);
 
         items = new ItemManager();
         inventory = new Inventory();
@@ -120,11 +127,6 @@ class GameplayState : IGameState
         currentLevel.WorldItems.Add(ItemFactory.CreateArrow(new Vector2(270, 462), Vector2.Zero, rotation: 0f, scale: 2f, maxDistance: 0));
         currentLevel.WorldItems.Add(ItemFactory.CreateTimeBomb(explodeDelayMillis: 0, new Vector2(414, 462), scale: 2f));
 
-        uiManager = new UIManager();
-        uiManager.AddElement(new DungeonWalls(dungeonBackground));
-        uiManager.AddElement(new HUDBar(hudElements));
-        dungeonWalls = uiManager.GetElement<DungeonWalls>();
-        uiManager.RemoveElement(dungeonWalls); // drawn manually
 
         RebuildCollisionManager();
 	}
@@ -162,7 +164,7 @@ class GameplayState : IGameState
         }
 
         currentLevelData = levelLoader.Load(targetRoom);
-        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory, dungeonWalls.InnerBounds);
 
         // Place Link at the entry door opposite to where he exited
         int spriteSize = link.Rect.Width;
@@ -210,14 +212,14 @@ class GameplayState : IGameState
         {
             rmbReleased = false;
             currentLevelData = levelLoader.CycleNext();
-            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory, dungeonWalls.InnerBounds);
             RebuildCollisionManager();
         }
         if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
         {
             lmbReleased = false;
             currentLevelData = levelLoader.CyclePrevious();
-            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory);
+            currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory, dungeonWalls.InnerBounds);
             RebuildCollisionManager();
         }
         if (mouse.RightButton == ButtonState.Released)
