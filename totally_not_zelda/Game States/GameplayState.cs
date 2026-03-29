@@ -19,7 +19,6 @@ class GameplayState : IGameState
     private Texture2D BossesSheet;
     private Texture2D dustSheet;
     private Texture2D NPCSheet;
-    private Texture2D tileSheet;
     private Texture2D dungeonBackground;
     private Texture2D hudElements;
 
@@ -57,7 +56,7 @@ class GameplayState : IGameState
             {Keys.D1, new UseItemCommand(items, inventory, link, 0)},
             {Keys.D2, new UseItemCommand(items, inventory, link, 1)},
             {Keys.D3, new UseItemCommand(items, inventory, link, 2)},
-            {Keys.R, new SetStateCommand(new StartScreenState())}
+            {Keys.R, new SetStateCommand(new MenuState())}
         };
 
     }
@@ -69,10 +68,9 @@ class GameplayState : IGameState
         BossesSheet = GameServices.Content.Load<Texture2D>("images/BossesSpriteSheet");
         dustSheet = GameServices.Content.Load<Texture2D>("images/dustSheet");
         NPCSheet = GameServices.Content.Load<Texture2D>("images/NPC");
-        tileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
         dungeonBackground = GameServices.Content.Load<Texture2D>("images/ZeldaDungeonWalls");
         hudElements = GameServices.Content.Load<Texture2D>("images/ZeldaUIElements");
-        GameServices.TileSheet = tileSheet;
+        GameServices.TileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");;
         GameServices.ItemSheet = GameServices.Content.Load<Texture2D>("items/sheet");
         GameServices.BoomerangSheet = GameServices.Content.Load<Texture2D>("items/boomerang");
 

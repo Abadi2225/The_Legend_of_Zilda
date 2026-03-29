@@ -7,34 +7,27 @@ using Sprint;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Sprint.Commands;
+using Sprint.InputHandling;
 
-class StartScreenState : IGameState
+class MenuState : IGameState
 {
 
     private UIManager uiManager;
     private Texture2D titleSheet;
     private TitleScreen titleScreen;
+    private MenuInputHandler inputHandler;
 
-    private Dictionary<Keys, ICommand> pressedKeys;
-
-    public StartScreenState()
+    public MenuState()
     {
-
+        inputHandler = new MenuInputHandler();
+        
         // UIManager should be initialized before loading content, since LoadContent adds elements to it
         uiManager = new UIManager();
     }
 
     public void Exit() { }
 
-    public void Enter()
-    {
-        // Set up key bindings
-        pressedKeys = new Dictionary<Keys, ICommand>
-        {
-            {Keys.Q, new QuitCommand()},
-            {Keys.Enter, new SetStateCommand(new GameplayState())}
-        };
-    }
+    public void Enter() { }
 
     public void LoadContent()
     {
@@ -48,15 +41,7 @@ class StartScreenState : IGameState
     public void Update(GameTime gameTime)
     {
         uiManager.Update(gameTime);
-
-        
-        foreach (var binding in pressedKeys)
-        {
-            if (GameServices.KeyInput.IsKeyPressed(binding.Key))
-            {
-                binding.Value.Execute();
-            }
-        }
+        inputHandler.HandleInput();
     }
 
     public void Draw(SpriteBatch spriteBatch)
