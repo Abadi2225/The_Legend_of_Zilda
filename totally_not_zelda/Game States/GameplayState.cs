@@ -26,7 +26,6 @@ class GameplayState : IGameState
     private Texture2D doorSheet;
 
     private Link link;
-    private Dictionary<Keys, ICommand> pressedKeys;
     private ItemManager items;
     private Inventory inventory;
     private EnemyManager enemyManager;
@@ -66,6 +65,8 @@ class GameplayState : IGameState
         hudElements = GameServices.Content.Load<Texture2D>("images/ZeldaUIElements");
         GameServices.ItemSheet = GameServices.Content.Load<Texture2D>("items/sheet");
         GameServices.BoomerangSheet = GameServices.Content.Load<Texture2D>("items/boomerang");
+        doorSheet = GameServices.Content.Load<Texture2D>("blocks/Doors");
+        GameServices.TileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
 
         Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
