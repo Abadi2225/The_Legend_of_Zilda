@@ -66,5 +66,6 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "east": "dumbbell" }
+ "doors": { "east": "dumbbell" },
+ "doorTypes": { "east": "key" }
 }

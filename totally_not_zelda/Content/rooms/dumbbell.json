@@ -46,5 +46,6 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "south": "wave", "west": "blockedstairs" }
+ "doors": { "south": "wave", "west": "blockedstairs" },
+ "doorTypes": { "south": "key", "west": "key" }
 }
