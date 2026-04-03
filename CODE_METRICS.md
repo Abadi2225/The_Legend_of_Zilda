@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 20 namespaces.
 - 113 named types.
-- 5,980 total lines of source code.
-- Approximately 1,802 lines of executable code.
+- 5,977 total lines of source code.
+- Approximately 1,801 lines of executable code.
 - The highest cyclomatic complexity is 18 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 7 named types.
 
 - 7 named types.
-- 438 total lines of source code.
-- Approximately 185 lines of executable code.
+- 435 total lines of source code.
+- Approximately 184 lines of executable code.
 - The highest cyclomatic complexity is 10 :radioactive:.
 
 <details>
@@ -176,13 +176,13 @@ The `<global namespace>` namespace contains 7 named types.
 <br>
 
 - The `LevelBuilder` contains 2 members.
-- 78 total lines of source code.
-- Approximately 41 lines of executable code.
+- 75 total lines of source code.
+- Approximately 40 lines of executable code.
 - The highest cyclomatic complexity is 10 :radioactive:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelBuilder.cs#L14' title='Level LevelBuilder.Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds)'>14</a> | 41 | 10 :radioactive: | 0 | 14 | 74 / 40 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelBuilder.cs#L14' title='Level LevelBuilder.Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds)'>14</a> | 42 | 10 :radioactive: | 0 | 14 | 71 / 39 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelBuilder.cs#L13' title='int LevelBuilder.TILE_SIZE'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 
 <a href="#LevelBuilder-class-diagram">:link: to `LevelBuilder` class diagram</a>
