@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Sprint.Enemies;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System;
 
 public class LevelBuilder
 {
@@ -12,9 +14,9 @@ public class LevelBuilder
     public static Level Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds)
     {
         BlockManager blockManager = new BlockManager();
-        float hudHeight = 48 * GameServices.ScaleFactor;
-        float wallBorderX = 34 * GameServices.ScaleFactor;
-        float wallBorderY = 34 * GameServices.ScaleFactor;
+        float hudHeight = 48;
+        float wallBorderX = 32;
+        float wallBorderY = 32; 
 
         for (int i = 0; i < data.height * data.width; i++)
         {
@@ -25,8 +27,8 @@ public class LevelBuilder
             int y = i / data.width;
 
             Block block = BlockFactory.Create(id-1, new Vector2(
-            x * TILE_SIZE * GameServices.ScaleFactor + wallBorderX,
-            y * TILE_SIZE * GameServices.ScaleFactor + wallBorderY + hudHeight));
+                (int)((x * TILE_SIZE + wallBorderX) * GameServices.ScaleFactor),
+                (int)((y * TILE_SIZE+ wallBorderY + hudHeight) * GameServices.ScaleFactor)));
             blockManager.Add(block);
         }
 
