@@ -30,15 +30,13 @@ public class LevelBuilder
                 int y = i / data.width;
 
                 Block block = BlockFactory.Create(
-                    id - 1,
+                    id - 1, 
                     new Vector2(
-                        x * TILE_SIZE * GameServices.ScaleFactor + wallBorderX,
-                        y * TILE_SIZE * GameServices.ScaleFactor + wallBorderY + hudHeight));
-
-            Block block = BlockFactory.Create(id-1, new Vector2(
-                (int)((x * TILE_SIZE + wallBorderX) * GameServices.ScaleFactor),
-                (int)((y * TILE_SIZE+ wallBorderY + hudHeight) * GameServices.ScaleFactor)));
-            blockManager.Add(block);
+                        (x * TILE_SIZE + wallBorderX) * GameServices.ScaleFactor,
+                        (y * TILE_SIZE+ wallBorderY + hudHeight) * GameServices.ScaleFactor));
+                
+                blockManager.Add(block);
+            }            
         }
 
 		var pushableLayer = data.layers.FirstOrDefault(layer => layer.name == "PushableBlocks");
