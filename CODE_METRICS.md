@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 20 namespaces.
 - 115 named types.
-- 6,171 total lines of source code.
-- Approximately 1,859 lines of executable code.
+- 6,215 total lines of source code.
+- Approximately 1,872 lines of executable code.
 - The highest cyclomatic complexity is 30 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 7 named types.
 
 - 7 named types.
-- 406 total lines of source code.
-- Approximately 182 lines of executable code.
+- 414 total lines of source code.
+- Approximately 184 lines of executable code.
 - The highest cyclomatic complexity is 10 :radioactive:.
 
 <details>
@@ -56,15 +56,15 @@ The `<global namespace>` namespace contains 7 named types.
 <details>
 <summary>
   <strong id="gameplaystate">
-    GameplayState :heavy_check_mark:
+    GameplayState :radioactive:
   </strong>
 </summary>
 <br>
 
 - The `GameplayState` contains 33 members.
-- 179 total lines of source code.
-- Approximately 102 lines of executable code.
-- The highest cyclomatic complexity is 7 :heavy_check_mark:.
+- 187 total lines of source code.
+- Approximately 104 lines of executable code.
+- The highest cyclomatic complexity is 10 :radioactive:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
@@ -76,7 +76,7 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L39' title='DoorManager GameplayState.doorManager'>39</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L27' title='Texture2D GameplayState.doorSheet'>27</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L40' title='DoorTransitionHandler GameplayState.doorTransitionHandler'>40</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L184' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>184</a> | 66 | 1 :heavy_check_mark: | 0 | 8 | 11 / 8 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L192' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>192</a> | 66 | 1 :heavy_check_mark: | 0 | 8 | 11 / 8 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L46' title='OuterDungeonWalls GameplayState.dungeonWalls'>46</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L22' title='Texture2D GameplayState.dustSheet'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L20' title='Texture2D GameplayState.enemiesSheet'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -100,7 +100,7 @@ The `<global namespace>` namespace contains 7 named types.
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L132' title='void GameplayState.RebuildCollisionManager()'>132</a> | 58 | 1 :heavy_check_mark: | 0 | 25 | 14 / 11 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L43' title='bool GameplayState.rmbReleased'>43</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L37' title='UIManager GameplayState.uiManager'>37</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L147' title='void GameplayState.Update(GameTime gameTime)'>147</a> | 50 | 7 :heavy_check_mark: | 0 | 18 | 36 / 24 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Game States/GameplayState.cs#L147' title='void GameplayState.Update(GameTime gameTime)'>147</a> | 48 | 10 :radioactive: | 0 | 22 | 44 / 26 |
 
 <a href="#GameplayState-class-diagram">:link: to `GameplayState` class diagram</a>
 
@@ -334,8 +334,8 @@ The `Sprint.Enemies.Base` namespace contains 1 named types.
 The `Sprint.Block` namespace contains 7 named types.
 
 - 7 named types.
-- 353 total lines of source code.
-- Approximately 83 lines of executable code.
+- 387 total lines of source code.
+- Approximately 90 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 <details>
@@ -498,29 +498,32 @@ The `Sprint.Block` namespace contains 7 named types.
 </summary>
 <br>
 
-- The `DoorManager` contains 16 members.
-- 81 total lines of source code.
-- Approximately 26 lines of executable code.
+- The `DoorManager` contains 19 members.
+- 115 total lines of source code.
+- Approximately 33 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L21' title='DoorManager.DoorManager(Texture2D doorTexture, float scale, float hudHeight)'>21</a> | 79 | 1 :heavy_check_mark: | 0 | 1 | 6 / 3 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L9' title='string[] DoorManager.AllDirections'>9</a> | 86 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L16' title='Dictionary<string, string> DoorManager.configuredTypes'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L19' title='Dictionary<string, DoorBlock> DoorManager.doorBlocks'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L11' title='Texture2D DoorManager.doorTexture'>11</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L78' title='void DoorManager.Draw(SpriteBatch spriteBatch)'>78</a> | 73 | 4 :heavy_check_mark: | 0 | 4 | 9 / 4 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L47' title='string DoorManager.GetDoorType(string direction)'>47</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L44' title='string DoorManager.GetTarget(string direction)'>44</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L42' title='bool DoorManager.HasDoor(string direction)'>42</a> | 97 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L13' title='float DoorManager.hudHeight'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L50' title='bool DoorManager.IsLocked(string direction)'>50</a> | 88 | 1 :heavy_check_mark: | 0 | 2 | 9 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L28' title='void DoorManager.Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes)'>28</a> | 69 | 4 :heavy_check_mark: | 0 | 4 | 13 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L12' title='float DoorManager.scale'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L15' title='Dictionary<string, string> DoorManager.targets'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L60' title='bool DoorManager.TryExit(string direction, ILink link)'>60</a> | 65 | 5 :heavy_check_mark: | 0 | 3 | 17 / 8 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L17' title='Dictionary<string, bool> DoorManager.unlocked'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L22' title='DoorManager.DoorManager(Texture2D doorTexture, float scale, float hudHeight)'>22</a> | 79 | 1 :heavy_check_mark: | 0 | 1 | 6 / 3 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L10' title='string[] DoorManager.AllDirections'>10</a> | 86 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L17' title='Dictionary<string, string> DoorManager.configuredTypes'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L20' title='Dictionary<string, DoorBlock> DoorManager.doorBlocks'>20</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L61' title='Dictionary<string, Vector2> DoorManager.DoorCenters'>61</a> | 81 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L12' title='Texture2D DoorManager.doorTexture'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L106' title='void DoorManager.Draw(SpriteBatch spriteBatch)'>106</a> | 69 | 5 :heavy_check_mark: | 0 | 4 | 16 / 5 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L48' title='string DoorManager.GetDoorType(string direction)'>48</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L45' title='string DoorManager.GetTarget(string direction)'>45</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L43' title='bool DoorManager.HasDoor(string direction)'>43</a> | 97 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L14' title='float DoorManager.hudHeight'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L51' title='bool DoorManager.IsLocked(string direction)'>51</a> | 87 | 1 :heavy_check_mark: | 0 | 2 | 9 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L29' title='void DoorManager.Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes)'>29</a> | 69 | 4 :heavy_check_mark: | 0 | 4 | 13 / 5 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L13' title='float DoorManager.scale'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L16' title='Dictionary<string, string> DoorManager.targets'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L88' title='bool DoorManager.TryExit(string direction, ILink link)'>88</a> | 65 | 5 :heavy_check_mark: | 0 | 3 | 17 / 8 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L76' title='void DoorManager.TryUnlockBomb(Vector2 explosionCenter, float radius)'>76</a> | 69 | 5 :heavy_check_mark: | 0 | 3 | 11 / 5 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L18' title='Dictionary<string, bool> DoorManager.unlocked'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L69' title='void DoorManager.UnlockEnemyDoors()'>69</a> | 89 | 3 :heavy_check_mark: | 0 | 2 | 6 / 1 |
 
 <a href="#DoorManager-class-diagram">:link: to `DoorManager` class diagram</a>
 
@@ -2264,8 +2267,8 @@ The `Sprint.Controllers` namespace contains 1 named types.
 The `Sprint.Enemies` namespace contains 6 named types.
 
 - 6 named types.
-- 306 total lines of source code.
-- Approximately 94 lines of executable code.
+- 308 total lines of source code.
+- Approximately 98 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 <details>
@@ -2356,15 +2359,16 @@ The `Sprint.Enemies` namespace contains 6 named types.
 </summary>
 <br>
 
-- The `EnemyManager` contains 16 members.
-- 97 total lines of source code.
-- Approximately 32 lines of executable code.
+- The `EnemyManager` contains 17 members.
+- 99 total lines of source code.
+- Approximately 36 lines of executable code.
 - The highest cyclomatic complexity is 5 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L16' title='EnemyManager.EnemyManager()'>16</a> | 79 | 1 :heavy_check_mark: | 0 | 3 | 6 / 3 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L23' title='void EnemyManager.AddEnemy(IEnemy enemy)'>23</a> | 75 | 2 :heavy_check_mark: | 0 | 3 | 10 / 4 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L100' title='bool EnemyManager.AllDead'>100</a> | 84 | 4 :heavy_check_mark: | 0 | 3 | 1 / 4 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L13' title='IEnemy EnemyManager.currentEnemy'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L12' title='int EnemyManager.currentEnemyIndex'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L34' title='void EnemyManager.CycleNext()'>34</a> | 76 | 2 :heavy_check_mark: | 0 | 3 | 8 / 3 |
@@ -2374,9 +2378,9 @@ The `Sprint.Enemies` namespace contains 6 named types.
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L69' title='void EnemyManager.DrawOnTop(SpriteBatch spriteBatch)'>69</a> | 83 | 3 :heavy_check_mark: | 0 | 6 | 8 / 2 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L11' title='List<IEnemy> EnemyManager.enemies'>11</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L14' title='List<IEnemy> EnemyManager.enemyList'>14</a> | 100 | 2 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L100' title='IEnemy EnemyManager.GetCurrentEnemy()'>100</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L104' title='int EnemyManager.GetCurrentIndex()'>104</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L102' title='int EnemyManager.GetEnemyCount()'>102</a> | 100 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L102' title='IEnemy EnemyManager.GetCurrentEnemy()'>102</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L106' title='int EnemyManager.GetCurrentIndex()'>106</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L104' title='int EnemyManager.GetEnemyCount()'>104</a> | 100 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L86' title='void EnemyManager.Reset()'>86</a> | 73 | 3 :heavy_check_mark: | 0 | 4 | 13 / 5 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/EnemyManager.cs#L52' title='void EnemyManager.Update(GameTime gameTime)'>52</a> | 94 | 2 :heavy_check_mark: | 0 | 5 | 6 / 1 |
 
@@ -4319,12 +4323,15 @@ class DoorManager{
     -Dictionary<string, string> configuredTypes
     -Dictionary<string, bool> unlocked
     -Dictionary<string, DoorBlock> doorBlocks
+    -Dictionary<string, Vector2> DoorCenters$
     +.ctor(Texture2D doorTexture, float scale, float hudHeight) DoorManager
     +Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes) void
     +HasDoor(string direction) bool
     +GetTarget(string direction) string
     +GetDoorType(string direction) string
     +IsLocked(string direction) bool
+    +UnlockEnemyDoors() void
+    +TryUnlockBomb(Vector2 explosionCenter, float radius) void
     +TryExit(string direction, ILink link) bool
     +Draw(SpriteBatch spriteBatch) void
 }
@@ -5497,6 +5504,7 @@ class EnemyManager{
     -int currentEnemyIndex
     -IEnemy currentEnemy
     +List<IEnemy> enemyList
+    +bool AllDead
     +.ctor() EnemyManager
     +AddEnemy(IEnemy enemy) void
     +CycleNext() void
