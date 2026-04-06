@@ -13,6 +13,7 @@ public class Block
 	public readonly bool walkAble;
 	public Vector2 Position;
 	public readonly bool pushAble;
+	public bool HasBeenPushed { get; set; } = false;
 	public Rectangle Rect => new Rectangle((int)Position.X, (int)Position.Y, tileWidth, tileWidth);
 
 	public Block(Texture2D texture, Vector2 pos, Rectangle sourceRect, bool walkable, bool pushable)
