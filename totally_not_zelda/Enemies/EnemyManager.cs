@@ -97,6 +97,8 @@ namespace Sprint.Enemies
             }
         }
 
+        public bool AllDead => enemies.Count > 0 && enemies.TrueForAll(enemy => !enemy.IsAlive);
+
         public IEnemy GetCurrentEnemy() => currentEnemy;
         
         public int GetEnemyCount() => enemies.Count;

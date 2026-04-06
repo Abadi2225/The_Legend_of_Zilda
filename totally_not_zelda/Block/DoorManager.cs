@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
 using System.Collections.Generic;
@@ -52,10 +53,37 @@ public class DoorManager
         {
             "open"  => false,
             "key"   => !unlocked.GetValueOrDefault(direction),
-            "enemy" => true,   // TODO: integrate with enemy manager
-            "bomb"  => true,   // TODO: integrate with bomb system
+            "enemy" => !unlocked.GetValueOrDefault(direction),
+            "bomb"  => !unlocked.GetValueOrDefault(direction),
             _       => true,   // "wall" is impassable
         };
+
+    private static readonly Dictionary<string, Vector2> DoorCenters = new()
+    {
+        ["north"] = new Vector2(128,  16),
+        ["south"] = new Vector2(128, 160),
+        ["west"]  = new Vector2( 16,  88),
+        ["east"]  = new Vector2(240,  88),
+    };
+
+    public void UnlockEnemyDoors()
+    {
+        foreach (string dir in AllDirections)
+            if (GetDoorType(dir) == "enemy")
+                unlocked[dir] = true;
+    }
+
+    public void TryUnlockBomb(Vector2 explosionCenter, float radius)
+    {
+        foreach (string dir in AllDirections)
+        {
+            if (GetDoorType(dir) != "bomb") continue;
+            if (unlocked.GetValueOrDefault(dir)) continue;
+            Vector2 doorCenter = new Vector2(DoorCenters[dir].X * scale, DoorCenters[dir].Y * scale + hudHeight);
+            if (Vector2.Distance(explosionCenter, doorCenter) <= radius)
+                unlocked[dir] = true;
+        }
+    }
 
     public bool TryExit(string direction, ILink link)
     {
@@ -80,7 +108,14 @@ public class DoorManager
         foreach (string dir in AllDirections)
         {
             string type = GetDoorType(dir);
-            string displayType = (type == "key" && !IsLocked(dir)) ? "open" : type;
+            bool locked = IsLocked(dir);
+            string displayType = type switch
+            {
+                "key"   => locked ? "key"  : "open",
+                "enemy" => locked ? "enemy": "open",
+                "bomb"  => locked ? "wall" : "bomb",
+                _       => type,
+            };
             doorBlocks[dir].Draw(spriteBatch, displayType);
         }
     }

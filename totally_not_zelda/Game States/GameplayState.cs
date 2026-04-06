@@ -151,6 +151,14 @@ class GameplayState : IGameState
         link.Update(gameTime);
         inventory.Update(gameTime);
         items.Update(gameTime);
+
+        if (currentLevel.Enemies.AllDead)
+            doorManager.UnlockEnemyDoors();
+
+        foreach (var item in items.JustFinished)
+            if (item.Name == "TimeBomb")
+                doorManager.TryUnlockBomb(item.Position, 80f);
+
         collisionManager.HandleAll();
         inputHandler.HandleInput();
 
