@@ -60,6 +60,9 @@ internal class LinkItemCollision : ICollisionHandler
                 link.GetHealed(link.MaxHealth);
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
                 return;
+            case "Key": link.AddKey(); 
+                SoundPlayer.Play(SoundType.PICKUP_ITEM);
+                return;
         }
 
         // All other items go into the inventory

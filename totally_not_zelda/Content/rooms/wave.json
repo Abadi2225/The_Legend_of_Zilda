@@ -46,5 +46,6 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "south": "dice5", "north": "dumbbell" }
+ "doors": { "south": "dice5", "north": "dumbbell" },
+ "doorTypes": { "south": "open", "north": "key" }
 }
