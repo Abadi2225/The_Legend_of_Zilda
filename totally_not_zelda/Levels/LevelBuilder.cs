@@ -51,8 +51,8 @@ public class LevelBuilder
 				int y = i / data.width;
 
 				Vector2 pos = new Vector2(
-					x * TILE_SIZE * GameServices.ScaleFactor + wallBorderX,
-					y * TILE_SIZE * GameServices.ScaleFactor + wallBorderY + hudHeight);
+					(x * TILE_SIZE + wallBorderX) * GameServices.ScaleFactor,
+					(y * TILE_SIZE + wallBorderY + hudHeight) * GameServices.ScaleFactor);
 
 				Block block = BlockFactory.CreatePushable(id - 1, pos);
 				blockManager.Add(block);

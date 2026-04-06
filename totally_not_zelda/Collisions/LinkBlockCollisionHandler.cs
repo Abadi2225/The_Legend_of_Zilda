@@ -21,7 +21,6 @@ namespace Sprint.Collisions
 				foreach (var block in blockManager.blocksList)
 				{
 					if (block.walkAble) continue;
-					if (block.pushAble) continue;
 					if (link.Rect.Intersects(block.Rect))
 						ResolveCollision(link, block);
 				}

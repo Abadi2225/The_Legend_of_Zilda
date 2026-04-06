@@ -39,7 +39,7 @@ class GameplayState : IGameState
     private bool rmbReleased = true;
     private InnerDungeonWalls innerWalls;
     private GameplayInputHandler inputHandler;
-    private JesseDungeonWalls dungeonWalls;
+    private OuterDungeonWalls dungeonWalls;
 
     public GameplayState()
     {
@@ -79,12 +79,9 @@ class GameplayState : IGameState
 
         uiManager = new UIManager();
         uiManager.AddElement(new HUDBar(hudElements));
-        uiManager.AddElement(new OuterDungeonWalls(outerWallsTexture));
+        dungeonWalls = new OuterDungeonWalls(outerWallsTexture);
+        uiManager.AddElement(dungeonWalls);
         innerWalls = new InnerDungeonWalls(innerWallsTexture);
-        
-        // Remove in future.
-        // Currnt dependency of collision handling.
-        dungeonWalls = new JesseDungeonWalls(innerWallsTexture);
         
         currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory, dungeonWalls.InnerBounds);
 
@@ -130,13 +127,13 @@ class GameplayState : IGameState
         collisionManager.Add(new LinkEnemyCollision(link, currentLevel.Enemies));
         collisionManager.Add(new SwordEnemyCollision(link, currentLevel.Enemies));
         collisionManager.Add(new EnemyBlockCollisionHandler(currentLevel.Enemies.enemyList, currentLevel.Blocks));
+        collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
         collisionManager.Add(new LinkBlockCollisionHandler(link, currentLevel.Blocks));
         collisionManager.Add(new LinkItemCollision(link, inventory, currentLevel.WorldItems));
         collisionManager.Add(new ActiveItemEnemyCollision(items, currentLevel.Enemies));
         collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
         collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls, HandleDoorExit));
         collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
-        collisionManager.Add(new LinkBlockPushHandler(link, currentLevel.Blocks));
     }
 
     private void HandleDoorExit(string exitDirection)
