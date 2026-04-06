@@ -20,9 +20,6 @@ namespace Sprint.Enemies.Concrete
         private const float DIRECTION_SWAP_MAX = 2.0f;
         private float moveDirectionTimer;
         private bool moveLeft;
-        private Rectangle innerBounds;
-        private List<Sprint.Block.Block> solidBlocks;
-
         private EnemyProjectileFactory projectileFactory;
         private List<AquamentusFireball> activeFireballs = new();
         public IReadOnlyList<AquamentusFireball> ActiveFireballs => activeFireballs;

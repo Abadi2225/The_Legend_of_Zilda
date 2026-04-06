@@ -11,14 +11,14 @@ public class DoorTransitionHandler
 {
     private readonly DoorManager doorManager;
     private readonly ILink link;
-    private readonly DungeonWalls dungeonWalls;
+    private readonly OuterDungeonWalls dungeonWalls;
     private readonly LevelLoader levelLoader;
     private readonly EnemyFactory enemyFactory;
 
     private readonly Action<LevelData, Level> onRoomChanged;
     private readonly Action onRebuildCollision;
 
-    public DoorTransitionHandler(DoorManager doorManager, ILink link, DungeonWalls dungeonWalls,
+    public DoorTransitionHandler(DoorManager doorManager, ILink link, OuterDungeonWalls dungeonWalls,
         LevelLoader levelLoader, EnemyFactory enemyFactory,
         Action<LevelData, Level> onRoomChanged, Action onRebuildCollision)
     {

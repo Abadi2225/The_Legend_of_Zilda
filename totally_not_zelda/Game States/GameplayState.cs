@@ -74,11 +74,10 @@ class GameplayState : IGameState
         Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
         link = new Link(linkSheet, center);
-
         GameServices.Link = link;
 
-        levelLoader = new LevelLoader();
-        currentLevelData = levelLoader.GetCurrentLevel();
+        enemyManager = new EnemyManager();
+        enemyFactory = new EnemyFactory(enemiesSheet, bossesSheet, linkSheet, dustSheet, NPCSheet);
 
         uiManager = new UIManager();
         uiManager.AddElement(new HUDBar(hudElements));
@@ -86,17 +85,18 @@ class GameplayState : IGameState
         uiManager.AddElement(dungeonWalls);
         innerWalls = new InnerDungeonWalls(innerWallsTexture);
 
+        levelLoader = new LevelLoader();
+        currentLevelData = levelLoader.GetCurrentLevel();
+
         doorManager = new DoorManager(doorSheet, GameServices.ScaleFactor, 48 * GameServices.ScaleFactor);
         doorManager.Reset(currentLevelData.doors, currentLevelData.doorTypes);
         doorTransitionHandler = new DoorTransitionHandler(doorManager, link, dungeonWalls, levelLoader, enemyFactory,
             (data, level) => { currentLevelData = data; currentLevel = level; }, RebuildCollisionManager);
 
-        currentLevel = LevelBuilder.Build(levelLoader.GetCurrentLevel(), enemyFactory, dungeonWalls.InnerBounds);
+        currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory, dungeonWalls.InnerBounds);
 
         items = new ItemManager();
         inventory = new Inventory();
-        enemyManager = new EnemyManager();
-        enemyFactory = new EnemyFactory(enemiesSheet, BossesSheet, linkSheet, dustSheet, NPCSheet);
 
         // inventory items — D1=Boomerang, D2=Bow, D3=Bomb
         inventory.Add(ItemFactory.CreateBoomerang(Vector2.Zero, Vector2.Zero, maxDistance: 160f));
