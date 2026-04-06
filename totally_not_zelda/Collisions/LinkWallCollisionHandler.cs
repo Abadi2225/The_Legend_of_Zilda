@@ -9,13 +9,13 @@ namespace Sprint.Collisions
 	public class LinkWallCollisionHandler : ICollisionHandler
 	{
 		private readonly ILink link;
-		private readonly DungeonWalls dungeonWalls;
+		private readonly OuterDungeonWalls dungeonWalls;
         private readonly DoorManager doorManager;
 		private readonly Action<string> onDoorExit;
         // Set when Link has entered a door opening but hasn't gone deep enough to transition yet.
         private string pendingExit;
 
-		public LinkWallCollisionHandler(ILink link, DungeonWalls dungeonWalls, DoorManager doorManager, Action<string> onDoorExit = null)
+		public LinkWallCollisionHandler(ILink link, OuterDungeonWalls dungeonWalls, DoorManager doorManager, Action<string> onDoorExit = null)
 		{
 			this.link = link;
 			this.dungeonWalls = dungeonWalls;

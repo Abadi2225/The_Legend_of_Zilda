@@ -18,7 +18,7 @@ class TitleScreen : IUIElement
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        background.Draw(spriteBatch, new Vector2(sourceRect.Width / 2, sourceRect.Height / 2));
+        background.Draw(spriteBatch, Vector2.Zero);
     }
 
     public void Update(GameTime gameTime)
