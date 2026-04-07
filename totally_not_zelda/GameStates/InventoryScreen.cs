@@ -4,8 +4,13 @@ using Sprint.Interfaces;
 using Sprint.Item;
 using Sprint.UI;
 
-class InventoryScreen : IGameState
+namespace Sprint.GameStates;
+
+internal class InventoryScreen : IGameState
 {
+    // private static StaticSprite inventoryBackground;
+    // private static StaticSprite mapBackground;
+
     private Inventory inventory;
     private HUDBar hud;
     private IGameState restoreState;
