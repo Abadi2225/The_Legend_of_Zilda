@@ -56,6 +56,13 @@ public class Link : ILink
     private bool isVisible = false;
     public bool isPushing = false;
 	private bool attackHitLanded = false;
+    private bool triforceSequenceActive = false;
+    private double triforceTimer = 0;
+
+    // expose read-only for rendering
+    public bool TriforceActive => triforceSequenceActive;
+    public double TriforceTimer => triforceTimer;
+
     private Rectangle? pickUpItemRect = null;
 
     public Directions Facing => direction;
@@ -179,6 +186,11 @@ public class Link : ILink
 
 		}
 
+        if(triforceSequenceActive)
+        {
+            triforceTimer += gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
 		float currentSpeed = isPushing ? PUSHING_SPEED : SPEED;
 		Position += move * currentSpeed * dt;
 
@@ -259,8 +271,26 @@ public class Link : ILink
         isUsingItem = true;
         move = Vector2.Zero;
 
+        triforceSequenceActive = true;
+        triforceTimer = 0;
+
         PickUpTriforce.Reset();
         sprite = PickUpTriforce;
+    }
+
+    public bool ShouldEndTriforceSequence()
+    {
+        return triforceSequenceActive && triforceTimer >= 10;
+    }
+
+    public void EndTriforceSequence()
+    {
+        triforceSequenceActive = false;
+        triforceTimer = 0;
+
+        isUsingItem = false;
+        pickUpItemRect = null;
+        SetIdleSprite();
     }
 
     public void SetMove(Directions dir)
@@ -337,10 +367,14 @@ public class Link : ILink
 
     private void FinishPickUpItem()
     {
+        if (triforceSequenceActive)
+        {
+            return;
+        }
+
         isUsingItem = false;
         pickUpItemRect = null;
         SetIdleSprite();
-
     }
 
     private void FinishUseItem()

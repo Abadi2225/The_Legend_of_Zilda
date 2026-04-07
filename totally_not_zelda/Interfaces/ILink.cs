@@ -11,6 +11,8 @@ public interface ILink
     int Health { get; }
     int MaxHealth { get; }
     Rectangle SwordRect { get; }
+    bool TriforceActive { get; }
+    double TriforceTimer { get; }  
     void StartAttack();
     void StartUseItem();
     void StartPickUpWeapon(Rectangle itemRect);

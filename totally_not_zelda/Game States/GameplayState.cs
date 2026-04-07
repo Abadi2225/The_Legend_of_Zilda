@@ -25,6 +25,7 @@ class GameplayState : IGameState
     private Texture2D innerWallsTexture;
     private Texture2D hudElements;
     private Texture2D doorSheet;
+    private Texture2D pixel;
 
     private Link link;
     private ItemManager items;
@@ -71,6 +72,9 @@ class GameplayState : IGameState
         doorSheet = GameServices.Content.Load<Texture2D>("blocks/Doors");
         GameServices.TileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
 
+        pixel = new Texture2D(GameServices.GraphicsDevice, 1, 1);
+        pixel.SetData([Color.White]);
+
         Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
         link = new Link(linkSheet, center);
@@ -84,6 +88,8 @@ class GameplayState : IGameState
         dungeonWalls = new OuterDungeonWalls(outerWallsTexture);
         uiManager.AddElement(dungeonWalls);
         innerWalls = new InnerDungeonWalls(innerWallsTexture);
+
+        uiManager.AddElement(new TriforceOverlay(link, pixel));
 
         levelLoader = new LevelLoader();
         currentLevelData = levelLoader.GetCurrentLevel();
@@ -159,8 +165,12 @@ class GameplayState : IGameState
             if (item.Name == "TimeBomb")
                 doorManager.TryUnlockBomb(item.Position, 80f);
 
-        collisionManager.HandleAll();
-        inputHandler.HandleInput();
+        // if game breaks, try removing this if statement (while leaving nested content)
+        if(!link.TriforceActive)
+        {
+            collisionManager.HandleAll();
+            inputHandler.HandleInput();
+        }
 
         MouseState mouse = Mouse.GetState();
         if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
