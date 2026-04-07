@@ -23,7 +23,7 @@ internal class ItemFactory
         Key,
         Compass,
         GoldTriforce,
-        PurpleTriforce,
+        PurpleTriforce
     }
 
     public static Boomerang CreateBoomerang(Vector2 pos, Vector2 vel, float maxDistance)
@@ -72,7 +72,7 @@ internal class ItemFactory
             StillType.Compass        => new Rectangle(258, 1, 11, 12),
             StillType.GoldTriforce   => new Rectangle(275, 3, 10, 10),
             StillType.PurpleTriforce => new Rectangle(275, 19, 10, 10),
-            _                        => new Rectangle(0, 0, 0, 0),
+			_                        => new Rectangle(0, 0, 0, 0),
         };
         return new StillItem(type.ToString(), GameServices.ItemSheet, pos, sourceRect, scale);
     }

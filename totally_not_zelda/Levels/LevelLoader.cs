@@ -22,7 +22,8 @@ public class LevelLoader
         "dumbbell",
         "blockedstairs",
 		"boss",
-        "pacman"
+        "pacman",
+        "NPC"
     };
     private int currentLevel = 0;
     public LevelData CycleNext()

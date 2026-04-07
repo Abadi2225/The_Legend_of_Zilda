@@ -21,7 +21,9 @@ namespace Sprint.Enemies
         Rope,
         Aquamentus,
         Dodongo,
-        OldMan
+        OldMan,
+        FlameLeft, FlameRight,
+
     }
 
     public class EnemyFactory
@@ -62,7 +64,9 @@ namespace Sprint.Enemies
         EnemyType.WallMaster => new WallMaster(enemySpriteSheet, position),
         EnemyType.Trap       => new Trap(enemySpriteSheet, position),
         EnemyType.OldMan     => new OldMan(NPCSheet, position),
-        _                    => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks, innerBounds),
+		EnemyType.FlameLeft  => new FlameLeft(NPCSheet, position),
+		EnemyType.FlameRight => new FlameRight(NPCSheet, position),
+				_            => new Goriya(enemySpriteSheet, position, contentManager, solidBlocks, innerBounds),
             };
 
             // OldMan is an NPC — no cloud or dust effects
