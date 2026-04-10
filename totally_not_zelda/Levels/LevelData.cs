@@ -15,4 +15,10 @@ public class LevelData
 
     // Optional door types: key = direction, value = "open" (default), "key", "enemy", or "bomb"
     public Dictionary<string, string> doorTypes { get; set; }
+
+    // Item that spawns in the room center when all enemies are cleared
+    public string roomClearDrop { get; set; }
+
+    // Enemies that carry an item dropped on death: key = tile index in Enemies layer, value = item name (e.g. "Key")
+    public Dictionary<string, string> carriedItems { get; set; }
 }
