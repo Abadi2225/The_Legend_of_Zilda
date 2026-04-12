@@ -21,7 +21,7 @@ public class LevelLoader
         "wave",
         "dumbbell",
         "blockedstairs",
-		"boss",
+        "boss",
         "pacman",
         "NPC"
     };
@@ -51,7 +51,7 @@ public class LevelLoader
         return Load(levels[currentLevel]);
     }
 
-    public LevelData Load(string levelName)
+    public static LevelData Load(string levelName)
     {
         string path = $"Content/rooms/{levelName}.json";
         string json = File.ReadAllText(path);

@@ -27,7 +27,7 @@ internal class InventoryScreen : IGameState
         this.inventoryBar = new InventoryBar(
                 this.inventory.GetItems(),
                 this.activeSlot,
-                0, 56 * (int)GameServices.ScaleFactor
+                0, 48 * (int)GameServices.ScaleFactor
                 );
         this.hudOriginalX = hud.X;
         this.hudOriginalY = hud.Y;

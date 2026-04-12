@@ -40,30 +40,30 @@ public class DoorTransitionHandler
             int s = link.Rect.Width;
             link.Position = exitDirection switch
             {
-                "west"  => new Vector2(dungeonWalls.InnerBounds.Left, link.Position.Y),
-                "east"  => new Vector2(dungeonWalls.InnerBounds.Right - s, link.Position.Y),
+                "west" => new Vector2(dungeonWalls.InnerBounds.Left, link.Position.Y),
+                "east" => new Vector2(dungeonWalls.InnerBounds.Right - s, link.Position.Y),
                 "north" => new Vector2(link.Position.X, dungeonWalls.InnerBounds.Top),
                 "south" => new Vector2(link.Position.X, dungeonWalls.InnerBounds.Bottom - s),
-                _       => link.Position
+                _ => link.Position
             };
             return;
         }
 
-        LevelData newData  = levelLoader.Load(targetRoom);
+        LevelData newData = LevelLoader.Load(targetRoom);
         doorManager.Reset(newData.doors, newData.doorTypes);
         Level newLevel = LevelBuilder.Build(newData, enemyFactory, dungeonWalls.InnerBounds);
 
         // Place Link just inside the inner bounds at the opposite door.
-        int spriteSize  = link.Rect.Width;
+        int spriteSize = link.Rect.Width;
         int doorCenterX = (dungeonWalls.TopDoorLeft + dungeonWalls.TopDoorRight) / 2;
         int doorCenterY = (dungeonWalls.SideDoorTop + dungeonWalls.SideDoorBottom) / 2;
         link.Position = exitDirection switch
         {
-            "east"  => new Vector2(dungeonWalls.InnerBounds.Left, doorCenterY - spriteSize / 2),
-            "west"  => new Vector2(dungeonWalls.InnerBounds.Right - spriteSize, doorCenterY - spriteSize / 2),
+            "east" => new Vector2(dungeonWalls.InnerBounds.Left, doorCenterY - spriteSize / 2),
+            "west" => new Vector2(dungeonWalls.InnerBounds.Right - spriteSize, doorCenterY - spriteSize / 2),
             "south" => new Vector2(doorCenterX - spriteSize / 2, dungeonWalls.InnerBounds.Top),
             "north" => new Vector2(doorCenterX - spriteSize / 2, dungeonWalls.InnerBounds.Bottom - spriteSize),
-            _       => link.Position
+            _ => link.Position
         };
 
         onRoomChanged(newData, newLevel);
