@@ -31,29 +31,10 @@ namespace Sprint.Enemies
             }
         }
         
-        public void CycleNext()
-        {
-            if (enemies.Count == 0)
-                return;
-                
-            currentEnemyIndex = (currentEnemyIndex + 1) % enemies.Count;
-            currentEnemy = enemies[currentEnemyIndex];
-        }
-    
-        public void CyclePrevious()
-        {
-            if (enemies.Count == 0)
-                return;
-                
-            currentEnemyIndex = (currentEnemyIndex - 1 + enemies.Count) % enemies.Count;
-            currentEnemy = enemies[currentEnemyIndex];
-        }
-        
         public void Update(GameTime gameTime)
         {
             foreach (var enemy in enemies)
                 enemy.Update(gameTime);
-                //Add collision testing call or loop for all enemies and then collision testing
         }
         
         public void Draw(SpriteBatch spriteBatch)

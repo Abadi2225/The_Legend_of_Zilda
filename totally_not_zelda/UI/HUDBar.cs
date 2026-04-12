@@ -17,42 +17,49 @@ class HUDBar : IUIElement
     private StaticSprite background;
     private Rectangle sourceRect;
 
-    private HeartDisplay hearts = new HeartDisplay(new Vector2(505, 100), 10);
+    public int X { get; set; }
+    public int Y { get; set; }
 
+    private HeartDisplay hearts;
     private TwoDigitDisplay rupees;
     private TwoDigitDisplay keys;
     private TwoDigitDisplay bombs;
 
-    public HUDBar(Texture2D backgroundTexture)
+    public HUDBar(int x, int y, Texture2D backgroundTexture)
     {
         texture = backgroundTexture;
+        X = x;
+        Y = y;
 
         sourceRect = new Rectangle(258, 19, 256, 48);
-        background = new StaticSprite(texture, new Vector2(0, 0), sourceRect);
+        background = new StaticSprite(texture, new Vector2(X, Y), sourceRect);
 
         rupees = new TwoDigitDisplay(
-                new Vector2(96 * GameServices.ScaleFactor, 8 * GameServices.ScaleFactor),
-                new Vector2(104 * GameServices.ScaleFactor, 8 * GameServices.ScaleFactor),
-                new Vector2(112 * GameServices.ScaleFactor, 8 * GameServices.ScaleFactor),
-                texture
-                );
+            new Vector2(X + 96 * GameServices.ScaleFactor, Y + 8 * GameServices.ScaleFactor),
+            new Vector2(X + 104 * GameServices.ScaleFactor, Y + 8 * GameServices.ScaleFactor),
+            new Vector2(X + 112 * GameServices.ScaleFactor, Y + 8 * GameServices.ScaleFactor),
+            texture
+        );
+
         keys = new TwoDigitDisplay(
-                new Vector2(96 * GameServices.ScaleFactor, 24 * GameServices.ScaleFactor),
-                new Vector2(104 * GameServices.ScaleFactor, 24 * GameServices.ScaleFactor),
-                new Vector2(112 * GameServices.ScaleFactor, 24 * GameServices.ScaleFactor),
-                texture
-                );
+            new Vector2(X + 96 * GameServices.ScaleFactor, Y + 24 * GameServices.ScaleFactor),
+            new Vector2(X + 104 * GameServices.ScaleFactor, Y + 24 * GameServices.ScaleFactor),
+            new Vector2(X + 112 * GameServices.ScaleFactor, Y + 24 * GameServices.ScaleFactor),
+            texture
+        );
+
         bombs = new TwoDigitDisplay(
-                new Vector2(96 * GameServices.ScaleFactor, 32 * GameServices.ScaleFactor),
-                new Vector2(104 * GameServices.ScaleFactor, 32 * GameServices.ScaleFactor),
-                new Vector2(112 * GameServices.ScaleFactor, 32 * GameServices.ScaleFactor),
-                texture
-                );
+            new Vector2(X + 96 * GameServices.ScaleFactor, Y + 32 * GameServices.ScaleFactor),
+            new Vector2(X + 104 * GameServices.ScaleFactor, Y + 32 * GameServices.ScaleFactor),
+            new Vector2(X + 112 * GameServices.ScaleFactor, Y + 32 * GameServices.ScaleFactor),
+            texture
+        );
+        hearts = new HeartDisplay(new Vector2(X + 505, Y + 100), 10);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        background.Draw(spriteBatch, Vector2.Zero);
+        background.Draw(spriteBatch, background.Position);
         // todo use Link's hearts
         hearts.Draw(GameServices.Link.Health, GameServices.Link.MaxHealth, spriteBatch);
         rupees.Draw(spriteBatch);
