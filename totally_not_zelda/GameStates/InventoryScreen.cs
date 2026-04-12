@@ -33,8 +33,8 @@ internal class InventoryScreen : IGameState
                 0,
                 136 * (int)GameServices.ScaleFactor,
                 invMap,
-                true,
-                true
+                this.inventory.HasMap,
+                this.inventory.HasCompass
                 );
         this.hudOriginalX = hud.X;
         this.hudOriginalY = hud.Y;
@@ -49,7 +49,7 @@ internal class InventoryScreen : IGameState
             hud.X = hudOriginalX;
             hud.Y = hudOriginalY;
             inventory.ActiveSlot = this.activeSlot;
-            hud.ActiveItem = inventory.Get(inventory.ActiveSlot);
+            hud.UpdateActiveItem();
             Game1.Instance.ForceState(restoreState);
             return;
         }

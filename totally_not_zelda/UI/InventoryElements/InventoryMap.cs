@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Sprint.Sprites;
-using Sprint.UI.Hud;
 using Sprint.Levels;
 
 namespace Sprint.UI.InventoryElements;
@@ -29,7 +28,7 @@ internal class InventoryMap
     private static readonly Rectangle[] nodeTypes = new Rectangle[16];
     static InventoryMap()
     {
-        nodeTypes[0] = rect(0);
+        nodeTypes[NO_DOORS] = rect(0);
         nodeTypes[EAST] = rect(1);
         nodeTypes[WEST] = rect(2);
         nodeTypes[EAST | WEST] = rect(3);
@@ -140,7 +139,6 @@ internal class InventoryMap
             mask |= WEST;
 
         Rectangle textureMask = nodeTypes[mask];
-        if (textureMask == null) return;  // this case shouldn't happen
 
         int row = getRow(linkPos);
         int col = getCol(linkPos);

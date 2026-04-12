@@ -117,7 +117,7 @@ class GameplayState : IGameState
         inventory.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bow, Vector2.Zero, GameServices.ScaleFactor));
         inventory.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bomb, Vector2.Zero, GameServices.ScaleFactor));
 
-        hud = new HUDBar(0, 0, inventory.Get(inventory.ActiveSlot), hudElements);
+        hud = new HUDBar(0, 0, inventory, hudElements);
         uiManager.AddElement(hud);
 
         doorManager = new DoorManager(doorSheet, GameServices.ScaleFactor, 48 * GameServices.ScaleFactor);

@@ -18,19 +18,21 @@ class HUDBar : IUIElement
     public int X { get; set; }
     public int Y { get; set; }
 
-    public IItem ActiveItem { get; set; }
+    private Inventory inventory;
+    private IItem activeItem;
     private HeartDisplay hearts;
     private TwoDigitDisplay rupees;
     private TwoDigitDisplay keys;
     private TwoDigitDisplay bombs;
     public HudMap Map { get; }
 
-    public HUDBar(int x, int y, IItem activeItem, Texture2D backgroundTexture)
+    public HUDBar(int x, int y, Inventory inventory, Texture2D backgroundTexture)
     {
         texture = backgroundTexture;
         X = x;
         Y = y;
-        ActiveItem = activeItem;
+        this.inventory = inventory;
+        this.activeItem = inventory.Get(inventory.ActiveSlot);
 
         sourceRect = new Rectangle(258, 19, 256, 48);
         background = new StaticSprite(texture, new Vector2(X, Y), sourceRect);
@@ -64,10 +66,15 @@ class HUDBar : IUIElement
                 58,
                 58,
                 30,
-                true,
-                true,
+                false,
+                false,
                 1
                 );
+    }
+
+    public void UpdateActiveItem()
+    {
+        this.activeItem = inventory.Get(inventory.ActiveSlot);
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -75,10 +82,10 @@ class HUDBar : IUIElement
         background.Draw(spriteBatch, background.Position);
 
         // draw active item in inventory and hud at the same time
-        Vector2 prev = ActiveItem.Position;
-        ActiveItem.Position = new Vector2(X, Y) + B_ITEM_OFFSET * GameServices.ScaleFactor;
-        ActiveItem.Draw(spriteBatch, Vector2.Zero);
-        ActiveItem.Position = prev;
+        Vector2 prev = activeItem.Position;
+        activeItem.Position = new Vector2(X, Y) + B_ITEM_OFFSET * GameServices.ScaleFactor;
+        activeItem.Draw(spriteBatch, Vector2.Zero);
+        activeItem.Position = prev;
 
         hearts.Draw(GameServices.Link.Health, GameServices.Link.MaxHealth, spriteBatch);
         rupees.Draw(spriteBatch);
@@ -89,6 +96,14 @@ class HUDBar : IUIElement
 
     public void Update(GameTime gameTime)
     {
+        if (!Map.Enabled && inventory.HasMap)
+        {
+            Map.Enabled = true;
+        }
+        if (!Map.ShowTriforceLoc && inventory.HasCompass)
+        {
+            Map.ShowTriforceLoc = true;
+        }
         int linkRupees = GameServices.Link.Rubies;
         rupees.SetNumber(GameServices.Link.Rubies);
         // keys.SetNumber(GameServices.Link.Keys);
