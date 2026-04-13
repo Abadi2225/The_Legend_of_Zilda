@@ -58,7 +58,12 @@ internal class GameplayInputHandler : IInputHandler
                         ));
         }
 
-        foreach (var command in commands)
+		if (GameServices.KeyInput.IsKeyPressed(Keys.K))
+		{
+			link.StartDeath();
+		}
+
+		foreach (var command in commands)
         {
             if (GameServices.KeyInput.IsKeyPressed(command.Key))
             {

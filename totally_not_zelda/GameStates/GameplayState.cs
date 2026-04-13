@@ -1,18 +1,20 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Sprint;
+using Sprint.Block;
 using Sprint.Character;
 using Sprint.Collision;
-using Sprint.Commands;
-using Sprint.Interfaces;
-using Sprint.Enemies;
-using Sprint.Item;
-using System.Collections.Generic;
-using Sprint.Block;
 using Sprint.Collisions;
+using Sprint.Commands;
+using Sprint.Enemies;
+using Sprint.GameStates;
+using Sprint.InputHandling;
+using Sprint.Interfaces;
+using Sprint.Item;
 using Sprint.Levels;
 using Sprint.UI;
-using Sprint.InputHandling;
+using System.Collections.Generic;
 
 class GameplayState : IGameState
 {
@@ -21,6 +23,7 @@ class GameplayState : IGameState
     private Texture2D bossesSheet;
     private Texture2D dustSheet;
     private Texture2D NPCSheet;
+    private Texture2D fontSheet;
     private Texture2D outerWallsTexture;
     private Texture2D innerWallsTexture;
     private Texture2D hudElements;
@@ -48,7 +51,10 @@ class GameplayState : IGameState
     private GameplayInputHandler inputHandler;
     private OuterDungeonWalls dungeonWalls;
 
-    public GameplayState()
+    private GameOverTransition gameOverTransition;
+    private GameOverText gameOverText;
+    
+	public GameplayState()
     {
     }
 
@@ -61,7 +67,8 @@ class GameplayState : IGameState
 
     public void LoadContent()
     {
-        linkSheet = GameServices.Content.Load<Texture2D>("images/Link");
+        fontSheet = GameServices.Content.Load<Texture2D>("images/Fonts");
+		linkSheet = GameServices.Content.Load<Texture2D>("images/Link");
         enemiesSheet = GameServices.Content.Load<Texture2D>("images/enemiesSheet");
         bossesSheet = GameServices.Content.Load<Texture2D>("images/BossesSpriteSheet");
         dustSheet = GameServices.Content.Load<Texture2D>("images/dustSheet");
@@ -85,7 +92,7 @@ class GameplayState : IGameState
 
         Vector2 center = new Vector2(GameServices.GameWidth / 2, GameServices.GameHeight / 2);
 
-        link = new Link(linkSheet, center);
+        link = new Link(linkSheet, dustSheet, center);
         GameServices.Link = link;
 
         enemyManager = new EnemyManager();
@@ -95,10 +102,17 @@ class GameplayState : IGameState
         hud = new HUDBar(0, 0, hudElements);
         uiManager.AddElement(hud);
         dungeonWalls = new OuterDungeonWalls(outerWallsTexture);
+
         uiManager.AddElement(dungeonWalls);
         innerWalls = new InnerDungeonWalls(innerWallsTexture);
+        gameOverText = new GameOverText(fontSheet);
+		gameOverTransition = new GameOverTransition(
+	        dungeonWalls.OuterBounds,
+	        Game1.Instance.GraphicsDevice,
+            gameOverText
+        );
 
-        GameServices.DungeonEntrancePosition = new Vector2(
+		GameServices.DungeonEntrancePosition = new Vector2(
             (dungeonWalls.BottomDoorLeft + dungeonWalls.BottomDoorRight) / 2,
             dungeonWalls.BottomDoorTop - 16 * GameServices.ScaleFactor
         );
@@ -140,7 +154,7 @@ class GameplayState : IGameState
         collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
     }
 
-    public void Update(GameTime gameTime)
+	public void Update(GameTime gameTime)
     {
         uiManager.Update(gameTime);
         currentLevel.Update(gameTime);
@@ -183,16 +197,33 @@ class GameplayState : IGameState
         {
             lmbReleased = true;
         }
-    }
+
+        if(link.IsDead && !gameOverTransition.Finished){
+            gameOverTransition.Start();
+		}
+
+		gameOverTransition.Update(gameTime, link);
+		
+        if (gameOverTransition.Finished)
+		{
+			MenuState menu = new MenuState();
+			menu.LoadContent();
+			menu.Enter();
+			Game1.Instance.ForceState(menu);
+			return;
+		}
+	}
 
     public void Draw(SpriteBatch spriteBatch)
     {
         currentLevel.Draw(spriteBatch);
         innerWalls.Draw(spriteBatch);       // blocks, then WallMaster entering
         doorManager.Draw(spriteBatch);     // locked door visuals over openings
-        link.Draw(spriteBatch);
+		link.Draw(spriteBatch);
         items.Draw(spriteBatch);
         currentLevel.DrawOnTop(spriteBatch); // Keese on top
         uiManager.Draw(spriteBatch);       // rest of UI (minus DungeonWalls)
-    }
+		gameOverTransition.DrawBlackOut(spriteBatch);
+		gameOverTransition.DrawGameOverText(spriteBatch);
+	}
 }

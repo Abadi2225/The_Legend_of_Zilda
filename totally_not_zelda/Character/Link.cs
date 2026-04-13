@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
+using static GameplayState;
 
 namespace Sprint.Character;
 
@@ -28,7 +29,9 @@ public class Link : ILink
     private readonly ISprite WalkLeft;
     private readonly ISprite WalkRight;
 
-    private readonly Attacking AttackUp;
+	private readonly Dead DeadSprite;
+
+	private readonly Attacking AttackUp;
     private readonly Attacking AttackDown;
     private readonly Attacking AttackLeft;
     private readonly Attacking AttackRight;
@@ -41,7 +44,9 @@ public class Link : ILink
     private readonly PickUpItem PickUpWeapon;
     private readonly PickUpItem PickUpTriforce;
 
-    private ISprite sprite;
+	private readonly DeathSparkle DeathSparkleSprite;
+
+	private ISprite sprite;
     private Vector2 position;
     private Vector2 move = Vector2.Zero;
     private Directions direction = Directions.Down;
@@ -55,6 +60,7 @@ public class Link : ILink
     private bool isDamaged = false;
     private bool isVisible = false;
     public bool isPushing = false;
+	private bool isDead = false;
 	private bool attackHitLanded = false;
     private Rectangle? pickUpItemRect = null;
 
@@ -62,7 +68,24 @@ public class Link : ILink
     public int Health => health;
     public int MaxHealth => MAX_HEALTH;
 	public bool IsPushing => isPushing;
-    public bool IsGrabbed { get; set; } = false;
+	public bool IsDead => isDead;
+	public bool DeathFinished => DeadSprite.Finished;
+	public bool IsGrabbed { get; set; } = false;
+
+	private enum DeathStage
+	{
+		None,
+		Spinning,
+		WhiteFlash,
+		Sparkle,
+		Finished
+	}
+
+	private DeathStage deathStage = DeathStage.None;
+	private double deathStageTimer = 0;
+	public bool DeathSequenceFinished => deathStage == DeathStage.Finished;
+	public bool DeathBackgroundBlack =>
+		deathStage == DeathStage.WhiteFlash || deathStage == DeathStage.Sparkle || deathStage == DeathStage.Finished;
 
 	public Rectangle Rect { get; private set; }
 
@@ -103,7 +126,7 @@ public class Link : ILink
         private set => rubies = value;
     }
 
-    public int Keys => keys;
+	public int Keys => keys;
     public void AddKey() => keys++;
     public bool UseKey()
     { 
@@ -112,7 +135,7 @@ public class Link : ILink
         return true; 
     }
 
-    public Link(Texture2D texture, Vector2 position)
+    public Link(Texture2D texture, Texture2D dustTexture,Vector2 position)
     {
         IdleDown  = LinkFactory.IdleDown(texture);
         IdleUp    = LinkFactory.IdleUp(texture);
@@ -137,7 +160,11 @@ public class Link : ILink
         PickUpWeapon = LinkFactory.PickUpWeapon(texture, FinishPickUpItem);
         PickUpTriforce = LinkFactory.PickUpTriforce(texture, FinishPickUpItem);
 
-        sprite = IdleDown;
+		DeadSprite = LinkFactory.Dead(texture);
+		DeathSparkleSprite = LinkFactory.DeathSparkle(dustTexture);
+
+
+		sprite = IdleDown;
         Position = position;
         health = MAX_HEALTH;
     }
@@ -149,7 +176,50 @@ public class Link : ILink
             sprite.Update(gameTime); // Update sprite animation even while grabbed
             return; // WallMaster controls position while grabbed
         }
-        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+		if (isDead)
+		{
+			double deadDT = gameTime.ElapsedGameTime.TotalSeconds;
+			deathStageTimer += deadDT;
+
+			switch (deathStage)
+			{
+				case DeathStage.Spinning:
+					sprite.Update(gameTime);
+
+					if (DeadSprite.Finished)
+					{
+						deathStage = DeathStage.WhiteFlash;
+						deathStageTimer = 0;
+						direction = Directions.Down;
+						sprite = IdleDown;
+					}
+					break;
+
+				case DeathStage.WhiteFlash:
+					if (deathStageTimer >= 0.2)
+					{
+						deathStage = DeathStage.Sparkle;
+						deathStageTimer = 0;
+						DeathSparkleSprite.Reset();
+					}
+					break;
+
+				case DeathStage.Sparkle:
+					DeathSparkleSprite.Update(gameTime);
+
+					if (deathStageTimer >= 0.3)
+					{
+						deathStage = DeathStage.Finished;
+						deathStageTimer = 0;
+					}
+					break;
+			}
+
+			return;
+		}
+
+		float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         if (!isAttacking && !isUsingItem && !isDamaged && move == Vector2.Zero)
         {
@@ -193,7 +263,24 @@ public class Link : ILink
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (isDamaged && !isVisible)
+
+		if (deathStage == DeathStage.Sparkle)
+		{
+			Vector2 center = new Vector2(
+				position.X + BODY_SIZE / 2f,
+				position.Y + BODY_SIZE / 2f
+			);
+
+			DeathSparkleSprite.Draw(spriteBatch, center);
+			return;
+		}
+
+		if (deathStage == DeathStage.Finished)
+		{
+			return;
+		}
+
+		if (isDamaged && !isVisible)
             return;
 
         sprite.Draw(spriteBatch, position);
@@ -212,6 +299,7 @@ public class Link : ILink
                 handPos.Y - rect.Height * GameServices.ScaleFactor
             );
 
+
             spriteBatch.Draw(
                 GameServices.ItemSheet,
                 itemPos,
@@ -224,11 +312,12 @@ public class Link : ILink
                 0f
             );
         }
-    }
+
+	}
 
     public void StartUseItem()
     {
-        if (isUsingItem) return;
+        if (isUsingItem || isDead) return;
 
         isUsingItem = true;
         move = Vector2.Zero;
@@ -244,7 +333,7 @@ public class Link : ILink
 
     public void StartPickUpWeapon(Rectangle itemRect)
     {
-        if (isUsingItem || isAttacking || isDamaged)
+        if (isUsingItem || isAttacking || isDamaged || isDead)
             return;
 
         direction = Directions.Up;
@@ -259,7 +348,7 @@ public class Link : ILink
 
     public void StartPickUpTriforce()
     {
-        if (isUsingItem || isAttacking || isDamaged)
+        if (isUsingItem || isAttacking || isDamaged || isDead)
             return;
 
         isUsingItem = true;
@@ -271,7 +360,7 @@ public class Link : ILink
 
     public void SetMove(Directions dir)
     {
-        if (isAttacking || isUsingItem) return;
+        if (isAttacking || isUsingItem || isDead) return;
 
         move = Vector2.Zero;
         direction = dir;
@@ -292,9 +381,9 @@ public class Link : ILink
 
     public void StartAttack()
     {
-        if (isAttacking) return;
+        if (isAttacking || isDead) return;
 
-        isAttacking = true;
+		isAttacking = true;
         attackHitLanded = false;
         move = Vector2.Zero;
 
@@ -309,7 +398,7 @@ public class Link : ILink
 
 	public void StartPush()
 	{
-		if (isAttacking || isUsingItem || isDamaged) return;
+		if (isAttacking || isUsingItem || isDamaged || isDead) return;
 
 		isPushing = true;
 		pushingTimer = 0;
@@ -321,7 +410,14 @@ public class Link : ILink
         if (isDamaged) return;
 
         health = MathHelper.Clamp(health - amount, 0, MAX_HEALTH);
-        StartDamaged();
+
+		if (health <= 0)
+		{
+			StartDeath();
+			return;
+		}
+
+		StartDamaged();
     }
 
     public void StartDamaged()
@@ -335,7 +431,24 @@ public class Link : ILink
         SetIdleSprite();
     }
 
-    private void FinishAttack()
+	public void StartDeath()
+	{
+		if (isDead) return;
+
+		isDead = true;
+		move = Vector2.Zero;
+		isAttacking = false;
+		isUsingItem = false;
+		isDamaged = false;
+		isPushing = false;
+
+		deathStage = DeathStage.Spinning;
+		deathStageTimer = 0;
+
+		DeadSprite.Reset();
+		sprite = DeadSprite;
+	}
+	private void FinishAttack()
     {
         isAttacking = false;
         SetIdleSprite();
@@ -378,4 +491,13 @@ public class Link : ILink
             _                => IdleDown,
         };
     }
+
+	// This method is intended for testing purposes to instantly kill Link without needing to wait for the damaged state to wear off.
+	public void Kill()
+	{
+		if (isDead) return;
+
+		health = 0;
+		StartDeath();
+	}
 }
