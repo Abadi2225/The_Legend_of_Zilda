@@ -17,7 +17,7 @@ public class Link : ILink
 
     private const double DAMAGED_DURATION = 3;
     private const double BLINK_INTERVAL = 0.10;
-    private const int MAX_HEALTH = 6;
+    private int maxHealth = 6;
 
     private static readonly int STARTING_BOMBS = 6;
 
@@ -69,7 +69,7 @@ public class Link : ILink
 
     public Directions Facing => direction;
     public int Health => health;
-    public int MaxHealth => MAX_HEALTH;
+    public int MaxHealth => maxHealth;
     public bool IsPushing => isPushing;
     public bool IsDead => isDead;
     public bool DeathFinished => DeadSprite.Finished;
@@ -177,7 +177,7 @@ public class Link : ILink
 
         sprite = IdleDown;
         Position = position;
-        health = MAX_HEALTH;
+        health = maxHealth;
     }
 
     public void Update(GameTime gameTime)
@@ -420,7 +420,7 @@ public class Link : ILink
     {
         if (isDamaged) return;
 
-        health = MathHelper.Clamp(health - amount, 0, MAX_HEALTH);
+        health = MathHelper.Clamp(health - amount, 0, maxHealth);
 
         if (health <= 0)
         {
@@ -481,8 +481,14 @@ public class Link : ILink
 
     public void GetHealed(int amount)
     {
-        health = MathHelper.Clamp(health + amount, 0, MAX_HEALTH);
+        health = MathHelper.Clamp(health + amount, 0, maxHealth);
         Console.WriteLine($"Link healed by {amount}. Current health: {health}");
+    }
+
+    public void AddHeartContainer()
+    {
+        maxHealth += 2;
+        health = maxHealth;
     }
 
     public void IncreaseRubies(int amount)

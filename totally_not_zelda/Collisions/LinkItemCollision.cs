@@ -57,6 +57,10 @@ internal class LinkItemCollision : ICollisionHandler
                 link.GetHealed(1);
                 SoundPlayer.Play(SoundType.LINK_HEALED);
                 return;
+            case "HeartContainer":
+                link.AddHeartContainer();
+                SoundPlayer.Play(SoundType.PICKUP_ITEM);
+                return;
             case "Fairy":
                 link.GetHealed(link.MaxHealth);
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);

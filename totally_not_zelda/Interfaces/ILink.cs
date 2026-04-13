@@ -20,6 +20,7 @@ public interface ILink
     bool UseKey();
     void TakeDamage(int amount);
     void GetHealed(int amount);
+    void AddHeartContainer();
     void IncreaseRubies(int amount);
     public bool IsGrabbed { get; set; }
 }
