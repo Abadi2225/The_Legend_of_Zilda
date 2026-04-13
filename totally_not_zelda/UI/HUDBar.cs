@@ -19,7 +19,7 @@ class HUDBar : IUIElement
     public int Y { get; set; }
 
     private Inventory inventory;
-    private IItem activeItem;
+    private StaticSprite activeItem;
     private HeartDisplay hearts;
     private TwoDigitDisplay rupees;
     private TwoDigitDisplay keys;
@@ -32,7 +32,7 @@ class HUDBar : IUIElement
         X = x;
         Y = y;
         this.inventory = inventory;
-        this.activeItem = inventory.Get(inventory.ActiveSlot);
+        UpdateActiveItem();
 
         sourceRect = new Rectangle(258, 19, 256, 48);
         background = new StaticSprite(texture, new Vector2(X, Y), sourceRect);
@@ -74,18 +74,17 @@ class HUDBar : IUIElement
 
     public void UpdateActiveItem()
     {
-        this.activeItem = inventory.Get(inventory.ActiveSlot);
+        this.activeItem = ItemHudSprites.GetSprite(
+                inventory.Get(inventory.ActiveSlot).Name,
+                new Vector2(X, Y) + B_ITEM_OFFSET * GameServices.ScaleFactor
+                );
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
         background.Draw(spriteBatch, background.Position);
 
-        // draw active item in inventory and hud at the same time
-        Vector2 prev = activeItem.Position;
-        activeItem.Position = new Vector2(X, Y) + B_ITEM_OFFSET * GameServices.ScaleFactor;
-        activeItem.Draw(spriteBatch, Vector2.Zero);
-        activeItem.Position = prev;
+        activeItem.Draw(spriteBatch, activeItem.Position);
 
         hearts.Draw(GameServices.Link.Health, GameServices.Link.MaxHealth, spriteBatch);
         rupees.Draw(spriteBatch);
