@@ -12,6 +12,8 @@ internal static class ItemHudSprites
     private static readonly Rectangle boomerang = new Rectangle(584, 137, 8, 16);
     private static readonly Rectangle bomb = new Rectangle(604, 137, 8, 16);
     private static readonly Rectangle bow = new Rectangle(633, 137, 8, 16);
+    private static readonly Rectangle blueCandle = new Rectangle(644, 137, 8, 16);
+    private static readonly Rectangle bluePotion = new Rectangle(695, 137, 8, 16);
     private static readonly Rectangle notFound = new Rectangle(519, 117, 8, 8);
 
     private static readonly Dictionary<string, Rectangle> nameMap = new Dictionary<string, Rectangle> {
@@ -19,6 +21,8 @@ internal static class ItemHudSprites
         {"Boomerang", boomerang},
         {"Bomb", bomb},
         {"Bow", bow},
+        {"BlueCandle", blueCandle},
+        {"BluePotion", bluePotion},
         {"Unknown", notFound},
     };
 

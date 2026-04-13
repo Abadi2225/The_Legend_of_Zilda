@@ -146,6 +146,8 @@ public class Link : ILink
         return true;
     }
 
+    public void AddBomb() => bombs++;
+
     public Link(Texture2D texture, Texture2D dustTexture, Vector2 position)
     {
         IdleDown = LinkFactory.IdleDown(texture);

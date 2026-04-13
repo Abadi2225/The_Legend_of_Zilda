@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Sprint.Interfaces;
 using Sprint.Item;
 using Sprint.Sound;
+using Sprint.Character;
 
 namespace Sprint.Collision;
 
@@ -68,6 +69,16 @@ internal class LinkItemCollision : ICollisionHandler
             case "Key":
                 link.AddKey();
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
+                return;
+            case "Bomb":
+                link.AddBomb();
+                SoundPlayer.Play(SoundType.PICKUP_ITEM);
+                return;
+            case "ZeroHeart":
+                // not sure what this does, but it shouldn't go in the inventory
+                return;
+            case "Clock":
+                // not sure what this does
                 return;
         }
 
