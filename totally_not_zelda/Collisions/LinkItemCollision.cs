@@ -49,6 +49,7 @@ internal class LinkItemCollision : ICollisionHandler
                 SoundPlayer.Play(SoundType.PICKUP_RUPEE);
                 return;
             case "Heart":
+                link.GetHealed(2);
                 SoundPlayer.Play(SoundType.LINK_HEALED);
                 return;
             case "BlueHeart":
@@ -60,7 +61,8 @@ internal class LinkItemCollision : ICollisionHandler
                 link.GetHealed(link.MaxHealth);
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
                 return;
-            case "Key": link.AddKey(); 
+            case "Key":
+                link.AddKey();
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
                 return;
         }
