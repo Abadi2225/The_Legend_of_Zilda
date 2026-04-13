@@ -11,10 +11,10 @@ This file is dynamically maintained by a bot, *please do not* edit this by hand.
 
 The *Sprint.csproj* project file contains:
 
-- 22 namespaces.
-- 123 named types.
-- 7,451 total lines of source code.
-- Approximately 2,284 lines of executable code.
+- 23 namespaces.
+- 124 named types.
+- 7,491 total lines of source code.
+- Approximately 2,302 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 7 named types.
 
 - 7 named types.
-- 503 total lines of source code.
-- Approximately 212 lines of executable code.
+- 504 total lines of source code.
+- Approximately 213 lines of executable code.
 - The highest cyclomatic complexity is 14 :x:.
 
 <details>
@@ -62,8 +62,8 @@ The `<global namespace>` namespace contains 7 named types.
 <br>
 
 - The `GameplayState` contains 35 members.
-- 191 total lines of source code.
-- Approximately 99 lines of executable code.
+- 192 total lines of source code.
+- Approximately 100 lines of executable code.
 - The highest cyclomatic complexity is 10 :radioactive:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -76,7 +76,7 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L44' title='DoorManager GameplayState.doorManager'>44</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L28' title='Texture2D GameplayState.doorSheet'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L45' title='DoorTransitionHandler GameplayState.doorTransitionHandler'>45</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L198' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>198</a> | 68 | 1 :heavy_check_mark: | 0 | 7 | 10 / 7 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L199' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>199</a> | 68 | 1 :heavy_check_mark: | 0 | 7 | 10 / 7 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L51' title='OuterDungeonWalls GameplayState.dungeonWalls'>51</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L23' title='Texture2D GameplayState.dustSheet'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L21' title='Texture2D GameplayState.enemiesSheet'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -96,13 +96,13 @@ The `<global namespace>` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L30' title='Link GameplayState.link'>30</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L20' title='Texture2D GameplayState.linkSheet'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L47' title='bool GameplayState.lmbReleased'>47</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L64' title='void GameplayState.LoadContent()'>64</a> | 39 | 1 :heavy_check_mark: | 0 | 30 | 73 / 52 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L64' title='void GameplayState.LoadContent()'>64</a> | 39 | 1 :heavy_check_mark: | 0 | 31 | 74 / 53 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L24' title='Texture2D GameplayState.NPCSheet'>24</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L25' title='Texture2D GameplayState.outerWallsTexture'>25</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L138' title='void GameplayState.RebuildCollisionManager()'>138</a> | 58 | 1 :heavy_check_mark: | 0 | 25 | 14 / 11 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L139' title='void GameplayState.RebuildCollisionManager()'>139</a> | 58 | 1 :heavy_check_mark: | 0 | 25 | 14 / 11 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L48' title='bool GameplayState.rmbReleased'>48</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L40' title='UIManager GameplayState.uiManager'>40</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L153' title='void GameplayState.Update(GameTime gameTime)'>153</a> | 48 | 10 :radioactive: | 0 | 22 | 44 / 26 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L154' title='void GameplayState.Update(GameTime gameTime)'>154</a> | 48 | 10 :radioactive: | 0 | 22 | 44 / 26 |
 
 <a href="#GameplayState-class-diagram">:link: to `GameplayState` class diagram</a>
 
@@ -345,12 +345,12 @@ The `Sprint.Enemies.Base` namespace contains 1 named types.
 </summary>
 <br>
 
-The `Sprint.Block` namespace contains 7 named types.
+The `Sprint.Block` namespace contains 4 named types.
 
-- 7 named types.
-- 396 total lines of source code.
-- Approximately 95 lines of executable code.
-- The highest cyclomatic complexity is 5 :heavy_check_mark:.
+- 4 named types.
+- 146 total lines of source code.
+- Approximately 26 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 <details>
 <summary>
@@ -466,114 +466,6 @@ The `Sprint.Block` namespace contains 7 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/BlockFactory.cs#L22' title='BlockType.Water'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 
 <a href="#BlockFactory.BlockType-class-diagram">:link: to `BlockFactory.BlockType` class diagram</a>
-
-<a href="#sprint-block">:top: back to Sprint.Block</a>
-
-</details>
-
-<details>
-<summary>
-  <strong id="doorblock">
-    DoorBlock :heavy_check_mark:
-  </strong>
-</summary>
-<br>
-
-- The `DoorBlock` contains 12 members.
-- 57 total lines of source code.
-- Approximately 12 lines of executable code.
-- The highest cyclomatic complexity is 1 :heavy_check_mark:.
-
-| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L44' title='DoorBlock.DoorBlock(Texture2D texture, string direction, float scale, float hudHeight)'>44</a> | 69 | 1 :heavy_check_mark: | 0 | 5 | 10 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L37' title='Vector2 DoorBlock.destination'>37</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L19' title='Dictionary<string, (int width, int height, int rowX, int rowY)> DoorBlock.DirectionInfo'>19</a> | 80 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L28' title='Dictionary<string, Vector2> DoorBlock.DoorOrigins'>28</a> | 81 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L55' title='void DoorBlock.Draw(SpriteBatch spriteBatch, string type)'>55</a> | 72 | 1 :heavy_check_mark: | 0 | 6 | 8 / 4 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L41' title='int DoorBlock.rowX'>41</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L42' title='int DoorBlock.rowY'>42</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L38' title='float DoorBlock.scale'>38</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L40' title='int DoorBlock.spriteHeight'>40</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L39' title='int DoorBlock.spriteWidth'>39</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L36' title='Texture2D DoorBlock.texture'>36</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorBlock.cs#L10' title='Dictionary<string, int> DoorBlock.TypeColumn'>10</a> | 82 | 0 :heavy_check_mark: | 0 | 2 | 7 / 1 |
-
-<a href="#DoorBlock-class-diagram">:link: to `DoorBlock` class diagram</a>
-
-<a href="#sprint-block">:top: back to Sprint.Block</a>
-
-</details>
-
-<details>
-<summary>
-  <strong id="doormanager">
-    DoorManager :heavy_check_mark:
-  </strong>
-</summary>
-<br>
-
-- The `DoorManager` contains 19 members.
-- 115 total lines of source code.
-- Approximately 33 lines of executable code.
-- The highest cyclomatic complexity is 5 :heavy_check_mark:.
-
-| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L22' title='DoorManager.DoorManager(Texture2D doorTexture, float scale, float hudHeight)'>22</a> | 79 | 1 :heavy_check_mark: | 0 | 1 | 6 / 3 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L10' title='string[] DoorManager.AllDirections'>10</a> | 86 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L17' title='Dictionary<string, string> DoorManager.configuredTypes'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L20' title='Dictionary<string, DoorBlock> DoorManager.doorBlocks'>20</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L61' title='Dictionary<string, Vector2> DoorManager.DoorCenters'>61</a> | 81 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L12' title='Texture2D DoorManager.doorTexture'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L106' title='void DoorManager.Draw(SpriteBatch spriteBatch)'>106</a> | 69 | 5 :heavy_check_mark: | 0 | 4 | 16 / 5 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L48' title='string DoorManager.GetDoorType(string direction)'>48</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L45' title='string DoorManager.GetTarget(string direction)'>45</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L43' title='bool DoorManager.HasDoor(string direction)'>43</a> | 97 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L14' title='float DoorManager.hudHeight'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L51' title='bool DoorManager.IsLocked(string direction)'>51</a> | 87 | 1 :heavy_check_mark: | 0 | 2 | 9 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L29' title='void DoorManager.Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes)'>29</a> | 69 | 4 :heavy_check_mark: | 0 | 4 | 13 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L13' title='float DoorManager.scale'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L16' title='Dictionary<string, string> DoorManager.targets'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L88' title='bool DoorManager.TryExit(string direction, ILink link)'>88</a> | 65 | 5 :heavy_check_mark: | 0 | 3 | 17 / 8 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L76' title='void DoorManager.TryUnlockBomb(Vector2 explosionCenter, float radius)'>76</a> | 69 | 5 :heavy_check_mark: | 0 | 3 | 11 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L18' title='Dictionary<string, bool> DoorManager.unlocked'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorManager.cs#L69' title='void DoorManager.UnlockEnemyDoors()'>69</a> | 89 | 3 :heavy_check_mark: | 0 | 2 | 6 / 1 |
-
-<a href="#DoorManager-class-diagram">:link: to `DoorManager` class diagram</a>
-
-<a href="#sprint-block">:top: back to Sprint.Block</a>
-
-</details>
-
-<details>
-<summary>
-  <strong id="doortransitionhandler">
-    DoorTransitionHandler :heavy_check_mark:
-  </strong>
-</summary>
-<br>
-
-- The `DoorTransitionHandler` contains 11 members.
-- 69 total lines of source code.
-- Approximately 24 lines of executable code.
-- The highest cyclomatic complexity is 2 :heavy_check_mark:.
-
-| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L23' title='DoorTransitionHandler.DoorTransitionHandler(DoorManager doorManager, ILink link, OuterDungeonWalls dungeonWalls, LevelLoader levelLoader, EnemyFactory enemyFactory, Action<LevelData, Level> onRoomChanged, Action onRebuildCollision, Action<string> updateLinkMapPos, Action<LevelData, string> updateInventoryMap)'>23</a> | 64 | 1 :heavy_check_mark: | 0 | 10 | 14 / 9 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L12' title='DoorManager DoorTransitionHandler.doorManager'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L14' title='OuterDungeonWalls DoorTransitionHandler.dungeonWalls'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L16' title='EnemyFactory DoorTransitionHandler.enemyFactory'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L38' title='void DoorTransitionHandler.Handle(string exitDirection)'>38</a> | 53 | 2 :heavy_check_mark: | 0 | 15 | 40 / 15 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L15' title='LevelLoader DoorTransitionHandler.levelLoader'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L13' title='ILink DoorTransitionHandler.link'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L19' title='Action DoorTransitionHandler.onRebuildCollision'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L18' title='Action<LevelData, Level> DoorTransitionHandler.onRoomChanged'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L21' title='Action<LevelData, string> DoorTransitionHandler.updateInventoryMap'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Block/DoorTransitionHandler.cs#L20' title='Action<string> DoorTransitionHandler.updateLinkMapPos'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-
-<a href="#DoorTransitionHandler-class-diagram">:link: to `DoorTransitionHandler` class diagram</a>
 
 <a href="#sprint-block">:top: back to Sprint.Block</a>
 
@@ -2297,6 +2189,160 @@ The `Sprint.Controllers` namespace contains 1 named types.
 <a href="#KeyboardController-class-diagram">:link: to `KeyboardController` class diagram</a>
 
 <a href="#sprint-controllers">:top: back to Sprint.Controllers</a>
+
+</details>
+
+</details>
+
+<details>
+<summary>
+  <strong id="sprint-doors">
+    Sprint.Doors :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+The `Sprint.Doors` namespace contains 4 named types.
+
+- 4 named types.
+- 289 total lines of source code.
+- Approximately 86 lines of executable code.
+- The highest cyclomatic complexity is 5 :heavy_check_mark:.
+
+<details>
+<summary>
+  <strong id="doorblock">
+    DoorBlock :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `DoorBlock` contains 12 members.
+- 57 total lines of source code.
+- Approximately 12 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L44' title='DoorBlock.DoorBlock(Texture2D texture, string direction, float scale, float hudHeight)'>44</a> | 69 | 1 :heavy_check_mark: | 0 | 5 | 10 / 5 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L37' title='Vector2 DoorBlock.destination'>37</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L19' title='Dictionary<string, (int width, int height, int rowX, int rowY)> DoorBlock.DirectionInfo'>19</a> | 80 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L28' title='Dictionary<string, Vector2> DoorBlock.DoorOrigins'>28</a> | 81 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L55' title='void DoorBlock.Draw(SpriteBatch spriteBatch, string type)'>55</a> | 72 | 1 :heavy_check_mark: | 0 | 6 | 8 / 4 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L41' title='int DoorBlock.rowX'>41</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L42' title='int DoorBlock.rowY'>42</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L38' title='float DoorBlock.scale'>38</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L40' title='int DoorBlock.spriteHeight'>40</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L39' title='int DoorBlock.spriteWidth'>39</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L36' title='Texture2D DoorBlock.texture'>36</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorBlock.cs#L10' title='Dictionary<string, int> DoorBlock.TypeColumn'>10</a> | 82 | 0 :heavy_check_mark: | 0 | 2 | 7 / 1 |
+
+<a href="#DoorBlock-class-diagram">:link: to `DoorBlock` class diagram</a>
+
+<a href="#sprint-doors">:top: back to Sprint.Doors</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="doormanager">
+    DoorManager :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `DoorManager` contains 22 members.
+- 142 total lines of source code.
+- Approximately 46 lines of executable code.
+- The highest cyclomatic complexity is 5 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L23' title='DoorManager.DoorManager(Texture2D doorTexture, float scale, float hudHeight)'>23</a> | 79 | 1 :heavy_check_mark: | 0 | 1 | 6 / 3 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L10' title='string[] DoorManager.AllDirections'>10</a> | 86 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L18' title='Dictionary<string, string> DoorManager.configuredTypes'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L16' title='string DoorManager.currentRoomName'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L21' title='Dictionary<string, DoorBlock> DoorManager.doorBlocks'>21</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L83' title='Dictionary<string, Vector2> DoorManager.DoorCenters'>83</a> | 81 | 0 :heavy_check_mark: | 0 | 3 | 6 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L12' title='Texture2D DoorManager.doorTexture'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L135' title='void DoorManager.Draw(SpriteBatch spriteBatch)'>135</a> | 70 | 4 :heavy_check_mark: | 0 | 4 | 14 / 5 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L72' title='string DoorManager.GetDoorType(string direction)'>72</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L69' title='string DoorManager.GetTarget(string direction)'>69</a> | 92 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L67' title='bool DoorManager.HasDoor(string direction)'>67</a> | 97 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L14' title='float DoorManager.hudHeight'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L75' title='bool DoorManager.IsLocked(string direction)'>75</a> | 89 | 1 :heavy_check_mark: | 0 | 2 | 7 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L50' title='string DoorManager.OppositeDirection(string direction)'>50</a> | 90 | 1 :heavy_check_mark: | 0 | 0 | 8 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L59' title='void DoorManager.RegisterUnlock(string direction)'>59</a> | 78 | 2 :heavy_check_mark: | 0 | 1 | 7 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L30' title='void DoorManager.Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes, string roomName)'>30</a> | 63 | 5 :heavy_check_mark: | 0 | 5 | 19 / 8 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L13' title='float DoorManager.scale'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L17' title='Dictionary<string, string> DoorManager.targets'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L116' title='bool DoorManager.TryExit(string direction, ILink link)'>116</a> | 64 | 5 :heavy_check_mark: | 0 | 3 | 18 / 9 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L101' title='void DoorManager.TryUnlockBomb(Vector2 explosionCenter, float radius)'>101</a> | 65 | 5 :heavy_check_mark: | 0 | 3 | 14 / 7 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L19' title='Dictionary<string, bool> DoorManager.unlocked'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorManager.cs#L91' title='void DoorManager.UnlockEnemyDoors()'>91</a> | 75 | 3 :heavy_check_mark: | 0 | 2 | 9 / 4 |
+
+<a href="#DoorManager-class-diagram">:link: to `DoorManager` class diagram</a>
+
+<a href="#sprint-doors">:top: back to Sprint.Doors</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="doorstateregistry">
+    DoorStateRegistry :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `DoorStateRegistry` contains 4 members.
+- 13 total lines of source code.
+- Approximately 4 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorStateRegistry.cs#L7' title='HashSet<(string room, string direction)> DoorStateRegistry._unlocked'>7</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorStateRegistry.cs#L12' title='bool DoorStateRegistry.IsUnlocked(string room, string direction)'>12</a> | 94 | 1 :heavy_check_mark: | 0 | 3 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorStateRegistry.cs#L15' title='void DoorStateRegistry.Reset()'>15</a> | 100 | 1 :heavy_check_mark: | 0 | 3 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorStateRegistry.cs#L9' title='void DoorStateRegistry.Unlock(string room, string direction)'>9</a> | 94 | 1 :heavy_check_mark: | 0 | 3 | 2 / 1 |
+
+<a href="#DoorStateRegistry-class-diagram">:link: to `DoorStateRegistry` class diagram</a>
+
+<a href="#sprint-doors">:top: back to Sprint.Doors</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="doortransitionhandler">
+    DoorTransitionHandler :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `DoorTransitionHandler` contains 11 members.
+- 69 total lines of source code.
+- Approximately 24 lines of executable code.
+- The highest cyclomatic complexity is 2 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L23' title='DoorTransitionHandler.DoorTransitionHandler(DoorManager doorManager, ILink link, OuterDungeonWalls dungeonWalls, LevelLoader levelLoader, EnemyFactory enemyFactory, Action<LevelData, Level> onRoomChanged, Action onRebuildCollision, Action<string> updateLinkMapPos, Action<LevelData, string> updateInventoryMap)'>23</a> | 64 | 1 :heavy_check_mark: | 0 | 10 | 14 / 9 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L12' title='DoorManager DoorTransitionHandler.doorManager'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L14' title='OuterDungeonWalls DoorTransitionHandler.dungeonWalls'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L16' title='EnemyFactory DoorTransitionHandler.enemyFactory'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L38' title='void DoorTransitionHandler.Handle(string exitDirection)'>38</a> | 53 | 2 :heavy_check_mark: | 0 | 15 | 40 / 15 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L15' title='LevelLoader DoorTransitionHandler.levelLoader'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L13' title='ILink DoorTransitionHandler.link'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L19' title='Action DoorTransitionHandler.onRebuildCollision'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L18' title='Action<LevelData, Level> DoorTransitionHandler.onRoomChanged'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L21' title='Action<LevelData, string> DoorTransitionHandler.updateInventoryMap'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Doors/DoorTransitionHandler.cs#L20' title='Action<string> DoorTransitionHandler.updateLinkMapPos'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+
+<a href="#DoorTransitionHandler-class-diagram">:link: to `DoorTransitionHandler` class diagram</a>
+
+<a href="#sprint-doors">:top: back to Sprint.Doors</a>
 
 </details>
 
@@ -4731,81 +4777,6 @@ class BlockType{
 
 ```
 
-<div id="DoorBlock-class-diagram"></div>
-
-##### `DoorBlock` class diagram
-
-```mermaid
-classDiagram
-class DoorBlock{
-    -Dictionary<string, int> TypeColumn$
-    -Dictionary<string, (int width, int height, int rowX, int rowY)> DirectionInfo$
-    -Dictionary<string, Vector2> DoorOrigins$
-    -Texture2D texture
-    -Vector2 destination
-    -float scale
-    -int spriteWidth
-    -int spriteHeight
-    -int rowX
-    -int rowY
-    +.ctor(Texture2D texture, string direction, float scale, float hudHeight) DoorBlock
-    +Draw(SpriteBatch spriteBatch, string type) void
-}
-
-```
-
-<div id="DoorManager-class-diagram"></div>
-
-##### `DoorManager` class diagram
-
-```mermaid
-classDiagram
-class DoorManager{
-    -string[] AllDirections$
-    -Texture2D doorTexture
-    -float scale
-    -float hudHeight
-    -Dictionary<string, string> targets
-    -Dictionary<string, string> configuredTypes
-    -Dictionary<string, bool> unlocked
-    -Dictionary<string, DoorBlock> doorBlocks
-    -Dictionary<string, Vector2> DoorCenters$
-    +.ctor(Texture2D doorTexture, float scale, float hudHeight) DoorManager
-    +Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes) void
-    +HasDoor(string direction) bool
-    +GetTarget(string direction) string
-    +GetDoorType(string direction) string
-    +IsLocked(string direction) bool
-    +UnlockEnemyDoors() void
-    +TryUnlockBomb(Vector2 explosionCenter, float radius) void
-    +TryExit(string direction, ILink link) bool
-    +Draw(SpriteBatch spriteBatch) void
-}
-
-```
-
-<div id="DoorTransitionHandler-class-diagram"></div>
-
-##### `DoorTransitionHandler` class diagram
-
-```mermaid
-classDiagram
-class DoorTransitionHandler{
-    -DoorManager doorManager
-    -ILink link
-    -OuterDungeonWalls dungeonWalls
-    -LevelLoader levelLoader
-    -EnemyFactory enemyFactory
-    -Action<LevelData, Level> onRoomChanged
-    -Action onRebuildCollision
-    -Action<string> updateLinkMapPos
-    -Action<LevelData, string> updateInventoryMap
-    +.ctor(DoorManager doorManager, ILink link, OuterDungeonWalls dungeonWalls, LevelLoader levelLoader, EnemyFactory enemyFactory, Action<LevelData, Level> onRoomChanged, Action onRebuildCollision, Action<string> updateLinkMapPos, Action<LevelData, string> updateInventoryMap) DoorTransitionHandler
-    +Handle(string exitDirection) void
-}
-
-```
-
 <div id="Attacking-class-diagram"></div>
 
 ##### `Attacking` class diagram
@@ -5905,6 +5876,99 @@ class KeyboardController{
     +IsKeyReleased(Keys key) bool
     +IsKeyUp(Keys key) bool
     +Reset() void
+}
+
+```
+
+<div id="DoorBlock-class-diagram"></div>
+
+##### `DoorBlock` class diagram
+
+```mermaid
+classDiagram
+class DoorBlock{
+    -Dictionary<string, int> TypeColumn$
+    -Dictionary<string, (int width, int height, int rowX, int rowY)> DirectionInfo$
+    -Dictionary<string, Vector2> DoorOrigins$
+    -Texture2D texture
+    -Vector2 destination
+    -float scale
+    -int spriteWidth
+    -int spriteHeight
+    -int rowX
+    -int rowY
+    +.ctor(Texture2D texture, string direction, float scale, float hudHeight) DoorBlock
+    +Draw(SpriteBatch spriteBatch, string type) void
+}
+
+```
+
+<div id="DoorManager-class-diagram"></div>
+
+##### `DoorManager` class diagram
+
+```mermaid
+classDiagram
+class DoorManager{
+    -string[] AllDirections$
+    -Texture2D doorTexture
+    -float scale
+    -float hudHeight
+    -string currentRoomName
+    -Dictionary<string, string> targets
+    -Dictionary<string, string> configuredTypes
+    -Dictionary<string, bool> unlocked
+    -Dictionary<string, DoorBlock> doorBlocks
+    -Dictionary<string, Vector2> DoorCenters$
+    +.ctor(Texture2D doorTexture, float scale, float hudHeight) DoorManager
+    +Reset(Dictionary<string, string> newTargets, Dictionary<string, string> newTypes, string roomName) void
+    +OppositeDirection(string direction)$ string
+    +RegisterUnlock(string direction) void
+    +HasDoor(string direction) bool
+    +GetTarget(string direction) string
+    +GetDoorType(string direction) string
+    +IsLocked(string direction) bool
+    +UnlockEnemyDoors() void
+    +TryUnlockBomb(Vector2 explosionCenter, float radius) void
+    +TryExit(string direction, ILink link) bool
+    +Draw(SpriteBatch spriteBatch) void
+}
+
+```
+
+<div id="DoorStateRegistry-class-diagram"></div>
+
+##### `DoorStateRegistry` class diagram
+
+```mermaid
+classDiagram
+class DoorStateRegistry{
+    -HashSet<(string room, string direction)> _unlocked$
+    +Unlock(string room, string direction)$ void
+    +IsUnlocked(string room, string direction)$ bool
+    +Reset()$ void
+}
+
+```
+
+<div id="DoorTransitionHandler-class-diagram"></div>
+
+##### `DoorTransitionHandler` class diagram
+
+```mermaid
+classDiagram
+class DoorTransitionHandler{
+    -DoorManager doorManager
+    -ILink link
+    -OuterDungeonWalls dungeonWalls
+    -LevelLoader levelLoader
+    -EnemyFactory enemyFactory
+    -Action<LevelData, Level> onRoomChanged
+    -Action onRebuildCollision
+    -Action<string> updateLinkMapPos
+    -Action<LevelData, string> updateInventoryMap
+    +.ctor(DoorManager doorManager, ILink link, OuterDungeonWalls dungeonWalls, LevelLoader levelLoader, EnemyFactory enemyFactory, Action<LevelData, Level> onRoomChanged, Action onRebuildCollision, Action<string> updateLinkMapPos, Action<LevelData, string> updateInventoryMap) DoorTransitionHandler
+    +Handle(string exitDirection) void
 }
 
 ```
