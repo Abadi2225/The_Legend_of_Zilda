@@ -60,11 +60,14 @@ public class ItemManager
         }
         else if (used.Name == "Bomb" || used.Name == "TimeBomb")
         {
-            float reach = 30f;
-            double explodeDelayMillis = 3000;
+            float throwSpeed = 3f;
+            float throwDistance = 72f;
+            double explodeDelayMillis = 1500;
             SpawnItem(ItemFactory.CreateTimeBomb(
                         explodeDelayMillis,
-                        Vector2.Add(pos, DirectionsUtils.CreateVector(facing, reach)),
+                        pos,
+                        DirectionsUtils.CreateVector(facing, throwSpeed),
+                        throwDistance,
                         scale: GameServices.ScaleFactor
                         ));
             SoundPlayer.Play(SoundType.BOMB_PLACE);

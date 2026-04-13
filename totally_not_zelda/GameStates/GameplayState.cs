@@ -72,6 +72,7 @@ class GameplayState : IGameState
         innerWallsTexture = GameServices.Content.Load<Texture2D>("dungeonWalls/ZeldaDungeonInnerWalls");
         hudElements = GameServices.Content.Load<Texture2D>("images/ZeldaUIElements");
         GameServices.ItemSheet = GameServices.Content.Load<Texture2D>("items/sheet");
+        GameServices.LinkSheet = linkSheet;
         GameServices.BoomerangSheet = GameServices.Content.Load<Texture2D>("items/boomerang");
         doorSheet = GameServices.Content.Load<Texture2D>("blocks/Doors");
         GameServices.TileSheet = GameServices.Content.Load<Texture2D>("blocks/tiles");
