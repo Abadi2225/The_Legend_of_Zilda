@@ -54,12 +54,12 @@ namespace Sprint.GameStates
 			timer = 0;
 		}
 
-		public void Reset()
-		{
-			phase = Phase.None;
-			blackOutDegree = 0;
-			timer = 0;
-		}
+		//public void Reset()
+		//{
+		//	phase = Phase.None;
+		//	blackOutDegree = 0;
+		//	timer = 0;
+		//}
 
 		public void Update(GameTime gameTime, Link link)
 		{
@@ -71,10 +71,9 @@ namespace Sprint.GameStates
 			{
 
 				case Phase.WaitingForLinkDeath:
-					if (link.DeathSequenceFinished)
-					{
+	
 						phase = Phase.BlackingOut;
-					}
+					
 					break;
 
 				case Phase.BlackingOut:

@@ -272,11 +272,11 @@ class GameplayState : IGameState
         currentLevel.Draw(spriteBatch);
         innerWalls.Draw(spriteBatch);       // blocks, then WallMaster entering
         doorManager.Draw(spriteBatch);     // locked door visuals over openings
-		link.Draw(spriteBatch);
         items.Draw(spriteBatch);
         currentLevel.DrawOnTop(spriteBatch); // Keese on top
         uiManager.Draw(spriteBatch);       // rest of UI (minus DungeonWalls)
 		gameOverTransition.DrawBlackOut(spriteBatch);
 		gameOverTransition.DrawGameOverText(spriteBatch);
+		link.Draw(spriteBatch);
 	}
 }
