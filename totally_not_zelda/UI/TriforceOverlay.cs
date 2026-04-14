@@ -38,14 +38,14 @@ public class TriforceOverlay : IUIElement
             {
                 spriteBatch.Draw(pixel,
                     new Rectangle(0, 0, screenWidth, screenHeight),
-                    Color.White * 0.4f);
+                    Color.White * 0.8f);
             }
         }
 
         // BLACK BAR (6–10 sec)
-        if (t >= 6)
+        if (t >= 6 && t < 10)
         {
-            float progress = (float)System.Math.Min((t - 6) / 4.0, 1.0);
+            float progress = (float)System.Math.Min((t - 6) / 3.0, 1.0);
             int width = (int)(screenWidth * progress);
 
             spriteBatch.Draw(pixel,

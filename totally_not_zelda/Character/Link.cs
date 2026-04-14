@@ -40,6 +40,7 @@ public class Link : ILink
 
     private readonly PickUpItem PickUpWeapon;
     private readonly PickUpItem PickUpTriforce;
+    private bool isTriforcePickup = false;
 
     private ISprite sprite;
     private Vector2 position;
@@ -197,40 +198,54 @@ public class Link : ILink
         sprite.Update(gameTime);
     }
 
-    public void Draw(SpriteBatch spriteBatch)
-    {
-        if (isDamaged && !isVisible)
-            return;
-
-        sprite.Draw(spriteBatch, position);
-
-        if (pickUpItemRect.HasValue)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle rect = pickUpItemRect.Value;
+            if (isDamaged && !isVisible)
+                return;
 
-            Vector2 handPos = new Vector2(
-                position.X + HAND_X * GameServices.ScaleFactor,
-                position.Y + HAND_Y * GameServices.ScaleFactor
-            );
+            sprite.Draw(spriteBatch, position);
 
-            Vector2 itemPos = new Vector2(
-                handPos.X - (rect.Width * GameServices.ScaleFactor) / 2f,
-                handPos.Y - rect.Height * GameServices.ScaleFactor
-            );
+            if (pickUpItemRect.HasValue)
+            {
+                Rectangle rect = pickUpItemRect.Value;
 
-            spriteBatch.Draw(
-                GameServices.ItemSheet,
-                itemPos,
-                pickUpItemRect.Value,
-                Color.White,
-                0f,
-                Vector2.Zero,
-                GameServices.ScaleFactor,
-                SpriteEffects.None,
-                0f
-            );
+                Vector2 itemPos;
+
+                if (isTriforcePickup)
+                {
+                    // Centered above Link’s head
+                    itemPos = new Vector2(
+                        position.X + rect.Width,
+                        position.Y - rect.Height * GameServices.ScaleFactor - 4 // tweak this value if needed
+                    );
+                }
+                else
+                {
+                    // Centered above Link's right hand
+                    Vector2 handPos = new Vector2(
+                        position.X + HAND_X * GameServices.ScaleFactor,
+                        position.Y + HAND_Y * GameServices.ScaleFactor
+                    );
+
+                    itemPos = new Vector2(
+                        handPos.X - (rect.Width * GameServices.ScaleFactor) / 2f,
+                        handPos.Y - rect.Height * GameServices.ScaleFactor
+                    );
+                }
+
+                spriteBatch.Draw(
+                    GameServices.ItemSheet,
+                    itemPos,
+                    rect,
+                    Color.White,
+                    0f,
+                    Vector2.Zero,
+                    GameServices.ScaleFactor,
+                    SpriteEffects.None,
+                    0f
+                );
+            }
         }
-    }
 
     public void StartUseItem()
     {
@@ -259,17 +274,23 @@ public class Link : ILink
 
         pickUpItemRect = itemRect;
 
+        isTriforcePickup = false;
+
         PickUpWeapon.Reset();
         sprite = PickUpWeapon;
     }
 
-    public void StartPickUpTriforce()
+    public void StartPickUpTriforce(Rectangle itemRect)
     {
         if (isUsingItem || isAttacking || isDamaged)
             return;
 
         isUsingItem = true;
         move = Vector2.Zero;
+
+        pickUpItemRect = itemRect;
+
+        isTriforcePickup = true;
 
         triforceSequenceActive = true;
         triforceTimer = 0;
