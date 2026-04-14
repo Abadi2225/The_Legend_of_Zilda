@@ -29,6 +29,9 @@ namespace Sprint.Enemies.Base
         private float knockbackTimer;
         protected virtual bool CanBeKnockedBack => true;
 
+        private const float DAMAGE_COOLDOWN = 1f;
+        private float damageCooldownTimer;
+
         public void Knockback(Vector2 direction, float force)
         {
             if (!CanBeKnockedBack) return;
@@ -90,9 +93,10 @@ namespace Sprint.Enemies.Base
 
         public virtual void TakeDamage(int damageAmount)
         {
-            if (!isAlive || isInvincible)
+            if (!isAlive || isInvincible || damageCooldownTimer > 0)
                 return;
 
+            damageCooldownTimer = DAMAGE_COOLDOWN;
             health -= damageAmount;
 
             if (health <= 0)
@@ -120,6 +124,9 @@ namespace Sprint.Enemies.Base
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (damageCooldownTimer > 0)
+                damageCooldownTimer -= dt;
 
             if (knockbackTimer > 0)
             {
