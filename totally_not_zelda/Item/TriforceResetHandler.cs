@@ -6,6 +6,7 @@ using Sprint.Block;
 using Sprint.Character;
 using Sprint.UI;
 using Sprint.Collision;
+using Sprint.Doors;
 
 public class TriforceResetHandler
 {
