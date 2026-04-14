@@ -40,20 +40,16 @@ public class TriforceResetHandler
     {
         if (link.ShouldEndTriforceSequence())
         {
-            // reload current level data
             currentLevelData = levelLoader.GetCurrentLevel();
 
-            // rebuild level (fresh enemies/items/blocks)
             currentLevel = LevelBuilder.Build(
                 currentLevelData,
                 enemyFactory,
                 dungeonWalls.InnerBounds
             );
 
-            // reset doors (important if boss room changed state)
             doorManager.Reset(currentLevelData.doors, currentLevelData.doorTypes);
 
-            // place Link at center (or spawn)
             link.Position = new Vector2(
                 GameServices.GameWidth / 2,
                 GameServices.GameHeight / 2
