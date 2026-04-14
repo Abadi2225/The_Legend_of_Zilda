@@ -253,11 +253,22 @@ class GameplayState : IGameState
             if (item.Name == "TimeBomb")
                 doorManager.TryUnlockBomb(item.Position, 80f);
 
-        // if game breaks, try removing this if statement (while leaving nested content)
+        // if statements to handle Link Triforce pickup
         if(!link.TriforceActive)
         {
             collisionManager.HandleAll();
             inputHandler.HandleInput();
+        }
+
+        if (link.ShouldEndTriforceSequence())
+        {
+            Vector2 center = new Vector2(
+                GameServices.GameWidth / 2,
+                GameServices.GameHeight / 2
+            );
+
+            link.Position = center;
+            link.EndTriforceSequence();
         }
 
         MouseState mouse = Mouse.GetState();

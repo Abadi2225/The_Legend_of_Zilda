@@ -16,7 +16,9 @@ public interface ILink
     void StartAttack();
     void StartUseItem();
     void StartPickUpWeapon(Rectangle itemRect);
-    void StartPickUpTriforce();
+    void StartPickUpTriforce(Rectangle itemRect);
+    bool ShouldEndTriforceSequence();
+    void EndTriforceSequence();
     int Keys { get; }
     void AddKey();
     bool UseKey();
