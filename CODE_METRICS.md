@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 23 namespaces.
 - 137 named types.
-- 8,397 total lines of source code.
-- Approximately 2,583 lines of executable code.
+- 8,407 total lines of source code.
+- Approximately 2,586 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -3104,7 +3104,7 @@ The `Sprint.UI.Hud` namespace contains 5 named types.
 <details>
 <summary>
   <strong id="sprint-inputhandling">
-    Sprint.InputHandling :warning:
+    Sprint.InputHandling :radioactive:
   </strong>
 </summary>
 <br>
@@ -3112,34 +3112,34 @@ The `Sprint.UI.Hud` namespace contains 5 named types.
 The `Sprint.InputHandling` namespace contains 2 named types.
 
 - 2 named types.
-- 93 total lines of source code.
-- Approximately 22 lines of executable code.
-- The highest cyclomatic complexity is 9 :warning:.
+- 98 total lines of source code.
+- Approximately 24 lines of executable code.
+- The highest cyclomatic complexity is 10 :radioactive:.
 
 <details>
 <summary>
   <strong id="gameplayinputhandler">
-    GameplayInputHandler :warning:
+    GameplayInputHandler :radioactive:
   </strong>
 </summary>
 <br>
 
 - The `GameplayInputHandler` contains 9 members.
-- 63 total lines of source code.
-- Approximately 18 lines of executable code.
-- The highest cyclomatic complexity is 9 :warning:.
+- 68 total lines of source code.
+- Approximately 20 lines of executable code.
+- The highest cyclomatic complexity is 10 :radioactive:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L24' title='GameplayInputHandler.GameplayInputHandler(GameplayState thisState, Link link, Inventory inventory, ItemManager items, HUDBar hud, InventoryMap invMap)'>24</a> | 66 | 1 :heavy_check_mark: | 0 | 18 | 18 / 7 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L22' title='Dictionary<Keys, ICommand> GameplayInputHandler.commands'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L43' title='void GameplayInputHandler.HandleInput()'>43</a> | 60 | 9 :warning: | 0 | 16 | 32 / 11 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L19' title='HUDBar GameplayInputHandler.hud'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L17' title='Inventory GameplayInputHandler.inventory'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L20' title='InventoryMap GameplayInputHandler.invMap'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L18' title='ItemManager GameplayInputHandler.items'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L16' title='Link GameplayInputHandler.link'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L15' title='GameplayState GameplayInputHandler.state'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L25' title='GameplayInputHandler.GameplayInputHandler(GameplayState thisState, Link link, Inventory inventory, ItemManager items, HUDBar hud, InventoryMap invMap)'>25</a> | 66 | 1 :heavy_check_mark: | 0 | 18 | 18 / 7 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L23' title='Dictionary<Keys, ICommand> GameplayInputHandler.commands'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L44' title='void GameplayInputHandler.HandleInput()'>44</a> | 58 | 10 :radioactive: | 0 | 17 | 37 / 13 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L20' title='HUDBar GameplayInputHandler.hud'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L18' title='Inventory GameplayInputHandler.inventory'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L21' title='InventoryMap GameplayInputHandler.invMap'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L19' title='ItemManager GameplayInputHandler.items'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L17' title='Link GameplayInputHandler.link'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L16' title='GameplayState GameplayInputHandler.state'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#GameplayInputHandler-class-diagram">:link: to `GameplayInputHandler` class diagram</a>
 
@@ -4154,8 +4154,8 @@ The `Sprint.Levels` namespace contains 2 named types.
 The `Sprint.Sound` namespace contains 4 named types.
 
 - 4 named types.
-- 108 total lines of source code.
-- Approximately 11 lines of executable code.
+- 113 total lines of source code.
+- Approximately 12 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 <details>
@@ -4166,9 +4166,9 @@ The `Sprint.Sound` namespace contains 4 named types.
 </summary>
 <br>
 
-- The `MusicPlayer` contains 4 members.
-- 25 total lines of source code.
-- Approximately 7 lines of executable code.
+- The `MusicPlayer` contains 5 members.
+- 30 total lines of source code.
+- Approximately 8 lines of executable code.
 - The highest cyclomatic complexity is 1 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -4177,6 +4177,7 @@ The `Sprint.Sound` namespace contains 4 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sound/MusicPlayer.cs#L14' title='Dictionary<MusicType, string> MusicPlayer.musicLookup'>14</a> | 87 | 0 :heavy_check_mark: | 0 | 3 | 5 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sound/MusicPlayer.cs#L30' title='void MusicPlayer.Mute()'>30</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sound/MusicPlayer.cs#L22' title='void MusicPlayer.Play(MusicType type, bool repeat = true)'>22</a> | 72 | 1 :heavy_check_mark: | 0 | 5 | 8 / 5 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Sound/MusicPlayer.cs#L35' title='void MusicPlayer.ToggleMute()'>35</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
 
 <a href="#MusicPlayer-class-diagram">:link: to `MusicPlayer` class diagram</a>
 
@@ -7529,6 +7530,7 @@ class MusicPlayer{
     -MusicType currentMusic$
     +Play(MusicType type, bool repeat = true)$ void
     +Mute()$ void
+    +ToggleMute()$ void
 }
 
 ```
