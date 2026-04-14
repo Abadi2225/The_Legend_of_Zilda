@@ -22,7 +22,7 @@ public class LevelBuilder
 
         bool useInnerBounds = data.background != null;
         float blockOriginX = useInnerBounds ? innerBounds.Left : blockBorderX;
-        float blockOriginY = useInnerBounds ? innerBounds.Top  : blockBorderY;
+        float blockOriginY = useInnerBounds ? innerBounds.Top : blockBorderY;
 
         var backgroundLayer = data.layers.FirstOrDefault(l => l.name == "BackgroundTiles");
         if (backgroundLayer != null)
@@ -126,10 +126,47 @@ public class LevelBuilder
             }
         }
 
+        if (data.precisePlacements != null)
+        {
+
+            foreach (var precisePlacementData in data.precisePlacements)
+            {
+                Vector2 pos = new Vector2(precisePlacementData.x, precisePlacementData.y);
+
+                switch (precisePlacementData.type)
+                {
+                    case "old_man":
+                        enemyManager.AddEnemy(
+                            enemyFactory.CreateEnemy(EnemyType.OldMan, pos, solidBlocks, innerBounds)
+                        );
+                        break;
+
+                    case "flame_left":
+                        enemyManager.AddEnemy(
+                            enemyFactory.CreateEnemy(EnemyType.FlameLeft, pos, solidBlocks, innerBounds)
+                        );
+                        break;
+
+                    case "flame_right":
+                        enemyManager.AddEnemy(
+                            enemyFactory.CreateEnemy(EnemyType.FlameRight, pos, solidBlocks, innerBounds)
+                        );
+                        break;
+
+                    case "triforce":
+                        worldItems.Add(CreatePickupItem("Triforce", pos));
+                        break;
+                }
+
+
+            }
+        }
         return new Level(blockManager, enemyManager, worldItems, carriedItems, roomClearDropItem);
     }
 
-    private static AbstractItem CreatePickupItem(string name, Vector2 pos) => name switch
+
+
+	private static AbstractItem CreatePickupItem(string name, Vector2 pos) => name switch
     {
         "Boomerang" => ItemFactory.CreateBoomerang(pos, Vector2.Zero, maxDistance: 0),
         _ => ItemFactory.CreateStillItem(Enum.Parse<ItemFactory.StillType>(name), pos, scale: GameServices.ScaleFactor),

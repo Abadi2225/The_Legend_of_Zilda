@@ -9,6 +9,13 @@ public class RoomItemData
     public int tile { get; set; }
 }
 
+public class PrecisePlacementData
+{
+	public string type { get; set; }
+	public int x { get; set; }
+    public int y { get; set; }
+}
+
 public class LevelData
 {
     public int width { get; set; }
@@ -37,6 +44,9 @@ public class LevelData
     // Custom background: null = use default dungeon walls
     public string background { get; set; }
 
+	// Multiple items placed at specific pixel positions in the room (overrides tile-based roomItems)
+	public List<PrecisePlacementData> precisePlacements { get; set; }
+    
     // Position of this room on the map grid
     public int gridPos { get; set; }
     

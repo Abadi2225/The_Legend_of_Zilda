@@ -306,7 +306,10 @@ class GameplayState : IGameState
         doorManager.Draw(spriteBatch);
         uiManager.Draw(spriteBatch);
         currentLevel.DrawOnTop(spriteBatch);
-        link.Draw(spriteBatch);
-        items.Draw(spriteBatch);
+		items.Draw(spriteBatch);
+		gameOverTransition.DrawBlackOut(spriteBatch);
+        gameOverTransition.DrawGameOverText(spriteBatch);
+		link.Draw(spriteBatch);
+
     }
 }
