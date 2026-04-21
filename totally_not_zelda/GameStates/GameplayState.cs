@@ -249,6 +249,9 @@ class GameplayState : IGameState
         if (currentLevel.Enemies.AllDead)
             doorManager.UnlockEnemyDoors();
 
+        if (currentLevel.Enemies.AllDead && currentLevel.Blocks.blocksList.Exists(b => b.HasBeenPushed))
+            doorManager.TryUnlockEnemyBlockDoors();
+
         foreach (var item in items.JustFinished)
             if (item.Name == "TimeBomb")
                 doorManager.TryUnlockBomb(item.Position, 80f);

@@ -104,6 +104,16 @@ public class DoorManager
         }
     }
 
+    public void TryUnlockEnemyBlockDoors()
+    {
+        foreach (string dir in AllDirections)
+        {
+            if (GetDoorType(dir) != "enemy_block") continue;
+            unlocked[dir] = true;
+            RegisterUnlock(dir);
+        }
+    }
+
     public void TryUnlockBomb(Vector2 explosionCenter, float radius)
     {
         foreach (string dir in AllDirections)
@@ -147,7 +157,8 @@ public class DoorManager
             string displayType = type switch
             {
                 "bomb" => locked ? "wall" : "bomb",
-                _      => locked ? type   : "open",
+                "enemy_block" => locked ? "enemy" : "open",
+                _ => locked ? type : "open",
             };
             doorBlocks[dir].Draw(spriteBatch, displayType);
         }
