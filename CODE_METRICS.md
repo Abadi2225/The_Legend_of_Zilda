@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 23 namespaces.
 - 141 named types.
-- 8,802 total lines of source code.
-- Approximately 2,711 lines of executable code.
+- 8,807 total lines of source code.
+- Approximately 2,713 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 8 named types.
 
 - 8 named types.
-- 756 total lines of source code.
-- Approximately 305 lines of executable code.
+- 763 total lines of source code.
+- Approximately 307 lines of executable code.
 - The highest cyclomatic complexity is 23 :exploding_head:.
 
 <details>
@@ -62,8 +62,8 @@ The `<global namespace>` namespace contains 8 named types.
 <br>
 
 - The `GameplayState` contains 50 members.
-- 343 total lines of source code.
-- Approximately 170 lines of executable code.
+- 350 total lines of source code.
+- Approximately 172 lines of executable code.
 - The highest cyclomatic complexity is 18 :exploding_head:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -77,9 +77,9 @@ The `<global namespace>` namespace contains 8 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L53' title='DoorManager GameplayState.doorManager'>53</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L34' title='Texture2D GameplayState.doorSheet'>34</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L54' title='DoorTransitionHandler GameplayState.doorTransitionHandler'>54</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L339' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>339</a> | 63 | 2 :heavy_check_mark: | 0 | 10 | 15 / 10 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L363' title='void GameplayState.DrawHUDOnly(SpriteBatch sb)'>363</a> | 96 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L355' title='void GameplayState.DrawRoomContent(SpriteBatch sb, Level level, DoorManager doors, bool drawDoors)'>355</a> | 75 | 3 :heavy_check_mark: | 0 | 5 | 7 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L346' title='void GameplayState.Draw(SpriteBatch spriteBatch)'>346</a> | 63 | 2 :heavy_check_mark: | 0 | 10 | 15 / 10 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L370' title='void GameplayState.DrawHUDOnly(SpriteBatch sb)'>370</a> | 96 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L362' title='void GameplayState.DrawRoomContent(SpriteBatch sb, Level level, DoorManager doors, bool drawDoors)'>362</a> | 75 | 3 :heavy_check_mark: | 0 | 5 | 7 / 4 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L60' title='OuterDungeonWalls GameplayState.dungeonWalls'>60</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L27' title='Texture2D GameplayState.dustSheet'>27</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L25' title='Texture2D GameplayState.enemiesSheet'>25</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -91,8 +91,8 @@ The `<global namespace>` namespace contains 8 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L63' title='GameOverText GameplayState.gameOverText'>63</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L62' title='GameOverTransition GameplayState.gameOverTransition'>62</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L184' title='Rectangle GameplayState.GetInnerBounds()'>184</a> | 82 | 3 :heavy_check_mark: | 0 | 4 | 6 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L225' title='void GameplayState.HandleDoorExit(string direction)'>225</a> | 68 | 1 :heavy_check_mark: | 0 | 10 | 14 / 6 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L240' title='void GameplayState.HandleStairTransition(string targetRoom)'>240</a> | 62 | 1 :heavy_check_mark: | 0 | 15 | 16 / 9 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L225' title='void GameplayState.HandleDoorExit(string direction)'>225</a> | 63 | 1 :heavy_check_mark: | 0 | 15 | 21 / 8 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L247' title='void GameplayState.HandleStairTransition(string targetRoom)'>247</a> | 62 | 1 :heavy_check_mark: | 0 | 15 | 16 / 9 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L48' title='HUDBar GameplayState.hud'>48</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L33' title='Texture2D GameplayState.hudElements'>33</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L58' title='InnerDungeonWalls GameplayState.innerWalls'>58</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -116,7 +116,7 @@ The `<global namespace>` namespace contains 8 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L32' title='Texture2D GameplayState.staircaseTexture'>32</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L50' title='TriforceOverlay GameplayState.triforceOverlay'>50</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L47' title='UIManager GameplayState.uiManager'>47</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L257' title='void GameplayState.Update(GameTime gameTime)'>257</a> | 39 | 18 :exploding_head: | 0 | 28 | 81 / 47 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L264' title='void GameplayState.Update(GameTime gameTime)'>264</a> | 39 | 18 :exploding_head: | 0 | 28 | 81 / 47 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L191' title='void GameplayState.UpdateBackground()'>191</a> | 76 | 3 :heavy_check_mark: | 0 | 5 | 12 / 3 |
 
 <a href="#GameplayState-class-diagram">:link: to `GameplayState` class diagram</a>
@@ -2850,7 +2850,7 @@ The `Sprint.Enemies` namespace contains 6 named types.
 The `Sprint.GameStates` namespace contains 4 named types.
 
 - 4 named types.
-- 312 total lines of source code.
+- 310 total lines of source code.
 - Approximately 91 lines of executable code.
 - The highest cyclomatic complexity is 11 :radioactive:.
 
@@ -2963,31 +2963,31 @@ The `Sprint.GameStates` namespace contains 4 named types.
 <br>
 
 - The `RoomTransitionState` contains 20 members.
-- 100 total lines of source code.
+- 98 total lines of source code.
 - Approximately 31 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L32' title='RoomTransitionState.RoomTransitionState(Level oldLevel, Level newLevel, DoorManager newDoorManager, OuterDungeonWalls dungeonWalls, InnerDungeonWalls innerWalls, UIManager uiManager, Link link, string direction, GameplayState gameplayState)'>32</a> | 58 | 1 :heavy_check_mark: | 0 | 12 | 33 / 12 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L77' title='void RoomTransitionState.Draw(SpriteBatch spriteBatch)'>77</a> | 55 | 1 :heavy_check_mark: | 0 | 13 | 34 / 16 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L17' title='OuterDungeonWalls RoomTransitionState.dungeonWalls'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L32' title='RoomTransitionState.RoomTransitionState(Level oldLevel, DoorManager oldDoorManager, Level newLevel, DoorManager newDoorManager, OuterDungeonWalls dungeonWalls, InnerDungeonWalls innerWalls, Link link, string direction, GameplayState gameplayState)'>32</a> | 58 | 1 :heavy_check_mark: | 0 | 11 | 33 / 12 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L77' title='void RoomTransitionState.Draw(SpriteBatch spriteBatch)'>77</a> | 55 | 1 :heavy_check_mark: | 0 | 12 | 32 / 16 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L18' title='OuterDungeonWalls RoomTransitionState.dungeonWalls'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L24' title='float RoomTransitionState.Duration'>24</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L23' title='float RoomTransitionState.elapsed'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L66' title='void RoomTransitionState.Enter()'>66</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L67' title='void RoomTransitionState.Exit()'>67</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L21' title='GameplayState RoomTransitionState.gameplayState'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L18' title='InnerDungeonWalls RoomTransitionState.innerWalls'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L19' title='InnerDungeonWalls RoomTransitionState.innerWalls'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L20' title='Link RoomTransitionState.link'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L68' title='void RoomTransitionState.LoadContent()'>68</a> | 100 | 1 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L16' title='DoorManager RoomTransitionState.newDoorManager'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L15' title='Level RoomTransitionState.newLevel'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L17' title='DoorManager RoomTransitionState.newDoorManager'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L16' title='Level RoomTransitionState.newLevel'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L27' title='Vector2 RoomTransitionState.newStart'>27</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L15' title='DoorManager RoomTransitionState.oldDoorManager'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L14' title='Level RoomTransitionState.oldLevel'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L26' title='Vector2 RoomTransitionState.oldStart'>26</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L30' title='RasterizerState RoomTransitionState.scissorRasterizer'>30</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L28' title='Vector2 RoomTransitionState.scrollDelta'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L19' title='UIManager RoomTransitionState.uiManager'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/RoomTransitionState.cs#L70' title='void RoomTransitionState.Update(GameTime gameTime)'>70</a> | 82 | 2 :heavy_check_mark: | 0 | 5 | 6 / 2 |
 
 <a href="#RoomTransitionState-class-diagram">:link: to `RoomTransitionState` class diagram</a>
@@ -6989,11 +6989,11 @@ classDiagram
 IGameState <|-- RoomTransitionState : implements
 class RoomTransitionState{
     -Level oldLevel
+    -DoorManager oldDoorManager
     -Level newLevel
     -DoorManager newDoorManager
     -OuterDungeonWalls dungeonWalls
     -InnerDungeonWalls innerWalls
-    -UIManager uiManager
     -Link link
     -GameplayState gameplayState
     -float elapsed
@@ -7002,7 +7002,7 @@ class RoomTransitionState{
     -Vector2 newStart
     -Vector2 scrollDelta
     -RasterizerState scissorRasterizer
-    +.ctor(Level oldLevel, Level newLevel, DoorManager newDoorManager, OuterDungeonWalls dungeonWalls, InnerDungeonWalls innerWalls, UIManager uiManager, Link link, string direction, GameplayState gameplayState) RoomTransitionState
+    +.ctor(Level oldLevel, DoorManager oldDoorManager, Level newLevel, DoorManager newDoorManager, OuterDungeonWalls dungeonWalls, InnerDungeonWalls innerWalls, Link link, string direction, GameplayState gameplayState) RoomTransitionState
     +Enter() void
     +Exit() void
     +LoadContent() void
