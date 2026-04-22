@@ -54,6 +54,7 @@ class GameplayState : IGameState
     private DoorTransitionHandler doorTransitionHandler;
     private bool lmbReleased = true;
     private bool rmbReleased = true;
+    private bool roomTransitionActive;
     private InnerDungeonWalls innerWalls;
     private GameplayInputHandler inputHandler;
     private OuterDungeonWalls dungeonWalls;
@@ -212,13 +213,28 @@ class GameplayState : IGameState
         collisionManager.Add(new LinkEnemyProjectileCollision(link, currentLevel.Enemies));
         collisionManager.Add(new EnemyWallCollisionHandler(currentLevel.Enemies.enemyList, dungeonWalls));
         if (!IsUnderground)
-        collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls, doorManager, doorTransitionHandler.Handle));
+        collisionManager.Add(new LinkWallCollisionHandler(link, dungeonWalls, doorManager, HandleDoorExit));
 
         if (currentLevelData?.stairTarget != null)
             collisionManager.Add(new StairCollisionHandler(
                 link, currentLevel.Blocks,
                 currentLevelData.stairTarget,
                 HandleStairTransition));
+    }
+
+    private void HandleDoorExit(string direction)
+    {
+        Level oldLevel = currentLevel;
+        doorTransitionHandler.Handle(direction);
+        Level newLevel = currentLevel;
+
+        var transition = new RoomTransitionState(
+            oldLevel, newLevel, doorManager,
+            dungeonWalls, innerWalls, uiManager, link,
+            direction, this);
+
+        roomTransitionActive = true;
+        Game1.Instance.ForceState(transition);
     }
 
     private void HandleStairTransition(string targetRoom)
@@ -260,6 +276,7 @@ class GameplayState : IGameState
         if(!link.TriforceActive)
         {
             collisionManager.HandleAll();
+            if (roomTransitionActive) { roomTransitionActive = false; return; }
             inputHandler.HandleInput();
         }
 
@@ -334,4 +351,14 @@ class GameplayState : IGameState
         triforceOverlay.Draw(spriteBatch);
 
 	}
+
+    internal void DrawRoomContent(SpriteBatch sb, Level level, DoorManager doors, bool drawDoors)
+    {
+        level.Draw(sb);
+        if (!IsUnderground) innerWalls.Draw(sb);
+        if (drawDoors) doors.Draw(sb);
+        level.DrawOnTop(sb);
+    }
+
+    internal void DrawHUDOnly(SpriteBatch sb) => uiManager.Draw(sb);
 }
