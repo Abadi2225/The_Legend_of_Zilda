@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint.Character;
 using Sprint.Interfaces;
 using Sprint.Sprites;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ public class Block
 	public readonly bool pushAble;
 	public readonly bool IsStair;
 	public bool HasBeenPushed { get; set; } = false;
+	public Directions PushDirection { get; set; } = Directions.Up;
 	public Rectangle Rect => new Rectangle((int)Position.X, (int)Position.Y, tileWidth, tileWidth);
 
 	public Block(Texture2D texture, Vector2 pos, Rectangle sourceRect, bool walkable, bool pushable,  bool isStair = false)
