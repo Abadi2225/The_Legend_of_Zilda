@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 23 namespaces.
 - 141 named types.
-- 8,826 total lines of source code.
-- Approximately 2,724 lines of executable code.
+- 8,836 total lines of source code.
+- Approximately 2,728 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -28,8 +28,8 @@ The *Sprint.csproj* project file contains:
 The `<global namespace>` namespace contains 8 named types.
 
 - 8 named types.
-- 763 total lines of source code.
-- Approximately 307 lines of executable code.
+- 773 total lines of source code.
+- Approximately 311 lines of executable code.
 - The highest cyclomatic complexity is 23 :exploding_head:.
 
 <details>
@@ -133,15 +133,16 @@ The `<global namespace>` namespace contains 8 named types.
 </summary>
 <br>
 
-- The `GameServices` contains 17 members.
-- 29 total lines of source code.
-- Approximately 4 lines of executable code.
+- The `GameServices` contains 18 members.
+- 31 total lines of source code.
+- Approximately 5 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L29' title='Texture2D GameServices.BoomerangSheet'>29</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L17' title='ContentManager GameServices.Content'>17</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L40' title='int GameServices.CurrentDungeon'>40</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L25' title='Vector2 GameServices.DungeonEntrancePosition'>25</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L20' title='IGameActions GameServices.GameActions'>20</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameServices.cs#L24' title='int GameServices.GameHeight'>24</a> | 93 | 1 :heavy_check_mark: | 0 | 1 | 1 / 1 |
@@ -229,9 +230,9 @@ The `<global namespace>` namespace contains 8 named types.
 </summary>
 <br>
 
-- The `LevelLoader` contains 9 members.
-- 71 total lines of source code.
-- Approximately 16 lines of executable code.
+- The `LevelLoader` contains 10 members.
+- 79 total lines of source code.
+- Approximately 19 lines of executable code.
 - The highest cyclomatic complexity is 2 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -243,7 +244,8 @@ The `<global namespace>` namespace contains 8 named types.
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L61' title='int LevelLoader.GetCurrentLevelGridLoc()'>61</a> | 95 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L56' title='string LevelLoader.GetCurrentLevelName()'>56</a> | 95 | 1 :heavy_check_mark: | 0 | 2 | 4 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L9' title='List<string> LevelLoader.levels'>9</a> | 80 | 0 :heavy_check_mark: | 0 | 2 | 19 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L66' title='LevelData LevelLoader.Load(string levelName)'>66</a> | 77 | 1 :heavy_check_mark: | 0 | 2 | 10 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L66' title='LevelData LevelLoader.Load(string levelName, int dungeon)'>66</a> | 72 | 1 :heavy_check_mark: | 0 | 2 | 14 / 6 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L81' title='LevelData LevelLoader.Load(string levelName)'>81</a> | 93 | 1 :heavy_check_mark: | 0 | 2 | 4 / 1 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Levels/LevelLoader.cs#L47' title='void LevelLoader.ResetToFirst()'>47</a> | 96 | 1 :heavy_check_mark: | 0 | 0 | 4 / 1 |
 
 <a href="#LevelLoader-class-diagram">:link: to `LevelLoader` class diagram</a>
@@ -5203,6 +5205,7 @@ class GameServices{
     +Action OnLinkGrabbed$
     +InventoryMap inventoryMap$
     +HudMap hudMap$
+    +int CurrentDungeon$
 }
 
 ```
@@ -5257,6 +5260,7 @@ class LevelLoader{
     +GetCurrentLevel() LevelData
     +GetCurrentLevelName() string
     +GetCurrentLevelGridLoc() int
+    +Load(string levelName, int dungeon)$ LevelData
     +Load(string levelName)$ LevelData
 }
 
