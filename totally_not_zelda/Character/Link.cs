@@ -8,95 +8,70 @@ namespace Sprint.Character;
 
 public class Link : ILink
 {
-    private const float SPEED = 80f;
-    private const float PUSHING_SPEED = 40f;
-    private const float PUSHING_DURATION = 0.5f;
     private const int BODY_SIZE = 48;
     private const int HAND_X = 2;
     private const int HAND_Y = 1;
-
-    private const double DAMAGED_DURATION = 3;
-    private const double BLINK_INTERVAL = 0.10;
     private int maxHealth = 6;
-
     private static readonly int STARTING_BOMBS = 6;
 
-    private readonly ISprite IdleUp;
-    private readonly ISprite IdleDown;
-    private readonly ISprite IdleLeft;
-    private readonly ISprite IdleRight;
+    internal readonly ISprite IdleUp;
+    internal readonly ISprite IdleDown;
+    internal readonly ISprite IdleLeft;
+    internal readonly ISprite IdleRight;
 
-    private readonly ISprite WalkUp;
-    private readonly ISprite WalkDown;
-    private readonly ISprite WalkLeft;
-    private readonly ISprite WalkRight;
+    internal readonly ISprite WalkUp;
+    internal readonly ISprite WalkDown;
+    internal readonly ISprite WalkLeft;
+    internal readonly ISprite WalkRight;
 
-    private readonly Dead DeadSprite;
+    internal readonly Dead DeadSprite;
 
-    private readonly Attacking AttackUp;
-    private readonly Attacking AttackDown;
-    private readonly Attacking AttackLeft;
-    private readonly Attacking AttackRight;
+    internal readonly Attacking AttackUp;
+    internal readonly Attacking AttackDown;
+    internal readonly Attacking AttackLeft;
+    internal readonly Attacking AttackRight;
 
-    private readonly UseItem UseItemUp;
-    private readonly UseItem UseItemDown;
-    private readonly UseItem UseItemLeft;
-    private readonly UseItem UseItemRight;
+    internal readonly UseItem UseItemUp;
+    internal readonly UseItem UseItemDown;
+    internal readonly UseItem UseItemLeft;
+    internal readonly UseItem UseItemRight;
 
-    private readonly PickUpItem PickUpWeapon;
-    private readonly PickUpItem PickUpTriforce;
-    private bool isTriforcePickup = false;
+    internal readonly PickUpItem PickUpWeapon;
+    internal readonly PickUpItem PickUpTriforce;
 
-    private readonly DeathSparkle DeathSparkleSprite;
+    internal readonly DeathSparkle DeathSparkleSprite;
 
     private ISprite sprite;
+    internal ISprite Sprite { get => sprite; set => sprite = value; }
+    internal Vector2 Move { get; set; } = Vector2.Zero;
+    internal Directions Direction { get; set; } = Directions.Down;
+
     private Vector2 position;
-    private Vector2 move = Vector2.Zero;
-    private Directions direction = Directions.Down;
-    private double damagedTimer;
-    private double pushingTimer = 0;
     private int health;
-    private int rubies;
     private int keys;
     private int bombs = STARTING_BOMBS;
-    private bool isAttacking = false;
-    private bool isUsingItem = false;
-    private bool isDamaged = false;
-    private bool isVisible = false;
-    public bool isPushing = false;
-    private bool triforceSequenceActive = false;
-    private double triforceTimer = 0;
 
-    // expose read-only for rendering
-    public bool TriforceActive => triforceSequenceActive;
-    public double TriforceTimer => triforceTimer;
+    private readonly LinkStateMachine stateMachine;
 
-    private bool isDead = false;
-    private bool attackHitLanded = false;
-    private Rectangle? pickUpItemRect = null;
-
-    public Directions Facing => direction;
+    public Directions Facing => Direction;
     public int Health => health;
     public int MaxHealth => maxHealth;
-    public bool IsPushing => isPushing;
-    public bool IsDead => isDead;
+
+    public bool IsDead => stateMachine.IsDead;
     public bool DeathFinished => DeadSprite.Finished;
-    public bool IsGrabbed { get; set; } = false;
+    public bool DeathSequenceFinished => stateMachine.DeathSequenceFinished;
+    public bool DeathBackgroundBlack => stateMachine.DeathBackgroundBlack;
 
-    private enum DeathStage
+    public bool IsPushing => stateMachine.IsPushing;
+
+    public bool TriforceActive => stateMachine.TriforceActive;
+    public double TriforceTimer => stateMachine.TriforceTimer;
+
+    public bool IsGrabbed
     {
-        None,
-        Spinning,
-        WhiteFlash,
-        Sparkle,
-        Finished
+        get => stateMachine.IsGrabbed;
+        set => stateMachine.IsGrabbed = value;
     }
-
-    private DeathStage deathStage = DeathStage.None;
-    private double deathStageTimer = 0;
-    public bool DeathSequenceFinished => deathStage == DeathStage.Finished;
-    public bool DeathBackgroundBlack =>
-        deathStage == DeathStage.WhiteFlash || deathStage == DeathStage.Sparkle || deathStage == DeathStage.Finished;
 
     public Rectangle Rect { get; private set; }
     public Rectangle BlockRect { get; private set; }
@@ -105,9 +80,9 @@ public class Link : ILink
     {
         get
         {
-            if (!isAttacking || attackHitLanded) return Rectangle.Empty;
+            if (!stateMachine.IsAttacking || stateMachine.AttackHitLanded) return Rectangle.Empty;
 
-            Attacking currentAttack = direction switch
+            Attacking currentAttack = Direction switch
             {
                 Directions.Up => AttackUp,
                 Directions.Down => AttackDown,
@@ -120,7 +95,7 @@ public class Link : ILink
         }
     }
 
-    public void RegisterSwordHit() => attackHitLanded = true;
+    public void RegisterSwordHit() => stateMachine.AttackHitLanded = true;
 
     public Vector2 Position
     {
@@ -133,11 +108,7 @@ public class Link : ILink
         }
     }
 
-    public int Rubies
-    {
-        get => rubies;
-        private set => rubies = value;
-    }
+    public int Rubies { get; private set; }
 
     public int Keys => keys;
     public void AddKey() => keys++;
@@ -155,8 +126,8 @@ public class Link : ILink
         bombs--;
         return true;
     }
-
     public void AddBomb() => bombs++;
+
 
     public Link(Texture2D texture, Texture2D dustTexture, Vector2 position)
     {
@@ -170,381 +141,101 @@ public class Link : ILink
         WalkLeft = LinkFactory.WalkingLeft(texture);
         WalkRight = LinkFactory.WalkingRight(texture);
 
-        AttackDown = LinkFactory.AttackDown(texture, FinishAttack);
-        AttackUp = LinkFactory.AttackUp(texture, FinishAttack);
-        AttackLeft = LinkFactory.AttackLeft(texture, FinishAttack);
-        AttackRight = LinkFactory.AttackRight(texture, FinishAttack);
+        AttackDown = LinkFactory.AttackDown(texture, OnAttackFinished);
+        AttackUp = LinkFactory.AttackUp(texture, OnAttackFinished);
+        AttackLeft = LinkFactory.AttackLeft(texture, OnAttackFinished);
+        AttackRight = LinkFactory.AttackRight(texture, OnAttackFinished);
 
-        UseItemDown = LinkFactory.UseItemDown(texture, FinishUseItem);
-        UseItemUp = LinkFactory.UseItemUp(texture, FinishUseItem);
-        UseItemLeft = LinkFactory.UseItemLeft(texture, FinishUseItem);
-        UseItemRight = LinkFactory.UseItemRight(texture, FinishUseItem);
+        UseItemDown = LinkFactory.UseItemDown(texture, OnUseItemFinished);
+        UseItemUp = LinkFactory.UseItemUp(texture, OnUseItemFinished);
+        UseItemLeft = LinkFactory.UseItemLeft(texture, OnUseItemFinished);
+        UseItemRight = LinkFactory.UseItemRight(texture, OnUseItemFinished);
 
-        PickUpWeapon = LinkFactory.PickUpWeapon(texture, FinishPickUpItem);
-        PickUpTriforce = LinkFactory.PickUpTriforce(texture, FinishPickUpItem);
+        PickUpWeapon = LinkFactory.PickUpWeapon(texture, OnPickUpFinished);
+        PickUpTriforce = LinkFactory.PickUpTriforce(texture, OnPickUpFinished);
 
         DeadSprite = LinkFactory.Dead(texture);
         DeathSparkleSprite = LinkFactory.DeathSparkle(dustTexture);
 
-
         sprite = IdleDown;
         Position = position;
         health = maxHealth;
+
+        stateMachine = new LinkStateMachine(this);
     }
 
-    public void Update(GameTime gameTime)
-    {
-        if (IsGrabbed)
-        {
-            sprite.Update(gameTime); // Update sprite animation even while grabbed
-            return; // WallMaster controls position while grabbed
-        }
+    private void OnAttackFinished() => stateMachine.OnAttackFinished();
+    private void OnUseItemFinished() => stateMachine.OnUseItemFinished();
+    private void OnPickUpFinished() => stateMachine.OnPickUpFinished();
 
-        if (isDead)
-        {
-            double deadDT = gameTime.ElapsedGameTime.TotalSeconds;
-            deathStageTimer += deadDT;
-
-            switch (deathStage)
-            {
-                case DeathStage.Spinning:
-                    sprite.Update(gameTime);
-
-                    if (DeadSprite.Finished)
-                    {
-                        deathStage = DeathStage.WhiteFlash;
-                        deathStageTimer = 0;
-                        direction = Directions.Down;
-                        sprite = IdleDown;
-                    }
-                    break;
-
-                case DeathStage.WhiteFlash:
-                    if (deathStageTimer >= 0.2)
-                    {
-                        deathStage = DeathStage.Sparkle;
-                        deathStageTimer = 0;
-                        DeathSparkleSprite.Reset();
-                    }
-                    break;
-
-                case DeathStage.Sparkle:
-                    DeathSparkleSprite.Update(gameTime);
-
-                    if (deathStageTimer >= 0.3)
-                    {
-                        deathStage = DeathStage.Finished;
-                        deathStageTimer = 0;
-                    }
-                    break;
-            }
-
-            return;
-        }
-
-        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-        if (!isAttacking && !isUsingItem && !isDamaged && move == Vector2.Zero)
-        {
-            SetIdleSprite();
-        }
-
-        /*
-        I implemented the damaged state inside the Link class because it only modifies the existing
-        behavior without introducing new rectangles. It can be refactored into a separate class if
-        needed in the future.
-        */
-        if (isDamaged)
-        {
-            damagedTimer += gameTime.ElapsedGameTime.TotalSeconds;
-
-            isVisible = (int)(damagedTimer / BLINK_INTERVAL) % 2 == 0;
-
-            if (damagedTimer >= DAMAGED_DURATION)
-            {
-                isDamaged = false;
-                isVisible = true;
-            }
-        }
-
-        if (isPushing)
-        {
-            pushingTimer += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (pushingTimer >= PUSHING_DURATION)
-            {
-                isPushing = false;
-            }
-
-        }
-
-        if(triforceSequenceActive)
-        {
-            triforceTimer += gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-		float currentSpeed = isPushing ? PUSHING_SPEED : SPEED;
-		Position += move * currentSpeed * dt;
-
-        sprite.Update(gameTime);
-    }
+    public void Update(GameTime gameTime) => stateMachine.Update(gameTime);
 
     public void Draw(SpriteBatch spriteBatch)
     {
-
-        if (deathStage == DeathStage.Sparkle)
+        if (stateMachine.IsSparkleStage)
         {
-            Vector2 center = new Vector2(
-                position.X + BODY_SIZE / 2f,
-                position.Y + BODY_SIZE / 2f
-            );
-
+            Vector2 center = new Vector2(position.X + BODY_SIZE / 2f, position.Y + BODY_SIZE / 2f);
             DeathSparkleSprite.Draw(spriteBatch, center);
             return;
         }
 
-        if (deathStage == DeathStage.Finished)
-        {
-            return;
-        }
-
-        if (isDamaged && !isVisible)
-            return;
+        if (stateMachine.DeathSequenceFinished) return;
+        if (!stateMachine.IsVisible) return;
 
         sprite.Draw(spriteBatch, position);
 
-        if (pickUpItemRect.HasValue)
+        if (stateMachine.PickUpItemRect.HasValue)
         {
-            if (isDamaged && !isVisible)
-                return;
+            Rectangle rect = stateMachine.PickUpItemRect.Value;
+            Vector2 itemPos;
 
-            sprite.Draw(spriteBatch, position);
-
-            if (pickUpItemRect.HasValue)
+            if (stateMachine.IsTriforcePickup)
             {
-                Rectangle rect = pickUpItemRect.Value;
-
-                Vector2 itemPos;
-
-                if (isTriforcePickup)
-                {
-                    // Centered above Link’s head
-                    itemPos = new Vector2(
-                        position.X + rect.Width,
-                        position.Y - rect.Height * GameServices.ScaleFactor - 4 // tweak this value if needed
-                    );
-                }
-                else
-                {
-                    // Centered above Link's right hand
-                    Vector2 handPos = new Vector2(
-                        position.X + HAND_X * GameServices.ScaleFactor,
-                        position.Y + HAND_Y * GameServices.ScaleFactor
-                    );
-
-                    itemPos = new Vector2(
-                        handPos.X - (rect.Width * GameServices.ScaleFactor) / 2f,
-                        handPos.Y - rect.Height * GameServices.ScaleFactor
-                    );
-                }
-
-                spriteBatch.Draw(
-                    GameServices.ItemSheet,
-                    itemPos,
-                    rect,
-                    Color.White,
-                    0f,
-                    Vector2.Zero,
-                    GameServices.ScaleFactor,
-                    SpriteEffects.None,
-                    0f
+                itemPos = new Vector2(
+                    position.X + rect.Width,
+                    position.Y - rect.Height * GameServices.ScaleFactor - 4
                 );
             }
+            else
+            {
+                Vector2 handPos = new Vector2(
+                    position.X + HAND_X * GameServices.ScaleFactor,
+                    position.Y + HAND_Y * GameServices.ScaleFactor
+                );
+                itemPos = new Vector2(
+                    handPos.X - (rect.Width * GameServices.ScaleFactor) / 2f,
+                    handPos.Y - rect.Height * GameServices.ScaleFactor
+                );
+            }
+
+            spriteBatch.Draw(
+                GameServices.ItemSheet,
+                itemPos,
+                rect,
+                Color.White,
+                0f,
+                Vector2.Zero,
+                GameServices.ScaleFactor,
+                SpriteEffects.None,
+                0f
+            );
         }
     }
 
-    public void StartUseItem()
-    {
-        if (isUsingItem || isDead) return;
+    public void SetMove(Directions dir) => stateMachine.HandleSetMove(dir);
+    public void StopMove() => stateMachine.HandleStopMove();
+    public void StartAttack() => stateMachine.HandleStartAttack();
+    public void StartUseItem() => stateMachine.HandleStartUseItem();
+    public void StartPickUpWeapon(Rectangle itemRect) => stateMachine.HandleStartPickUpWeapon(itemRect);
+    public void StartPickUpTriforce(Rectangle itemRect) => stateMachine.HandleStartPickUpTriforce(itemRect);
+    public bool ShouldEndTriforceSequence() => stateMachine.ShouldEndTriforceSequence();
+    public void EndTriforceSequence() => stateMachine.HandleEndTriforceSequence();
+    public void TakeDamage(int amount) => stateMachine.HandleTakeDamage(amount);
+    public void StartPush() => stateMachine.HandleStartPush();
+    public void StartDamaged() => stateMachine.HandleStartDamaged();
+    public void StartDeath() => stateMachine.HandleStartDeath();
 
-        isUsingItem = true;
-        move = Vector2.Zero;
-
-        switch (direction)
-        {
-            case Directions.Up: UseItemUp.Reset(); sprite = UseItemUp; break;
-            case Directions.Down: UseItemDown.Reset(); sprite = UseItemDown; break;
-            case Directions.Left: UseItemLeft.Reset(); sprite = UseItemLeft; break;
-            case Directions.Right: UseItemRight.Reset(); sprite = UseItemRight; break;
-        }
-    }
-
-    public void StartPickUpWeapon(Rectangle itemRect)
-    {
-        if (isUsingItem || isAttacking || isDead)
-            return;
-
-        direction = Directions.Up;
-        isUsingItem = true;
-        isDamaged = false;
-        isVisible = true;
-        move = Vector2.Zero;
-
-        pickUpItemRect = itemRect;
-
-        isTriforcePickup = false;
-
-        PickUpWeapon.Reset();
-        sprite = PickUpWeapon;
-    }
-
-    public void StartPickUpTriforce(Rectangle itemRect)
-    {
-        if (isUsingItem || isAttacking || isDamaged || isDead)
-            return;
-
-        isUsingItem = true;
-        move = Vector2.Zero;
-
-        pickUpItemRect = itemRect;
-
-        isTriforcePickup = true;
-
-        triforceSequenceActive = true;
-        triforceTimer = 0;
-
-        PickUpTriforce.Reset();
-        sprite = PickUpTriforce;
-    }
-
-    public bool ShouldEndTriforceSequence()
-    {
-        return triforceSequenceActive && triforceTimer >= 10;
-    }
-
-    public void EndTriforceSequence()
-    {
-        triforceSequenceActive = false;
-        triforceTimer = 0;
-
-        isUsingItem = false;
-        pickUpItemRect = null;
-        SetIdleSprite();
-    }
-
-    public void SetMove(Directions dir)
-    {
-        if (isAttacking || isUsingItem || isDead) return;
-
-        move = Vector2.Zero;
-        direction = dir;
-
-        switch (dir)
-        {
-            case Directions.Up: sprite = WalkUp; move.Y = -1 * GameServices.ScaleFactor; break;
-            case Directions.Down: sprite = WalkDown; move.Y = 1 * GameServices.ScaleFactor; break;
-            case Directions.Left: sprite = WalkLeft; move.X = -1 * GameServices.ScaleFactor; break;
-            case Directions.Right: sprite = WalkRight; move.X = 1 * GameServices.ScaleFactor; break;
-        }
-    }
-
-    public void StopMove()
-    {
-        move = Vector2.Zero;
-    }
-
-    public void StartAttack()
-    {
-        if (isAttacking || isDead) return;
-
-        isAttacking = true;
-        attackHitLanded = false;
-        move = Vector2.Zero;
-
-        switch (direction)
-        {
-            case Directions.Up: AttackUp.Reset(); sprite = AttackUp; break;
-            case Directions.Down: AttackDown.Reset(); sprite = AttackDown; break;
-            case Directions.Left: AttackLeft.Reset(); sprite = AttackLeft; break;
-            case Directions.Right: AttackRight.Reset(); sprite = AttackRight; break;
-        }
-    }
-
-    public void StartPush()
-    {
-        if (isAttacking || isUsingItem || isDamaged || isDead) return;
-
-        isPushing = true;
-        pushingTimer = 0;
-    }
-
-
-    public void TakeDamage(int amount)
-    {
-        if (isDamaged) return;
-
-        health = MathHelper.Clamp(health - amount, 0, maxHealth);
-
-        if (health <= 0)
-        {
-            StartDeath();
-            return;
-        }
-
-        StartDamaged();
-    }
-
-    public void StartDamaged()
-    {
-        isDamaged = true;
-        damagedTimer = 0;
-        isVisible = true;
-        move = Vector2.Zero;
-        isAttacking = false;
-        isUsingItem = false;
-        SetIdleSprite();
-    }
-
-    public void StartDeath()
-    {
-        if (isDead) return;
-
-        isDead = true;
-        move = Vector2.Zero;
-        isAttacking = false;
-        isUsingItem = false;
-        isDamaged = false;
-        isPushing = false;
-
-        deathStage = DeathStage.Spinning;
-        deathStageTimer = 0;
-
-        DeadSprite.Reset();
-        sprite = DeadSprite;
-    }
-    private void FinishAttack()
-    {
-        isAttacking = false;
-        SetIdleSprite();
-    }
-
-    private void FinishPickUpItem()
-    {
-        if (triforceSequenceActive)
-        {
-            return;
-        }
-
-        isUsingItem = false;
-        pickUpItemRect = null;
-        SetIdleSprite();
-    }
-
-    private void FinishUseItem()
-    {
-        isUsingItem = false;
-        SetIdleSprite();
-    }
+    internal void SetHealth(int value) => health = value;
 
     public void GetHealed(int amount)
     {
@@ -563,17 +254,4 @@ public class Link : ILink
         Rubies += amount;
         Console.WriteLine($"Link picked up {amount} rubies. Current rubies: {Rubies}");
     }
-
-    private void SetIdleSprite()
-    {
-        sprite = direction switch
-        {
-            Directions.Up => IdleUp,
-            Directions.Down => IdleDown,
-            Directions.Left => IdleLeft,
-            Directions.Right => IdleRight,
-            _ => IdleDown,
-        };
-    }
-
 }
