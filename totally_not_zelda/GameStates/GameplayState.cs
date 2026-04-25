@@ -71,7 +71,7 @@ class GameplayState : IGameState
     public void Enter()
     {
         inputHandler = new GameplayInputHandler(this, link, inventory, items, hud, invMap);
-		MusicPlayer.Play(MusicType.DUNGEON);
+		//MusicPlayer.Play(MusicType.DUNGEON); moved to loadcontent to fix restarting issue
 	}
 
     public void LoadContent()
@@ -176,6 +176,7 @@ class GameplayState : IGameState
 
         UpdateBackground();
         currentLevel = LevelBuilder.Build(currentLevelData, enemyFactory, dungeonWalls.InnerBounds);
+        MusicPlayer.Play(MusicType.DUNGEON);
 
         RebuildCollisionManager();
     }
@@ -252,14 +253,22 @@ class GameplayState : IGameState
         UpdateBackground();
         currentLevel = LevelBuilder.Build(newData, enemyFactory, GetInnerBounds());
 
-        link.Position = new Vector2(
-            49 * GameServices.ScaleFactor + GetInnerBounds().Left,
-            GetInnerBounds().Top + 16 * GameServices.ScaleFactor);
-
-        RebuildCollisionManager();
-        hud.Map.UpdateLinkMapPos("stair");
-        invMap.UpdateInventoryMap(newData, "stair");
-    }
+        if (targetRoom == "blockedstairs")
+        {
+            link.Position = new Vector2(
+                5 * 16 * GameServices.ScaleFactor + GetInnerBounds().Left,
+                3 * 16 * GameServices.ScaleFactor + GetInnerBounds().Top);
+        }
+        else
+        {
+            link.Position = new Vector2(
+                49 * GameServices.ScaleFactor + GetInnerBounds().Left,
+                GetInnerBounds().Top + 16 * GameServices.ScaleFactor);
+        }
+            RebuildCollisionManager();
+            hud.Map.UpdateLinkMapPos("stair");
+            invMap.UpdateInventoryMap(newData, "stair");
+        }
 
     public void Update(GameTime gameTime)
     {
