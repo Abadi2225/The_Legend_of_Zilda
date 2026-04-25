@@ -80,7 +80,7 @@ internal static class LinkFactory
 			new Attacking.Frame(new Rectangle(35, 47, 16, 16), new Rectangle(40, 63, 8, 7), new Vector2( 5, 16)),
 			new Attacking.Frame(new Rectangle(52, 47, 16, 16), new Rectangle(57, 63, 8, 3), new Vector2( 5, 16)),
 		];
-		return new Attacking(texture, SpriteEffects.None, frames, 0.15, 0.6, onFinished);
+		return new Attacking(texture, SpriteEffects.None, frames, 0.07, 0.3, onFinished);
 	}
 
 	public static Attacking AttackUp(Texture2D texture, System.Action onFinished)
@@ -92,7 +92,7 @@ internal static class LinkFactory
 			new Attacking.Frame(new Rectangle(35, 109, 16, 16), new Rectangle(38, 98, 8, 11), new Vector2(3, -11)),
 			new Attacking.Frame(new Rectangle(52, 109, 16, 16), new Rectangle(55, 106, 8, 3), new Vector2(3, -3)),
 		];
-		return new Attacking(texture, SpriteEffects.None, frames, 0.15, 0.6, onFinished);
+		return new Attacking(texture, SpriteEffects.None, frames, 0.07, 0.3, onFinished);
 	}
 
 	public static Attacking AttackLeft(Texture2D texture, System.Action onFinished)
@@ -104,7 +104,7 @@ internal static class LinkFactory
 			new Attacking.Frame(new Rectangle(46, 77, 16, 16), new Rectangle(62, 78, 7, 16), new Vector2(-7, 1)),
 			new Attacking.Frame(new Rectangle(70, 77, 16, 16), new Rectangle(86, 78, 3, 16), new Vector2(-3, 1)),
 		];
-		return new Attacking(texture, SpriteEffects.FlipHorizontally, frames, 0.15, 0.6, onFinished);
+		return new Attacking(texture, SpriteEffects.FlipHorizontally, frames, 0.07, 0.3, onFinished);
 	}
 
 	public static Attacking AttackRight(Texture2D texture, System.Action onFinished)
@@ -116,7 +116,7 @@ internal static class LinkFactory
 			new Attacking.Frame(new Rectangle(46, 77, 16, 16), new Rectangle(62, 78, 7, 16), new Vector2(16, 1)),
 			new Attacking.Frame(new Rectangle(70, 77, 16, 16), new Rectangle(86, 78, 3, 16), new Vector2(16, 1)),
 		];
-		return new Attacking(texture, SpriteEffects.None, frames, 0.15, 0.6, onFinished);
+		return new Attacking(texture, SpriteEffects.None, frames, 0.07, 0.3, onFinished);
 	}
 
 	public static Dead Dead(Texture2D texture)
