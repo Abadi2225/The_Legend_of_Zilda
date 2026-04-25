@@ -32,7 +32,7 @@ public static class BlockFactory
         {2, 0xFFA0FFFF},
     };
 
-    public static Block Create(int tileId, Vector2 pos, int level = 2)
+    public static Block Create(int tileId, Vector2 pos, int level = 1)
     {
         uint color = tileColors[level];
         return tileId switch
