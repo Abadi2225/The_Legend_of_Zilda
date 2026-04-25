@@ -48,5 +48,6 @@
  "width":12,
  "doors": { "north": "4blockssmalllower", "west": "wafflelower" },
  "doorTypes": { "north": "bomb", "west": "key" },
- "gridPos": 51
+ "gridPos": 51,
+ "name":"6blocks"
 }

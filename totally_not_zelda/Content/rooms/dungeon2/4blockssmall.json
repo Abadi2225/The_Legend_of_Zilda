@@ -49,5 +49,6 @@
  "doors": { "north": "", "south": "5blocks", "east": "" },
  "doorTypes": { "north": "open", "south": "enemy", "east": "open" },
  "roomClearDrop": "Key",
- "gridPos": 43
+ "gridPos": 43,
+ "name":"4blockssmaller"
 }

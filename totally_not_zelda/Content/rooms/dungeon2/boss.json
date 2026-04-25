@@ -49,5 +49,6 @@
  "doors": { "south": "waffleupper", "west": "pacman" },
  "doorTypes": { "south": "open", "west": "enemy" },
  "roomClearDrop": "Key",
- "gridPos": 58
+ "gridPos": 58,
+ "name":"boss"
 }

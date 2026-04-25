@@ -24,6 +24,9 @@ public class LevelBuilder
         float blockOriginX = useInnerBounds ? innerBounds.Left : blockBorderX;
         float blockOriginY = useInnerBounds ? innerBounds.Top : blockBorderY;
 
+        // Registers the room to DungeonState
+        DungeonState.GetRoomState(data.name);
+
         var backgroundLayer = data.layers.FirstOrDefault(l => l.name == "BackgroundTiles");
         if (backgroundLayer != null)
         {
@@ -82,8 +85,8 @@ public class LevelBuilder
         {
             for (int i = 0; i < enemyLayer.data.Length; i++)
             {
-                int id = enemyLayer.data[i];
-                if (id == 0) continue;
+                int enemyType = enemyLayer.data[i];
+                if (enemyType == 0) continue;
 
                 int x = i % data.width;
                 int y = i / data.width;
@@ -92,13 +95,18 @@ public class LevelBuilder
                     x * TILE_SIZE * scale + innerBounds.Left,
                     y * TILE_SIZE * scale + innerBounds.Top);
 
-                System.Console.WriteLine($"Enemy id:{id} tile:({x},{y}) scaled pos:{pos}");
-
                 bool hasCarriedItem = data.carriedItems != null &&
                     data.carriedItems.TryGetValue(i.ToString(), out string carriedItemName);
 
+                int enemyID = i;
+
+                // if (!RoomState.DefeatedEnemies.Contains(enemyID))
+                // {
+                    
+                // }
+
                 IEnemy enemy = enemyFactory.CreateEnemy(
-                    (EnemyType)(id - 1), pos, solidBlocks, innerBounds,
+                    (EnemyType)(enemyType - 1), pos, solidBlocks, innerBounds,
                     onItemDropped: item => worldItems.Add(item),
                     skipRandomDrop: hasCarriedItem);
 

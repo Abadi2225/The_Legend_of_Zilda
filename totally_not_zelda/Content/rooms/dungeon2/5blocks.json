@@ -49,5 +49,6 @@
  "doors": { "north": "4blockssmall", "south": "wafflelower", "east": "4blocksbigupper" },
  "doorTypes": { "north": "open", "south": "open", "east": "key" },
  "roomItem": { "item": "Compass", "tile": 46 },
- "gridPos": 44
+ "gridPos": 44,
+ "name":"5blocks"
 }

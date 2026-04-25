@@ -70,5 +70,6 @@
  "doors": { "east": "dumbbell" },
  "doorTypes": { "east": "key" },
 
- "gridPos": 18
+ "gridPos": 18,
+ "name":"blockedstairs"
 }

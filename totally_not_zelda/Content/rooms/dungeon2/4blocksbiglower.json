@@ -49,5 +49,6 @@
  "doors": { "south": "12statues", "east": "wafflelower", "west": "emptyleft" },
  "doorTypes": { "south": "open", "east": "open", "west": "enemy" },
  "roomItem": { "item": "Compass", "tile": 46 },
- "gridPos": 44
+ "gridPos": 44,
+ "name":"4blocksbiglower"
 }
