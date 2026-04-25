@@ -46,8 +46,8 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "north": "wafflelower", "west": "12statues" },
- "doorTypes": { "north": "open", "west": "open" },
+ "doors": { "south": "waffleupper", "west": "pacman" },
+ "doorTypes": { "south": "open", "west": "enemy" },
  "roomClearDrop": "Key",
  "gridPos": 58
 }
