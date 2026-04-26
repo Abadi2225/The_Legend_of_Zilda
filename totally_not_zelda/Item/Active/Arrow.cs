@@ -25,8 +25,6 @@ internal class Arrow : AbstractItem
         return this;
     }
 
-    public void MarkHit() => hitEnemy = true;
-
     public override void Update(GameTime time)
     {
         base.Update(time);
@@ -35,4 +33,8 @@ internal class Arrow : AbstractItem
     }
 
     public override bool IsFinished => hitEnemy || (sprite is ProjectileSprite p && p.ReachedMaxDistance);
+
+    public override bool DamagesEnemies => true;
+    public override bool StopsOnHit => true;
+    public override void OnEnemyHit() => hitEnemy = true;
 }

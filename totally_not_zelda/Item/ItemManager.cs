@@ -14,12 +14,11 @@ public class ItemManager
     private List<AbstractItem> spawnedItems = new();
     private List<AbstractItem> justFinishedItems = new();
 
-    internal IReadOnlyList<AbstractItem> SpawnedItems => spawnedItems;
-    internal IReadOnlyList<AbstractItem> JustFinished => justFinishedItems;
+    public IReadOnlyList<AbstractItem> SpawnedItems => spawnedItems;
+    public IReadOnlyList<AbstractItem> JustFinished => justFinishedItems;
 
     private static Vector2 ProjectileOrigin(ILink link)
     {
-        // link.Rect is the lower half of the sprite; reconstruct full bounds from Position
         float scale = GameServices.ScaleFactor;
         int spriteSize = (int)(16 * scale);
         Vector2 pos = link.Position;
@@ -98,7 +97,7 @@ public class ItemManager
         link.StartUseItem();
     }
 
-    internal void SpawnItem(AbstractItem item) => spawnedItems.Add(item);
+    public void SpawnItem(AbstractItem item) => spawnedItems.Add(item);
 
     public void Update(GameTime time)
     {
