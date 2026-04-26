@@ -24,6 +24,7 @@ namespace Sprint.Enemies.Concrete
         private readonly IPositionedSprite restingSprite;
         private Rectangle innerBounds;
         public override bool HasCollision => true;
+        public override bool BoomerangKills => true;
         
         // Rests against walls first before taking flight
         // Moves erratically in random directions, stopping sometimes to rest

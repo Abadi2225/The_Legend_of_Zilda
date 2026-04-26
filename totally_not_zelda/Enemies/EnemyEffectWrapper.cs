@@ -69,6 +69,8 @@ internal class EnemyEffectWrapper : IEnemy
     public void TakeDamage(int amount) => enemy.TakeDamage(amount);
     public void Die() => enemy.Die();
     public void Knockback(Vector2 direction, float force) => enemy.Knockback(direction, force);
+    public void Stun(float duration) => enemy.Stun(duration);
+    public bool BoomerangKills => enemy.BoomerangKills;
     public override string ToString() => enemy.ToString();
 
     private void ResetSpawnTimer()

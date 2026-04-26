@@ -34,6 +34,15 @@ namespace Sprint.Enemies.Base
 
         private const float DAMAGE_COOLDOWN = 1f;
         private float damageCooldownTimer;
+        private float stunTimer;
+
+        public virtual bool BoomerangKills => false;
+
+        public void Stun(float duration)
+        {
+            if (duration > stunTimer)
+                stunTimer = duration;
+        }
 
         public void Knockback(Vector2 direction, float force)
         {
@@ -138,6 +147,13 @@ namespace Sprint.Enemies.Base
 
             if (damageCooldownTimer > 0)
                 damageCooldownTimer -= dt;
+
+            if (stunTimer > 0)
+            {
+                stunTimer -= dt;
+                sprite?.Update(gameTime);
+                return;
+            }
 
             if (knockbackTimer > 0)
             {

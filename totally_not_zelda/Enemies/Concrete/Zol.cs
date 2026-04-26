@@ -10,7 +10,7 @@ namespace Sprint.Enemies.Concrete
     public class Zol : Enemy
     {
         private const int ZOL_HEALTH = 1;
-        private const int ZOL_DAMAGE = 2;
+        private const int ZOL_DAMAGE = 1;
         private const float BOUNCE_SPEED = 40f;
         private const float BOUNCE_INTERVAL = 1f;
         private const float AIR_TIME = 1f;

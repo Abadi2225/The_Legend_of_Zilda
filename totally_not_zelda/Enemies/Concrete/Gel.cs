@@ -22,6 +22,8 @@ namespace Sprint.Enemies.Concrete
         private Rectangle innerBounds;
 
 
+        public override bool BoomerangKills => true;
+
         public Gel(Texture2D texture, Vector2 position, List<Sprint.Block.Block> solidBlocks, Rectangle innerBounds) : base(texture, position, HEALTH, DAMAGE)
         {
             int[] frameXPositions = [1, 10];
