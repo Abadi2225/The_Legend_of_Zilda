@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 24 namespaces.
 - 160 named types.
-- 9,873 total lines of source code.
-- Approximately 3,052 lines of executable code.
+- 9,878 total lines of source code.
+- Approximately 3,053 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -606,8 +606,8 @@ The `Sprint.Block` namespace contains 4 named types.
 The `Sprint.Character` namespace contains 16 named types.
 
 - 16 named types.
-- 1,156 total lines of source code.
-- Approximately 378 lines of executable code.
+- 1,168 total lines of source code.
+- Approximately 382 lines of executable code.
 - The highest cyclomatic complexity is 6 :heavy_check_mark:.
 
 <details>
@@ -1049,53 +1049,56 @@ The `Sprint.Character` namespace contains 16 named types.
 </summary>
 <br>
 
-- The `LinkStateMachine` contains 42 members.
-- 178 total lines of source code.
-- Approximately 70 lines of executable code.
+- The `LinkStateMachine` contains 45 members.
+- 190 total lines of source code.
+- Approximately 74 lines of executable code.
 - The highest cyclomatic complexity is 6 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L53' title='LinkStateMachine.LinkStateMachine(Link link)'>53</a> | 80 | 1 :heavy_check_mark: | 0 | 3 | 6 / 3 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L22' title='bool LinkStateMachine.AttackHitLanded'>22</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L57' title='LinkStateMachine.LinkStateMachine(Link link)'>57</a> | 80 | 1 :heavy_check_mark: | 0 | 3 | 6 / 3 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L26' title='bool LinkStateMachine.AttackHitLanded'>26</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L14' title='AttackingState LinkStateMachine.attacking'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L23' title='double LinkStateMachine.BLINK_INTERVAL'>23</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L10' title='ILinkState LinkStateMachine.currentState'>10</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L22' title='float LinkStateMachine.DAMAGE_COOLDOWN_DURATION'>22</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L21' title='float LinkStateMachine.damageCooldown'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L17' title='DamagedState LinkStateMachine.damaged'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L18' title='DeadState LinkStateMachine.dead'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L44' title='bool LinkStateMachine.DeathBackgroundBlack'>44</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L43' title='bool LinkStateMachine.DeathSequenceFinished'>43</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L48' title='bool LinkStateMachine.DeathBackgroundBlack'>48</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L47' title='bool LinkStateMachine.DeathSequenceFinished'>47</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L19' title='GrabbedState LinkStateMachine.grabbed'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L169' title='void LinkStateMachine.HandleEndTriforceSequence()'>169</a> | 94 | 2 :heavy_check_mark: | 0 | 2 | 5 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L71' title='void LinkStateMachine.HandleSetMove(Directions dir)'>71</a> | 70 | 4 :heavy_check_mark: | 0 | 5 | 19 / 6 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L103' title='void LinkStateMachine.HandleStartAttack()'>103</a> | 80 | 2 :heavy_check_mark: | 0 | 2 | 7 / 3 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L148' title='void LinkStateMachine.HandleStartDamaged()'>148</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 5 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L154' title='void LinkStateMachine.HandleStartDeath()'>154</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 5 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L126' title='void LinkStateMachine.HandleStartPickUpTriforce(Rectangle itemRect)'>126</a> | 81 | 2 :heavy_check_mark: | 0 | 3 | 8 / 3 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L118' title='void LinkStateMachine.HandleStartPickUpWeapon(Rectangle itemRect)'>118</a> | 81 | 2 :heavy_check_mark: | 0 | 3 | 7 / 3 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L160' title='void LinkStateMachine.HandleStartPush()'>160</a> | 94 | 2 :heavy_check_mark: | 0 | 2 | 5 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L111' title='void LinkStateMachine.HandleStartUseItem()'>111</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 6 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L91' title='void LinkStateMachine.HandleStopMove()'>91</a> | 79 | 3 :heavy_check_mark: | 0 | 4 | 11 / 3 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L135' title='void LinkStateMachine.HandleTakeDamage(int amount)'>135</a> | 72 | 3 :heavy_check_mark: | 0 | 5 | 12 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L181' title='void LinkStateMachine.HandleEndTriforceSequence()'>181</a> | 94 | 2 :heavy_check_mark: | 0 | 2 | 5 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L81' title='void LinkStateMachine.HandleSetMove(Directions dir)'>81</a> | 70 | 4 :heavy_check_mark: | 0 | 5 | 19 / 6 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L113' title='void LinkStateMachine.HandleStartAttack()'>113</a> | 80 | 2 :heavy_check_mark: | 0 | 2 | 7 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L160' title='void LinkStateMachine.HandleStartDamaged()'>160</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 5 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L166' title='void LinkStateMachine.HandleStartDeath()'>166</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 5 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L136' title='void LinkStateMachine.HandleStartPickUpTriforce(Rectangle itemRect)'>136</a> | 81 | 2 :heavy_check_mark: | 0 | 3 | 8 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L128' title='void LinkStateMachine.HandleStartPickUpWeapon(Rectangle itemRect)'>128</a> | 81 | 2 :heavy_check_mark: | 0 | 3 | 7 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L172' title='void LinkStateMachine.HandleStartPush()'>172</a> | 94 | 2 :heavy_check_mark: | 0 | 2 | 5 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L121' title='void LinkStateMachine.HandleStartUseItem()'>121</a> | 88 | 2 :heavy_check_mark: | 0 | 2 | 6 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L101' title='void LinkStateMachine.HandleStopMove()'>101</a> | 79 | 3 :heavy_check_mark: | 0 | 4 | 11 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L145' title='void LinkStateMachine.HandleTakeDamage(int amount)'>145</a> | 67 | 4 :heavy_check_mark: | 0 | 5 | 14 / 6 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L12' title='IdleState LinkStateMachine.idle'>12</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L21' title='bool LinkStateMachine.IsAttacking'>21</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L24' title='bool LinkStateMachine.IsDead'>24</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L26' title='bool LinkStateMachine.IsGrabbed'>26</a> | 91 | 6 :heavy_check_mark: | 0 | 4 | 11 / 3 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L38' title='bool LinkStateMachine.IsPushing'>38</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L45' title='bool LinkStateMachine.IsSparkleStage'>45</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L50' title='bool LinkStateMachine.IsTriforcePickup'>50</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L47' title='bool LinkStateMachine.IsVisible'>47</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L25' title='bool LinkStateMachine.IsAttacking'>25</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L28' title='bool LinkStateMachine.IsDead'>28</a> | 100 | 2 :heavy_check_mark: | 0 | 1 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L30' title='bool LinkStateMachine.IsGrabbed'>30</a> | 91 | 6 :heavy_check_mark: | 0 | 4 | 11 / 3 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L42' title='bool LinkStateMachine.IsPushing'>42</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L49' title='bool LinkStateMachine.IsSparkleStage'>49</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L54' title='bool LinkStateMachine.IsTriforcePickup'>54</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L51' title='bool LinkStateMachine.IsVisible'>51</a> | 88 | 4 :heavy_check_mark: | 0 | 1 | 1 / 2 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L9' title='Link LinkStateMachine.link'>9</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L175' title='void LinkStateMachine.OnAttackFinished()'>175</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L179' title='void LinkStateMachine.OnPickUpFinished()'>179</a> | 83 | 3 :heavy_check_mark: | 0 | 3 | 5 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L177' title='void LinkStateMachine.OnUseItemFinished()'>177</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L187' title='void LinkStateMachine.OnAttackFinished()'>187</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L191' title='void LinkStateMachine.OnPickUpFinished()'>191</a> | 83 | 3 :heavy_check_mark: | 0 | 3 | 5 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L189' title='void LinkStateMachine.OnUseItemFinished()'>189</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L16' title='PickingUpState LinkStateMachine.pickingUp'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L49' title='Rectangle? LinkStateMachine.PickUpItemRect'>49</a> | 91 | 4 :heavy_check_mark: | 0 | 4 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L166' title='bool LinkStateMachine.ShouldEndTriforceSequence()'>166</a> | 91 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L62' title='void LinkStateMachine.TransitionTo(ILinkState newState)'>62</a> | 80 | 1 :heavy_check_mark: | 0 | 2 | 6 / 3 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L69' title='void LinkStateMachine.TransitionToIdle()'>69</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L40' title='bool LinkStateMachine.TriforceActive'>40</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L41' title='double LinkStateMachine.TriforceTimer'>41</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L60' title='void LinkStateMachine.Update(GameTime gameTime)'>60</a> | 93 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L53' title='Rectangle? LinkStateMachine.PickUpItemRect'>53</a> | 91 | 4 :heavy_check_mark: | 0 | 4 | 1 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L178' title='bool LinkStateMachine.ShouldEndTriforceSequence()'>178</a> | 91 | 2 :heavy_check_mark: | 0 | 2 | 2 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L72' title='void LinkStateMachine.TransitionTo(ILinkState newState)'>72</a> | 80 | 1 :heavy_check_mark: | 0 | 2 | 6 / 3 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L79' title='void LinkStateMachine.TransitionToIdle()'>79</a> | 100 | 1 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L44' title='bool LinkStateMachine.TriforceActive'>44</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L45' title='double LinkStateMachine.TriforceTimer'>45</a> | 91 | 4 :heavy_check_mark: | 0 | 2 | 1 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L64' title='void LinkStateMachine.Update(GameTime gameTime)'>64</a> | 77 | 2 :heavy_check_mark: | 0 | 4 | 7 / 3 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L15' title='UsingItemState LinkStateMachine.usingItem'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/LinkStateMachine.cs#L13' title='WalkingState LinkStateMachine.walking'>13</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
 
@@ -5124,8 +5127,8 @@ The `Sprint.Sprites` namespace contains 8 named types.
 The `Sprint.Character.States` namespace contains 10 named types.
 
 - 10 named types.
-- 364 total lines of source code.
-- Approximately 95 lines of executable code.
+- 357 total lines of source code.
+- Approximately 92 lines of executable code.
 - The highest cyclomatic complexity is 7 :heavy_check_mark:.
 
 <details>
@@ -5160,24 +5163,22 @@ The `Sprint.Character.States` namespace contains 10 named types.
 </summary>
 <br>
 
-- The `DamagedState` contains 11 members.
-- 86 total lines of source code.
-- Approximately 21 lines of executable code.
+- The `DamagedState` contains 9 members.
+- 79 total lines of source code.
+- Approximately 18 lines of executable code.
 - The highest cyclomatic complexity is 3 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L8' title='double DamagedState.BLINK_INTERVAL'>8</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L7' title='double DamagedState.DAMAGED_DURATION'>7</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L14' title='bool DamagedState.IsVisible'>14</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L12' title='Vector2 DamagedState.moveVector'>12</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L50' title='void DamagedState.OnEnter(Link link)'>50</a> | 69 | 1 :heavy_check_mark: | 0 | 5 | 15 / 5 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L66' title='void DamagedState.OnExit(Link link)'>66</a> | 85 | 1 :heavy_check_mark: | 0 | 3 | 5 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L16' title='void DamagedState.SetMove(Directions dir, Link link)'>16</a> | 73 | 1 :heavy_check_mark: | 0 | 6 | 20 / 3 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L9' title='float DamagedState.SPEED'>9</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L37' title='void DamagedState.StopMove(Link link)'>37</a> | 79 | 1 :heavy_check_mark: | 0 | 5 | 12 / 2 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L11' title='double DamagedState.timer'>11</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L72' title='void DamagedState.Update(Link link, LinkStateMachine sm, GameTime gameTime)'>72</a> | 65 | 3 :heavy_check_mark: | 0 | 6 | 18 / 7 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L11' title='Vector2 DamagedState.moveVector'>11</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L47' title='void DamagedState.OnEnter(Link link)'>47</a> | 72 | 1 :heavy_check_mark: | 0 | 5 | 14 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L62' title='void DamagedState.OnExit(Link link)'>62</a> | 96 | 1 :heavy_check_mark: | 0 | 3 | 4 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L13' title='void DamagedState.SetMove(Directions dir, Link link)'>13</a> | 73 | 1 :heavy_check_mark: | 0 | 6 | 20 / 3 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L8' title='float DamagedState.SPEED'>8</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L34' title='void DamagedState.StopMove(Link link)'>34</a> | 79 | 1 :heavy_check_mark: | 0 | 5 | 12 / 2 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L10' title='double DamagedState.timer'>10</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Character/States/DamagedState.cs#L67' title='void DamagedState.Update(Link link, LinkStateMachine sm, GameTime gameTime)'>67</a> | 68 | 3 :heavy_check_mark: | 0 | 6 | 16 / 6 |
 
 <a href="#DamagedState-class-diagram">:link: to `DamagedState` class diagram</a>
 
@@ -6445,6 +6446,9 @@ class LinkStateMachine{
     -DamagedState damaged
     -DeadState dead
     -GrabbedState grabbed
+    -float damageCooldown
+    -float DAMAGE_COOLDOWN_DURATION$
+    -double BLINK_INTERVAL$
     +bool IsAttacking
     +bool AttackHitLanded
     +bool IsDead
@@ -9015,11 +9019,9 @@ class AttackingState{
 classDiagram
 class DamagedState{
     -double DAMAGED_DURATION$
-    -double BLINK_INTERVAL$
     -float SPEED$
     -double timer
     -Vector2 moveVector
-    +bool IsVisible
     +SetMove(Directions dir, Link link) void
     +StopMove(Link link) void
     +OnEnter(Link link) void
