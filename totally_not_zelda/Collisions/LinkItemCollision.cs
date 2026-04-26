@@ -42,11 +42,11 @@ internal class LinkItemCollision : ICollisionHandler
         switch (item.Name)
         {
             case "GoldRupee":
-                link.IncreaseRubies(1);
+                link.IncreaseRupees(1);
                 SoundPlayer.Play(SoundType.PICKUP_RUPEE);
                 return;
             case "PurpleRupee":
-                link.IncreaseRubies(5);
+                link.IncreaseRupees(5);
                 SoundPlayer.Play(SoundType.PICKUP_RUPEE);
                 return;
             case "Heart":

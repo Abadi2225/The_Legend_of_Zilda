@@ -108,7 +108,7 @@ public class Link : ILink
         }
     }
 
-    public int Rubies { get; private set; }
+    public int Rupees { get; private set; }
 
     public int Keys => keys;
     public void AddKey() => keys++;
@@ -249,9 +249,18 @@ public class Link : ILink
         health = maxHealth;
     }
 
-    public void IncreaseRubies(int amount)
+    public void IncreaseRupees(int amount)
     {
-        Rubies += amount;
-        Console.WriteLine($"Link picked up {amount} rubies. Current rubies: {Rubies}");
+        Rupees += amount;
+        Console.WriteLine($"Link picked up {amount} rupees. Current Rupees: {Rupees}");
+    }
+
+    public void DecreaseRupees(int amount)
+    {
+        Rupees -=amount;
+    }
+    public int ReportRupees()
+    {
+        return Rupees;
     }
 }

@@ -131,8 +131,8 @@ class HUDBar : IUIElement
         {
             Map.ShowTriforceLoc = true;
         }
-        int linkRupees = GameServices.Link.Rubies;
-        rupees.SetNumber(GameServices.Link.Rubies);
+        int linkRupees = GameServices.Link.Rupees;
+        rupees.SetNumber(GameServices.Link.Rupees);
         keys.SetNumber(GameServices.Link.Keys);
         bombs.SetNumber(GameServices.Link.Bombs);
     }

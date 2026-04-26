@@ -27,7 +27,10 @@ public interface ILink
     void TakeDamage(int amount);
     void GetHealed(int amount);
     void AddHeartContainer();
-    void IncreaseRubies(int amount);
+    void IncreaseRupees(int amount);
     public bool IsGrabbed { get; set; }
     void StopMove();
+    void DecreaseRupees(int amount);    
+    int ReportRupees();
+
 }

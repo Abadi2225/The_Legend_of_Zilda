@@ -56,6 +56,9 @@ public class ItemManager
         }
         else if (used.Name == "Bow")
         {
+
+            if (link.ReportRupees() <= 0) return;
+            link.DecreaseRupees(1);
             float velocity = 5;
             float maxDistance = 160;
             float arrowRotation = facing switch
