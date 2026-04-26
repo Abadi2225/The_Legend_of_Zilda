@@ -12,9 +12,9 @@ This file is dynamically maintained by a bot, *please do not* edit this by hand.
 The *Sprint.csproj* project file contains:
 
 - 24 namespaces.
-- 157 named types.
-- 9,842 total lines of source code.
-- Approximately 3,054 lines of executable code.
+- 160 named types.
+- 9,873 total lines of source code.
+- Approximately 3,052 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -1616,11 +1616,11 @@ The `Sprint.Collisions` namespace contains 8 named types.
 </summary>
 <br>
 
-The `Sprint.Commands` namespace contains 6 named types.
+The `Sprint.Commands` namespace contains 9 named types.
 
-- 6 named types.
-- 115 total lines of source code.
-- Approximately 13 lines of executable code.
+- 9 named types.
+- 162 total lines of source code.
+- Approximately 19 lines of executable code.
 - The highest cyclomatic complexity is 1 :heavy_check_mark:.
 
 <details>
@@ -1643,6 +1643,31 @@ The `Sprint.Commands` namespace contains 6 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/AttackCommand.cs#L8' title='Link AttackCommand.link'>8</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#AttackCommand-class-diagram">:link: to `AttackCommand` class diagram</a>
+
+<a href="#sprint-commands">:top: back to Sprint.Commands</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="killlinkcommand">
+    KillLinkCommand :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `KillLinkCommand` contains 3 members.
+- 14 total lines of source code.
+- Approximately 2 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/KillLinkCommand.cs#L10' title='KillLinkCommand.KillLinkCommand(Link link)'>10</a> | 96 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/KillLinkCommand.cs#L15' title='void KillLinkCommand.Execute()'>15</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/KillLinkCommand.cs#L8' title='Link KillLinkCommand.link'>8</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+
+<a href="#KillLinkCommand-class-diagram">:link: to `KillLinkCommand` class diagram</a>
 
 <a href="#sprint-commands">:top: back to Sprint.Commands</a>
 
@@ -1714,6 +1739,55 @@ The `Sprint.Commands` namespace contains 6 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/SetStateCommand.cs#L7' title='IGameState SetStateCommand.newState'>7</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#SetStateCommand-class-diagram">:link: to `SetStateCommand` class diagram</a>
+
+<a href="#sprint-commands">:top: back to Sprint.Commands</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="switchdungeoncommand">
+    SwitchDungeonCommand :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `SwitchDungeonCommand` contains 4 members.
+- 16 total lines of source code.
+- Approximately 3 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/SwitchDungeonCommand.cs#L10' title='SwitchDungeonCommand.SwitchDungeonCommand(IGameState gameState, int dungeonNumber)'>10</a> | 85 | 1 :heavy_check_mark: | 0 | 2 | 5 / 2 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/SwitchDungeonCommand.cs#L8' title='int SwitchDungeonCommand.dungeonNumber'>8</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/SwitchDungeonCommand.cs#L16' title='void SwitchDungeonCommand.Execute()'>16</a> | 95 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/SwitchDungeonCommand.cs#L7' title='GameplayState SwitchDungeonCommand.gameState'>7</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+
+<a href="#SwitchDungeonCommand-class-diagram">:link: to `SwitchDungeonCommand` class diagram</a>
+
+<a href="#sprint-commands">:top: back to Sprint.Commands</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="togglemusiccommand">
+    ToggleMusicCommand :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `ToggleMusicCommand` contains 1 members.
+- 8 total lines of source code.
+- Approximately 1 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Commands/ToggleMusicCommand.cs#L9' title='void ToggleMusicCommand.Execute()'>9</a> | 100 | 1 :heavy_check_mark: | 0 | 1 | 4 / 1 |
+
+<a href="#ToggleMusicCommand-class-diagram">:link: to `ToggleMusicCommand` class diagram</a>
 
 <a href="#sprint-commands">:top: back to Sprint.Commands</a>
 
@@ -3365,7 +3439,7 @@ The `Sprint.UI.Hud` namespace contains 5 named types.
 <details>
 <summary>
   <strong id="sprint-inputhandling">
-    Sprint.InputHandling :x:
+    Sprint.InputHandling :warning:
   </strong>
 </summary>
 <br>
@@ -3373,34 +3447,34 @@ The `Sprint.UI.Hud` namespace contains 5 named types.
 The `Sprint.InputHandling` namespace contains 2 named types.
 
 - 2 named types.
-- 108 total lines of source code.
-- Approximately 28 lines of executable code.
-- The highest cyclomatic complexity is 12 :x:.
+- 92 total lines of source code.
+- Approximately 20 lines of executable code.
+- The highest cyclomatic complexity is 8 :warning:.
 
 <details>
 <summary>
   <strong id="gameplayinputhandler">
-    GameplayInputHandler :x:
+    GameplayInputHandler :warning:
   </strong>
 </summary>
 <br>
 
 - The `GameplayInputHandler` contains 9 members.
-- 78 total lines of source code.
-- Approximately 24 lines of executable code.
-- The highest cyclomatic complexity is 12 :x:.
+- 62 total lines of source code.
+- Approximately 16 lines of executable code.
+- The highest cyclomatic complexity is 8 :warning:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L25' title='GameplayInputHandler.GameplayInputHandler(GameplayState thisState, Link link, Inventory inventory, ItemManager items, HUDBar hud, InventoryMap invMap)'>25</a> | 66 | 1 :heavy_check_mark: | 0 | 16 | 18 / 7 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L23' title='Dictionary<Keys, ICommand> GameplayInputHandler.commands'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L44' title='void GameplayInputHandler.HandleInput()'>44</a> | 54 | 12 :x: | 0 | 17 | 47 / 17 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L20' title='HUDBar GameplayInputHandler.hud'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L18' title='Inventory GameplayInputHandler.inventory'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L21' title='InventoryMap GameplayInputHandler.invMap'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L19' title='ItemManager GameplayInputHandler.items'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L17' title='Link GameplayInputHandler.link'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L16' title='GameplayState GameplayInputHandler.state'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L24' title='GameplayInputHandler.GameplayInputHandler(GameplayState thisState, Link link, Inventory inventory, ItemManager items, HUDBar hud, InventoryMap invMap)'>24</a> | 65 | 1 :heavy_check_mark: | 0 | 20 | 22 / 7 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L22' title='Dictionary<Keys, ICommand> GameplayInputHandler.commands'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 3 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L47' title='void GameplayInputHandler.HandleInput()'>47</a> | 62 | 8 :warning: | 0 | 16 | 27 / 9 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L19' title='HUDBar GameplayInputHandler.hud'>19</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L17' title='Inventory GameplayInputHandler.inventory'>17</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L20' title='InventoryMap GameplayInputHandler.invMap'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L18' title='ItemManager GameplayInputHandler.items'>18</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L16' title='Link GameplayInputHandler.link'>16</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../InputHandling/GameplayInputHandler.cs#L15' title='GameplayState GameplayInputHandler.state'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 
 <a href="#GameplayInputHandler-class-diagram">:link: to `GameplayInputHandler` class diagram</a>
 
@@ -6728,6 +6802,21 @@ class AttackCommand{
 
 ```
 
+<div id="KillLinkCommand-class-diagram"></div>
+
+##### `KillLinkCommand` class diagram
+
+```mermaid
+classDiagram
+ICommand <|-- KillLinkCommand : implements
+class KillLinkCommand{
+    -Link link
+    +.ctor(Link link) KillLinkCommand
+    +Execute() void
+}
+
+```
+
 <div id="QuitCommand-class-diagram"></div>
 
 ##### `QuitCommand` class diagram
@@ -6764,6 +6853,35 @@ ICommand <|-- SetStateCommand : implements
 class SetStateCommand{
     -IGameState newState
     +.ctor(IGameState newState) SetStateCommand
+    +Execute() void
+}
+
+```
+
+<div id="SwitchDungeonCommand-class-diagram"></div>
+
+##### `SwitchDungeonCommand` class diagram
+
+```mermaid
+classDiagram
+ICommand <|-- SwitchDungeonCommand : implements
+class SwitchDungeonCommand{
+    -GameplayState gameState
+    -int dungeonNumber
+    +.ctor(IGameState gameState, int dungeonNumber) SwitchDungeonCommand
+    +Execute() void
+}
+
+```
+
+<div id="ToggleMusicCommand-class-diagram"></div>
+
+##### `ToggleMusicCommand` class diagram
+
+```mermaid
+classDiagram
+ICommand <|-- ToggleMusicCommand : implements
+class ToggleMusicCommand{
     +Execute() void
 }
 
