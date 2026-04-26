@@ -9,7 +9,7 @@ namespace Sprint.Enemies.Concrete
 {
     public class WallMaster : Enemy
     {
-        private const int WALLMASTER_HEALTH = 2;
+        private const int WALLMASTER_HEALTH = 3;
         private const int WALLMASTER_DAMAGE = 1;
         private const float CREEP_SPEED = 60f;
         private const float DETECTION_RANGE = 160f;

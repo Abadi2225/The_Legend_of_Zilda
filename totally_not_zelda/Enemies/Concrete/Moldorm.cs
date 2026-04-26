@@ -10,7 +10,7 @@ namespace Sprint.Enemies.Concrete
     public class Moldorm : Enemy
     {
         private const int SEGMENT_COUNT = 5;
-        private const int SEGMENT_HEALTH = 2;
+        private const int SEGMENT_HEALTH = 5;
         private const float MOVE_SPEED = 100f;
         private const float TURN_INTERVAL_MIN = 0.5f;
         private const float TURN_INTERVAL_MAX = 2.0f;
