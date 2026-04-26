@@ -54,5 +54,5 @@ public class LevelData
     public string stairTarget { get; set; }
 
 	// Direction that pushable blocks move in this room.
-	public string pushDirection { get; set; }
+	//public string pushDirection { get; set; }
 }

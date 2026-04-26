@@ -69,7 +69,9 @@ public class DoorTransitionHandler
             return;
         }
 
-        LevelData newData = LevelLoader.Load(targetRoom);
+		levelLoader.SetCurrentLevel(targetRoom);
+
+		LevelData newData = LevelLoader.Load(targetRoom);
         doorManager.Reset(newData.doors, newData.doorTypes, newData.doorOffsets, targetRoom);
 
         // Update room first so getInnerBounds() reflects the new room

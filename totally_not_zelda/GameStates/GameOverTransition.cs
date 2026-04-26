@@ -30,14 +30,14 @@ namespace Sprint.GameStates
 		private float blackOutDegree;
 
 		private readonly Texture2D pixel;
-		private readonly GameOverText gameOverText;
+		private readonly TextWriter gameOverText;
 		private const float transitionSpeed = 1f;
 		private const double gameOverDisplayDuration = 3.0;
 
 		public bool Active => phase == Phase.WaitingForLinkDeath || phase == Phase.BlackingOut || phase == Phase.ShowingGameOver;
 		public bool Finished => phase == Phase.Finished;
 
-		public GameOverTransition(Rectangle gameplayBounds, GraphicsDevice graphicsDevice, GameOverText text)
+		public GameOverTransition(Rectangle gameplayBounds, GraphicsDevice graphicsDevice, TextWriter text)
 		{
 			this.gameplayBounds = gameplayBounds;
 			this.gameOverText = text;
@@ -106,11 +106,7 @@ namespace Sprint.GameStates
 		public void DrawGameOverText(SpriteBatch spriteBatch)
 		{
 			if (phase != Phase.ShowingGameOver && phase != Phase.Finished) return;
-
-			Vector2 position = new Vector2(260f, 300f);
-			float scale = 3f;
-
-			gameOverText.Draw(spriteBatch, position, scale);
+			gameOverText.Draw(spriteBatch);
 		}
 	}
 }

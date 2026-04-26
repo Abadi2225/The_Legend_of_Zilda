@@ -107,4 +107,14 @@ public class LevelLoader
     {
         return Load(levelName, GameServices.CurrentDungeon);
     }
+
+	public void SetCurrentLevel(string roomName)
+	{
+		int index = levels.IndexOf(roomName);
+
+		if (index >= 0)
+		{
+			currentLevel = index;
+		}
+	}
 }

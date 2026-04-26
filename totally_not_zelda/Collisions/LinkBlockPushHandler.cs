@@ -51,9 +51,11 @@ namespace Sprint.Collisions
 			Rectangle overlap = Rectangle.Intersect(link.BlockRect, block.Rect);
 			if (overlap.Width == 0 || overlap.Height == 0) return;
 
-			if (link.Facing != block.PushDirection) return;
+			//if (link.Facing != block.PushDirection) return;
 
-			bool pushingFromCorrectSide = block.PushDirection switch
+			Directions pushDirection = link.Facing;
+
+			bool pushingFromCorrectSide = pushDirection switch
 			{
 				Directions.Up => link.BlockRect.Center.Y > block.Rect.Center.Y,
 				Directions.Down => link.BlockRect.Center.Y < block.Rect.Center.Y,
@@ -64,7 +66,7 @@ namespace Sprint.Collisions
 
 			if (!pushingFromCorrectSide) return;
 
-			targetPos = block.PushDirection switch
+			targetPos = pushDirection switch
 			{
 				Directions.Up => new Vector2(originalPos.X, originalPos.Y - block.tileWidth),
 				Directions.Down => new Vector2(originalPos.X, originalPos.Y + block.tileWidth),

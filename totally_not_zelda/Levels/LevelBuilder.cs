@@ -63,10 +63,10 @@ public class LevelBuilder
 
                 Block block = BlockFactory.CreatePushable(id - 1, pos, GameServices.CurrentDungeon);
 
-				if (data.pushDirection == "left")
-				{
-					block.PushDirection = Directions.Left;
-				}
+				//if (data.pushDirection == "left")
+				//{
+				//	block.PushDirection = Directions.Left;
+				//}
 
 				blockManager.Add(block);
             }

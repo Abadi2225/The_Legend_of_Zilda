@@ -17,6 +17,7 @@ using Sprint.Levels;
 using Sprint.Sound;
 using Sprint.UI;
 using Sprint.UI.InventoryElements;
+using System;
 using System.Collections.Generic;
 
 class GameplayState : IGameState
@@ -60,9 +61,11 @@ class GameplayState : IGameState
     private OuterDungeonWalls dungeonWalls;
 
     private GameOverTransition gameOverTransition;
-    private GameOverText gameOverText;
+    private TextWriter gameOverText;
+    private TextWriter NPCRoomTextRowOne;
+    private TextWriter NPCRoomTextRowTwo;
 
-    public GameplayState()
+	public GameplayState()
     {
     }
 
@@ -152,14 +155,16 @@ class GameplayState : IGameState
         doorManager.Reset(currentLevelData.doors, currentLevelData.doorTypes,
         currentLevelData.doorOffsets, levelLoader.GetCurrentLevelName());
 
-        gameOverText = new GameOverText(fontSheet);
-        gameOverTransition = new GameOverTransition(
+        gameOverText = TextWriter.CreateGameOverText(fontSheet);
+		gameOverTransition = new GameOverTransition(
             dungeonWalls.OuterBounds,
             Game1.Instance.GraphicsDevice,
             gameOverText
         );
 
-        doorManager = new DoorManager(doorSheet, GameServices.ScaleFactor, 48 * GameServices.ScaleFactor);
+		NPCRoomTextRowOne = TextWriter.CreateNPCText1(fontSheet);
+		NPCRoomTextRowTwo = TextWriter.CreateNPCText2(fontSheet);
+		doorManager = new DoorManager(doorSheet, GameServices.ScaleFactor, 48 * GameServices.ScaleFactor);
         doorManager.Reset(currentLevelData.doors, currentLevelData.doorTypes);
         doorTransitionHandler = new DoorTransitionHandler(
             doorManager, link,
@@ -182,7 +187,8 @@ class GameplayState : IGameState
     }
 
     private bool IsUnderground => currentLevelData?.background == "Underground";
-    private Rectangle GetInnerBounds()
+	private bool IsNPCRoom => levelLoader.GetCurrentLevelName() == "NPC";
+	private Rectangle GetInnerBounds()
     {
         if (IsUnderground && currentBackground is StaircaseBackground sb)
             return sb.InnerBounds;
@@ -350,7 +356,13 @@ class GameplayState : IGameState
             Game1.Instance.ForceState(menu);
             return;
         }
-    }
+
+		if (IsNPCRoom)
+		{
+			NPCRoomTextRowOne.Update(gameTime);
+			NPCRoomTextRowTwo.Update(gameTime);
+		}
+	}
 
     public void Draw(SpriteBatch spriteBatch)
     {
@@ -360,6 +372,11 @@ class GameplayState : IGameState
         doorManager.Draw(spriteBatch);
         uiManager.Draw(spriteBatch);
         currentLevel.DrawOnTop(spriteBatch);
+		if (IsNPCRoom)
+		{
+			NPCRoomTextRowOne.Draw(spriteBatch);
+			NPCRoomTextRowTwo.Draw(spriteBatch); ;
+		}
 		gameOverTransition.DrawBlackOut(spriteBatch);
         gameOverTransition.DrawGameOverText(spriteBatch);
 		link.Draw(spriteBatch);
