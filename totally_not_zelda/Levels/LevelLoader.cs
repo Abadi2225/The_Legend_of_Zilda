@@ -52,7 +52,7 @@ public class LevelLoader
 
     private static Dictionary<int, int> triforcePositions = new Dictionary<int, int>() {
         {1, 30},
-        {2, 4}
+        {2, 3}
     };
 
     private List<string> levels => levelsByDungeon[GameServices.CurrentDungeon];
@@ -131,13 +131,13 @@ public class LevelLoader
         return Load(levelName, GameServices.CurrentDungeon);
     }
 
-	public void SetCurrentLevel(string roomName)
-	{
-		int index = levels.IndexOf(roomName);
+    public void SetCurrentLevel(string roomName)
+    {
+        int index = levels.IndexOf(roomName);
 
-		if (index >= 0)
-		{
-			currentLevel = index;
-		}
-	}
+        if (index >= 0)
+        {
+            currentLevel = index;
+        }
+    }
 }

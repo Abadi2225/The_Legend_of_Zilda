@@ -48,5 +48,5 @@
  "width":12,
  "doors": { "north": "waffleupper", "south": "desert", "east": "emptyupper" },
  "doorTypes": { "north": "enemy", "south": "open", "east": "key" },
- "gridPos": 60
+ "gridPos": 20
 }
