@@ -13,8 +13,8 @@ The *Sprint.csproj* project file contains:
 
 - 24 namespaces.
 - 153 named types.
-- 9,408 total lines of source code.
-- Approximately 2,896 lines of executable code.
+- 9,421 total lines of source code.
+- Approximately 2,899 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -29,7 +29,7 @@ The `<global namespace>` namespace contains 8 named types.
 
 - 8 named types.
 - 888 total lines of source code.
-- Approximately 352 lines of executable code.
+- Approximately 350 lines of executable code.
 - The highest cyclomatic complexity is 24 :exploding_head:.
 
 <details>
@@ -63,7 +63,7 @@ The `<global namespace>` namespace contains 8 named types.
 
 - The `GameplayState` contains 55 members.
 - 405 total lines of source code.
-- Approximately 203 lines of executable code.
+- Approximately 201 lines of executable code.
 - The highest cyclomatic complexity is 19 :exploding_head:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
@@ -107,7 +107,7 @@ The `<global namespace>` namespace contains 8 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L39' title='Link GameplayState.link'>39</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L26' title='Texture2D GameplayState.linkSheet'>26</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L57' title='bool GameplayState.lmbReleased'>57</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L81' title='void GameplayState.LoadContent()'>81</a> | 34 | 1 :heavy_check_mark: | 0 | 39 | 109 / 74 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L81' title='void GameplayState.LoadContent()'>81</a> | 35 | 1 :heavy_check_mark: | 0 | 38 | 109 / 72 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L66' title='TextWriter GameplayState.NPCRoomTextRowOne'>66</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L67' title='TextWriter GameplayState.NPCRoomTextRowTwo'>67</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../GameStates/GameplayState.cs#L30' title='Texture2D GameplayState.NPCSheet'>30</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
@@ -1176,8 +1176,8 @@ The `Sprint.Character` namespace contains 16 named types.
 The `Sprint.Collision` namespace contains 6 named types.
 
 - 6 named types.
-- 302 total lines of source code.
-- Approximately 82 lines of executable code.
+- 304 total lines of source code.
+- Approximately 83 lines of executable code.
 - The highest cyclomatic complexity is 25 :exploding_head:.
 
 <details>
@@ -1296,15 +1296,15 @@ The `Sprint.Collision` namespace contains 6 named types.
 <br>
 
 - The `LinkItemCollision` contains 6 members.
-- 96 total lines of source code.
-- Approximately 18 lines of executable code.
-- The highest cyclomatic complexity is 16 :exploding_head:.
+- 98 total lines of source code.
+- Approximately 19 lines of executable code.
+- The highest cyclomatic complexity is 17 :exploding_head:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L17' title='LinkItemCollision.LinkItemCollision(ILink link, Inventory inventory, List<AbstractItem> worldItems)'>17</a> | 79 | 1 :heavy_check_mark: | 0 | 4 | 6 / 3 |
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L24' title='void LinkItemCollision.Handle()'>24</a> | 68 | 3 :heavy_check_mark: | 0 | 5 | 15 / 6 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L40' title='void LinkItemCollision.HandlePickup(AbstractItem item)'>40</a> | 58 | 16 :exploding_head: | 0 | 7 | 66 / 9 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L40' title='void LinkItemCollision.HandlePickup(AbstractItem item)'>40</a> | 56 | 17 :exploding_head: | 0 | 7 | 68 / 10 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L14' title='Inventory LinkItemCollision.inventory'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L13' title='ILink LinkItemCollision.link'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Collisions/LinkItemCollision.cs#L15' title='List<AbstractItem> LinkItemCollision.worldItems'>15</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
@@ -3825,7 +3825,7 @@ The `Sprint.UI.InventoryElements` namespace contains 3 named types.
 <details>
 <summary>
   <strong id="sprint-item">
-    Sprint.Item :warning:
+    Sprint.Item :radioactive:
   </strong>
 </summary>
 <br>
@@ -3833,9 +3833,9 @@ The `Sprint.UI.InventoryElements` namespace contains 3 named types.
 The `Sprint.Item` namespace contains 11 named types.
 
 - 11 named types.
-- 555 total lines of source code.
-- Approximately 170 lines of executable code.
-- The highest cyclomatic complexity is 9 :warning:.
+- 566 total lines of source code.
+- Approximately 174 lines of executable code.
+- The highest cyclomatic complexity is 10 :radioactive:.
 
 <details>
 <summary>
@@ -4049,27 +4049,29 @@ The `Sprint.Item` namespace contains 11 named types.
 <details>
 <summary>
   <strong id="itemmanager">
-    ItemManager :warning:
+    ItemManager :radioactive:
   </strong>
 </summary>
 <br>
 
-- The `ItemManager` contains 9 members.
-- 108 total lines of source code.
-- Approximately 47 lines of executable code.
-- The highest cyclomatic complexity is 9 :warning:.
+- The `ItemManager` contains 11 members.
+- 119 total lines of source code.
+- Approximately 51 lines of executable code.
+- The highest cyclomatic complexity is 10 :radioactive:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L114' title='void ItemManager.Draw(SpriteBatch sb)'>114</a> | 94 | 2 :heavy_check_mark: | 0 | 4 | 5 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L18' title='IReadOnlyList<AbstractItem> ItemManager.JustFinished'>18</a> | 100 | 2 :heavy_check_mark: | 0 | 3 | 1 / 2 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L15' title='List<AbstractItem> ItemManager.justFinishedItems'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L20' title='Vector2 ItemManager.ProjectileOrigin(ILink link)'>20</a> | 66 | 1 :heavy_check_mark: | 0 | 5 | 17 / 6 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L14' title='List<AbstractItem> ItemManager.spawnedItems'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L17' title='IReadOnlyList<AbstractItem> ItemManager.SpawnedItems'>17</a> | 100 | 2 :heavy_check_mark: | 0 | 3 | 1 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L104' title='void ItemManager.SpawnItem(AbstractItem item)'>104</a> | 97 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L106' title='void ItemManager.Update(GameTime time)'>106</a> | 74 | 2 :heavy_check_mark: | 0 | 4 | 7 / 5 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L38' title='void ItemManager.UseItem(ILink link, Inventory inventory, int slot)'>38</a> | 46 | 9 :warning: | 0 | 16 | 65 / 28 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L125' title='void ItemManager.Draw(SpriteBatch sb)'>125</a> | 94 | 2 :heavy_check_mark: | 0 | 4 | 5 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L14' title='double ItemManager.ITEM_COOLDOWN_MILLIS'>14</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L22' title='double ItemManager.itemCooldownMillis'>22</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L20' title='IReadOnlyList<AbstractItem> ItemManager.JustFinished'>20</a> | 100 | 2 :heavy_check_mark: | 0 | 3 | 1 / 2 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L17' title='List<AbstractItem> ItemManager.justFinishedItems'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L24' title='Vector2 ItemManager.ProjectileOrigin(ILink link)'>24</a> | 66 | 1 :heavy_check_mark: | 0 | 5 | 17 / 6 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L16' title='List<AbstractItem> ItemManager.spawnedItems'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L19' title='IReadOnlyList<AbstractItem> ItemManager.SpawnedItems'>19</a> | 100 | 2 :heavy_check_mark: | 0 | 3 | 1 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L110' title='void ItemManager.SpawnItem(AbstractItem item)'>110</a> | 97 | 1 :heavy_check_mark: | 0 | 3 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L112' title='void ItemManager.Update(GameTime time)'>112</a> | 68 | 3 :heavy_check_mark: | 0 | 4 | 12 / 7 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Item/ItemManager.cs#L42' title='void ItemManager.UseItem(ILink link, Inventory inventory, int slot)'>42</a> | 45 | 10 :radioactive: | 0 | 16 | 67 / 30 |
 
 <a href="#ItemManager-class-diagram">:link: to `ItemManager` class diagram</a>
 
@@ -8056,8 +8058,10 @@ class ItemHudSprites{
 ```mermaid
 classDiagram
 class ItemManager{
+    -double ITEM_COOLDOWN_MILLIS$
     -List<AbstractItem> spawnedItems
     -List<AbstractItem> justFinishedItems
+    -double itemCooldownMillis
     +IReadOnlyList<AbstractItem> SpawnedItems
     +IReadOnlyList<AbstractItem> JustFinished
     +ProjectileOrigin(ILink link)$ Vector2
