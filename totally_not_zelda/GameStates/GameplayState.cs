@@ -276,6 +276,7 @@ class GameplayState : IGameState
             }
         }
 
+        /*
         MouseState mouse = Mouse.GetState();
         if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
         {
@@ -301,6 +302,7 @@ class GameplayState : IGameState
 		}
         if (mouse.RightButton == ButtonState.Released) rmbReleased = true;
         if (mouse.LeftButton  == ButtonState.Released) lmbReleased = true;
+        */
 
         if (link.IsDead && !gameOverTransition.Finished)
             gameOverTransition.Start();
