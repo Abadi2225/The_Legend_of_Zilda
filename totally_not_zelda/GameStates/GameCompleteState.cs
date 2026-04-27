@@ -18,6 +18,7 @@ internal class GameCompleteState : IGameState
     public void Enter()
     {
         MusicPlayer.Mute();
+        GameServices.CurrentDungeon = 1;
     }
 
     public void Exit() { }
