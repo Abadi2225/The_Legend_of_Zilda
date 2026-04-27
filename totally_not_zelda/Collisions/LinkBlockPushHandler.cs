@@ -2,6 +2,7 @@
 using Sprint.Block;
 using Sprint.Character;
 using Sprint.Interfaces;
+using Sprint.Sound;
 
 namespace Sprint.Collisions
 {
@@ -90,6 +91,7 @@ namespace Sprint.Collisions
 			if (blocked) return;
 
 			link.StartPush();
+			SoundPlayer.Play(SoundType.SECRET_UNLOCKED);
 			link.StopMove();
 
 			movingBlock = block;

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Sprint.Character.States;
 using Sprint.Interfaces;
+using Sprint.Sound;
 
 namespace Sprint.Character;
 
@@ -22,7 +23,10 @@ internal class LinkStateMachine
     private const float DAMAGE_COOLDOWN_DURATION = 3f;
     private const double BLINK_INTERVAL = 0.10;
 
-    public bool IsAttacking => currentState is AttackingState;
+    private float lowHealthSoundTimer;
+    private const float LOW_HEALTH_SOUND_INTERVAL = 1.0f;
+
+	public bool IsAttacking => currentState is AttackingState;
     public bool AttackHitLanded { get; set; }
 
     public bool IsDead => currentState is DeadState;
@@ -66,6 +70,7 @@ internal class LinkStateMachine
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (damageCooldown > 0)
             damageCooldown -= dt;
+        HandleLowHealth(dt);
         currentState.Update(link, this, gameTime);
     }
 
@@ -115,21 +120,23 @@ internal class LinkStateMachine
         if (currentState is AttackingState or DeadState or GrabbedState) return;
 
         AttackHitLanded = false;
-        TransitionTo(attacking);
+		SoundPlayer.Play(SoundType.SWORD_SWING);
+		TransitionTo(attacking);
     }
 
     public void HandleStartUseItem()
     {
         if (currentState is UsingItemState or DeadState or GrabbedState) return;
-
-        TransitionTo(usingItem);
+		SoundPlayer.Play(SoundType.ARROW_BOOMERANG);
+		TransitionTo(usingItem);
     }
 
     public void HandleStartPickUpWeapon(Rectangle itemRect)
     {
         if (currentState is UsingItemState or AttackingState or DeadState or GrabbedState) return;
 
-        pickingUp.InitWeapon(itemRect);
+		SoundPlayer.Play(SoundType.PICKUP_ITEM);
+		pickingUp.InitWeapon(itemRect);
         TransitionTo(pickingUp);
     }
 
@@ -137,7 +144,8 @@ internal class LinkStateMachine
     {
         if (currentState is UsingItemState or AttackingState or DamagedState
                          or DeadState or GrabbedState) return;
-
+                         
+		SoundPlayer.Play(SoundType.PICKUP_ITEM);
         pickingUp.InitTriforce(itemRect);
         TransitionTo(pickingUp);
     }
@@ -151,8 +159,15 @@ internal class LinkStateMachine
         link.SetHealth(newHealth);
         damageCooldown = DAMAGE_COOLDOWN_DURATION;
 
-        if (newHealth <= 0)
+        SoundPlayer.Play(SoundType.LINK_HURT);
+
+        if (newHealth <= 0) {
+
+			MusicPlayer.Mute();
+			SoundPlayer.Play(SoundType.LINK_DEATH);
             TransitionTo(dead);
+
+        }
         else
             TransitionTo(damaged);
     }
@@ -166,7 +181,9 @@ internal class LinkStateMachine
     public void HandleStartDeath()
     {
         if (currentState is DeadState) return;
-        TransitionTo(dead);
+		MusicPlayer.Mute();
+		SoundPlayer.Play(SoundType.LINK_DEATH);
+		TransitionTo(dead);
     }
 
     public void HandleStartPush()
@@ -193,4 +210,22 @@ internal class LinkStateMachine
         if (currentState is PickingUpState && pickingUp.IsTriforce) return;
         TransitionTo(idle);
     }
+
+	private void HandleLowHealth(float dt)
+	{
+		if (link.Health <= 1 && !IsDead)
+		{
+			lowHealthSoundTimer -= dt;
+
+			if (lowHealthSoundTimer <= 0)
+			{
+				SoundPlayer.Play(SoundType.LOW_HEALTH);
+				lowHealthSoundTimer = LOW_HEALTH_SOUND_INTERVAL;
+			}
+		}
+		else
+		{
+			lowHealthSoundTimer = 0f;
+		}
+	}
 }

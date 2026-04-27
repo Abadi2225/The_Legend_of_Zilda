@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
+using Sprint.Sound;
 using System.Collections.Generic;
 
 namespace Sprint.Doors;
@@ -106,13 +107,15 @@ public class DoorManager
 
     public void TryUnlockEnemyBlockDoors()
     {
-        foreach (string dir in AllDirections)
+		foreach (string dir in AllDirections)
         {
             if (GetDoorType(dir) != "enemy_block") continue;
-            unlocked[dir] = true;
+			if (unlocked.GetValueOrDefault(dir)) continue;
+			unlocked[dir] = true;
             RegisterUnlock(dir);
-        }
-    }
+			SoundPlayer.Play(SoundType.DOOR_UNLOCK);
+		}
+	}
 
     public void TryUnlockBomb(Vector2 explosionCenter, float radius)
     {
@@ -140,7 +143,10 @@ public class DoorManager
             {
                 unlocked[direction] = true;
                 RegisterUnlock(direction);
-                return true;
+
+				SoundPlayer.Play(SoundType.DOOR_UNLOCK);
+
+				return true;
             }
             return false;
         }

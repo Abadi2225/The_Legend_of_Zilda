@@ -33,8 +33,11 @@ internal class SoundPlayer
 
         { SoundType.SWORD_COMBINED, "sounds/LOZ_Sword_Combined" },
         { SoundType.SWORD_SHOOT, "sounds/LOZ_Sword_Shoot" },
-        { SoundType.SWORD_SWING, "sounds/LOZ_Sword_Slash" }
-    };
+        { SoundType.SWORD_SWING, "sounds/LOZ_Sword_Slash" },
+
+        { SoundType.Text, "sounds/LOZ_Text"},
+		{ SoundType.Text_Slow, "sounds/LOZ_Text_Slow"}
+	};
 
     public static void Play(SoundType type)
     {

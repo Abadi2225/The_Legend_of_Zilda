@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
+using Sprint.Sound;
+using System.Collections.Generic;
 
-namespace Sprint.UI
+namespace Sprint.UI.Text
 {
 	internal class TextWriter : IUIElement
 	{
@@ -19,6 +21,7 @@ namespace Sprint.UI
 		private readonly float scale;
 		private readonly bool effect;
 
+		public bool Finished => printedCharacters >= text.Length;
 		public TextWriter(Texture2D sheet, string text, Vector2 position, float scale, bool effect)
 		{
 			this.fontsheet = sheet;
@@ -37,7 +40,6 @@ namespace Sprint.UI
 
 			for (int i = 0; i < printedCharacters; i++)
 			{
-
 				char c = text[i];
 
 				if (c == ' ')
@@ -66,7 +68,6 @@ namespace Sprint.UI
 					}
 					drawPos.X += (CharWidth + CharSpacing) * scale;
 				}
-
 			}
 		}
 
@@ -78,13 +79,13 @@ namespace Sprint.UI
 
 			timer += gameTime.ElapsedGameTime.TotalSeconds;
 
-			if (timer >= 0.05)
+			if (timer >= 0.1)
 			{
 				printedCharacters++;
+				SoundPlayer.Play(SoundType.Text);
 				timer = 0;
 			}
 		}
-
 		public static TextWriter CreateGameOverText(Texture2D fontSheet)
 		{
 			return new TextWriter(
@@ -95,27 +96,35 @@ namespace Sprint.UI
 				false
 			);
 		}
-
-		public static TextWriter CreateNPCText1(Texture2D fontSheet)
+		public static TextWriter[] CreateNPCText(Texture2D fontSheet, string[] lines, int dungeon)
 		{
-			return new TextWriter(
-				fontSheet,
-				"EASTMOST PENNINSULA",
-				new Vector2(140f, 250f),
-				3f,
-				true
-			);
-		}
+			float scale = 3f;
+			Vector2 start = new Vector2(140f, 250f);
+			float lineGap = 40f;
+			float LineIndent = 220f;
 
-		public static TextWriter CreateNPCText2(Texture2D fontSheet)
-		{
-			return new TextWriter(
-				fontSheet,
-				"IS THE SECRET",
-				new Vector2(220f, 290f),
-				3f,
-				true
-			);
+			if (dungeon == 2)
+			{
+				scale = 2.5f;                       
+				start = new Vector2(140f, 250f);  
+				lineGap = 35f;                    
+			}
+
+			TextWriter[] writers = new TextWriter[lines.Length];
+
+			for (int i = 0; i < lines.Length; i++)
+			{
+				float x = i == 1 ? LineIndent : start.X;
+
+				writers[i] = new TextWriter(
+					fontSheet,
+					lines[i],
+					new Vector2(x, start.Y + i * lineGap),
+					scale,
+					true
+				);
+			}
+			return writers;
 		}
 	}
 }

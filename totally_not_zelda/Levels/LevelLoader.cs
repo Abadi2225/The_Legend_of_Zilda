@@ -42,7 +42,7 @@ public class LevelLoader
             "emptyleft",
             "emptylower",
             "emptyupper",
-            "NPC",
+            "Second_NPC",
             "pacman",
             "trap",
             "wafflelower",

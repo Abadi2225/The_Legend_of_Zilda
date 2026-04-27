@@ -21,8 +21,9 @@ namespace Sprint.Sound
 		private static MusicType currentMusic;
 		public static void Play(MusicType type, bool repeat = true)
 		{
-
+			
 			Song song = Game1.Instance.Content.Load<Song>(musicLookup[type]);
+			MediaPlayer.Volume = 1f;
 			MediaPlayer.IsRepeating = repeat;
 			MediaPlayer.Play(song);
 			currentMusic = type;

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using Sprint.Character;
-using Sprint.UI;
+using Sprint.UI.Text;
 
 namespace Sprint.GameStates
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace Sprint.UI
+namespace Sprint.UI.Text
 {
 	internal class LetterFactory
 	{

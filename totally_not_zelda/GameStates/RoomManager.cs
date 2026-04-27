@@ -27,7 +27,7 @@ namespace Sprint.GameStates
         public string CurrentLevelName => levelLoader.GetCurrentLevelName();
 
         public bool IsUnderground => CurrentLevelData?.background == "Underground";
-        public bool IsNPCRoom => CurrentLevelName == "NPC";
+        public bool IsNPCRoom => CurrentLevelName == "NPC" || CurrentLevelName == "Second_NPC";
 
         public Rectangle GetInnerBounds()
         {

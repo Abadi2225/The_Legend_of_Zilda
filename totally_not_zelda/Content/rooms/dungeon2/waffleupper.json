@@ -46,7 +46,7 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "north": "boss", "south": "12blocks", "east": "NPC" },
+ "doors": { "north": "boss", "south": "12blocks", "east": "Second_NPC" },
  "doorTypes": { "north": "enemy", "south": "enemy", "east": "bomb" },
  "roomClearDrop": "Bomb",
  "gridPos": 37,

@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Block;
+using Sprint.Enemies;
 using Sprint.Enemies.Base;
 using Sprint.Enemies.Concrete;
-using Sprint.Enemies;
 using Sprint.Item;
+using Sprint.Sound;
 using System.Collections.Generic;
 
 public class Level
@@ -39,7 +40,10 @@ public class Level
         {
             WorldItems.Add(roomClearDropItem);
             roomClearDropped = true;
-        }
+
+			if (roomClearDropItem.Name == "Key")
+				SoundPlayer.Play(SoundType.KEY_APPEAR);
+		}
 
         foreach (AbstractItem item in WorldItems)
             item.Update(gameTime);

@@ -43,5 +43,8 @@
  "doors": { "south": "emptyupper", "west": "waffleupper" },
  "doorTypes": { "south": "open", "west": "bomb"},
  "gridPos": 33,
- "name":"NPC"
+  "name": "Second_NPC",
+    "npcText": [
+    "DODONGO DISLIKES SMOKE."
+  ]
 }

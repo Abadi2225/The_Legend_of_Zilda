@@ -46,7 +46,7 @@
  "type":"map",
  "version":"1.10",
  "width":12,
- "doors": { "north": "NPC", "south": "trap", "west": "12blocks" },
+ "doors": { "north": "Second_NPC", "south": "trap", "west": "12blocks" },
  "doorTypes": { "north": "open", "south": "bomb", "west": "key" },
  "roomClearDrop": "PurpleRupee",
  "gridPos": 58,
