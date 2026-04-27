@@ -103,8 +103,8 @@ namespace Sprint.UI
 
 			if (dungeon == 2)
 			{
-				scale = 2f;                       
-				start = new Vector2(180f, 250f);  
+				scale = 2.5f;                       
+				start = new Vector2(140f, 250f);  
 				lineGap = 35f;                    
 			}
 

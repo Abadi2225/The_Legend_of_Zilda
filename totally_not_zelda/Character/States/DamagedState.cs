@@ -4,14 +4,11 @@ namespace Sprint.Character.States;
 
 internal class DamagedState : LinkState
 {
-    private const double DAMAGED_DURATION = 3;
-    private const double BLINK_INTERVAL = 0.10;
+    private const double DAMAGED_DURATION = 1.5;
     private const float SPEED = 80f;
 
     private double timer;
     private Vector2 moveVector;
-
-    public bool IsVisible { get; private set; }
 
     public void SetMove(Directions dir, Link link)
     {
@@ -51,7 +48,6 @@ internal class DamagedState : LinkState
     {
         timer = 0;
         moveVector = Vector2.Zero;
-        IsVisible = true;
         link.Move = Vector2.Zero;
         link.Sprite = link.Direction switch
         {
@@ -65,7 +61,6 @@ internal class DamagedState : LinkState
 
     public override void OnExit(Link link)
     {
-        IsVisible = true;
         link.Move = Vector2.Zero;
     }
 
@@ -73,8 +68,6 @@ internal class DamagedState : LinkState
     {
         float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
         timer += dt;
-
-        IsVisible = (int)(timer / BLINK_INTERVAL) % 2 == 0;
 
         if (timer >= DAMAGED_DURATION)
         {

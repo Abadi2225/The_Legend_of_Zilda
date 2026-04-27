@@ -18,6 +18,10 @@ internal class LinkStateMachine
     private readonly DeadState dead = new();
     private readonly GrabbedState grabbed = new();
 
+    private float damageCooldown;
+    private const float DAMAGE_COOLDOWN_DURATION = 3f;
+    private const double BLINK_INTERVAL = 0.10;
+
     public bool IsAttacking => currentState is AttackingState;
     public bool AttackHitLanded { get; set; }
 
@@ -44,7 +48,7 @@ internal class LinkStateMachine
     public bool DeathBackgroundBlack => currentState is DeadState && dead.IsBackgroundBlack;
     public bool IsSparkleStage => currentState is DeadState && dead.IsSparkle;
 
-    public bool IsVisible => currentState is not DamagedState || damaged.IsVisible;
+    public bool IsVisible => damageCooldown <= 0 || (int)(damageCooldown / BLINK_INTERVAL) % 2 == 0;
 
     public Rectangle? PickUpItemRect => currentState is PickingUpState ? pickingUp.ItemRect : null;
     public bool IsTriforcePickup => currentState is PickingUpState && pickingUp.IsTriforce;
@@ -57,7 +61,13 @@ internal class LinkStateMachine
         idle.OnEnter(link);
     }
 
-    public void Update(GameTime gameTime) => currentState.Update(link, this, gameTime);
+    public void Update(GameTime gameTime)
+    {
+        float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        if (damageCooldown > 0)
+            damageCooldown -= dt;
+        currentState.Update(link, this, gameTime);
+    }
 
     private void TransitionTo(ILinkState newState)
     {
@@ -134,10 +144,12 @@ internal class LinkStateMachine
 
     public void HandleTakeDamage(int amount)
     {
-        if (currentState is DamagedState or DeadState or GrabbedState) return;
+        if (currentState is DeadState or GrabbedState) return;
+        if (damageCooldown > 0) return;
 
         int newHealth = MathHelper.Clamp(link.Health - amount, 0, link.MaxHealth);
         link.SetHealth(newHealth);
+        damageCooldown = DAMAGE_COOLDOWN_DURATION;
 
         if (newHealth <= 0)
             TransitionTo(dead);

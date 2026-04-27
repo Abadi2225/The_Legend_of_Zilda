@@ -9,6 +9,7 @@ public abstract class AbstractItem : IItem
 {
     protected Texture2D texture;
     private Vector2 position;
+    protected int id;
 
     public Vector2 Position
     {
@@ -28,7 +29,14 @@ public abstract class AbstractItem : IItem
     public Rectangle Rect { get; protected set; } = Rectangle.Empty;
     public Rectangle SourceRect { get; protected set; }
     public virtual bool IsCollected => false;
-    public virtual bool IsFinished => false;
+    protected bool cancelled;
+    public void Cancel() => cancelled = true;
+    public virtual bool IsFinished => cancelled;
+
+    public virtual bool DamagesEnemies => false;
+    public virtual bool DamagesPlayer => false;
+    public virtual bool StopsOnHit => false;
+    public virtual void OnEnemyHit() { }
 
     protected IPositionedSprite sprite;
 
@@ -50,4 +58,10 @@ public abstract class AbstractItem : IItem
     {
         sprite?.Update(time);
     }
+
+    public int ID
+        {
+            get => id;
+            set => id = value;
+        }
 }

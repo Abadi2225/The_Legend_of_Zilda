@@ -31,6 +31,7 @@ internal class LinkItemCollision : ICollisionHandler
 
             if (linkRect.Intersects(item.Rect))
             {
+                GameServices.currentRoomState.CollectedItems.Add(item.ID);
                 worldItems.RemoveAt(i);
                 HandlePickup(item);
             }
@@ -70,6 +71,7 @@ internal class LinkItemCollision : ICollisionHandler
                 link.AddKey();
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
                 return;
+            case "TimeBomb":
             case "Bomb":
                 link.AddBomb();
                 SoundPlayer.Play(SoundType.PICKUP_ITEM);
@@ -89,6 +91,7 @@ internal class LinkItemCollision : ICollisionHandler
         {
             link.StartPickUpWeapon(item.SourceRect);
             SoundPlayer.Play(SoundType.PICKUP_VALUABLE);
+            inventory.Add(item);
             return;
         }
 

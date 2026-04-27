@@ -8,11 +8,13 @@ using Sprint.Interfaces;
 using System.Linq;
 using System;
 using Sprint.Character;
+using System.Diagnostics.Metrics;
 public class LevelBuilder
 {
     private const int TILE_SIZE = 16;
 
-    public static Level Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds)
+    public static Level Build(LevelData data, EnemyFactory enemyFactory, Rectangle innerBounds,
+        Action<AbstractItem> spawnProjectile = null)
     {
         BlockManager blockManager = new BlockManager();
         float scale = GameServices.ScaleFactor;
@@ -23,6 +25,10 @@ public class LevelBuilder
         bool useInnerBounds = data.background != null;
         float blockOriginX = useInnerBounds ? innerBounds.Left : blockBorderX;
         float blockOriginY = useInnerBounds ? innerBounds.Top : blockBorderY;
+
+        // Registers the room to DungeonState
+        GameServices.currentRoomState = DungeonState.GetRoomState(data.name);
+        RoomState roomState = GameServices.currentRoomState;
 
         var backgroundLayer = data.layers.FirstOrDefault(l => l.name == "BackgroundTiles");
         if (backgroundLayer != null)
@@ -77,8 +83,8 @@ public class LevelBuilder
         {
             for (int i = 0; i < enemyLayer.data.Length; i++)
             {
-                int id = enemyLayer.data[i];
-                if (id == 0) continue;
+                int enemyType = enemyLayer.data[i];
+                if (enemyType == 0) continue;
 
                 int x = i % data.width;
                 int y = i / data.width;
@@ -87,23 +93,28 @@ public class LevelBuilder
                     x * TILE_SIZE * scale + innerBounds.Left,
                     y * TILE_SIZE * scale + innerBounds.Top);
 
-                System.Console.WriteLine($"Enemy id:{id} tile:({x},{y}) scaled pos:{pos}");
-
                 bool hasCarriedItem = data.carriedItems != null &&
                     data.carriedItems.TryGetValue(i.ToString(), out string carriedItemName);
 
-                IEnemy enemy = enemyFactory.CreateEnemy(
-                    (EnemyType)(id - 1), pos, solidBlocks, innerBounds,
-                    onItemDropped: item => worldItems.Add(item),
-                    skipRandomDrop: hasCarriedItem);
+                int enemyID = i;
 
-                enemyManager.AddEnemy(enemy);
-
-                if (hasCarriedItem)
+                if (!roomState.DefeatedEnemies.Contains(enemyID))
                 {
-                    data.carriedItems.TryGetValue(i.ToString(), out carriedItemName);
-                    var carriedDrop = CreatePickupItem(carriedItemName, Vector2.Zero);
-                    carriedItems.Add(new CarriedItem(carriedDrop, enemy, item => worldItems.Add(item)));
+                    IEnemy enemy = enemyFactory.CreateEnemy(
+                    (EnemyType)(enemyType - 1), pos, solidBlocks, innerBounds,
+                    onItemDropped: item => worldItems.Add(item),
+                    skipRandomDrop: hasCarriedItem,
+                    spawnProjectile: spawnProjectile);
+                    enemy.ID = enemyID;
+
+                    enemyManager.AddEnemy(enemy);
+
+                    if (hasCarriedItem)
+                    {
+                        data.carriedItems.TryGetValue(i.ToString(), out carriedItemName);
+                        var carriedDrop = CreatePickupItem(carriedItemName, Vector2.Zero);
+                        carriedItems.Add(new CarriedItem(carriedDrop, enemy, item => worldItems.Add(item)));
+                    }
                 }
             }
         }
@@ -117,6 +128,8 @@ public class LevelBuilder
 
         if (data.roomItems != null)
         {
+            int itemID = 0;
+
             foreach (var roomItemData in data.roomItems)
             {
                 int x = roomItemData.tile % data.width;
@@ -124,7 +137,15 @@ public class LevelBuilder
                 Vector2 pos = new Vector2(
                     x * TILE_SIZE * scale + innerBounds.Left,
                     y * TILE_SIZE * scale + innerBounds.Top);
-                worldItems.Add(CreatePickupItem(roomItemData.item, pos));
+
+                if (!roomState.CollectedItems.Contains(itemID))
+                {
+                    AbstractItem item = CreatePickupItem(roomItemData.item, pos);
+                    item.ID = itemID;
+                    worldItems.Add(item);
+                }
+
+                itemID++;
             }
         }
 

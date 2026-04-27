@@ -4,7 +4,6 @@ using Sprint.Commands;
 using Sprint.GameStates;
 using Sprint.Interfaces;
 using Sprint.Item;
-using Sprint.Sound;
 using Sprint.UI;
 using Sprint.UI.InventoryElements;
 using System.Collections.Generic;
@@ -35,8 +34,12 @@ internal class GameplayInputHandler : IInputHandler
         {
             {Keys.D1, new UseItemCommand(items, inventory, link)},
             {Keys.E, new TriggerDamageCommand(link)},
+            {Keys.H, new SwitchDungeonCommand(state, 1)},
+            {Keys.J, new SwitchDungeonCommand(state, 2)},
+            {Keys.K, new KillLinkCommand(link)},
+            {Keys.M, new ToggleMusicCommand()},
             {Keys.Q, new QuitCommand()},
-            {Keys.R, new SetStateCommand(new MenuState())},
+            {Keys.R, new RestartGameCommand()},
             {Keys.X, new AttackCommand(link)}
         };
     }
@@ -58,26 +61,6 @@ internal class GameplayInputHandler : IInputHandler
                         invMap,
                         state
                         ));
-        }
-
-        if (GameServices.KeyInput.IsKeyPressed(Keys.K))
-        {
-            link.StartDeath();
-        }
-
-        if (GameServices.KeyInput.IsKeyPressed(Keys.M))
-        {
-            MusicPlayer.ToggleMute();
-        }
-
-        if (GameServices.KeyInput.IsKeyPressed(Keys.H))
-        {
-            state.SwitchDungeon(1);
-        }
-
-        if (GameServices.KeyInput.IsKeyPressed(Keys.J))
-        {
-            state.SwitchDungeon(2);
         }
 
         foreach (var command in commands)
