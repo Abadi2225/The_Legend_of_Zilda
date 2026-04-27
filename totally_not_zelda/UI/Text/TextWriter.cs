@@ -11,7 +11,7 @@ namespace Sprint.UI.Text
 		private const int CharWidth = 8;
 		private const int CharSpacing = 1;
 
-		private int printedCharacters;
+		private int printedCharactersCount;
 		private double timer;
 
 		private readonly Texture2D fontsheet;
@@ -21,7 +21,7 @@ namespace Sprint.UI.Text
 		private readonly float scale;
 		private readonly bool effect;
 
-		public bool Finished => printedCharacters >= text.Length;
+		public bool Finished => printedCharactersCount >= text.Length;
 		public TextWriter(Texture2D sheet, string text, Vector2 position, float scale, bool effect)
 		{
 			this.fontsheet = sheet;
@@ -31,14 +31,14 @@ namespace Sprint.UI.Text
 			this.effect = effect;
 
 			letterFactory = new LetterFactory();
-			printedCharacters = effect ? 0 : text.Length;
+			printedCharactersCount = effect ? 0 : text.Length;
 		}
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
 			Vector2 drawPos = position;
 
-			for (int i = 0; i < printedCharacters; i++)
+			for (int i = 0; i < printedCharactersCount; i++)
 			{
 				char c = text[i];
 
@@ -75,13 +75,13 @@ namespace Sprint.UI.Text
 		{
 			if (!effect) return;
 
-			if (printedCharacters >= text.Length) return;
+			if (printedCharactersCount >= text.Length) return;
 
 			timer += gameTime.ElapsedGameTime.TotalSeconds;
 
 			if (timer >= 0.1)
 			{
-				printedCharacters++;
+				printedCharactersCount++;
 				SoundPlayer.Play(SoundType.Text);
 				timer = 0;
 			}

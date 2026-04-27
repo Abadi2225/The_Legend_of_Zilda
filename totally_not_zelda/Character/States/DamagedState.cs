@@ -48,7 +48,7 @@ internal class DamagedState : LinkState
     {
         timer = 0;
         moveVector = Vector2.Zero;
-        link.Move = Vector2.Zero;
+		moveVector = Vector2.Zero;
         link.Sprite = link.Direction switch
         {
             Directions.Up => link.IdleUp,
@@ -61,7 +61,7 @@ internal class DamagedState : LinkState
 
     public override void OnExit(Link link)
     {
-        link.Move = Vector2.Zero;
+		moveVector = Vector2.Zero;
     }
 
     public override void Update(Link link, LinkStateMachine sm, GameTime gameTime)

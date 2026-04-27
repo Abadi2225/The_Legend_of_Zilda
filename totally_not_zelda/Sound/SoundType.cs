@@ -26,5 +26,6 @@ internal enum SoundType
     SWORD_SHOOT,
     SWORD_SWING,
     Text,
-	Text_Slow
+	Text_Slow,
+    PICKUP_TRIFORCE
 }

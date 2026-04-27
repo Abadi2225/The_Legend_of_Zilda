@@ -6,7 +6,6 @@ internal class AttackingState : LinkState
 {
     public override void OnEnter(Link link)
     {
-        link.Move = Vector2.Zero;
 
         Attacking attackSprite = link.Direction switch
         {

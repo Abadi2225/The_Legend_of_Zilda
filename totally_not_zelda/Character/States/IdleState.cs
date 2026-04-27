@@ -6,7 +6,6 @@ internal class IdleState : LinkState
 {
     public override void OnEnter(Link link)
     {
-        link.Move = Vector2.Zero;
         link.Sprite = link.Direction switch
         {
             Directions.Up => link.IdleUp,

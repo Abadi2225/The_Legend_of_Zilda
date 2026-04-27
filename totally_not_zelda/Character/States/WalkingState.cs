@@ -10,8 +10,9 @@ internal class WalkingState : LinkState
 
     public bool IsPushing { get; private set; }
     private double pushingTimer;
+	private Vector2 move = Vector2.Zero;
 
-    public void StartPushing()
+	public void StartPushing()
     {
         IsPushing = true;
         pushingTimer = 0;
@@ -20,7 +21,7 @@ internal class WalkingState : LinkState
     public void SetDirection(Directions dir, Link link)
     {
         link.Direction = dir;
-        link.Move = dir switch
+        move = dir switch
         {
             Directions.Up => new Vector2(0, -1 * GameServices.ScaleFactor),
             Directions.Down => new Vector2(0, 1 * GameServices.ScaleFactor),
@@ -28,6 +29,7 @@ internal class WalkingState : LinkState
             Directions.Right => new Vector2(1 * GameServices.ScaleFactor, 0),
             _ => Vector2.Zero,
         };
+
         link.Sprite = dir switch
         {
             Directions.Up => link.WalkUp,
@@ -47,7 +49,7 @@ internal class WalkingState : LinkState
     public override void OnExit(Link link)
     {
         IsPushing = false;
-        link.Move = Vector2.Zero;
+        move = Vector2.Zero;
     }
 
     public override void Update(Link link, LinkStateMachine sm, GameTime gameTime)
@@ -62,7 +64,7 @@ internal class WalkingState : LinkState
         }
 
         float speed = IsPushing ? PUSHING_SPEED : SPEED;
-        link.Position += link.Move * speed * dt;
+        link.Position += move * speed * dt;
         link.Sprite.Update(gameTime);
     }
 }

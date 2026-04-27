@@ -18,7 +18,6 @@ internal class DeadState : LinkState
     {
         stage = Stage.Spinning;
         stageTimer = 0;
-        link.Move = Vector2.Zero;
         link.DeadSprite.Reset();
         link.Sprite = link.DeadSprite;
     }

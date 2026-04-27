@@ -6,7 +6,6 @@ internal class UsingItemState : LinkState
 {
     public override void OnEnter(Link link)
     {
-        link.Move = Vector2.Zero;
 
         UseItem useSprite = link.Direction switch
         {

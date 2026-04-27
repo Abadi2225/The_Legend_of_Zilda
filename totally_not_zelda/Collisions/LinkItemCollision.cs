@@ -99,7 +99,8 @@ internal class LinkItemCollision : ICollisionHandler
         if (item.Name == "GoldTriforce" || item.Name == "PurpleTriforce")
         {
             link.StartPickUpTriforce(item.SourceRect);
-            SoundPlayer.Play(SoundType.PICKUP_ITEM);
+            SoundPlayer.Play(SoundType.PICKUP_TRIFORCE);
+            MusicPlayer.Mute();
             return;
         }
 

@@ -272,6 +272,7 @@ class GameplayState : IGameState
             {
                 DoorStateRegistry.Reset();
                 SwitchDungeon(2);
+                MusicPlayer.Play(MusicType.DUNGEON);
                 link.Position = GameServices.DungeonEntrancePosition;
             }
             else

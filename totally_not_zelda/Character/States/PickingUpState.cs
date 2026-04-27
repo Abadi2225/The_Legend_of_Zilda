@@ -26,7 +26,6 @@ internal class PickingUpState : LinkState
 
     public override void OnEnter(Link link)
     {
-        link.Move = Vector2.Zero;
         Timer = 0;
 
         if (IsTriforce)

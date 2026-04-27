@@ -497,6 +497,13 @@
 /processorParam:Version=3.8.5.0
 /build:sounds/LOZ_Text.wav
 
+#begin sounds/PickupTriforce.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.0
+/build:sounds/PickupTriforce.wav
+
 #begin sounds/Title_theme.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

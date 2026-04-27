@@ -43,7 +43,6 @@ public class Link : ILink
 
     private ISprite sprite;
     internal ISprite Sprite { get => sprite; set => sprite = value; }
-    internal Vector2 Move { get; set; } = Vector2.Zero;
     internal Directions Direction { get; set; } = Directions.Down;
 
     private Vector2 position;
@@ -82,16 +81,9 @@ public class Link : ILink
         {
             if (!stateMachine.IsAttacking || stateMachine.AttackHitLanded) return Rectangle.Empty;
 
-            Attacking currentAttack = Direction switch
-            {
-                Directions.Up => AttackUp,
-                Directions.Down => AttackDown,
-                Directions.Left => AttackLeft,
-                Directions.Right => AttackRight,
-                _ => AttackDown,
-            };
+			Attacking currentAttack = GetAttackSprite(Direction);
 
-            return currentAttack.GetWeaponWorldRect(position);
+			return currentAttack.GetWeaponWorldRect(position);
         }
     }
 
@@ -266,4 +258,14 @@ public class Link : ILink
     {
         return Rupees;
     }
+
+	private Attacking GetAttackSprite(Directions direction)
+	{
+		if (direction == Directions.Up) return AttackUp;
+		if (direction == Directions.Down) return AttackDown;
+		if (direction == Directions.Left) return AttackLeft;
+		if (direction == Directions.Right) return AttackRight;
+
+		return AttackDown;
+	}
 }

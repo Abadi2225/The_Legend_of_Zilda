@@ -29,7 +29,7 @@ internal class Walking : ISprite
 
         if (timer >= secondsPerFrame)
         {
-            currentFrame = (currentFrame + 1) % frames.Length;
+            currentFrame = (currentFrame + 1) % frames.Length;  
             timer = 0;
         }
     }

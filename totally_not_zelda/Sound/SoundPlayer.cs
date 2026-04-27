@@ -36,8 +36,10 @@ internal class SoundPlayer
         { SoundType.SWORD_SWING, "sounds/LOZ_Sword_Slash" },
 
         { SoundType.Text, "sounds/LOZ_Text"},
-		{ SoundType.Text_Slow, "sounds/LOZ_Text_Slow"}
-	};
+        { SoundType.Text_Slow, "sounds/LOZ_Text_Slow"},
+        { SoundType.PICKUP_TRIFORCE, "sounds/PickupTriforce"}
+    };
+    
 
     public static void Play(SoundType type)
     {
