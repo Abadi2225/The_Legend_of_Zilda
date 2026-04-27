@@ -16,6 +16,7 @@ public class Block
 	public readonly bool pushAble;
 	public readonly bool IsStair;
 	public bool HasBeenPushed { get; set; } = false;
+	public bool RequiresEnemiesDead { get; set; } = false;
 	//public Directions PushDirection { get; set; } = Directions.Up;
 	public Rectangle Rect => new Rectangle((int)Position.X, (int)Position.Y, tileWidth, tileWidth);
 

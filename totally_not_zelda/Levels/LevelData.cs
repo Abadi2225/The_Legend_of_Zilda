@@ -48,6 +48,9 @@ public class LevelData
 	// Multiple items placed at specific pixel positions in the room (overrides tile-based roomItems)
 	public List<PrecisePlacementData> precisePlacements { get; set; }
     
+    // Pushable blocks in this room require all enemies to be dead before they can be pushed
+    public bool pushRequiresEnemiesDead { get; set; }
+
     // Position of this room on the map grid
     public int gridPos { get; set; }
     

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Sprites;
 using System.Collections.Generic;
+using Sprint.Sound;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -129,6 +130,8 @@ namespace Sprint.Enemies.Concrete
         public void EatBomb()
         {
             if (!isAlive || currentState == DodongoState.BombEaten) return;
+
+            SoundPlayer.Play(SoundType.BOSS_HURT);
 
             bombsEaten++;
             currentState = DodongoState.BombEaten;

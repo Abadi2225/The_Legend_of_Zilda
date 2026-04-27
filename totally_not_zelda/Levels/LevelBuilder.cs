@@ -68,7 +68,7 @@ public class LevelBuilder
                     y * TILE_SIZE * scale + blockOriginY);
 
                 Block block = BlockFactory.CreatePushable(id - 1, pos, GameServices.CurrentDungeon);
-
+                block.RequiresEnemiesDead = data.pushRequiresEnemiesDead;
 				blockManager.Add(block);
             }
         }

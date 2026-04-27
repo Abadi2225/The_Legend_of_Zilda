@@ -194,7 +194,7 @@ class GameplayState : IGameState
         collisionManager.Add(new LinkEnemyCollision(link, roomManager.CurrentLevel.Enemies));
         collisionManager.Add(new SwordEnemyCollision(link, roomManager.CurrentLevel.Enemies));
         collisionManager.Add(new EnemyBlockCollisionHandler(roomManager.CurrentLevel.Enemies.EnemyList, roomManager.CurrentLevel.Blocks));
-        collisionManager.Add(new LinkBlockPushHandler(link, roomManager.CurrentLevel.Blocks));
+        collisionManager.Add(new LinkBlockPushHandler(link, roomManager.CurrentLevel.Blocks, roomManager.CurrentLevel.Enemies));
         collisionManager.Add(new LinkBlockCollisionHandler(link, roomManager.CurrentLevel.Blocks));
         collisionManager.Add(new LinkItemCollision(link, inventory, roomManager.CurrentLevel.WorldItems));
         collisionManager.Add(new ProjectileCollision(link, items, roomManager.CurrentLevel.Enemies));

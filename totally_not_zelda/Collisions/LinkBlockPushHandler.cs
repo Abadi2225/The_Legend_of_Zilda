@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint.Block;
 using Sprint.Character;
+using Sprint.Enemies;
 using Sprint.Interfaces;
 using Sprint.Sound;
 
@@ -10,16 +11,18 @@ namespace Sprint.Collisions
 	{
 		private readonly Link link;
 		private readonly BlockManager blockManager;
+		private readonly EnemyManager enemyManager;
 
 		private Block.Block movingBlock = null;
 		private Vector2 movingTargetPos;
 
 		private const float PUSH_STEP = 4f;
 
-		public LinkBlockPushHandler(Link link, BlockManager blockManager)
+		public LinkBlockPushHandler(Link link, BlockManager blockManager, EnemyManager enemyManager)
 		{
 			this.link = link;
 			this.blockManager = blockManager;
+			this.enemyManager = enemyManager;
 		}
 
 		public void Handle()
@@ -37,6 +40,7 @@ namespace Sprint.Collisions
 				if (block.walkAble) continue;
 				if (!block.pushAble) continue;
 				if (block.HasBeenPushed) continue;
+				if (block.RequiresEnemiesDead && enemyManager.EnemyList.Exists(e => e.IsAlive)) continue;
 				if (!link.BlockRect.Intersects(block.Rect)) continue;
 
 				ResolvePush(link, block);
