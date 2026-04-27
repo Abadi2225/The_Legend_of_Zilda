@@ -19,7 +19,7 @@ internal class EnemyEffectWrapper : IEnemy
     private float dyingTimer;
     public IEnemy InnerEnemy => enemy;
 
-    private const float SPAWN_DURATION = 1.5f;
+    private const float SPAWN_DURATION = 0.5f;
     private const float DYING_DURATION = 0.5f;
     public bool HasCollision => enemy.HasCollision;
 
@@ -117,7 +117,9 @@ internal class EnemyEffectWrapper : IEnemy
     {
         if (IsSpawning)
         {
-            spawnSprite?.Draw(spriteBatch, location);
+            if (spawnTimer > 0f) {
+                spawnSprite?.Draw(spriteBatch, location);
+            }
             return;
         }
 
