@@ -59,17 +59,11 @@ namespace Sprint.Enemies
             int roll = Rng.Next(100);
             ItemFactory.StillType? drop = roll switch
             {
-                // < 25 => ItemFactory.StillType.Heart,       // 25%
-                // < 40 => ItemFactory.StillType.GoldRupee,   // 15%
-                // < 50 => ItemFactory.StillType.PurpleRupee, // 10%
-                // < 55 => ItemFactory.StillType.Fairy,       //  5%
-                // _    => null,                              // 45% nothing
-                // For testing 100% drops:
-                < 25 => ItemFactory.StillType.Heart,
-                < 50 => ItemFactory.StillType.GoldRupee,
-                < 75 => ItemFactory.StillType.PurpleRupee,
-                <= 100 => ItemFactory.StillType.Fairy,
-                _ => null,
+                < 20 => ItemFactory.StillType.Heart,       // 20%
+                < 40 => ItemFactory.StillType.GoldRupee,   // 20%
+                < 50 => ItemFactory.StillType.PurpleRupee, // 10%
+                < 55 => ItemFactory.StillType.Fairy,       //  5%
+                _    => null,                              // 45% nothing
             };
             return drop.HasValue ? ItemFactory.CreateStillItem(drop.Value, Vector2.Zero, scale: GameServices.ScaleFactor) : null;
         }

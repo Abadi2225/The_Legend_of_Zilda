@@ -9,8 +9,8 @@ public class LevelLoader
     private Dictionary<int, List<string>> levelsByDungeon = new()
     {
         [1] = new List<string>{
-            "template",
             "12statues",
+            "template",
             "12blocks",
             "6blockslower",
             "6blocksupper",
@@ -29,8 +29,8 @@ public class LevelLoader
             "Underground",
         },
         [2] = new List<string>{
-            "12blocks",
             "12statues",
+            "12blocks",
             "4blocksbiglower",
             "4blocksbigupper",
             "4blockssmall",
