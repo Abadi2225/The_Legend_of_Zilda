@@ -101,7 +101,7 @@ namespace Sprint.Enemies
         private EnemyEffectWrapper WrapWithEffects(IEnemy enemy, Vector2 position, bool skipSpawnCloud = false,
             AbstractItem droppedItem = null, Action<AbstractItem> onItemDropped = null)
         {
-            var spawnSprite = skipSpawnCloud ? null : new AnimatedSprite(linkSheet, position, [138, 155, 172], 185, 16, 16, 0.5f);
+            var spawnSprite = skipSpawnCloud ? null : new AnimatedSprite(linkSheet, position, [138, 155, 172], 185, 16, 16, 0.5f / 3f);
             var deathSprite = new AnimatedSprite(dustSheet, position, [0, 16, 32, 48], 0, 14, 15, 0.3f);
             return new EnemyEffectWrapper(enemy, spawnSprite, deathSprite, droppedItem, onItemDropped);
         }
