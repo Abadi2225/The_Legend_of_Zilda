@@ -128,6 +128,9 @@ public class Link : ILink
     }
     public void AddBomb() => bombs += 4;
 
+    // For debug mode
+    public void SetBombs(int amount) => bombs = amount;
+    public void SetKeys(int amount) => keys = amount;
 
     public Link(Texture2D texture, Texture2D dustTexture, Vector2 position)
     {

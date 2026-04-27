@@ -49,8 +49,12 @@ class GameplayState : IGameState
     private CollisionManager collisionManager;
     private DoorManager doorManager;
     private DoorTransitionHandler doorTransitionHandler;
+//  // for debug mode
     private bool lmbReleased = true;
     private bool rmbReleased = true;
+    private bool cReleased = true;
+    private bool debugMode = false;
+    // end debug mode
     private bool roomTransitionActive;
     private InnerDungeonWalls innerWalls;
     private GameplayInputHandler inputHandler;
@@ -276,33 +280,45 @@ class GameplayState : IGameState
             }
         }
 
-        /*
-        MouseState mouse = Mouse.GetState();
-        if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
+        // For debug mode
+        KeyboardState kb = Keyboard.GetState();
+        if (kb.IsKeyDown(Keys.C) && cReleased)
         {
-            rmbReleased = false;
-            roomManager.CycleNext();
-            doorManager.Reset(
-                roomManager.CurrentLevelData.doors,
-                roomManager.CurrentLevelData.doorTypes,
-                roomManager.CurrentLevelData.doorOffsets,
-                roomManager.CurrentLevelName);
-			UpdateNPCText();
-		}
-        if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
+            cReleased = false;
+            debugMode = !debugMode;
+            if (debugMode) GiveDebugItems();
+        }
+        if (kb.IsKeyUp(Keys.C)) cReleased = true;
+
+        if (debugMode)
         {
-            lmbReleased = false;
-            roomManager.CyclePrevious();
-            doorManager.Reset(
-                roomManager.CurrentLevelData.doors,
-                roomManager.CurrentLevelData.doorTypes,
-                roomManager.CurrentLevelData.doorOffsets,
-                roomManager.CurrentLevelName);
-			UpdateNPCText();
-		}
-        if (mouse.RightButton == ButtonState.Released) rmbReleased = true;
-        if (mouse.LeftButton  == ButtonState.Released) lmbReleased = true;
-        */
+            MouseState mouse = Mouse.GetState();
+            if (mouse.RightButton == ButtonState.Pressed && rmbReleased)
+            {
+                rmbReleased = false;
+                roomManager.CycleNext();
+                doorManager.Reset(
+                    roomManager.CurrentLevelData.doors,
+                    roomManager.CurrentLevelData.doorTypes,
+                    roomManager.CurrentLevelData.doorOffsets,
+                    roomManager.CurrentLevelName);
+				UpdateNPCText();
+			}
+            if (mouse.LeftButton == ButtonState.Pressed && lmbReleased)
+            {
+                lmbReleased = false;
+                roomManager.CyclePrevious();
+                doorManager.Reset(
+                    roomManager.CurrentLevelData.doors,
+                    roomManager.CurrentLevelData.doorTypes,
+                    roomManager.CurrentLevelData.doorOffsets,
+                    roomManager.CurrentLevelName);
+				UpdateNPCText();
+			}
+            if (mouse.RightButton == ButtonState.Released) rmbReleased = true;
+            if (mouse.LeftButton  == ButtonState.Released) lmbReleased = true;
+        }
+        // end debug mode
 
         if (link.IsDead && !gameOverTransition.Finished)
             gameOverTransition.Start();
@@ -383,6 +399,30 @@ class GameplayState : IGameState
     }
 
     internal void DrawHUDOnly(SpriteBatch sb) => hud.Draw(sb);
+
+    // for debug mode
+    private void GiveDebugItems()
+    {
+        while (link.MaxHealth < 16)
+            link.AddHeartContainer();
+        link.SetHealth(link.MaxHealth);
+        link.SetBombs(99);
+        link.SetKeys(99);
+        link.IncreaseRupees(999);
+
+        var existingNames = new HashSet<string>();
+        foreach (var item in inventory.GetItems())
+            existingNames.Add(item.Name);
+
+        if (!existingNames.Contains("Bow"))
+            inventory.Add(ItemFactory.CreateStillItem(ItemFactory.StillType.Bow, Vector2.Zero, GameServices.ScaleFactor));
+        if (!existingNames.Contains("Boomerang"))
+            inventory.Add(ItemFactory.CreateBoomerang(Vector2.Zero, Vector2.Zero, 0));
+
+        inventory.HasMap = true;
+        inventory.HasCompass = true;
+    }
+    // end debug mode
 
     private void ResetMaps()
     {
