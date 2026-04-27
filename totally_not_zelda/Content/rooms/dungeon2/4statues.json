@@ -49,5 +49,5 @@
  "doors": {  "north": "trap", "south": "4blocksbigupper", "west": "4blockssmall"},
  "doorTypes": { "north": "bomb", "south": "bomb", "west": "open" },
  "gridPos": 59,
- "name":"4statues"
+ "name":"4statues2"
 }

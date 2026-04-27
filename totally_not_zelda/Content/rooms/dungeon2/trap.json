@@ -50,5 +50,5 @@
  "doorTypes": { "north": "bomb", "south": "bomb", "west": "open" },
  "roomClearDrop": "Bomb",
  "gridPos": 58,
- "name":"trap"
+ "name":"trap2"
 }

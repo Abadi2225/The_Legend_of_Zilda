@@ -50,5 +50,5 @@
  "doorTypes": { "north": "open", "south": "bomb", "west": "key" },
  "roomClearDrop": "PurpleRupee",
  "gridPos": 58,
- "name":"emptyupper"
+ "name":"emptyupper2"
 }

@@ -38,5 +38,5 @@
  "doors": {  "north": "4blocksbiglower", "east": "emptylower"},
  "doorTypes": { "north": "open", "south": "open", "east": "open" },
  "gridPos": 59,
- "name":"12statues"
+ "name":"12statues2"
 }

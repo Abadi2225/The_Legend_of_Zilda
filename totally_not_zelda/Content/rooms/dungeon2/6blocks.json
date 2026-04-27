@@ -50,5 +50,5 @@
  "doorTypes": { "north": "bomb", "west": "key" },
  "roomItems": [{ "item": "Compass", "tile": 11 }],
  "gridPos": 51,
- "name":"6blocks"
+ "name":"6blocks2"
 }

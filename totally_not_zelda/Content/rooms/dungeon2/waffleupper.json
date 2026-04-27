@@ -50,5 +50,5 @@
  "doorTypes": { "north": "enemy", "south": "enemy", "east": "bomb" },
  "roomClearDrop": "Bomb",
  "gridPos": 37,
- "name":"waffleupper"
+ "name":"waffleupper2"
 }

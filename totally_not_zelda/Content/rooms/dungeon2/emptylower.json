@@ -50,5 +50,5 @@
  "doorTypes": { "north": "open", "west": "open" },
  "roomClearDrop": "Key",
  "gridPos": 58,
- "name":"emptylower"
+ "name":"emptylower2"
 }

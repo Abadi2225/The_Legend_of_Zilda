@@ -41,5 +41,5 @@
  "doors": { "east": "boss" },
  "doorTypes": { "east": "open" },
  "gridPos": 30,
- "name":"pacman"
+ "name":"pacman2"
 }

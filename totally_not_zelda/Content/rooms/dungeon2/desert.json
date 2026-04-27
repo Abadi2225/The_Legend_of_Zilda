@@ -50,5 +50,5 @@
  "doorTypes": { "north": "open", "south": "open", "east": "open" },
  "roomClearDrop": "Key",
  "gridPos": 58,
- "name":"desert"
+ "name":"desert2"
 }

@@ -50,5 +50,5 @@
  "doorTypes": { "north": "bomb", "south": "bomb", "west": "key" },
  "roomItems": [{ "item": "Map", "tile": 42 }],
  "gridPos": 44,
- "name":"4blocksbigupper"
+ "name":"4blocksbigupper2"
 }
