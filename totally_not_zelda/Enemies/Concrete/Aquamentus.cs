@@ -1,10 +1,11 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Enemies.Base;
 using Sprint.Item;
+using Sprint.Sound;
 using Sprint.Sprites;
+using System;
+using System.Collections.Generic;
 
 namespace Sprint.Enemies.Concrete
 {
@@ -77,7 +78,10 @@ namespace Sprint.Enemies.Concrete
         private void SpawnFireballs()
         {
             if (spawnProjectile == null) return;
-            foreach (var dir in FireballDirections)
+
+			SoundPlayer.Play(SoundType.BOSS_SCREAM1);
+
+			foreach (var dir in FireballDirections)
             {
                 var fireball = ItemFactory.CreateFireball(texture, Position, dir);
                 spawnProjectile(fireball);

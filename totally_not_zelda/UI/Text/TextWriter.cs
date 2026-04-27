@@ -1,9 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint.Interfaces;
+using Sprint.Sound;
 using System.Collections.Generic;
 
-namespace Sprint.UI
+namespace Sprint.UI.Text
 {
 	internal class TextWriter : IUIElement
 	{
@@ -19,6 +20,8 @@ namespace Sprint.UI
 		private readonly Vector2 position;
 		private readonly float scale;
 		private readonly bool effect;
+
+		public bool Finished => printedCharacters >= text.Length;
 		public TextWriter(Texture2D sheet, string text, Vector2 position, float scale, bool effect)
 		{
 			this.fontsheet = sheet;
@@ -37,7 +40,6 @@ namespace Sprint.UI
 
 			for (int i = 0; i < printedCharacters; i++)
 			{
-
 				char c = text[i];
 
 				if (c == ' ')
@@ -66,7 +68,6 @@ namespace Sprint.UI
 					}
 					drawPos.X += (CharWidth + CharSpacing) * scale;
 				}
-
 			}
 		}
 
@@ -78,9 +79,10 @@ namespace Sprint.UI
 
 			timer += gameTime.ElapsedGameTime.TotalSeconds;
 
-			if (timer >= 0.05)
+			if (timer >= 0.1)
 			{
 				printedCharacters++;
+				SoundPlayer.Play(SoundType.Text);
 				timer = 0;
 			}
 		}
@@ -122,7 +124,6 @@ namespace Sprint.UI
 					true
 				);
 			}
-
 			return writers;
 		}
 	}

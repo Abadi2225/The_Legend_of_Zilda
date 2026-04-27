@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework;
 using Sprint.Character;
 using Sprint.Enemies;
+using Sprint.Enemies.Concrete;
 using Sprint.Interfaces;
+using Sprint.Sound;
 
 namespace Sprint.Collision;
 
@@ -32,7 +34,23 @@ internal class SwordEnemyCollision : ICollisionHandler
                 enemy.TakeDamage(SWORD_DAMAGE);
                 link.RegisterSwordHit();
 
-                var dir = DirectionsUtils.CreateVector(link.Facing, 1f);
+				var actual = enemy is EnemyEffectWrapper w ? w.InnerEnemy : enemy;
+				if (actual is Aquamentus || actual is Dodongo)
+                {
+                    if(enemy.IsAlive)
+                        SoundPlayer.Play(SoundType.BOSS_HURT);
+					else
+						SoundPlayer.Play(SoundType.BOSS_SCREAM2);
+				}
+                else
+                {
+                    if (enemy.IsAlive)
+                        SoundPlayer.Play(SoundType.ENEMY_HURT);
+                    else
+                        SoundPlayer.Play(SoundType.ENEMY_DEATH);
+                }
+
+				var dir = DirectionsUtils.CreateVector(link.Facing, 1f);
                 enemy.Knockback(dir, KNOCKBACK_FORCE);
             }
         }

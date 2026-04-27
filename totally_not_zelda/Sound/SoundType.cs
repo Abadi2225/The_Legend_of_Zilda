@@ -24,5 +24,7 @@ internal enum SoundType
     SECRET_UNLOCKED,
     SWORD_COMBINED,
     SWORD_SHOOT,
-    SWORD_SWING
+    SWORD_SWING,
+    Text,
+	Text_Slow
 }

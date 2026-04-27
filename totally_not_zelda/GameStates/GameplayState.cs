@@ -16,6 +16,7 @@ using Sprint.Levels;
 using Sprint.Sound;
 using Sprint.UI;
 using Sprint.UI.InventoryElements;
+using Sprint.UI.Text;
 using System.Collections.Generic;
 
 class GameplayState : IGameState
@@ -57,10 +58,9 @@ class GameplayState : IGameState
 
     private GameOverTransition gameOverTransition;
     private TextWriter gameOverText;
-    private TextWriter NPCRoomTextRowOne;
-    private TextWriter NPCRoomTextRowTwo;
+	private TextWriterSequence NPCRoomText;
 
-    public GameplayState() { }
+	public GameplayState() { }
 
     public void Exit() { }
 
@@ -249,7 +249,8 @@ class GameplayState : IGameState
             roomManager.CurrentLevel.Blocks.blocksList.Exists(b => b.HasBeenPushed))
             doorManager.TryUnlockEnemyBlockDoors();
 
-        foreach (var item in items.JustFinished)
+
+		foreach (var item in items.JustFinished)
             if (item.Name == "TimeBomb")
                 doorManager.TryUnlockBomb(item.Position, 80f);
 
@@ -311,8 +312,7 @@ class GameplayState : IGameState
 
         if (roomManager.IsNPCRoom)
         {
-			NPCRoomTextRowOne?.Update(gameTime);
-			NPCRoomTextRowTwo?.Update(gameTime);
+			NPCRoomText?.Update(gameTime);
 		}
     }
 
@@ -326,8 +326,7 @@ class GameplayState : IGameState
         roomManager.CurrentLevel.DrawOnTop(spriteBatch);
         if (roomManager.IsNPCRoom)
         {
-			NPCRoomTextRowOne?.Draw(spriteBatch);
-			NPCRoomTextRowTwo?.Draw(spriteBatch);
+			NPCRoomText?.Draw(spriteBatch);
 		}
         gameOverTransition.DrawBlackOut(spriteBatch);
         gameOverTransition.DrawGameOverText(spriteBatch);
@@ -351,21 +350,19 @@ class GameplayState : IGameState
 	private void UpdateNPCText()
 	{
 		if (roomManager.CurrentLevelData?.npcText != null &&
-			roomManager.CurrentLevelData.npcText.Length > 0)
+		roomManager.CurrentLevelData.npcText.Length > 0)
 		{
-			var npcTexts = TextWriter.CreateNPCText(
-				fontSheet,
-				roomManager.CurrentLevelData.npcText,
-				GameServices.CurrentDungeon
+			NPCRoomText = new TextWriterSequence(
+				TextWriter.CreateNPCText(
+					fontSheet,
+					roomManager.CurrentLevelData.npcText,
+					GameServices.CurrentDungeon
+				)
 			);
-
-			NPCRoomTextRowOne = npcTexts[0];
-			NPCRoomTextRowTwo = npcTexts.Length > 1 ? npcTexts[1] : null;
 		}
 		else
 		{
-			NPCRoomTextRowOne = null;
-			NPCRoomTextRowTwo = null;
+			NPCRoomText = null;
 		}
 	}
 	internal void DrawRoomContent(SpriteBatch sb, Level level, DoorManager doors, bool drawDoors)
