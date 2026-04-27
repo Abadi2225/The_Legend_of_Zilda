@@ -264,10 +264,16 @@ class GameplayState : IGameState
         if (link.ShouldEndTriforceSequence())
         {
             link.EndTriforceSequence();
-            MenuState menu = new MenuState();
-            menu.LoadContent();
-            menu.Enter();
-            Game1.Instance.ForceState(menu);
+            if (GameServices.CurrentDungeon == 1)
+            {
+                DoorStateRegistry.Reset();
+                SwitchDungeon(2);
+                link.Position = GameServices.DungeonEntrancePosition;
+            }
+            else
+            {
+                GameServices.GameActions.ChangeState(new GameCompleteState());
+            }
         }
 
         MouseState mouse = Mouse.GetState();
