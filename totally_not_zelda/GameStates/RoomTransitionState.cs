@@ -16,9 +16,9 @@ internal class RoomTransitionState : IGameState
     private readonly Level newLevel;
     private readonly DoorManager newDoorManager;
     private readonly OuterDungeonWalls dungeonWalls;
-    private readonly InnerDungeonWalls innerWalls;
     private readonly Link link;
     private readonly GameplayState gameplayState;
+    private readonly GameplayHUD gameplayHUD;
 
     private float elapsed;
     private const float Duration = 2f;
@@ -32,7 +32,7 @@ internal class RoomTransitionState : IGameState
     public RoomTransitionState(
         Level oldLevel, DoorManager oldDoorManager,
         Level newLevel, DoorManager newDoorManager,
-        OuterDungeonWalls dungeonWalls, InnerDungeonWalls innerWalls,
+        OuterDungeonWalls dungeonWalls, GameplayHUD gameplayHUD,
         Link link, string direction, GameplayState gameplayState)
     {
         this.oldLevel = oldLevel;
@@ -40,7 +40,7 @@ internal class RoomTransitionState : IGameState
         this.newLevel = newLevel;
         this.newDoorManager = newDoorManager;
         this.dungeonWalls = dungeonWalls;
-        this.innerWalls = innerWalls;
+        this.gameplayHUD = gameplayHUD;
         this.link = link;
         this.gameplayState = gameplayState;
 

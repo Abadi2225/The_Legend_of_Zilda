@@ -54,7 +54,6 @@ class GameplayState : IGameState
     private bool debugMode = false;
     // end debug mode
     private bool roomTransitionActive;
-    private InnerDungeonWalls innerWalls;
     private GameplayInputHandler inputHandler;
     private OuterDungeonWalls dungeonWalls;
 
@@ -193,7 +192,7 @@ class GameplayState : IGameState
         var transition = new RoomTransitionState(
             oldLevel, oldDoorManager,
             newLevel, doorManager,
-            dungeonWalls, innerWalls, link,
+            dungeonWalls, gameplayHUD, link,
             direction, this);
 
         roomTransitionActive = true;
