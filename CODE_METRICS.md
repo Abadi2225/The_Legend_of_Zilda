@@ -12,9 +12,9 @@ This file is dynamically maintained by a bot, *please do not* edit this by hand.
 The *Sprint.csproj* project file contains:
 
 - 25 namespaces.
-- 163 named types.
-- 10,057 total lines of source code.
-- Approximately 3,163 lines of executable code.
+- 164 named types.
+- 10,081 total lines of source code.
+- Approximately 3,167 lines of executable code.
 - The highest cyclomatic complexity is 31 :exploding_head:.
 
 <details>
@@ -1867,11 +1867,11 @@ The `Sprint.Commands` namespace contains 9 named types.
 </summary>
 <br>
 
-The `Sprint.Enemies.Concrete` namespace contains 20 named types.
+The `Sprint.Enemies.Concrete` namespace contains 21 named types.
 
-- 20 named types.
-- 1,688 total lines of source code.
-- Approximately 642 lines of executable code.
+- 21 named types.
+- 1,712 total lines of source code.
+- Approximately 646 lines of executable code.
 - The highest cyclomatic complexity is 20 :exploding_head:.
 
 <details>
@@ -1936,32 +1936,6 @@ The `Sprint.Enemies.Concrete` namespace contains 20 named types.
 | Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Dodongo.cs#L25' title='Direction.Up'>25</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 
 <a href="#Dodongo.Direction-class-diagram">:link: to `Dodongo.Direction` class diagram</a>
-
-<a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
-
-</details>
-
-<details>
-<summary>
-  <strong id="goriya-direction">
-    Goriya.Direction :heavy_check_mark:
-  </strong>
-</summary>
-<br>
-
-- The `Goriya.Direction` contains 4 members.
-- 1 total lines of source code.
-- Approximately 0 lines of executable code.
-- The highest cyclomatic complexity is 0 :heavy_check_mark:.
-
-| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L28' title='Direction.Down'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L28' title='Direction.Left'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L28' title='Direction.Right'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L28' title='Direction.Up'>28</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-
-<a href="#Goriya.Direction-class-diagram">:link: to `Goriya.Direction` class diagram</a>
 
 <a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
 
@@ -2114,57 +2088,85 @@ The `Sprint.Enemies.Concrete` namespace contains 20 named types.
 <details>
 <summary>
   <strong id="goriya">
-    Goriya :radioactive:
+    Goriya :heavy_check_mark:
   </strong>
 </summary>
 <br>
 
-- The `Goriya` contains 37 members.
-- 227 total lines of source code.
-- Approximately 81 lines of executable code.
-- The highest cyclomatic complexity is 10 :radioactive:.
+- The `Goriya` contains 33 members.
+- 251 total lines of source code.
+- Approximately 67 lines of executable code.
+- The highest cyclomatic complexity is 6 :heavy_check_mark:.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L45' title='Goriya.Goriya(Texture2D texture, Vector2 position, List<Block> solidBlocks, Rectangle innerBounds, Action<AbstractItem> spawnProjectile = null)'>45</a> | 54 | 1 :heavy_check_mark: | 0 | 14 | 24 / 17 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L36' title='Boomerang Goriya.activeBoomerang'>36</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L23' title='float Goriya.BOOMERANG_RANGE'>23</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L22' title='float Goriya.BOOMERANG_SPEED'>22</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L181' title='void Goriya.ChooseNextStep()'>181</a> | 69 | 2 :heavy_check_mark: | 0 | 5 | 12 / 6 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L30' title='Direction Goriya.currentDirection'>30</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L14' title='GoriyaState Goriya.currentState'>14</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L16' title='int Goriya.DAMAGE'>16</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L174' title='void Goriya.Die()'>174</a> | 83 | 2 :heavy_check_mark: | 0 | 3 | 6 / 3 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L40' title='int[] Goriya.downFrames'>40</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L24' title='float Goriya.FLIP_INTERVAL'>24</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L43' title='bool Goriya.FlipsOnVertical'>43</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 2 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L35' title='float Goriya.flipTimer'>35</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L194' title='Direction Goriya.GetDirectionTo(Vector2 target)'>194</a> | 80 | 4 :heavy_check_mark: | 0 | 3 | 8 / 2 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L236' title='float Goriya.GetRandomThrowTime()'>236</a> | 93 | 1 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L158' title='Vector2 Goriya.GetThrowOrigin()'>158</a> | 68 | 1 :heavy_check_mark: | 0 | 4 | 15 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L15' title='int Goriya.HEALTH'>15</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L26' title='Rectangle Goriya.innerBounds'>26</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L19' title='float Goriya.MOVE_SPEED'>19</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L41' title='int[] Goriya.sideFrames'>41</a> | 91 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L25' title='List<Block> Goriya.solidBlocks'>25</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L37' title='Action<AbstractItem> Goriya.spawnProjectile'>37</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L34' title='bool Goriya.spriteHorizontalFlip'>34</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L18' title='float Goriya.STEP_DELAY'>18</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L17' title='float Goriya.STEP_SIZE'>17</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L32' title='float Goriya.stepTimer'>32</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L31' title='Vector2 Goriya.targetPosition'>31</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L21' title='float Goriya.THROW_COOLDOWN_MAX'>21</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L20' title='float Goriya.THROW_COOLDOWN_MIN'>20</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L140' title='void Goriya.ThrowBoomerang()'>140</a> | 69 | 2 :heavy_check_mark: | 0 | 8 | 17 / 5 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L42' title='int[] Goriya.throwFrame'>42</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L33' title='float Goriya.throwTimer'>33</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L70' title='void Goriya.UpdateEnemy(GameTime gameTime)'>70</a> | 66 | 6 :heavy_check_mark: | 0 | 4 | 26 / 7 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L203' title='void Goriya.UpdateSprite()'>203</a> | 58 | 10 :radioactive: | 0 | 5 | 32 / 11 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L129' title='void Goriya.UpdateThrowing(float deltaTime)'>129</a> | 71 | 3 :heavy_check_mark: | 0 | 2 | 10 / 5 |
-| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L97' title='void Goriya.UpdateWalking(float deltaTime)'>97</a> | 55 | 7 :heavy_check_mark: | 0 | 3 | 31 / 15 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L39' title='int[] Goriya.upFrames'>39</a> | 93 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L98' title='Goriya.Goriya(Texture2D texture, Vector2 position, List<Block> solidBlocks, Rectangle innerBounds, Action<AbstractItem> spawnProjectile = null)'>98</a> | 57 | 1 :heavy_check_mark: | 0 | 15 | 23 / 12 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L94' title='Boomerang Goriya.activeBoomerang'>94</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L81' title='float Goriya.BOOMERANG_RANGE'>81</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L80' title='float Goriya.BOOMERANG_SPEED'>80</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L216' title='void Goriya.ChooseNextStep()'>216</a> | 68 | 2 :heavy_check_mark: | 0 | 6 | 10 / 6 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L88' title='GoriyaDirection Goriya.currentDirection'>88</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L87' title='GoriyaState Goriya.currentState'>87</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L74' title='int Goriya.DAMAGE'>74</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L209' title='void Goriya.Die()'>209</a> | 83 | 2 :heavy_check_mark: | 0 | 3 | 6 / 3 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L82' title='float Goriya.FLIP_INTERVAL'>82</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Property | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L96' title='bool Goriya.FlipsOnVertical'>96</a> | 100 | 2 :heavy_check_mark: | 0 | 0 | 1 / 2 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L93' title='float Goriya.flipTimer'>93</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L227' title='GoriyaDirection Goriya.GetDirectionTo(Vector2 target)'>227</a> | 79 | 4 :heavy_check_mark: | 0 | 3 | 8 / 2 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L259' title='float Goriya.GetRandomThrowTime()'>259</a> | 93 | 1 :heavy_check_mark: | 0 | 0 | 2 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L73' title='int Goriya.HEALTH'>73</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L238' title='bool Goriya.IsVertical(GoriyaDirection dir)'>238</a> | 93 | 1 :heavy_check_mark: | 0 | 3 | 4 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L77' title='float Goriya.MOVE_SPEED'>77</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L166' title='void Goriya.MoveTowardTarget(float dt)'>166</a> | 63 | 4 :heavy_check_mark: | 0 | 3 | 19 / 9 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L84' title='NavigationContext Goriya.navigation'>84</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L85' title='Action<AbstractItem> Goriya.spawnProjectile'>85</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L92' title='bool Goriya.spriteHorizontalFlip'>92</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L76' title='float Goriya.STEP_DELAY'>76</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L75' title='float Goriya.STEP_SIZE'>75</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L90' title='float Goriya.stepTimer'>90</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L89' title='Vector2 Goriya.targetPosition'>89</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L79' title='float Goriya.THROW_COOLDOWN_MAX'>79</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L78' title='float Goriya.THROW_COOLDOWN_MIN'>78</a> | 93 | 0 :heavy_check_mark: | 0 | 0 | 1 / 1 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L195' title='void Goriya.ThrowBoomerang()'>195</a> | 68 | 2 :heavy_check_mark: | 0 | 8 | 13 / 6 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L91' title='float Goriya.throwTimer'>91</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L122' title='void Goriya.UpdateEnemy(GameTime gameTime)'>122</a> | 66 | 6 :heavy_check_mark: | 0 | 4 | 23 / 7 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L241' title='void Goriya.UpdateSprite()'>241</a> | 70 | 6 :heavy_check_mark: | 0 | 5 | 17 / 4 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L184' title='void Goriya.UpdateThrowing(float dt)'>184</a> | 71 | 3 :heavy_check_mark: | 0 | 2 | 10 / 5 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L146' title='void Goriya.UpdateWalking(float dt)'>146</a> | 67 | 3 :heavy_check_mark: | 0 | 2 | 17 / 7 |
 
 <a href="#Goriya-class-diagram">:link: to `Goriya` class diagram</a>
+
+<a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="goriya-goriyadirection">
+    Goriya.GoriyaDirection :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `Goriya.GoriyaDirection` contains 10 members.
+- 41 total lines of source code.
+- Approximately 16 lines of executable code.
+- The highest cyclomatic complexity is 4 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L25' title='GoriyaDirection.GoriyaDirection(Vector2 unitVector, int[] walkFrames, int[] throwFrames, bool flipSprite)'>25</a> | 75 | 1 :heavy_check_mark: | 0 | 1 | 7 / 4 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L34' title='GoriyaDirection GoriyaDirection.Down'>34</a> | 84 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L23' title='bool GoriyaDirection.FlipSprite'>23</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L41' title='Vector2 GoriyaDirection.GetThrowOrigin(Vector2 position)'>41</a> | 63 | 4 :heavy_check_mark: | 0 | 3 | 15 / 8 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L35' title='GoriyaDirection GoriyaDirection.Left'>35</a> | 83 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L36' title='GoriyaDirection GoriyaDirection.Right'>36</a> | 83 | 0 :heavy_check_mark: | 0 | 1 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L22' title='int[] GoriyaDirection.ThrowFrames'>22</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L20' title='Vector2 GoriyaDirection.UnitVector'>20</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L33' title='GoriyaDirection GoriyaDirection.Up'>33</a> | 83 | 0 :heavy_check_mark: | 0 | 2 | 1 / 1 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L21' title='int[] GoriyaDirection.WalkFrames'>21</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+
+<a href="#Goriya.GoriyaDirection-class-diagram">:link: to `Goriya.GoriyaDirection` class diagram</a>
 
 <a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
 
@@ -2185,8 +2187,8 @@ The `Sprint.Enemies.Concrete` namespace contains 20 named types.
 
 | Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L13' title='GoriyaState.Throwing'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
-| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L13' title='GoriyaState.Walking'>13</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L71' title='GoriyaState.Throwing'>71</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L71' title='GoriyaState.Walking'>71</a> | 100 | 0 :heavy_check_mark: | 0 | 0 | 1 / 0 |
 
 <a href="#Goriya.GoriyaState-class-diagram">:link: to `Goriya.GoriyaState` class diagram</a>
 
@@ -2291,6 +2293,31 @@ The `Sprint.Enemies.Concrete` namespace contains 20 named types.
 | Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Moldorm.cs#L79' title='void Moldorm.UpdateEnemy(GameTime gameTime)'>79</a> | 52 | 9 :warning: | 0 | 7 | 36 / 18 |
 
 <a href="#Moldorm-class-diagram">:link: to `Moldorm` class diagram</a>
+
+<a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
+
+</details>
+
+<details>
+<summary>
+  <strong id="goriya-navigationcontext">
+    Goriya.NavigationContext :heavy_check_mark:
+  </strong>
+</summary>
+<br>
+
+- The `Goriya.NavigationContext` contains 3 members.
+- 15 total lines of source code.
+- Approximately 2 lines of executable code.
+- The highest cyclomatic complexity is 1 :heavy_check_mark:.
+
+| Member kind | Line number | Maintainability index | Cyclomatic complexity | Depth of inheritance | Class coupling | Lines of source / executable code |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Method | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L64' title='NavigationContext.NavigationContext(List<Block> solidBlocks, Rectangle innerBounds)'>64</a> | 85 | 1 :heavy_check_mark: | 0 | 3 | 5 / 2 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L62' title='Rectangle NavigationContext.InnerBounds'>62</a> | 100 | 0 :heavy_check_mark: | 0 | 1 | 1 / 0 |
+| Field | <a href='https://github.com/Abadi2225/The_Legend_of_Zilda/blob/main/../Enemies/Concrete/Goriya.cs#L61' title='List<Block> NavigationContext.SolidBlocks'>61</a> | 100 | 0 :heavy_check_mark: | 0 | 2 | 1 / 0 |
+
+<a href="#Goriya.NavigationContext-class-diagram">:link: to `Goriya.NavigationContext` class diagram</a>
 
 <a href="#sprint-enemies-concrete">:top: back to Sprint.Enemies.Concrete</a>
 
@@ -7096,21 +7123,6 @@ class Direction{
 
 ```
 
-<div id="Goriya.Direction-class-diagram"></div>
-
-##### `Goriya.Direction` class diagram
-
-```mermaid
-classDiagram
-class Direction{
-    -Up$
-    -Down$
-    -Left$
-    -Right$
-}
-
-```
-
 <div id="Dodongo-class-diagram"></div>
 
 ##### `Dodongo` class diagram
@@ -7218,7 +7230,6 @@ class Gel{
 ```mermaid
 classDiagram
 class Goriya{
-    -GoriyaState currentState
     -int HEALTH$
     -int DAMAGE$
     -float STEP_SIZE$
@@ -7229,32 +7240,50 @@ class Goriya{
     -float BOOMERANG_SPEED$
     -float BOOMERANG_RANGE$
     -float FLIP_INTERVAL$
-    -List<Block> solidBlocks
-    -Rectangle innerBounds
-    -Direction currentDirection
+    -NavigationContext navigation
+    -Action<AbstractItem> spawnProjectile
+    -GoriyaState currentState
+    -GoriyaDirection currentDirection
     -Vector2 targetPosition
     -float stepTimer
     -float throwTimer
     -bool spriteHorizontalFlip
     -float flipTimer
     -Boomerang activeBoomerang
-    -Action<AbstractItem> spawnProjectile
-    -int[] upFrames
-    -int[] downFrames
-    -int[] sideFrames
-    -int[] throwFrame
     +bool FlipsOnVertical
     +.ctor(Texture2D texture, Vector2 position, List<Block> solidBlocks, Rectangle innerBounds, Action<AbstractItem> spawnProjectile = null) Goriya
     +UpdateEnemy(GameTime gameTime) void
-    +UpdateWalking(float deltaTime) void
-    +UpdateThrowing(float deltaTime) void
+    +UpdateWalking(float dt) void
+    +MoveTowardTarget(float dt) void
+    +UpdateThrowing(float dt) void
     +ThrowBoomerang() void
-    +GetThrowOrigin() Vector2
     +Die() void
     +ChooseNextStep() void
-    +GetDirectionTo(Vector2 target) Direction
+    +GetDirectionTo(Vector2 target) GoriyaDirection
+    +IsVertical(GoriyaDirection dir)$ bool
     +UpdateSprite() void
     +GetRandomThrowTime() float
+}
+
+```
+
+<div id="Goriya.GoriyaDirection-class-diagram"></div>
+
+##### `Goriya.GoriyaDirection` class diagram
+
+```mermaid
+classDiagram
+class GoriyaDirection{
+    -Vector2 UnitVector
+    -int[] WalkFrames
+    -int[] ThrowFrames
+    -bool FlipSprite
+    -GoriyaDirection Up$
+    -GoriyaDirection Down$
+    -GoriyaDirection Left$
+    -GoriyaDirection Right$
+    +.ctor(Vector2 unitVector, int[] walkFrames, int[] throwFrames, bool flipSprite) GoriyaDirection
+    +GetThrowOrigin(Vector2 position) Vector2
 }
 
 ```
@@ -7348,6 +7377,20 @@ class Moldorm{
     +GetTailRect() Rectangle
     +GetMiddleRects() List<Rectangle>
     +GetRandomTurnTime() float
+}
+
+```
+
+<div id="Goriya.NavigationContext-class-diagram"></div>
+
+##### `Goriya.NavigationContext` class diagram
+
+```mermaid
+classDiagram
+class NavigationContext{
+    -List<Block> SolidBlocks
+    -Rectangle InnerBounds
+    +.ctor(List<Block> solidBlocks, Rectangle innerBounds) NavigationContext
 }
 
 ```
